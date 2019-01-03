@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Regning;
 use AppBundle\Form\Type\RegningType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +28,7 @@ class RegningController extends BaseController
     /**
      * Lists all Regning entities.
      *
-     * @Route("/", name="regning")
-     * @Method("GET")
+     * @Route("/", name="regning", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -46,8 +45,7 @@ class RegningController extends BaseController
     /**
      * Creates a new Regning entity.
      *
-     * @Route("/", name="regning_create")
-     * @Method("POST")
+     * @Route("/", name="regning_create", methods={"POST"})
      * @Template("AppBundle:Regning:new.html.twig")
      */
     public function createAction(Request $request)
@@ -73,8 +71,7 @@ class RegningController extends BaseController
     /**
      * Displays a form to create a new Regning entity.
      *
-     * @Route("/new", name="regning_new")
-     * @Method("GET")
+     * @Route("/new", name="regning_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -91,8 +88,7 @@ class RegningController extends BaseController
     /**
      * Finds and displays a Regning entity.
      *
-     * @Route("/{id}", name="regning_show")
-     * @Method("GET")
+     * @Route("/{id}", name="regning_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -118,8 +114,7 @@ class RegningController extends BaseController
     /**
      * Displays a form to edit an existing Regning entity.
      *
-     * @Route("/{id}/edit", name="regning_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="regning_edit", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -147,8 +142,7 @@ class RegningController extends BaseController
     /**
      * Edits an existing Regning entity.
      *
-     * @Route("/{id}", name="regning_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="regning_update", methods={"PUT"})
      * @Template("AppBundle:Regning:edit.html.twig")
      *
      * @param mixed $id
@@ -183,8 +177,7 @@ class RegningController extends BaseController
     /**
      * Deletes a Regning entity.
      *
-     * @Route("/{id}", name="regning_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="regning_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

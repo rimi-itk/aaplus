@@ -14,7 +14,7 @@ use AppBundle\DBAL\Types\BygningStatusType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BygningDashboardType;
 use Doctrine\ORM\Query;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 

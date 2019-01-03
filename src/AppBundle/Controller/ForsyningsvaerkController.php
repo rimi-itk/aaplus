@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Forsyningsvaerk;
 use AppBundle\Form\Type\ForsyningsvaerkType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Lists all Forsyningsvaerk entities.
      *
-     * @Route("/", name="forsyningsvaerk")
-     * @Method("GET")
+     * @Route("/", name="forsyningsvaerk", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Creates a new Forsyningsvaerk entity.
      *
-     * @Route("/", name="forsyningsvaerk_create")
-     * @Method("POST")
+     * @Route("/", name="forsyningsvaerk_create", methods={"POST"})
      * @Template("AppBundle:Forsyningsvaerk:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Displays a form to create a new Forsyningsvaerk entity.
      *
-     * @Route("/new", name="forsyningsvaerk_new")
-     * @Method("GET")
+     * @Route("/new", name="forsyningsvaerk_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Finds and displays a Forsyningsvaerk entity.
      *
-     * @Route("/{id}", name="forsyningsvaerk_show")
-     * @Method("GET")
+     * @Route("/{id}", name="forsyningsvaerk_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Displays a form to edit an existing Forsyningsvaerk entity.
      *
-     * @Route("/{id}/edit", name="forsyningsvaerk_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="forsyningsvaerk_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Forsyningsvaerk $entity)
@@ -155,8 +150,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Edits an existing Forsyningsvaerk entity.
      *
-     * @Route("/{id}", name="forsyningsvaerk_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="forsyningsvaerk_update", methods={"PUT"})
      * @Template("AppBundle:Forsyningsvaerk:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class ForsyningsvaerkController extends BaseController
     /**
      * Deletes a Forsyningsvaerk entity.
      *
-     * @Route("/{id}", name="forsyningsvaerk_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="forsyningsvaerk_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

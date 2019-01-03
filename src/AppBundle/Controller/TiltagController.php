@@ -18,7 +18,7 @@ use AppBundle\Form\Type\TiltagOverviewDetailType;
 use AppBundle\Form\Type\TiltagTilvalgtType;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +39,7 @@ class TiltagController extends BaseController
     /**
      * Lists all Tiltag entities.
      *
-     * @Route("/", name="tiltag")
-     * @Method("GET")
+     * @Route("/", name="tiltag", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -51,8 +50,7 @@ class TiltagController extends BaseController
     /**
      * Finds and displays a Tiltag entity.
      *
-     * @Route("/{id}", name="tiltag_show")
-     * @Method("GET")
+     * @Route("/{id}", name="tiltag_show", methods={"GET"})
      * @Security("is_granted('TILTAG_VIEW', tiltag)")
      *
      * @param Tiltag $tiltag
@@ -81,8 +79,7 @@ class TiltagController extends BaseController
     /**
      * Displays a form to edit an existing Tiltag entity.
      *
-     * @Route("/{id}/edit", name="tiltag_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="tiltag_edit", methods={"GET"})
      * @Template()
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -107,8 +104,7 @@ class TiltagController extends BaseController
     /**
      * Edits an existing Tiltag entity.
      *
-     * @Route("/{id}", name="tiltag_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="tiltag_update", methods={"PUT"})
      * @Template("AppBundle:Tiltag:edit.html.twig")
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -139,8 +135,7 @@ class TiltagController extends BaseController
     /**
      * Edits an existing Tiltag entity.
      *
-     * @Route("/{id}/overview", name="tiltag_overview_update")
-     * @Method("PUT")
+     * @Route("/{id}/overview", name="tiltag_overview_update", methods={"PUT"})
      * @Template("AppBundle:Tiltag:show.html.twig")
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -183,8 +178,7 @@ class TiltagController extends BaseController
     /**
      * Edits "tilvalgt" for an existing Tiltag entity.
      *
-     * @Route("/tilvalgt/{id}", name="tiltag_tilvalgt_update")
-     * @Method("PUT")
+     * @Route("/tilvalgt/{id}", name="tiltag_tilvalgt_update", methods={"PUT"})
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
     public function updateTilvalgtAction(Request $request, Tiltag $tiltag)
@@ -207,8 +201,7 @@ class TiltagController extends BaseController
     /**
      * Edits "dato for drift" for an existing Tiltag entity.
      *
-     * @Route("/datofordrift/{id}", name="tiltag_dato_for_drift_update")
-     * @Method("PUT")
+     * @Route("/datofordrift/{id}", name="tiltag_dato_for_drift_update", methods={"PUT"})
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
     public function updateDatoForDriftAction(Request $request, Tiltag $tiltag)
@@ -231,8 +224,7 @@ class TiltagController extends BaseController
     /**
      * Deletes a Tiltag entity.
      *
-     * @Route("/{id}", name="tiltag_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="tiltag_delete", methods={"DELETE"})
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
     public function deleteAction(Request $request, Tiltag $tiltag)
@@ -258,8 +250,7 @@ class TiltagController extends BaseController
     /**
      * Displays a form to create a new TiltagDetail entity.
      *
-     * @Route("/{id}/detailnew", name="tiltag_detail_new")
-     * @Method("GET")
+     * @Route("/{id}/detailnew", name="tiltag_detail_new", methods={"GET"})
      * @Template()
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -283,8 +274,7 @@ class TiltagController extends BaseController
     /**
      * Creates a new Detail entity from form data.
      *
-     * @Route("/{id}/detailnew", name="tiltag_detail_create")
-     * @Method("POST")
+     * @Route("/{id}/detailnew", name="tiltag_detail_create", methods={"POST"})
      * @Template()
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -317,8 +307,7 @@ class TiltagController extends BaseController
     /**
      * Updates a batch of details.
      *
-     * @Route("/{id}/detailbatch", name="tiltag_detail_batch")
-     * @Method("POST")
+     * @Route("/{id}/detailbatch", name="tiltag_detail_batch", methods={"POST"})
      * @Template()
      * @Security("is_granted('TILTAG_EDIT', tiltag)")
      */
@@ -368,8 +357,7 @@ class TiltagController extends BaseController
     /**
      * Creates a new Regning entity.
      *
-     * @Route("/{id}/regning/new", name="regning_create_x")
-     * @Method("POST")
+     * @Route("/{id}/regning/new", name="regning_create_x", methods={"POST"})
      * @Template("AppBundle:Regning:new.html.twig")
      * @Security("has_role('ROLE_ADMIN')")
      */

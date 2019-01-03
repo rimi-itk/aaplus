@@ -17,7 +17,7 @@ use AppBundle\Entity\Rapport;
 use AppBundle\Form\BaselineType;
 use AppBundle\Form\Type\BaselineKorrektionOverviewType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -42,8 +42,7 @@ class BaselineController extends BaseController
     /**
      * Lists all Baseline entities.
      *
-     * @Route("/", name="baseline")
-     * @Method("GET")
+     * @Route("/", name="baseline", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class BaselineController extends BaseController
     /**
      * Finds and displays a Baseline entity.
      *
-     * @Route("/{id}", name="baseline_show")
-     * @Method("GET")
+     * @Route("/{id}", name="baseline_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('BASELINE_VIEW', baseline)")
      */
@@ -90,8 +88,7 @@ class BaselineController extends BaseController
     /**
      * Edits an existing Baseline entity.
      *
-     * @Route("/{id}/overview", name="baseline_overview_update")
-     * @Method("PUT")
+     * @Route("/{id}/overview", name="baseline_overview_update", methods={"PUT"})
      * @Template("AppBundle:Baseline:show.html.twig")
      * @Security("is_granted('BASELINE_EDIT', baseline)")
      */
@@ -118,8 +115,7 @@ class BaselineController extends BaseController
     /**
      * Displays a form to edit an existing Baseline entity.
      *
-     * @Route("/{id}/edit", name="baseline_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="baseline_edit", methods={"GET"})
      * @Template()
      * @Security("is_granted('BASELINE_EDIT', baseline)")
      */
@@ -160,8 +156,7 @@ class BaselineController extends BaseController
     /**
      * Edits an existing Baseline entity.
      *
-     * @Route("/{id}", name="baseline_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="baseline_update", methods={"PUT"})
      * @Template("AppBundle:Baseline:edit.html.twig")
      * @Security("is_granted('BASELINE_EDIT', baseline)")
      */
@@ -209,8 +204,7 @@ class BaselineController extends BaseController
     /**
      * Creates a new BaselineKorrektion entity.
      *
-     * @Route("/{id}/new", name="baseline_korrektion_create")
-     * @Method("POST")
+     * @Route("/{id}/new", name="baseline_korrektion_create", methods={"POST"})
      * @Template("AppBundle:BaselineKorrektion:new.html.twig")
      * @Security("is_granted('BASELINE_EDIT', baseline)")
      */

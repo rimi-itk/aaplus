@@ -15,7 +15,7 @@ use AppBundle\Entity\Rapport;
 use AppBundle\Form\Type\EnergiforsyningType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,8 +43,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Lists all Energiforsyning entities.
      *
-     * @Route("/", name="energiforsyning")
-     * @Method("GET")
+     * @Route("/", name="energiforsyning", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      */
@@ -62,8 +61,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Displays a form to create a new Energiforsyning entity.
      *
-     * @Route("/new", name="energiforsyning_new")
-     * @Method("GET")
+     * @Route("/new", name="energiforsyning_new", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
@@ -82,8 +80,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Finds and displays a Energiforsyning entity.
      *
-     * @Route("/{id}", name="energiforsyning_show")
-     * @Method("GET")
+     * @Route("/{id}", name="energiforsyning_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      */
@@ -99,8 +96,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Displays a form to edit an existing Energiforsyning entity.
      *
-     * @Route("/{id}/edit", name="energiforsyning_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="energiforsyning_edit", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
@@ -121,8 +117,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Edits an existing Energiforsyning entity.
      *
-     * @Route("/{id}", name="energiforsyning_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="energiforsyning_update", methods={"PUT"})
      * @Template("AppBundle:Energiforsyning:edit.html.twig")
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
@@ -161,8 +156,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Deletes a Energiforsyning entity.
      *
-     * @Route("/{id}", name="energiforsyning_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="energiforsyning_delete", methods={"DELETE"})
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
     public function deleteAction(Request $request, Energiforsyning $entity)
@@ -187,8 +181,7 @@ class EnergiforsyningController extends BaseController
     /**
      * Creates a new Energiforsyning entity.
      *
-     * @Route("/new", name="energiforsyning_create")
-     * @Method("POST")
+     * @Route("/new", name="energiforsyning_create", methods={"POST"})
      * @Template("AppBundle:Energiforsyning:new.html.twig")
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */

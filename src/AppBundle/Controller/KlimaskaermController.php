@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Klimaskaerm;
 use AppBundle\Form\Type\KlimaskaermType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class KlimaskaermController extends BaseController
     /**
      * Lists all Klimaskaerm entities.
      *
-     * @Route("/", name="klimaskaerm")
-     * @Method("GET")
+     * @Route("/", name="klimaskaerm", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class KlimaskaermController extends BaseController
     /**
      * Creates a new Klimaskaerm entity.
      *
-     * @Route("/", name="klimaskaerm_create")
-     * @Method("POST")
+     * @Route("/", name="klimaskaerm_create", methods={"POST"})
      * @Template("AppBundle:Klimaskaerm:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class KlimaskaermController extends BaseController
     /**
      * Displays a form to create a new Klimaskaerm entity.
      *
-     * @Route("/new", name="klimaskaerm_new")
-     * @Method("GET")
+     * @Route("/new", name="klimaskaerm_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class KlimaskaermController extends BaseController
     /**
      * Finds and displays a Klimaskaerm entity.
      *
-     * @Route("/{id}", name="klimaskaerm_show")
-     * @Method("GET")
+     * @Route("/{id}", name="klimaskaerm_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class KlimaskaermController extends BaseController
     /**
      * Displays a form to edit an existing Klimaskaerm entity.
      *
-     * @Route("/{id}/edit", name="klimaskaerm_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="klimaskaerm_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Klimaskaerm $entity)
@@ -155,8 +150,7 @@ class KlimaskaermController extends BaseController
     /**
      * Edits an existing Klimaskaerm entity.
      *
-     * @Route("/{id}", name="klimaskaerm_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="klimaskaerm_update", methods={"PUT"})
      * @Template("AppBundle:Klimaskaerm:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class KlimaskaermController extends BaseController
     /**
      * Deletes a Klimaskaerm entity.
      *
-     * @Route("/{id}", name="klimaskaerm_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="klimaskaerm_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

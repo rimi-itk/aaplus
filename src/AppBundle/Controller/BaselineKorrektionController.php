@@ -14,10 +14,9 @@ use AppBundle\Entity\BaselineKorrektion;
 use AppBundle\Entity\Rapport;
 use AppBundle\Form\BaselineKorrektionType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * BaselineKorrektion controller.
@@ -36,8 +35,7 @@ class BaselineKorrektionController extends BaseController
     /**
      * Displays a form to edit an existing BaselineKorrektion entity.
      *
-     * @Route("/{id}/edit", name="baselinekorrektion_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="baselinekorrektion_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(BaselineKorrektion $entity)
@@ -68,8 +66,7 @@ class BaselineKorrektionController extends BaseController
     /**
      * Edits an existing BaselineKorrektion entity.
      *
-     * @Route("/{id}", name="baselinekorrektion_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="baselinekorrektion_update", methods={"PUT"})
      * @Template("AppBundle:BaselineKorrektion:edit.html.twig")
      *
      * @param mixed $id
@@ -104,8 +101,7 @@ class BaselineKorrektionController extends BaseController
     /**
      * Deletes a BaselineKorrektion entity.
      *
-     * @Route("/{id}", name="baselinekorrektion_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="baselinekorrektion_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\ELOFordeling;
 use AppBundle\Form\ELOFordelingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class ELOFordelingController extends BaseController
     /**
      * Lists all ELOFordeling entities.
      *
-     * @Route("/", name="elofordeling")
-     * @Method("GET")
+     * @Route("/", name="elofordeling", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class ELOFordelingController extends BaseController
     /**
      * Creates a new ELOFordeling entity.
      *
-     * @Route("/", name="elofordeling_create")
-     * @Method("POST")
+     * @Route("/", name="elofordeling_create", methods={"POST"})
      * @Template("AppBundle:ELOFordeling:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class ELOFordelingController extends BaseController
     /**
      * Displays a form to create a new ELOFordeling entity.
      *
-     * @Route("/new", name="elofordeling_new")
-     * @Method("GET")
+     * @Route("/new", name="elofordeling_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class ELOFordelingController extends BaseController
     /**
      * Finds and displays a ELOFordeling entity.
      *
-     * @Route("/{id}", name="elofordeling_show")
-     * @Method("GET")
+     * @Route("/{id}", name="elofordeling_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class ELOFordelingController extends BaseController
     /**
      * Displays a form to edit an existing ELOFordeling entity.
      *
-     * @Route("/{id}/edit", name="elofordeling_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="elofordeling_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(ELOFordeling $entity)
@@ -155,8 +150,7 @@ class ELOFordelingController extends BaseController
     /**
      * Edits an existing ELOFordeling entity.
      *
-     * @Route("/{id}", name="elofordeling_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="elofordeling_update", methods={"PUT"})
      * @Template("AppBundle:ELOFordeling:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class ELOFordelingController extends BaseController
     /**
      * Deletes a ELOFordeling entity.
      *
-     * @Route("/{id}", name="elofordeling_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="elofordeling_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

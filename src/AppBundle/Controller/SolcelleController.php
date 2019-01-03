@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Solcelle;
 use AppBundle\Form\Type\SolcelleType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class SolcelleController extends BaseController
     /**
      * Lists all Solcelle entities.
      *
-     * @Route("/", name="solcelle")
-     * @Method("GET")
+     * @Route("/", name="solcelle", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class SolcelleController extends BaseController
     /**
      * Creates a new Solcelle entity.
      *
-     * @Route("/", name="solcelle_create")
-     * @Method("POST")
+     * @Route("/", name="solcelle_create", methods={"POST"})
      * @Template("AppBundle:Solcelle:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class SolcelleController extends BaseController
     /**
      * Displays a form to create a new Solcelle entity.
      *
-     * @Route("/new", name="solcelle_new")
-     * @Method("GET")
+     * @Route("/new", name="solcelle_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class SolcelleController extends BaseController
     /**
      * Finds and displays a Solcelle entity.
      *
-     * @Route("/{id}", name="solcelle_show")
-     * @Method("GET")
+     * @Route("/{id}", name="solcelle_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class SolcelleController extends BaseController
     /**
      * Displays a form to edit an existing Solcelle entity.
      *
-     * @Route("/{id}/edit", name="solcelle_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="solcelle_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Solcelle $entity)
@@ -155,8 +150,7 @@ class SolcelleController extends BaseController
     /**
      * Edits an existing Solcelle entity.
      *
-     * @Route("/{id}", name="solcelle_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="solcelle_update", methods={"PUT"})
      * @Template("AppBundle:Solcelle:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class SolcelleController extends BaseController
     /**
      * Deletes a Solcelle entity.
      *
-     * @Route("/{id}", name="solcelle_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="solcelle_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

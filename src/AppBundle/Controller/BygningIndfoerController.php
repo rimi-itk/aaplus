@@ -14,7 +14,7 @@ use AppBundle\DBAL\Types\BygningStatusType;
 use AppBundle\Entity\Bygning;
 use AppBundle\Form\Type\BygningType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +39,7 @@ class BygningIndfoerController extends BaseController implements InitControllerI
     /**
      * Lists all Bygning entities.
      *
-     * @Route("/", name="bygning_indfoer")
-     * @Method("GET")
+     * @Route("/", name="bygning_indfoer", methods={"GET"})
      * @Template()
      */
     public function indexAction(Bygning $bygning)
@@ -62,8 +61,7 @@ class BygningIndfoerController extends BaseController implements InitControllerI
     /**
      * Edits an existing Bygning entity.
      *
-     * @Route("/", name="bygning_indfoer_update")
-     * @Method("PUT")
+     * @Route("/", name="bygning_indfoer_update", methods={"PUT"})
      * @Template("AppBundle:BygningIndfoer:index.html.twig")
      */
     public function updateAction(Request $request, Bygning $bygning)

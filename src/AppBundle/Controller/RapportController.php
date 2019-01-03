@@ -22,7 +22,7 @@ use AppBundle\Form\Type\TiltagDatoForDriftType;
 use AppBundle\Form\Type\TiltagTilvalgtType;
 use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -47,8 +47,7 @@ class RapportController extends BaseController
     /**
      * Lists all Rapport entities.
      *
-     * @Route("/", name="rapport")
-     * @Method("GET")
+     * @Route("/", name="rapport", methods={"GET"})
      * @Template()
      */
     public function indexAction(Request $request)
@@ -101,8 +100,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity.
      *
-     * @Route("/{id}", name="rapport_show")
-     * @Method("GET")
+     * @Route("/{id}", name="rapport_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -181,8 +179,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays Baseline for a Rapport entity.
      *
-     * @Route("/{id}/baseline", name="rapport_show_baseline")
-     * @Method("GET")
+     * @Route("/{id}/baseline", name="rapport_show_baseline", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -209,8 +206,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity in PDF form. (Resultatoversigt).
      *
-     * @Route("/{id}/pdf2", name="rapport_show_pdf2")
-     * @Method("GET")
+     * @Route("/{id}/pdf2", name="rapport_show_pdf2", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -234,8 +230,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity in PDF form. (Detailark).
      *
-     * @Route("/{id}/pdf5", name="rapport_show_pdf5")
-     * @Method("GET")
+     * @Route("/{id}/pdf5", name="rapport_show_pdf5", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -259,8 +254,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity.
      *
-     * @Route("/{id}/pdf2test", name="rapport_show_pdf2test")
-     * @Method("GET")
+     * @Route("/{id}/pdf2test", name="rapport_show_pdf2test", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -279,8 +273,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity.
      *
-     * @Route("/{id}/pdf5test", name="rapport_show_pdf5test")
-     * @Method("GET")
+     * @Route("/{id}/pdf5test", name="rapport_show_pdf5test", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -299,8 +292,7 @@ class RapportController extends BaseController
     /**
      * Displays a form to edit an existing Rapport entity.
      *
-     * @Route("/{id}/edit", name="rapport_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="rapport_edit", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
@@ -322,8 +314,7 @@ class RapportController extends BaseController
     /**
      * Edits an existing Rapport entity.
      *
-     * @Route("/{id}", name="rapport_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="rapport_update", methods={"PUT"})
      * @Template("AppBundle:Rapport:edit.html.twig")
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
@@ -353,8 +344,7 @@ class RapportController extends BaseController
     /**
      * Deletes a Rapport entity.
      *
-     * @Route("/{id}", name="rapport_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="rapport_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */
@@ -383,8 +373,7 @@ class RapportController extends BaseController
     /**
      * Aaplus verifies a Rapport entity.
      *
-     * @Route("/{id}/submit", name="rapport_submit")
-     * @Method("PUT")
+     * @Route("/{id}/submit", name="rapport_submit", methods={"PUT"})
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
     public function submitAction(Request $request, Rapport $rapport)
@@ -401,8 +390,7 @@ class RapportController extends BaseController
     /**
      * Aaplus verifies a Rapport entity.
      *
-     * @Route("/{id}/retur", name="rapport_retur")
-     * @Method("PUT")
+     * @Route("/{id}/retur", name="rapport_retur", methods={"PUT"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function returAction(Request $request, Rapport $rapport)
@@ -419,8 +407,7 @@ class RapportController extends BaseController
     /**
      * Aaplus verifies a Rapport entity.
      *
-     * @Route("/{id}/verify", name="rapport_verify")
-     * @Method("PUT")
+     * @Route("/{id}/verify", name="rapport_verify", methods={"PUT"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function verifyAction(Request $request, Rapport $rapport)
@@ -437,8 +424,7 @@ class RapportController extends BaseController
     /**
      * Magistrat Godkendt.
      *
-     * @Route("/{id}/approve", name="rapport_approve")
-     * @Method("PUT")
+     * @Route("/{id}/approve", name="rapport_approve", methods={"PUT"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function approvedAction(Request $request, Rapport $rapport)
@@ -455,8 +441,7 @@ class RapportController extends BaseController
     /**
      * Under udførsel.
      *
-     * @Route("/{id}/implementation", name="rapport_implementation")
-     * @Method("PUT")
+     * @Route("/{id}/implementation", name="rapport_implementation", methods={"PUT"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function implementationAction(Request $request, Rapport $rapport)
@@ -473,8 +458,7 @@ class RapportController extends BaseController
     /**
      * Drift.
      *
-     * @Route("/{id}/operation", name="rapport_operation")
-     * @Method("PUT")
+     * @Route("/{id}/operation", name="rapport_operation", methods={"PUT"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function operationAction(Request $request, Rapport $rapport)
@@ -491,8 +475,7 @@ class RapportController extends BaseController
     /**
      * Creates a new Tiltag entity.
      *
-     * @Route("/{id}/tiltag/new/{type}", name="tiltag_create")
-     * @Method("POST")
+     * @Route("/{id}/tiltag/new/{type}", name="tiltag_create", methods={"POST"})
      * @Template("AppBundle:Tiltag:new.html.twig")
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      *
@@ -518,8 +501,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity.
      *
-     * @Route("/{id}/regninger", name="rapport_regninger_show")
-     * @Method("GET")
+     * @Route("/{id}/regninger", name="rapport_regninger_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -548,8 +530,7 @@ class RapportController extends BaseController
     /**
      * Finds and displays a Rapport entity.
      *
-     * @Route("/{id}/finansiering", name="rapport_finansiering_show")
-     * @Method("GET")
+     * @Route("/{id}/finansiering", name="rapport_finansiering_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -578,8 +559,7 @@ class RapportController extends BaseController
     /**
      * Edits an existing Rapport entity.
      *
-     * @Route("/{id}/finansiering", name="rapport_finansiering_update")
-     * @Method("PUT")
+     * @Route("/{id}/finansiering", name="rapport_finansiering_update", methods={"PUT"})
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
     public function updateActionFinansiering(Request $request, Rapport $rapport)
@@ -606,8 +586,7 @@ class RapportController extends BaseController
     /**
      * Calculates and persists a Rapport entity.
      *
-     * @Route("/{id}/calculate", name="rapport_calculate")
-     * @Method("POST")
+     * @Route("/{id}/calculate", name="rapport_calculate", methods={"POST"})
      * @Security("is_granted('RAPPORT_EDIT', rapport)")
      */
     public function calculateAction(Request $request, Rapport $rapport)
@@ -640,8 +619,7 @@ class RapportController extends BaseController
     /**
      * Lists all files for the Rapport.
      *
-     * @Route("/{id}/filer", name="rapport_filer")
-     * @Method("GET")
+     * @Route("/{id}/filer", name="rapport_filer", methods={"GET"})
      * @Template()
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      */
@@ -664,8 +642,7 @@ class RapportController extends BaseController
     /**
      * Lists all files for the Rapport.
      *
-     * @Route("/{id}/fil/{fil}", name="rapport_fil")
-     * @Method("GET")
+     * @Route("/{id}/fil/{fil}", name="rapport_fil", methods={"GET"})
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      */
     public function filAction(Request $request, Rapport $rapport, Fil $fil)
@@ -686,8 +663,7 @@ class RapportController extends BaseController
     /**
      * Download all files for Rapport.
      *
-     * @Route("/{id}/download_files", name="rapport_download_files")
-     * @Method("GET")
+     * @Route("/{id}/download_files", name="rapport_download_files", methods={"GET"})
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      */
     public function downloadFilesAction(Request $request, Rapport $rapport)

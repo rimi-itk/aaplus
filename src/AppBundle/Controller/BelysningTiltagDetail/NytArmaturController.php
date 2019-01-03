@@ -14,7 +14,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\BelysningTiltagDetail\NytArmatur;
 use AppBundle\Form\BelysningTiltagDetail\NytArmaturType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,8 +37,7 @@ class NytArmaturController extends BaseController
     /**
      * Lists all BelysningTiltagDetail\NytArmatur entities.
      *
-     * @Route("/", name="belysningtiltagdetail_nytarmatur")
-     * @Method("GET")
+     * @Route("/", name="belysningtiltagdetail_nytarmatur", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -55,8 +54,7 @@ class NytArmaturController extends BaseController
     /**
      * Creates a new BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/", name="belysningtiltagdetail_nytarmatur_create")
-     * @Method("POST")
+     * @Route("/", name="belysningtiltagdetail_nytarmatur_create", methods={"POST"})
      * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:new.html.twig")
      */
     public function createAction(Request $request)
@@ -82,8 +80,7 @@ class NytArmaturController extends BaseController
     /**
      * Displays a form to create a new BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/new", name="belysningtiltagdetail_nytarmatur_new")
-     * @Method("GET")
+     * @Route("/new", name="belysningtiltagdetail_nytarmatur_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -102,8 +99,7 @@ class NytArmaturController extends BaseController
     /**
      * Finds and displays a BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_show")
-     * @Method("GET")
+     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -130,8 +126,7 @@ class NytArmaturController extends BaseController
     /**
      * Displays a form to edit an existing BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/{id}/edit", name="belysningtiltagdetail_nytarmatur_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="belysningtiltagdetail_nytarmatur_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(NytArmatur $entity)
@@ -156,8 +151,7 @@ class NytArmaturController extends BaseController
     /**
      * Edits an existing BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_update", methods={"PUT"})
      * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:edit.html.twig")
      *
      * @param mixed $id
@@ -192,8 +186,7 @@ class NytArmaturController extends BaseController
     /**
      * Deletes a BelysningTiltagDetail\NytArmatur entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

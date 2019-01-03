@@ -14,7 +14,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\BelysningTiltagDetail\Lyskilde;
 use AppBundle\Form\BelysningTiltagDetail\LyskildeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,8 +37,7 @@ class LyskildeController extends BaseController
     /**
      * Lists all BelysningTiltagDetail\Lyskilde entities.
      *
-     * @Route("/", name="belysningtiltagdetail_lyskilde")
-     * @Method("GET")
+     * @Route("/", name="belysningtiltagdetail_lyskilde", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -55,8 +54,7 @@ class LyskildeController extends BaseController
     /**
      * Creates a new BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/", name="belysningtiltagdetail_lyskilde_create")
-     * @Method("POST")
+     * @Route("/", name="belysningtiltagdetail_lyskilde_create", methods={"POST"})
      * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:new.html.twig")
      */
     public function createAction(Request $request)
@@ -82,8 +80,7 @@ class LyskildeController extends BaseController
     /**
      * Displays a form to create a new BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/new", name="belysningtiltagdetail_lyskilde_new")
-     * @Method("GET")
+     * @Route("/new", name="belysningtiltagdetail_lyskilde_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -102,8 +99,7 @@ class LyskildeController extends BaseController
     /**
      * Finds and displays a BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_show")
-     * @Method("GET")
+     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -130,8 +126,7 @@ class LyskildeController extends BaseController
     /**
      * Displays a form to edit an existing BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/{id}/edit", name="belysningtiltagdetail_lyskilde_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="belysningtiltagdetail_lyskilde_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Lyskilde $entity)
@@ -156,8 +151,7 @@ class LyskildeController extends BaseController
     /**
      * Edits an existing BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_update", methods={"PUT"})
      * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:edit.html.twig")
      *
      * @param mixed $id
@@ -192,8 +186,7 @@ class LyskildeController extends BaseController
     /**
      * Deletes a BelysningTiltagDetail\Lyskilde entity.
      *
-     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="belysningtiltagdetail_lyskilde_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

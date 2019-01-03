@@ -48,11 +48,13 @@ security:
             security: false
 
         main:
+            logout_on_user_change: true
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
             logout:       true
+
             anonymous:    true
             remember_me:
                 secret:   '%kernel.secret%'
@@ -64,6 +66,7 @@ security:
               parameter: _switch_user
 
         default:
+            logout_on_user_change: true
             anonymous: ~
 
     access_control:

@@ -14,7 +14,7 @@ use AppBundle\DataExport\ExcelExport;
 use AppBundle\Form\Type\BygningUdtraekType;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\Form;
@@ -48,9 +48,8 @@ class UdtraekController extends BaseController implements InitControllerInterfac
      *   defaults={"_format": "html"},
      *   requirements={
      *     "_format": "html|xlsx|csv",
-     *   }
+     *   }, methods={"GET"}
      * )
-     * @Method("GET")
      * @Template()
      *
      * @param mixed $_format
@@ -129,8 +128,7 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     /**
      * Get predefined udtraek page.
      *
-     * @Route("/predefineret", name="udtraek_predefined")
-     * @Method("GET")
+     * @Route("/predefineret", name="udtraek_predefined", methods={"GET"})
      * @Template()
      */
     public function predefinedAction()
@@ -141,8 +139,7 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     /**
      * Get sum of field pr year excel export.
      *
-     * @Route("/field_sum_pr_year/{field}", name="udtraek_field_sum_pr_year")
-     * @Method("GET")
+     * @Route("/field_sum_pr_year/{field}", name="udtraek_field_sum_pr_year", methods={"GET"})
      * @Template()
      *
      * @param mixed $field
@@ -234,8 +231,7 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     /**
      * Get avg of the diff between field and baseline pr year excel export.
      *
-     * @Route("/field_avg_diff_pr_year/{field}/{baseline}", name="udtraek_field_avg_diff_pr_year")
-     * @Method("GET")
+     * @Route("/field_avg_diff_pr_year/{field}/{baseline}", name="udtraek_field_avg_diff_pr_year", methods={"GET"})
      * @Template()
      *
      * @param mixed $field

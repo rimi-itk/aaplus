@@ -14,7 +14,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\TekniskIsoleringTiltagDetail\Komponent;
 use AppBundle\Form\TekniskIsoleringTiltagDetail\KomponentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,8 +37,7 @@ class KomponentController extends BaseController
     /**
      * Lists all TekniskIsoleringTiltagDetail\Komponent entities.
      *
-     * @Route("/", name="komponent")
-     * @Method("GET")
+     * @Route("/", name="komponent", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -55,8 +54,7 @@ class KomponentController extends BaseController
     /**
      * Creates a new TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/", name="komponent_create")
-     * @Method("POST")
+     * @Route("/", name="komponent_create", methods={"POST"})
      * @Template("AppBundle:TekniskIsoleringTiltagDetail\Komponent:new.html.twig")
      */
     public function createAction(Request $request)
@@ -82,8 +80,7 @@ class KomponentController extends BaseController
     /**
      * Displays a form to create a new TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/new", name="komponent_new")
-     * @Method("GET")
+     * @Route("/new", name="komponent_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -102,8 +99,7 @@ class KomponentController extends BaseController
     /**
      * Finds and displays a TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/{id}", name="komponent_show")
-     * @Method("GET")
+     * @Route("/{id}", name="komponent_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -130,8 +126,7 @@ class KomponentController extends BaseController
     /**
      * Displays a form to edit an existing TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/{id}/edit", name="komponent_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="komponent_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Komponent $entity)
@@ -156,8 +151,7 @@ class KomponentController extends BaseController
     /**
      * Edits an existing TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/{id}", name="komponent_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="komponent_update", methods={"PUT"})
      * @Template("AppBundle:TekniskIsoleringTiltagDetail\Komponent:edit.html.twig")
      *
      * @param mixed $id
@@ -192,8 +186,7 @@ class KomponentController extends BaseController
     /**
      * Deletes a TekniskIsoleringTiltagDetail\Komponent entity.
      *
-     * @Route("/{id}", name="komponent_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="komponent_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\ELOKategori;
 use AppBundle\Form\ELOKategoriType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class ELOKategoriController extends BaseController
     /**
      * Lists all ELOKategori entities.
      *
-     * @Route("/", name="elokategori")
-     * @Method("GET")
+     * @Route("/", name="elokategori", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class ELOKategoriController extends BaseController
     /**
      * Creates a new ELOKategori entity.
      *
-     * @Route("/", name="elokategori_create")
-     * @Method("POST")
+     * @Route("/", name="elokategori_create", methods={"POST"})
      * @Template("AppBundle:ELOKategori:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class ELOKategoriController extends BaseController
     /**
      * Displays a form to create a new ELOKategori entity.
      *
-     * @Route("/new", name="elokategori_new")
-     * @Method("GET")
+     * @Route("/new", name="elokategori_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class ELOKategoriController extends BaseController
     /**
      * Finds and displays a ELOKategori entity.
      *
-     * @Route("/{id}", name="elokategori_show")
-     * @Method("GET")
+     * @Route("/{id}", name="elokategori_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class ELOKategoriController extends BaseController
     /**
      * Displays a form to edit an existing ELOKategori entity.
      *
-     * @Route("/{id}/edit", name="elokategori_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="elokategori_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(ELOKategori $entity)
@@ -155,8 +150,7 @@ class ELOKategoriController extends BaseController
     /**
      * Edits an existing ELOKategori entity.
      *
-     * @Route("/{id}", name="elokategori_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="elokategori_update", methods={"PUT"})
      * @Template("AppBundle:ELOKategori:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class ELOKategoriController extends BaseController
     /**
      * Deletes a ELOKategori entity.
      *
-     * @Route("/{id}", name="elokategori_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="elokategori_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

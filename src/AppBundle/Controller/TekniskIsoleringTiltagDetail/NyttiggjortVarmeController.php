@@ -14,7 +14,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme;
 use AppBundle\Form\TekniskIsoleringTiltagDetail\NyttiggjortVarmeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,8 +37,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Lists all TekniskIsoleringTiltagDetail\NyttiggjortVarme entities.
      *
-     * @Route("/", name="nyttiggjortvarme")
-     * @Method("GET")
+     * @Route("/", name="nyttiggjortvarme", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -55,8 +54,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Creates a new TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/", name="nyttiggjortvarme_create")
-     * @Method("POST")
+     * @Route("/", name="nyttiggjortvarme_create", methods={"POST"})
      * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:new.html.twig")
      */
     public function createAction(Request $request)
@@ -82,8 +80,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Displays a form to create a new TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/new", name="nyttiggjortvarme_new")
-     * @Method("GET")
+     * @Route("/new", name="nyttiggjortvarme_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -102,8 +99,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Finds and displays a TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/{id}", name="nyttiggjortvarme_show")
-     * @Method("GET")
+     * @Route("/{id}", name="nyttiggjortvarme_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -130,8 +126,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Displays a form to edit an existing TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/{id}/edit", name="nyttiggjortvarme_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="nyttiggjortvarme_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(NyttiggjortVarme $entity)
@@ -156,8 +151,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Edits an existing TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/{id}", name="nyttiggjortvarme_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="nyttiggjortvarme_update", methods={"PUT"})
      * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:edit.html.twig")
      *
      * @param mixed $id
@@ -192,8 +186,7 @@ class NyttiggjortVarmeController extends BaseController
     /**
      * Deletes a TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
-     * @Route("/{id}", name="nyttiggjortvarme_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="nyttiggjortvarme_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

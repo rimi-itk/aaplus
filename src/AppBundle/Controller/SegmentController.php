@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Segment;
 use AppBundle\Form\Type\SegmentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class SegmentController extends BaseController
     /**
      * Lists all Segment entities.
      *
-     * @Route("/", name="segment")
-     * @Method("GET")
+     * @Route("/", name="segment", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class SegmentController extends BaseController
     /**
      * Creates a new Segment entity.
      *
-     * @Route("/", name="segment_create")
-     * @Method("POST")
+     * @Route("/", name="segment_create", methods={"POST"})
      * @Template("AppBundle:Segment:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class SegmentController extends BaseController
     /**
      * Displays a form to create a new Segment entity.
      *
-     * @Route("/new", name="segment_new")
-     * @Method("GET")
+     * @Route("/new", name="segment_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class SegmentController extends BaseController
     /**
      * Finds and displays a Segment entity.
      *
-     * @Route("/{id}", name="segment_show")
-     * @Method("GET")
+     * @Route("/{id}", name="segment_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class SegmentController extends BaseController
     /**
      * Displays a form to edit an existing Segment entity.
      *
-     * @Route("/{id}/edit", name="segment_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="segment_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Segment $entity)
@@ -155,8 +150,7 @@ class SegmentController extends BaseController
     /**
      * Edits an existing Segment entity.
      *
-     * @Route("/{id}", name="segment_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="segment_update", methods={"PUT"})
      * @Template("AppBundle:Segment:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class SegmentController extends BaseController
     /**
      * Deletes a Segment entity.
      *
-     * @Route("/{id}", name="segment_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="segment_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

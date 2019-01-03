@@ -13,10 +13,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Leverandoer;
 use AppBundle\Form\Type\LeverandoerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Leverandoer controller.
@@ -28,8 +27,7 @@ class LeverandoerController extends BaseController
     /**
      * Lists all Leverandoer entities.
      *
-     * @Route("/", name="leverandoer")
-     * @Method("GET")
+     * @Route("/", name="leverandoer", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -46,8 +44,7 @@ class LeverandoerController extends BaseController
     /**
      * Creates a new Leverandoer entity.
      *
-     * @Route("/", name="leverandoer_create")
-     * @Method("POST")
+     * @Route("/", name="leverandoer_create", methods={"POST"})
      * @Template("AppBundle:Leverandoer:new.html.twig")
      */
     public function createAction(Request $request)
@@ -73,8 +70,7 @@ class LeverandoerController extends BaseController
     /**
      * Displays a form to create a new Leverandoer entity.
      *
-     * @Route("/new", name="leverandoer_new")
-     * @Method("GET")
+     * @Route("/new", name="leverandoer_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -91,8 +87,7 @@ class LeverandoerController extends BaseController
     /**
      * Finds and displays a Leverandoer entity.
      *
-     * @Route("/{id}", name="leverandoer_show")
-     * @Method("GET")
+     * @Route("/{id}", name="leverandoer_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -118,8 +113,7 @@ class LeverandoerController extends BaseController
     /**
      * Displays a form to edit an existing Leverandoer entity.
      *
-     * @Route("/{id}/edit", name="leverandoer_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="leverandoer_edit", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -147,8 +141,7 @@ class LeverandoerController extends BaseController
     /**
      * Edits an existing Leverandoer entity.
      *
-     * @Route("/{id}", name="leverandoer_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="leverandoer_update", methods={"PUT"})
      * @Template("AppBundle:Leverandoer:edit.html.twig")
      *
      * @param mixed $id
@@ -183,8 +176,7 @@ class LeverandoerController extends BaseController
     /**
      * Deletes a Leverandoer entity.
      *
-     * @Route("/{id}", name="leverandoer_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="leverandoer_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

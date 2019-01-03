@@ -14,7 +14,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserFilterType;
 use AppBundle\Form\Type\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,8 +36,7 @@ class UserController extends BaseController
     /**
      * Lists all User entities.
      *
-     * @Route("/", name="user")
-     * @Method("GET")
+     * @Route("/", name="user", methods={"GET"})
      * @Template()
      */
     public function indexAction(Request $request)
@@ -77,8 +76,7 @@ class UserController extends BaseController
     /**
      * Creates a new User entity.
      *
-     * @Route("/", name="user_create")
-     * @Method("POST")
+     * @Route("/", name="user_create", methods={"POST"})
      * @Template("AppBundle:User:new.html.twig")
      */
     public function createAction(Request $request)
@@ -110,8 +108,7 @@ class UserController extends BaseController
     /**
      * Displays a form to create a new User entity.
      *
-     * @Route("/new", name="user_new")
-     * @Method("GET")
+     * @Route("/new", name="user_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -130,8 +127,7 @@ class UserController extends BaseController
     /**
      * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="user_edit", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -158,8 +154,7 @@ class UserController extends BaseController
     /**
      * Edits an existing User entity.
      *
-     * @Route("/{id}", name="user_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="user_update", methods={"PUT"})
      * @Template("AppBundle:User:edit.html.twig")
      *
      * @param mixed $id

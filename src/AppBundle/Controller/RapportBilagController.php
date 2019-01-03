@@ -15,7 +15,7 @@ use AppBundle\Entity\Rapport;
 use AppBundle\Form\Type\RapportBilagType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -42,8 +42,7 @@ class RapportBilagController extends BaseController
     /**
      * Get Bilag.
      *
-     * @Route("", name="rapport_bilag_get")
-     * @Method("GET")
+     * @Route("", name="rapport_bilag_get", methods={"GET"})
      * @Template("AppBundle:RapportBilag:list.html.twig")
      * @Security("is_granted('RAPPORT_VIEW', rapport)")
      *
@@ -63,8 +62,7 @@ class RapportBilagController extends BaseController
     /**
      * Displays a form to edit an existing Bilag entity.
      *
-     * @Route("/{bilag_id}/edit", name="rapport_bilag_edit")
-     * @Method("GET")
+     * @Route("/{bilag_id}/edit", name="rapport_bilag_edit", methods={"GET"})
      * @Template()
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
@@ -89,8 +87,7 @@ class RapportBilagController extends BaseController
     /**
      * Displays a form to create a new Bilag entity.
      *
-     * @Route("/new", name="bilag_rapport_new")
-     * @Method("GET")
+     * @Route("/new", name="bilag_rapport_new", methods={"GET"})
      * @Template()
      */
     public function createForRapportAction(Rapport $rapport)
@@ -114,8 +111,7 @@ class RapportBilagController extends BaseController
     /**
      * Edits an existing Bilag entity.
      *
-     * @Route("/{bilag_id}", name="rapport_bilag_update")
-     * @Method("PUT")
+     * @Route("/{bilag_id}", name="rapport_bilag_update", methods={"PUT"})
      * @Template("AppBundle:RapportBilag:edit.html.twig")
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
@@ -145,8 +141,7 @@ class RapportBilagController extends BaseController
     /**
      * Creates a new Bilag entity.
      *
-     * @Route("", name="rapport_bilag_create")
-     * @Method("POST")
+     * @Route("", name="rapport_bilag_create", methods={"POST"})
      * @Template("AppBundle:RapportBilag:new.html.twig")
      */
     public function newBilagAction(Request $request, Rapport $rapport)
@@ -177,8 +172,7 @@ class RapportBilagController extends BaseController
     /**
      * Deletes a Bilag entity.
      *
-     * @Route("/{bilag_id}", name="rapport_bilag_delete")
-     * @Method("DELETE")
+     * @Route("/{bilag_id}", name="rapport_bilag_delete", methods={"DELETE"})
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
     public function deleteAction(Request $request, Rapport $rapport, Bilag $bilag)
@@ -202,8 +196,7 @@ class RapportBilagController extends BaseController
     /**
      * Finds and displays a Bilag entity.
      *
-     * @Route("/{bilag_id}", name="rapport_bilag_show")
-     * @Method("GET")
+     * @Route("/{bilag_id}", name="rapport_bilag_show", methods={"GET"})
      *
      * @param Bilag $bilag
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
@@ -231,8 +224,7 @@ class RapportBilagController extends BaseController
     /**
      * Sends a file to the client.
      *
-     * @Route("/{bilag_id}/download", name="rapport_bilag_download")
-     * @Method("GET")
+     * @Route("/{bilag_id}/download", name="rapport_bilag_download", methods={"GET"})
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      *
      * @param Bilag $bilag

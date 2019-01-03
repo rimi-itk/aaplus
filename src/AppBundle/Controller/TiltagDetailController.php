@@ -12,7 +12,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\TiltagDetail;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -36,8 +36,7 @@ class TiltagDetailController extends BaseController
     /**
      * Finds and displays a TiltagDetail entity.
      *
-     * @Route("/{id}", name="tiltag_detail_show")
-     * @Method("GET")
+     * @Route("/{id}", name="tiltag_detail_show", methods={"GET"})
      * @Template()
      *
      * @param TiltagDetail $tiltagdetail
@@ -62,8 +61,7 @@ class TiltagDetailController extends BaseController
     /**
      * Displays a form to edit an existing TiltagDetail entity.
      *
-     * @Route("/{id}/edit", name="tiltag_detail_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="tiltag_detail_edit", methods={"GET"})
      * @Template()
      *
      * @param TiltagDetail $tiltagdetail
@@ -91,8 +89,7 @@ class TiltagDetailController extends BaseController
     /**
      * Copies a TiltagDetails and displays a form to edit the dublicated entity.
      *
-     * @Route("/{id}/copy", name="tiltag_detail_copy")
-     * @Method("GET")
+     * @Route("/{id}/copy", name="tiltag_detail_copy", methods={"GET"})
      * @Template()
      *
      * @param TiltagDetail $tiltagdetail
@@ -125,8 +122,7 @@ class TiltagDetailController extends BaseController
     /**
      * Edits an existing TiltagDetail entity.
      *
-     * @Route("/{id}", name="tiltag_detail_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="tiltag_detail_update", methods={"PUT"})
      * @Template("AppBundle:TiltagDetail:edit.html.twig")
      *
      * @param Request      $request
@@ -163,8 +159,7 @@ class TiltagDetailController extends BaseController
     /**
      * Deletes a TiltagDetail entity.
      *
-     * @Route("/{id}", name="tiltag_detail_delete"),
-     * @Method("DELETE")
+     * @Route("/{id}", name="tiltag_detail_delete", methods={"DELETE"})
      *
      * @param Request      $request
      * @param TiltagDetail $tiltagdetail
@@ -193,8 +188,7 @@ class TiltagDetailController extends BaseController
     /**
      * Sends a file to the client.
      *
-     * @Route("/{id}/download", name="tiltag_detail_download")
-     * @Method("GET")
+     * @Route("/{id}/download", name="tiltag_detail_download", methods={"GET"})
      *
      * @param TiltagDetail $tiltagdetail
      *

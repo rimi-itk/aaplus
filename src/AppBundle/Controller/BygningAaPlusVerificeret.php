@@ -15,7 +15,7 @@ use AppBundle\Entity\Bygning;
 use AppBundle\Entity\Rapport;
 use AppBundle\Form\Type\BygningTilknytRaadgiverType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,8 +40,7 @@ class BygningAaPlusVerificeret extends BaseController implements InitControllerI
     /**
      * Lists all Bygning entities.
      *
-     * @Route("/", name="bygning_tilknyt")
-     * @Method("GET")
+     * @Route("/", name="bygning_tilknyt", methods={"GET"})
      * @Template()
      */
     public function indexAction(Bygning $bygning)
@@ -67,8 +66,7 @@ class BygningAaPlusVerificeret extends BaseController implements InitControllerI
     /**
      * Edits an existing Bygning entity.
      *
-     * @Route("/", name="bygning_tilknyt_update")
-     * @Method("PUT")
+     * @Route("/", name="bygning_tilknyt_update", methods={"PUT"})
      * @Template("AppBundle:BygningIndfoer:index.html.twig")
      */
     public function updateAction(Request $request, Bygning $bygning)

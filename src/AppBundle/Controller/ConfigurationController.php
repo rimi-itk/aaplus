@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Configuration;
 use AppBundle\Form\Type\ConfigurationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,8 +31,7 @@ class ConfigurationController extends BaseController
     /**
      * Lists all Configuration entities.
      *
-     * @Route("/", name="configuration")
-     * @Method("GET")
+     * @Route("/", name="configuration", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -49,8 +48,7 @@ class ConfigurationController extends BaseController
     /**
      * Displays a form to edit an existing Configuration entity.
      *
-     * @Route("/edit", name="configuration_edit")
-     * @Method("GET")
+     * @Route("/edit", name="configuration_edit", methods={"GET"})
      * @Template()
      */
     public function editAction()
@@ -75,8 +73,7 @@ class ConfigurationController extends BaseController
     /**
      * Edits an existing Configuration entity.
      *
-     * @Route("/", name="configuration_update")
-     * @Method("PUT")
+     * @Route("/", name="configuration_update", methods={"PUT"})
      * @Template("AppBundle:Configuration:edit.html.twig")
      */
     public function updateAction(Request $request)

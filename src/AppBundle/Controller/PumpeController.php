@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Pumpe;
 use AppBundle\Form\Type\PumpeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class PumpeController extends BaseController
     /**
      * Lists all Pumpe entities.
      *
-     * @Route("/", name="pumpe")
-     * @Method("GET")
+     * @Route("/", name="pumpe", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class PumpeController extends BaseController
     /**
      * Creates a new Pumpe entity.
      *
-     * @Route("/", name="pumpe_create")
-     * @Method("POST")
+     * @Route("/", name="pumpe_create", methods={"POST"})
      * @Template("AppBundle:Pumpe:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class PumpeController extends BaseController
     /**
      * Displays a form to create a new Pumpe entity.
      *
-     * @Route("/new", name="pumpe_new")
-     * @Method("GET")
+     * @Route("/new", name="pumpe_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class PumpeController extends BaseController
     /**
      * Finds and displays a Pumpe entity.
      *
-     * @Route("/{id}", name="pumpe_show")
-     * @Method("GET")
+     * @Route("/{id}", name="pumpe_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -129,8 +125,7 @@ class PumpeController extends BaseController
     /**
      * Displays a form to edit an existing Pumpe entity.
      *
-     * @Route("/{id}/edit", name="pumpe_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="pumpe_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(Pumpe $entity)
@@ -155,8 +150,7 @@ class PumpeController extends BaseController
     /**
      * Edits an existing Pumpe entity.
      *
-     * @Route("/{id}", name="pumpe_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="pumpe_update", methods={"PUT"})
      * @Template("AppBundle:Pumpe:edit.html.twig")
      *
      * @param mixed $id
@@ -191,8 +185,7 @@ class PumpeController extends BaseController
     /**
      * Deletes a Pumpe entity.
      *
-     * @Route("/{id}", name="pumpe_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="pumpe_delete", methods={"DELETE"})
      *
      * @param mixed $id
      */

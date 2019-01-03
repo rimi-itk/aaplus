@@ -15,7 +15,7 @@ use AppBundle\Entity\Bygning;
 use AppBundle\Form\Type\BygningSearchType;
 use AppBundle\Form\Type\BygningType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +39,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Lists all Bygning entities.
      *
-     * @Route(name="bygning")
-     * @Method("GET")
+     * @Route(name="bygning", methods={"GET"})
      * @Template()
      */
     public function indexAction(Request $request)
@@ -83,8 +82,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Creates a new Bygning entity.
      *
-     * @Route("/", name="bygning_create")
-     * @Method("POST")
+     * @Route("/", name="bygning_create", methods={"POST"})
      * @Template("AppBundle:Bygning:new.html.twig")
      *
      * @Security("has_role('ROLE_BYGNING_CREATE')")
@@ -112,8 +110,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Displays a form to create a new Bygning entity.
      *
-     * @Route("/new", name="bygning_new")
-     * @Method("GET")
+     * @Route("/new", name="bygning_new", methods={"GET"})
      * @Template()
      * @Security("has_role('ROLE_BYGNING_CREATE')")
      */
@@ -131,8 +128,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Finds and displays a Bygning entity.
      *
-     * @Route("/{id}", name="bygning_show")
-     * @Method("GET")
+     * @Route("/{id}", name="bygning_show", methods={"GET"})
      * @Template()
      * @Security("is_granted('BYGNING_VIEW', bygning)")
      */
@@ -151,8 +147,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Displays a form to edit an existing Bygning entity.
      *
-     * @Route("/{id}/edit", name="bygning_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="bygning_edit", methods={"GET"})
      * @Template()
      * @Security("is_granted('BYGNING_EDIT', bygning)")
      */
@@ -174,8 +169,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Edits an existing Bygning entity.
      *
-     * @Route("/{id}", name="bygning_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="bygning_update", methods={"PUT"})
      * @Template("AppBundle:Bygning:edit.html.twig")
      * @Security("is_granted('BYGNING_EDIT', bygning)")
      */
@@ -202,8 +196,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Deletes a Bygning entity.
      *
-     * @Route("/{id}", name="bygning_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="bygning_delete", methods={"DELETE"})
      * @Security("is_granted('BYGNING_EDIT', bygning)")
      */
     public function deleteAction(Request $request, Bygning $bygning)
@@ -225,8 +218,7 @@ class BygningController extends BaseController implements InitControllerInterfac
     /**
      * Creates a new Baseline entity.
      *
-     * @Route("/{id}/new", name="baseline_create")
-     * @Method("POST")
+     * @Route("/{id}/new", name="baseline_create", methods={"POST"})
      * @Template("AppBundle:Baseline:new.html.twig")
      * @Security("is_granted('BYGNING_EDIT', bygning)")
      */

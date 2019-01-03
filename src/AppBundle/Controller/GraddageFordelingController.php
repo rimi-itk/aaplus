@@ -13,7 +13,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\GraddageFordeling;
 use AppBundle\Form\GraddageFordelingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +36,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Lists all GraddageFordeling entities.
      *
-     * @Route("/", name="graddage")
-     * @Method("GET")
+     * @Route("/", name="graddage", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -54,8 +53,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Creates a new GraddageFordeling entity.
      *
-     * @Route("/", name="graddage_create")
-     * @Method("POST")
+     * @Route("/", name="graddage_create", methods={"POST"})
      * @Template("AppBundle:GraddageFordeling:new.html.twig")
      */
     public function createAction(Request $request)
@@ -81,8 +79,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Displays a form to create a new GraddageFordeling entity.
      *
-     * @Route("/new", name="graddage_new")
-     * @Method("GET")
+     * @Route("/new", name="graddage_new", methods={"GET"})
      * @Template()
      */
     public function newAction()
@@ -101,8 +98,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Finds and displays a GraddageFordeling entity.
      *
-     * @Route("/{id}", name="graddage_show")
-     * @Method("GET")
+     * @Route("/{id}", name="graddage_show", methods={"GET"})
      * @Template()
      *
      * @param mixed $id
@@ -126,8 +122,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Displays a form to edit an existing GraddageFordeling entity.
      *
-     * @Route("/{id}/edit", name="graddage_edit")
-     * @Method("GET")
+     * @Route("/{id}/edit", name="graddage_edit", methods={"GET"})
      * @Template()
      */
     public function editAction(GraddageFordeling $entity)
@@ -150,8 +145,7 @@ class GraddageFordelingController extends BaseController
     /**
      * Edits an existing GraddageFordeling entity.
      *
-     * @Route("/{id}", name="graddage_update")
-     * @Method("PUT")
+     * @Route("/{id}", name="graddage_update", methods={"PUT"})
      * @Template("AppBundle:GraddageFordeling:edit.html.twig")
      *
      * @param mixed $id

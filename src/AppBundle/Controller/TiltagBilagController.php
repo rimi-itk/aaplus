@@ -16,7 +16,7 @@ use AppBundle\Entity\Tiltag;
 use AppBundle\Form\Type\TiltagBilagType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -42,8 +42,7 @@ class TiltagBilagController extends BaseController
     /**
      * Get Bilag.
      *
-     * @Route("", name="tiltag_bilag_get")
-     * @Method("GET")
+     * @Route("", name="tiltag_bilag_get", methods={"GET"})
      * @Template("AppBundle:TiltagBilag:list.html.twig")
      * @Security("is_granted('TILTAG_VIEW', tiltag)")
      *
@@ -69,8 +68,7 @@ class TiltagBilagController extends BaseController
     /**
      * Displays a form to edit an existing Bilag entity.
      *
-     * @Route("/{bilag_id}/edit", name="tiltag_bilag_edit")
-     * @Method("GET")
+     * @Route("/{bilag_id}/edit", name="tiltag_bilag_edit", methods={"GET"})
      * @Template()
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
@@ -98,8 +96,7 @@ class TiltagBilagController extends BaseController
     /**
      * Displays a form to create a new Bilag entity.
      *
-     * @Route("/new", name="bilag_tiltag_new")
-     * @Method("GET")
+     * @Route("/new", name="bilag_tiltag_new", methods={"GET"})
      * @Template()
      */
     public function createForTiltagAction(Tiltag $tiltag)
@@ -129,8 +126,7 @@ class TiltagBilagController extends BaseController
     /**
      * Edits an existing Bilag entity.
      *
-     * @Route("/{bilag_id}", name="tiltag_bilag_update")
-     * @Method("PUT")
+     * @Route("/{bilag_id}", name="tiltag_bilag_update", methods={"PUT"})
      * @Template("AppBundle:TiltagBilag:edit.html.twig")
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
@@ -160,8 +156,7 @@ class TiltagBilagController extends BaseController
     /**
      * Creates a new Bilag entity.
      *
-     * @Route("", name="tiltag_bilag_create")
-     * @Method("POST")
+     * @Route("", name="tiltag_bilag_create", methods={"POST"})
      * @Template("AppBundle:TiltagBilag:new.html.twig")
      */
     public function newBilagAction(Request $request, Tiltag $tiltag)
@@ -191,8 +186,7 @@ class TiltagBilagController extends BaseController
     /**
      * Deletes a Bilag entity.
      *
-     * @Route("/{bilag_id}", name="tiltag_bilag_delete")
-     * @Method("DELETE")
+     * @Route("/{bilag_id}", name="tiltag_bilag_delete", methods={"DELETE"})
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      */
     public function deleteAction(Request $request, Tiltag $tiltag, Bilag $bilag)
@@ -216,8 +210,7 @@ class TiltagBilagController extends BaseController
     /**
      * Finds and displays a Bilag entity.
      *
-     * @Route("/{bilag_id}", name="tiltag_bilag_show")
-     * @Method("GET")
+     * @Route("/{bilag_id}", name="tiltag_bilag_show", methods={"GET"})
      *
      * @param Bilag $bilag
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
@@ -247,8 +240,7 @@ class TiltagBilagController extends BaseController
     /**
      * Sends a file to the client.
      *
-     * @Route("/{bilag_id}/download", name="tiltag_bilag_download")
-     * @Method("GET")
+     * @Route("/{bilag_id}/download", name="tiltag_bilag_download", methods={"GET"})
      * @ParamConverter("bilag", class="AppBundle:Bilag", options={"id" = "bilag_id"})
      *
      * @param Bilag $bilag
