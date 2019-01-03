@@ -1,0 +1,66 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% import 'AppBundle::_includes/aaplus.html.twig' as aaplus %}
+
+{% block body -%}
+  <div class="row heading">
+    <div class="col-md-9">
+      <h1>{{ 'rapporter.actions.edit' | trans }}</h1>
+    </div>
+    <div class="col-md-3 text-right">
+      {% if entity.bygning.baseline %}
+        <a href="{{ path('baseline_show', { 'id': entity.bygning.baseline.id }) }}" class="btn btn-default">{{ icon('sliders') }} {{ 'baseline.actions.korriger' | trans }}</a>
+      {% endif %}
+    </div>
+
+  </div>
+
+  {{ form_start(edit_form) }}
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ 'common.generelt' | trans }}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-12 col-md-6">
+        {{ form_row(edit_form.datering) }}
+        {% if edit_form.elena is defined %}
+          {{ form_row(edit_form.elena) }}
+        {% endif %}
+        {% if edit_form.ava is defined %}
+          {{ form_row(edit_form.ava) }}
+        {% endif %}
+      </div>
+      <div class="col-xs-12 col-md-6">
+        {{ form_row(edit_form.energiscreening) }}
+        {{ form_row(edit_form.faktorPaaVarmebesparelse) }}
+      </div>
+      <div class="col-xs-12 col-md-6">
+        {{ aaplus.form_row_decimal('appbundle.rapport.energibudgetVarme', entity.energibudgetVarme, 'appbundle.rapport.energibudgetVarme.unit') }}
+      </div>
+      <div class="col-xs-12 col-md-6">
+        {{ aaplus.form_row_decimal('appbundle.rapport.energibudgetEl', entity.energibudgetEl, 'appbundle.rapport.energibudgetEl.unit') }}
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ 'common.baseline' | trans }}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-12 col-md-6">
+        {{ form_row(edit_form.BaselineEl) }}
+        {{ form_row(edit_form.BaselineVarmeGUF) }}
+        {{ form_row(edit_form.BaselineVarmeGAF) }}
+      </div>
+      <div class="col-xs-12 col-md-6">
+        {{ form_row(edit_form.BaselineStrafAfkoeling) }}
+        {{ form_row(edit_form.bygning) }}
+      </div>
+    </div>
+  </div>
+
+  {{ form_rest(edit_form) }}
+  {{ form_end(edit_form) }}
+
+{% endblock %}

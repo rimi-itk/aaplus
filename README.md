@@ -17,3 +17,12 @@ Portainer: http://portainer.aaplusplus.localhost:8000
 ```sh
 make up
 ```
+
+```sh
+make shell
+scripts/update
+```
+
+```sh
+bin/console fos:user:create --super-admin
+```

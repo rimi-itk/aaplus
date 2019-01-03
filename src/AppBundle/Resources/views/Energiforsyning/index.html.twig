@@ -1,0 +1,62 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body -%}
+  <div class="row">
+    <div class="col-md-10">
+      <h1>{{ 'energiforsyninger.labels.plural' | trans }}</h1>
+    </div>
+    <div class="col-md-2 text-right">
+      {% if is_granted('RAPPORT_EDIT', rapport) %}
+        <a href="{{ path('energiforsyning_new', { 'rapport_id': rapport.id }) }}" class="btn btn-default">
+          {{ icon('plus') }} {{ 'energiforsyninger.actions.add' | trans }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <table class="table table-condensed table-hover table-header-rotated">
+    <thead>
+    <tr>
+      <th>{{ 'appbundle.energiforsyning.navn' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.forsyningsvaerk' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.enhedspris' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.prisfaktor' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.nyEnhedspris' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.samletVarmeeffektivitet' | trans }}</th>
+      <th>{{ 'appbundle.energiforsyning.samletEleffektivitet' | trans }}</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th class="unit"></th>
+      <th class="unit"></th>
+      <th class="unit">{{ 'appbundle.energiforsyning.enhedspris.unit' | trans }}</th>
+      <th class="unit"></th>
+      <th class="unit">{{ 'appbundle.energiforsyning.nyEnhedspris.unit' | trans }}</th>
+      <th class="unit"></th>
+      <th class="unit"></th>
+      <th class="unit"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+      <tr>
+        <td>{{ entity.navn | readable('NavnType') | trans }}</td>
+        <td>{{ entity.forsyningsvaerk }}</td>
+        <td class="number">{{ entity.enhedspris | format_amount(2) }}</td>
+        <td class="number">{{ entity.prisfaktor | format_decimal }}</td>
+        <td class="number">{{ entity.nyEnhedspris | format_amount(2) }}</td>
+        <td class="number">{{ entity.samletVarmeeffektivitet | format_decimal }}</td>
+        <td class="number">{{ entity.samletEleffektivitet | format_decimal }}</td>
+        <td class="text-right">
+          {% if is_granted('RAPPORT_EDIT', entity.rapport) %}
+            <a href="{{ path('energiforsyning_edit', { 'rapport_id': entity.rapport.id, 'id': entity.id }) }}" class="btn btn-default btn-xs">{{ 'common.edit' | trans }}</a>
+          {% else %}
+            <a href="{{ path('energiforsyning_show', { 'rapport_id': entity.rapport.id, 'id': entity.id }) }}" class="btn btn-default btn-xs">{{ 'common.show' | trans }}</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

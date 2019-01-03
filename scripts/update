@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -o errexit -o errtrace -o noclobber -o nounset -o pipefail
+IFS=$'\n\t'
+
+dir=$(cd $(dirname "${BASH_SOURCE[0]}")/../ && pwd)
+
+cd $dir
+
+# SYMFONY_ENV=prod composer install --no-dev --optimize-autoloader
+composer install
+bin/console cache:clear --no-warmup
+bin/console cache:warmup
+bin/console doctrine:migrations:migrate --no-interaction

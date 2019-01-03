@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/x-icon" href="{{ absolute_url(asset('favicon.ico')) }}" />
+
+  <title>{% block title %}{{ wo_render_breadcrumbs({ viewTemplate: "AppBundle::title.html.twig" }) }}{% endblock %}</title>
+
+  {% block stylesheets %}
+    <link href="{{ absolute_url(asset('css/lib/bootstrap.min.css')) }}" type="text/css" rel="stylesheet" />
+    <link href="{{ absolute_url(asset('css/lib/bootstrap-theme.min.css')) }}" type="text/css" rel="stylesheet" />
+    <link href="{{ absolute_url(asset('css/lib/font-awesome.min.css')) }}" type="text/css" rel="stylesheet" />
+    <link href="{{ absolute_url(asset('css/lib/sticky-footer-navbar.css')) }}" type="text/css" rel="stylesheet" />
+    <link href="{{ absolute_url(asset('css/aaplus-styles.css')) }}" type="text/css" rel="stylesheet" />
+  {% endblock %}
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="{{ absolute_url(asset('img/aaplus-logo.png')) }}" title="Aa+" class="navbar-brand--logo"/> </a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      <ul class="nav navbar-nav">
+        <li><a href="/bygning">{{ icon('home') }} {{ 'bygninger.labels.plural' | trans }}</a></li>
+        <li><a href="/rapport">{{ icon('file-text-o') }} {{ 'rapporter.labels.plural' | trans }}</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="/udtraek">{{ icon('file-excel-o') }} {{ 'udtraek.labels.plural' | trans }}</a></li>
+        {% endif %}
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+          <li><a href="/user">{{ icon('user') }} {{ 'user.labels.plural' | trans }}</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ icon('gears') }} Indstillinger <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for route, name in {
+                'solcelle': 'Solceller',
+                'klimaskaerm': 'Klimaskærme',
+                'pumpe': 'Pumper',
+                'forsyningsvaerk': 'Forsyningsværker',
+                'segment': 'Segmenter',
+                'nyttiggjortvarme': 'Nyttiggjort varme',
+                'belysningtiltagdetail_erstatningslyskilde': 'Erstatnings lyskilder',
+                'belysningtiltagdetail_nytarmatur': 'Armaturer',
+                'belysningtiltagdetail_lyskilde': 'D & V – Udgift til lyskilder',
+                'graddage': 'Graddage-fordelinger'
+              } %}
+                <li><a href="{{ path(route) }}">{{ name | trans }}</a></li>
+              {% endfor %}
+              <li role="separator" class="divider"></li>
+              <li><a href="{{ path('configuration') }}">{{ 'Indstillinger' | trans }}</a></li>
+            </ul>
+          </li>
+        {% endif %}
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ path('fos_user_profile_show') }}">{{ icon('user') }} {{ 'profile.title'|trans({}, 'FOSUserBundle') }}</a></li>
+            <li><a href="{{ path('fos_user_change_password') }}">{{ icon('key') }} {{ 'change_password.submit'|trans({}, 'FOSUserBundle') }}</a></li>
+          </ul>
+        </li>
+        {% if app.environment == 'dev' %}
+        <li>{% include 'AppBundle:_includes:impersonation.html.twig' %}</li>
+        {% endif %}
+        <li><a href="{{ path('fos_user_security_logout') }}">{{ icon('sign-out') }} {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+      </ul>
+      {% endif %}
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+{% macro header(key) %}
+  {% set calculation = key|get_calculation %}
+
+  <th class="rotate">
+    <div>
+      {% if calculation is null %}
+        <span>{{ key | trans }}</span>
+      {% else %}
+        <span data-calculation="{{ calculation }}">{{ key | trans }}</span>
+      {% endif %}
+    </div>
+  </th>
+{% endmacro %}
+
+{% macro header_unit(key, column, classNames, dataAttribute) %}
+  {% set translation = key|get_unit %}
+
+  {% if column %}
+    <th class="unit {{ classNames }} column-sort" data-column="{{ column }}" data-attr="{{ dataAttribute ? 'data-' ~ dataAttribute : '' }}">
+      {{ translation }}
+    </th>
+  {% else %}
+    <th class="unit {{ classNames }}">
+      {{ translation }}
+    </th>
+  {% endif %}
+{% endmacro %}
+
+{% macro header_filter(column, classNames) %}
+  {% if column %}
+    <td class="column-filter {{ column }} {{ classNames }}"><input style="width: 0" data-column="{{ column }}"/></td>
+  {% else %}
+    <td></td>
+  {% endif %}
+{% endmacro %}
+
+{% import _self as helper %}
+
+<!-- Begin page content -->
+
+<div class="container-fluid">
+  {{ wo_render_breadcrumbs() }}
+
+  <div class="aaplus-flashes">
+    {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+  </div>
+
+  {% block body %}{% endblock %}
+</div>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-9"><p class="text-muted">{{ footer.name }}, {{ icon('map-marker') }} {{ footer.address }} - {{ icon('envelope') }} {{ footer.email }}</p></div>
+      <div class="col-xs-12 col-md-3"><p class="text-muted text-right">{{ aaplus_release_ver }}</p></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{% block javascripts %}
+  <script src="{{ absolute_url(asset('js/lib/jquery-1.11.2.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('js/lib/bootstrap.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('js/lib/bc-bootstrap-collection.js')) }}"></script>
+  <script src="{{ absolute_url(asset('js/lib/jquery.autogrowtextarea.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('js/lib/jquery.floatThead.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('js/aaplus.js')) }}"></script>
+
+  <script>
+    $(document).ready(function() {
+      {% block documentReady %}{% endblock documentReady %}
+    });
+  </script>
+{% endblock %}
+
+</body>
+</html>

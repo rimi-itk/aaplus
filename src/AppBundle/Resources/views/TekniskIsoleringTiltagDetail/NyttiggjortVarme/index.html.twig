@@ -1,0 +1,46 @@
+  {% extends 'AppBundle::base.html.twig' %}
+
+
+  {% block body -%}
+
+  <div class="row heading">
+    <div class="col-md-9">
+        <h1>{{ 'nyttiggjortvarme.labels.plural' | trans }}</h1>
+    </div>
+    <div class="col-md-3 text-right">
+              <a class="btn btn-default" href="{{ path('nyttiggjortvarme_new') }}">
+          {{ icon('plus') }} {{ 'nyttiggjortvarme.actions.add' | trans }}
+        </a>
+          </div>
+
+  </div>
+
+
+  <table class="table table-condensed table-details">
+    <thead>
+    <tr>
+        {{ helper.header('appbundle.nyttiggjortvarme.faktor') }}
+        {{ helper.header('appbundle.nyttiggjortvarme.titel') }}
+      {{ helper.header() }}
+    </tr>
+    <tr>
+        {{ helper.header_unit('appbundle.nyttiggjortvarme.faktor') }}
+        {{ helper.header_unit('appbundle.nyttiggjortvarme.titel') }}
+      {{ helper.header_unit() }}
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+    <tr>
+        <td>{{ entity.faktor }}</td>
+        <td>{{ entity.titel }}</td>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('nyttiggjortvarme_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+
+      </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock %}

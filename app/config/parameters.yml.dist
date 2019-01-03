@@ -2,18 +2,32 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host: 127.0.0.1
+    database_host: mariadb
     database_port: ~
-    database_name: symfony
-    database_user: root
-    database_password: ~
+    database_name: aaplusplus
+    database_user: aaplusplus
+    database_password: aaplusplus
+    server_version:    5.5
     # You should uncomment this if you want to use pdo_sqlite
     #database_path: '%kernel.project_dir%/var/data/data.sqlite'
 
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
+    mailer_host: mailhog:1025
     mailer_user: ~
     mailer_password: ~
 
+    locale:            da
+
     # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    #Pdf export
+    app.pdf_export.base_url: http://aaplusplus.localhost:8000
+    app.pdf_export.default_file_path: filer/
+
+    app.from_email_address: aaplusplus@aaplusplus.localhost
+    app.from_email_name: aaplusplus
+
+    app.page_footer.name: aaplusplus
+    app.page_footer.address: aaplusplus
+    app.page_footer.email: aaplusplus@aaplusplus.localhost

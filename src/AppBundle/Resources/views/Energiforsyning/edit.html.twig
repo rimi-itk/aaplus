@@ -1,0 +1,21 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body -%}
+  <div class="row heading">
+    <div class="col-md-8">
+      <h1>{{ 'energiforsyninger.actions.edit' | trans }}</h1>
+    </div>
+    <div class="col-md-4 text-right ">
+      {% if delete_form is defined %}{{ form(delete_form) }}{% endif %}
+    </div>
+  </div>
+
+  {% include 'AppBundle:Energiforsyning:_form.html.twig' %}
+
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+
+  {% include 'AppBundle:Energiforsyning:_documentReady.js.twig' %}
+{% endblock documentReady %}

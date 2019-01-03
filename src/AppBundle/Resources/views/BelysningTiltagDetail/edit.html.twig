@@ -1,0 +1,16 @@
+{% extends 'AppBundle:TiltagDetail:edit.html.twig' %}
+
+{% set heading = 'belysningtiltagdetail.actions.edit' %}
+
+{% block edit_form %}
+
+  {% include 'AppBundle:BelysningTiltagDetail:_form.html.twig' %}
+
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+
+  {% include 'AppBundle:BelysningTiltagDetail:_documentReady.js.twig' with {'erstatningsLyskildeChoices' : edit_form.erstatningsLyskilde.vars.choices, 'nytArmaturChoices' : edit_form.nytArmatur.vars.choices, 'nyStyringChoices' : edit_form.nyStyring.vars.choices }%}
+{% endblock documentReady %}
+

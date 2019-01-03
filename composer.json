@@ -21,18 +21,35 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "braincrafted/bootstrap-bundle": "^2.2",
         "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^1.3",
         "doctrine/orm": "^2.5",
+        "fresh/doctrine-enum-bundle": "^5.3",
+        "friendsofsymfony/user-bundle": "^2.1",
         "incenteev/composer-parameter-handler": "^2.0",
+        "itk-dev/database-bundle": "^1.2",
+        "jms/serializer-bundle": "^2.4",
+        "knplabs/knp-paginator-bundle": "^2.8",
+        "knplabs/knp-snappy-bundle": "^1.5",
+        "lexik/form-filter-bundle": "^5.0",
+        "rollerworks/password-strength-bundle": "^2.0",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
+        "simplethings/entity-audit-bundle": "dev-aaplus",
+        "stof/doctrine-extensions-bundle": "^1.3",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
-        "twig/twig": "^1.0||^2.0"
+        "twig/extensions": "^1.5",
+        "twig/twig": "^1.0||^2.0",
+        "whiteoctober/breadcrumbs-bundle": "^1.4",
+        "yavin/symfony-init-controller": "^0.4.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "friendsofphp/php-cs-fixer": "^2.13",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },
@@ -50,6 +67,18 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
+        ],
+        "check-coding-standards/php-cs-fixer": [
+            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix --dry-run"
+        ],
+        "check-coding-standards": [
+            "@check-coding-standards/php-cs-fixer"
+        ],
+        "apply-coding-standards/php-cs-fixer": [
+            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
+        ],
+        "apply-coding-standards": [
+            "@apply-coding-standards/php-cs-fixer"
         ]
     },
     "config": {
@@ -66,5 +95,11 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
+    },
+    "repositories": {
+        "simplethings/entity-audit-bundle": {
+            "type": "vcs",
+            "url": "https://github.com/aakb/entity-audit-bundle"
+        }
     }
 }

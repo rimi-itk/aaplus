@@ -1,0 +1,52 @@
+diff --git a/web/.htaccess b/web/.htaccess
+index 4dc7251..4955446 100644
+--- a/web/.htaccess
++++ b/web/.htaccess
+@@ -3,7 +3,7 @@
+ # mod_rewrite). Additionally, this reduces the matching process for the
+ # start page (path "/") because otherwise Apache will apply the rewriting rules
+ # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
+-DirectoryIndex app.php
++DirectoryIndex app_dev.php
+ 
+ # By default, Apache does not evaluate symbolic links if you did not enable this
+ # feature in your server configuration. Uncomment the following line if you
+@@ -54,7 +54,7 @@ DirectoryIndex app.php
+     RewriteRule ^ - [L]
+ 
+     # Rewrite all other queries to the front controller.
+-    RewriteRule ^ %{ENV:BASE}/app.php [L]
++    RewriteRule ^ %{ENV:BASE}/app_dev.php [L]
+ </IfModule>
+ 
+ <IfModule !mod_rewrite.c>
+@@ -62,7 +62,7 @@ DirectoryIndex app.php
+         # When mod_rewrite is not available, we instruct a temporary redirect of
+         # the start page to the front controller explicitly so that the website
+         # and the generated links can still be used.
+-        RedirectMatch 302 ^/$ /app.php/
++        RedirectMatch 302 ^/$ /app_dev.php/
+         # RedirectTemp cannot be used instead
+     </IfModule>
+ </IfModule>
+diff --git a/web/app_dev.php b/web/app_dev.php
+index d2ff583..6d1185b 100644
+--- a/web/app_dev.php
++++ b/web/app_dev.php
+@@ -8,16 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
+ // for more information
+ //umask(0000);
+ 
+-// This check prevents access to debug front controllers that are deployed by accident to production servers.
+-// Feel free to remove this, extend it, or make something more sophisticated.
+-if (isset($_SERVER['HTTP_CLIENT_IP'])
+-    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+-    || !(in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true) || PHP_SAPI === 'cli-server')
+-) {
+-    header('HTTP/1.0 403 Forbidden');
+-    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+-}
+-
+ require __DIR__.'/../vendor/autoload.php';
+ Debug::enable();
+ 

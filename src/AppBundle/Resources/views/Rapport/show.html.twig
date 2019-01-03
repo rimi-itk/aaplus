@@ -1,0 +1,446 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% import 'AppBundle:_includes:calculation_warnings.html.twig' as calculationWarnings %}
+
+{% block body -%}
+  {% if calculation_changes is defined and calculation_changes %}
+
+    {% form_theme calculate_form 'AppBundle:Form:calculateRapportConfirmModalForm.html.twig' %}
+    {% if calculate_form and is_granted('RAPPORT_EDIT', entity) %}
+      {{ form_start(calculate_form) }}
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal-calculate-rapport" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title text-left" id="myModalLabel">{{ 'rapporter.confirmation.re-calculate' | trans }}</h4>
+            </div>
+            <div class="modal-body text-left">
+              {% if entity.calculationWarnings %}
+                <div class="alert alert-warning">
+                  <p><strong>{{ 'Incomplete calculation' | trans }}</strong></p>
+                  {{ calculationWarnings.renderMessagesInline(calculation_warnings) }}
+                </div>
+              {% endif %}
+              <p><strong>{{ 'common.changes' | trans }}:</strong></p>
+              <div class="aaplus-calculation-changes-wrapper">
+                {% include 'AppBundle:_includes:calculation_changes_show.html.twig' %}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Cancel' | trans }}</button>
+              <a href="{{ path('rapport_edit', {'id': entity.id}) }}" class="btn btn-default">
+                {{ icon('edit') }} {{ (params.edit_title is defined ? params.edit_title : 'common.edit') | trans }}
+              </a>
+              {{ form_widget(calculate_form) }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal end -->
+
+      {{ form_end(calculate_form) }}
+    {% endif %}
+
+  {% endif %}
+
+  <div class="row heading">
+    <div class="col-md-2">
+      <h1>
+        <nobr>
+          {{ icon('file-text-o') }}
+          {{ 'rapporter.labels.singular' | trans }}
+        </nobr>
+      </h1>
+    </div>
+    <div class="col-md-10 text-right">
+      {% if calculate_form and is_granted('RAPPORT_EDIT', entity) %}
+        {% set calculation_btn_icon = entity.calculationWarnings ? 'warning' : 'calculator' %}
+        {% if calculation_changes is defined and calculation_changes is not empty%}
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-calculate-rapport">{{ icon( calculation_btn_icon ) }} {{ 'rapporter.actions.re-calculate' | trans }}</button>
+        {% else %}
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-calculate-rapport" disabled>{{ icon( calculation_btn_icon ) }} {{ 'rapporter.actions.re-calculate' | trans }}</button>
+        {% endif %}
+      {% endif %}
+
+      <a class="btn btn-default" href="{{ path('rapport_bilag_get', { 'rapport_id': entity.id }) }}">
+        {{ icon('file') }} {{ 'bilag.actions.list' | trans }}
+      </a>
+      <a class="btn btn-default" href="{{ path('rapport_download_files', { 'id': entity.id }) }}">
+        {{ icon('download') }} {{ 'rapporter.actions.download_files' | trans }}
+      </a>
+      <a href="{{ path('rapport_show_pdf2', { 'id': entity.id }) }}" class="btn btn-default">
+        {{ icon('file-pdf-o') }} {{ 'rapporter.actions.pdf2' | trans }}
+      </a>
+      <a href="{{ path('rapport_show_pdf5', { 'id': entity.id }) }}" class="btn btn-default">
+        {{ icon('file-pdf-o') }} {{ 'rapporter.actions.pdf5' | trans }}
+      </a>
+      <a class="btn btn-default" href="{{ path('rapport_filer', { 'id': entity.id }) }}">
+        {{ icon('file') }} {{ 'rapporter.actions.filer' | trans }}
+      </a>
+      <a class="btn btn-default" href="{{ path('energiforsyning', { 'rapport_id': entity.id }) }}">
+        {{ icon('industry') }} Energiforsyninger
+      </a>
+      {% if is_granted('RAPPORT_EDIT', entity) %}
+        <a href="{{ path('rapport_edit', { 'id': entity.id }) }}" class="btn btn-default">
+          {{ icon('edit') }} {{ 'rapporter.actions.edit' | trans }}
+        </a>
+      {% else %}
+        <a href="{{ path('rapport_show_baseline', { 'id': entity.id }) }}" class="btn btn-default">
+          {{ icon('edit') }} {{ 'rapporter.actions.edit' | trans }}
+        </a>
+      {% endif %}
+
+      {# BUTTONS #}
+      {% if prev_status_form is defined and is_granted('RAPPORT_EDIT', entity) %}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ prev_status_form.vars.action | replace({'/': ''}) }}">
+          {{ icon('caret-square-o-right') }} {{ prev_status_form.children.buttons.submit.vars.label | trans }}
+        </button>
+      {% endif %}
+      {% if next_status_form is defined and is_granted('RAPPORT_EDIT', entity) %}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ next_status_form.vars.action | replace({'/': ''}) }}">
+          {{ icon('caret-square-o-right') }} {{ next_status_form.children.buttons.submit.vars.label | trans }}
+        </button>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {# MODALS #}
+  {% if prev_status_form is defined and is_granted('RAPPORT_EDIT', entity) %}
+    {% form_theme prev_status_form 'AppBundle:Form:status-modal-form.html.twig' %}
+    {{ form( prev_status_form ) }}
+  {% endif %}
+  {% if next_status_form is defined and is_granted('RAPPORT_EDIT', entity) %}
+    {% form_theme next_status_form 'AppBundle:Form:status-modal-form.html.twig' %}
+    {{ form( next_status_form ) }}
+  {% endif %}
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">{{ icon('home') }} {{ 'common.data' | trans }}</h3></div>
+
+    <table class="table table-condensed">
+      <tbody>
+      <tr>
+        <th>{{ 'appbundle.rapport.version' | trans }}</th>
+        <td>{{ entity.version }}</td>
+        <th>{{ 'appbundle.bygning.aaplusAnsvarlig' | trans }}</th>
+        <td>{{ entity.bygning.aaplusAnsvarlig }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'appbundle.rapport.bygning' | trans }}</th>
+        <td><a href="{{ path('bygning_show', { 'id': entity.bygning.id }) }}">{{ entity.bygning }}, {{ entity.bygning.adresse }}, {{ entity.bygning.postnummer }} {{ entity.bygning.postBy }}</a></td>
+        <th>{{ 'appbundle.bygning.energiRaadgiver' | trans }}</th>
+        <td>{{ entity.bygning.energiRaadgiver }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'appbundle.rapport.datering' | trans }}</th>
+        <td>{{ entity.datering | date('Y-m-d') }}</td>
+        <th>{{ 'appbundle.bygning.projektleder' | trans }}</th>
+        <td>{{ entity.bygning.projektleder }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'appbundle.rapport.elena' | trans }}</th>
+        <td>{{ entity.elena | b2icon }}</td>
+        <th>{{ 'appbundle.bygning.status' | trans }}</th>
+        <td>{{ entity.bygning.status | readable }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'appbundle.rapport.ava' | trans }}</th>
+        <td>{{ entity.ava | b2icon }}</td>
+        <th>{{ 'common.updatedAt' | trans }}</th>
+        <td>{{ entity.updatedAt | date('Y-m-d  H:i') }}, {{ entity.updatedBy }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">{{ icon('balance-scale') }} {{ 'common.result_overview' | trans }}</h3></div>
+
+    <table class="table table-condensed table-fixed">
+      <tbody>
+      <tr>
+        <th>{{ 'appbundle.rapport.energibesparelser' | trans }}:</th>
+        <td></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.co2BesparelseFaktor' | trans }}:</th>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th class="indent">{{ 'appbundle.rapport.besparelseEl' | trans }}</th>
+        <td class="text-right">{{ entity.besparelseEl | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseEl.unit' | trans }}</td>
+
+        <th class="indent">{{ 'appbundle.rapport.co2BesparelseSamletFaktor' | trans }}</th>
+        <td class="text-right">{{ entity.co2BesparelseSamletFaktor | format_percent_nounit }}</td>
+        <td>{{ 'appbundle.rapport.co2BesparelseSamletFaktor.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th class="indent">{{ 'appbundle.rapport.besparelseVarmeGAF' | trans }}</th>
+        <td class="text-right">{{ entity.besparelseVarmeGAF | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseVarmeGAF.unit' | trans }}</td>
+
+        <th class="indent">{{ 'appbundle.rapport.co2BesparelseElFaktor' | trans }}</th>
+        <td class="text-right">{{ entity.co2BesparelseElFaktor | format_percent_nounit }}</td>
+        <td>{{ 'appbundle.rapport.co2BesparelseElFaktor.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th class="indent">{{ 'appbundle.rapport.besparelseVarmeGUF' | trans }}</th>
+        <td class="text-right">{{ entity.besparelseVarmeGUF | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseVarmeGUF.unit' | trans }}</td>
+
+        <th class="indent">{{ 'appbundle.rapport.co2BesparelseVarmeFaktor' | trans }}</th>
+        <td class="text-right">{{ entity.co2BesparelseVarmeFaktor | format_percent_nounit }}</td>
+        <td>{{ 'appbundle.rapport.co2BesparelseVarmeFaktor.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <td colspan="3" rowspan="4">
+          {% if entity.calculationWarnings and is_granted('RAPPORT_EDIT', entity) %}
+            <div class="alert alert-warning">
+              <p><strong>{{ icon('warning') }} {{ 'Incomplete calculation' | trans }}</strong></p>
+              {{ calculationWarnings.renderMessagesInline(calculation_warnings) }}
+              {% if calculation_warnings['errors'] is defined and calculation_warnings['errors'] is not empty %}
+                <p>
+                  <a href="{{ path('rapport_edit', {'id': entity.id}) }}" class="btn btn-warning">
+                    {{ icon('edit') }} {{ (params.edit_title is defined ? params.edit_title : 'common.edit') | trans }}
+                  </a>
+                </p>
+              {% endif %}
+            </div>
+          {% endif %}
+        </td>
+        <th>{{ 'appbundle.rapport.co2besparelser' | trans }}:</th>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+
+        <th class="indent">{{ 'appbundle.rapport.besparelseCO2' | trans }}</th>
+        <td class="text-right">{{ entity.besparelseCO2 | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseCO2.unit' | trans }}</td>
+      </tr>
+      <tr>
+
+        <th class="indent">{{ 'appbundle.rapport.besparelseCO2el' | trans }}</th>
+        <td class="text-right">{{ entity.co2BesparelseEl | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseCO2el.unit' | trans }}</td>
+      </tr>
+      <tr>
+
+        <th class="indent">{{ 'appbundle.rapport.besparelseCO2varme' | trans }}</th>
+        <td class="text-right">{{ entity.co2BesparelseVarme | format_decimal }}</td>
+        <td>{{ 'appbundle.rapport.besparelseCO2varme.unit' | trans }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">{{ icon('line-chart') }} {{ 'appbundle.rapport.likviditetsoversigt' | trans }}</h3></div>
+
+    <div class="panel-body">
+      {% include('AppBundle::_includes/finansiering_graf.html.twig') %}
+
+      {% if is_granted('RAPPORT_EDIT', entity) and edit_form %}
+        {% form_theme edit_form 'AppBundle:Form:aaplus-bootstrap.html.twig' %}
+        {{ form(edit_form, { 'style': 'inline' }) }}
+      {% else %}
+        {{ 'appbundle.rapport.laanLoebetid' | trans }}:
+        {{ entity.laanLoebetid }} {{ 'appbundle.rapport.laanLoebetid.unit' | trans }}
+      {% endif %}
+
+      {% include('AppBundle::_includes/finansiering_likviditetsoverblik.html.twig') %}
+    </div>
+  </div>
+
+  {% if entity.tilvalgteTiltag is not empty %}
+    {% include 'AppBundle::Rapport/_valgteTiltagTable.html.twig' with {'rapport': entity, 'tiltag': entity.tilvalgteTiltag, 'pdf': false, 'type': 'tilvalg', 'valgt_form_array': tilvalgt_form_array, 'dato_for_drift_form_array': dato_for_drift_form_array } %}
+  {% endif %}
+
+
+  {% if entity.fravalgteTiltag is not empty %}
+    {% include 'AppBundle::Rapport/_valgteTiltagTable.html.twig' with {'rapport': entity, 'tiltag': entity.fravalgteTiltag, 'pdf': false, 'type': 'fravalg', 'valgt_form_array': fravalgt_form_array } %}
+  {% endif %}
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">{{ icon('dollar') }} {{ 'common.finans' | trans }}</h3></div>
+
+    <table class="table table-condensed">
+      <tbody>
+      <tr>
+        <th>{{ 'appbundle.rapport.faellesomkostninger' | trans }}:</th>
+        <td></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.totalEntreprisesum' | trans }}</th>
+        <td class="text-right">{{ entity.anlaegsinvestering | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.totalEntreprisesum.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <td class="indent">{{ 'appbundle.rapport.energiscreening' | trans }}</td>
+        <td class="text-right">{{ entity.energiscreening | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.energiscreening.unit' | trans }}</td>
+        <th>{{ 'appbundle.rapport.investeringEksFaellesomkostninger' | trans }}</th>
+        <td class="text-right">{{ entity.investeringEksFaellesomkostninger | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.investeringEksFaellesomkostninger.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <td class="indent">{{ 'appbundle.rapport.mtmFaellesomkostninger' | trans }}</td>
+        <td class="text-right">{{ entity.mtmFaellesomkostninger | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.mtmFaellesomkostninger.unit' | trans }}</td>
+        <th>{{ 'appbundle.rapport.investeringInklFaellesomkostninger' | trans }}</th>
+        <td class="text-right">{{ entity.investeringInklFaellesomkostninger | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.investeringInklFaellesomkostninger.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <td class="indent">{{ 'appbundle.rapport.implementering' | trans }}</td>
+        <td class="text-right">{{ entity.implementering | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.implementering.unit' | trans }}</td>
+        <th>{{ 'appbundle.rapport.nutidsvaerdiInklFaellesomkostninger' | trans }}</th>
+        <td class="text-right">{{ entity.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.nutidsvaerdiInklFaellesomkostninger.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th class="indent"></th>
+        <td class="text-right"></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.besparelseAarEt' | trans }}</th>
+        <td class="text-right">{{ entity.besparelseAarEt | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.besparelseAarEt.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th class="indent"></th>
+        <td class="text-right"></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.internRenteInklFaellesomkostninger' | trans }}</th>
+        <td class="text-right">
+          {% if entity.internRenteInklFaellesomkostninger < 100 %}
+            {{ entity.internRenteInklFaellesomkostninger | format_percent_nounit }}
+          {% else %}
+            <span class="aaplus-overwritten-value"><span class="aaplus-calculated-value">({{ 'common.calculated_value' | trans }}: {{ entity.internRenteInklFaellesomkostninger | format_percent_nounit }})</span> <span
+                  class="aaplus-note-marker"></span>
+              –
+            </span>
+          {% endif %}
+        </td>
+        <td>{{ 'appbundle.rapport.internRenteInklFaellesomkostninger.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.genopretning' | trans }}</th>
+        <td class="text-right">{{ entity.genopretning | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.genopretning.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.genopretningForImplementeringsomkostninger' | trans }}</th>
+        <td class="text-right">{{ entity.genopretningForImplementeringsomkostninger | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.genopretningForImplementeringsomkostninger.unit' | trans }}</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td></td>
+        <td></td>
+        <th>{{ 'appbundle.rapport.modernisering' | trans }}</th>
+        <td class="text-right">{{ entity.modernisering | format_amount }}</td>
+        <td>{{ 'appbundle.rapport.modernisering.unit' | trans }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="row heading">
+    <div class="col-md-2"><h2>{{ 'tiltag.labels.singular' | trans }}</h2></div>
+    <div class="col-md-10 text-right">
+      {% if is_granted('RAPPORT_EDIT', entity) %}
+        {% for type in [ 'pumpe', 'belysning', 'klimaskaerm', 'vindue', 'solcelle', 'tekniskisolering', 'special' ] %}
+          <form method="POST" action="{{ path('tiltag_create', { 'id': entity.id, 'type': type }) }}" class="inline-block">
+            <button type="submit" class="btn btn-default">{{ icon('plus') }} {{ ('rapporter.strings.' ~ type ~ 'tiltag') | trans }}</button>
+          </form>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  {% if entity.tiltag is not empty %}
+
+    <div role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        {% for key, t in entity.tiltag %}
+          <li role="presentation" {% if key == 0 %} class="active" {% endif %}>
+            <a href="#tiltag{{ key }}" aria-controls="home" role="tab" data-toggle="tab">
+              {{ key + 1 }}. {{ t.title | slice(0, 15) }}{% if t.title | length > 15 %}...{% endif %}
+              {% if is_granted('TILTAG_EDIT', t) %}
+                {{ calculationWarnings.renderIcon(t.calculationWarnings) }}
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        {% for key, t in entity.tiltag %}
+          <div role="tabpanel" class="tab-pane {% if key == 0 %}active{% endif %}" id="tiltag{{ key }}">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>
+                  {{ t.title }}
+                  {% if is_granted('TILTAG_EDIT', t) %}
+                    {{ calculationWarnings.renderIcon(t.calculationWarnings, key) }}
+                  {% endif %}
+                </h3>
+                {% if is_granted('TILTAG_EDIT', t) %}
+                  {{ calculationWarnings.renderMessagesPopup(t.calculationWarnings, key, {
+                    edit_url: (t.calculationWarnings['errors'] is defined and t.calculationWarnings['errors'] is not empty) ? path('tiltag_edit', { 'id': t.id }) : null,
+                    details_url: path('tiltag_show', { 'id': t.id }) })
+                  }}
+                {% endif %}
+              </div>
+              <div class="col-md-6 text-right">
+                {% if tiltag_type(t) != 'Special' %}
+                  <a class="btn btn-default" href="{{ path('tiltag_bilag_get', { 'tiltag_id': t.id }) }}">
+                    {{ icon('file') }} {{ 'bilag.actions.list' | trans }}
+                  </a>
+                {% endif %}
+                {% if is_granted('RAPPORT_EDIT', entity) %}
+                  <a href="{{ path('tiltag_edit', { 'id': t.id }) }}" class="btn btn-default">
+                    {{ icon('edit') }} {{ 'common.edit' | trans }}: {{ t.title | slice(0, 15) }}{% if t.title | length > 15 %}...{% endif %}
+                  </a>
+                {% endif %}
+                <a href="{{ path('tiltag_show', { 'id': t.id }) }}" class="btn btn-default">
+                  {{ icon('list') }} {{ 'rapporter.labels.detailark' | trans }}: {{ t.title | slice(0, 15) }}{% if t.title | length > 15 %}...{% endif %}
+                </a>
+              </div>
+            </div>
+            {{ include ('AppBundle:Tiltag:show-include.html.twig', {entity: t}, with_context = false) }}
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+  {% else %}
+
+    <div class="alert alert-info" role="alert">{{ 'tiltag.strings.ingen' | trans }}</div>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+
+  {% include 'AppBundle:Rapport:_documentReady.js.twig' %}
+{% endblock documentReady %}

@@ -1,0 +1,16 @@
+{% extends 'AppBundle:TiltagDetail:edit.html.twig' %}
+
+{% set heading = 'tekniskisoleringtiltagdetail.actions.copy' %}
+
+{% block edit_form %}
+
+  {% include 'AppBundle:TekniskIsoleringTiltagDetail:_form.html.twig' %}
+
+{% endblock %}
+
+
+{% block documentReady %}
+  {{ parent() }}
+
+  {% include 'AppBundle:TekniskIsoleringTiltagDetail:_documentReady.js.twig' with { komponenter: komponenter } %}
+{% endblock documentReady %}

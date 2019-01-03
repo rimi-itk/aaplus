@@ -6,11 +6,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    version: 1.10.0
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -30,11 +30,29 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - AppBundle:Form:aaplus-bootstrap.html.twig
+        - AppBundle:Form:form_div_layout.html.twig
+    date:
+        format: Y-m-d
+    number_format:
+        decimals: 2
+        decimal_point: ','
+        thousands_separator: '.'
+    globals:
+        aaplus_release_ver: 'Release %version%'
+        baseline_graddage_url: http://www.aarhus.dk/sitecore/content/subsites/affaldvarmeaarhus/home/varme/graddagetal.aspx?sc_lang=da
+        footer:
+          name: '%app.page_footer.name%'
+          address: '%app.page_footer.address%'
+          email: '%app.page_footer.email%'
 
 # Doctrine Configuration
 doctrine:
@@ -45,6 +63,7 @@ doctrine:
         dbname: '%database_name%'
         user: '%database_user%'
         password: '%database_password%'
+        server_version: '%server_version%'
         charset: UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -52,11 +71,39 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #path: '%database_path%'
+        mapping_types:
+            enum: string
+        types:
+            CardinalDirectionType: AppBundle\DBAL\Types\CardinalDirectionType
+            NavnType: AppBundle\DBAL\Types\Energiforsyning\NavnType
+            PrisgrundlagType: AppBundle\DBAL\Types\Energiforsyning\InternProduktion\PrisgrundlagType
+            BygningStatusType: AppBundle\DBAL\Types\BygningStatusType
+            StyringType: AppBundle\DBAL\Types\BelysningTiltagDetail\StyringType
+            TiltagType: AppBundle\DBAL\Types\BelysningTiltagDetail\TiltagType
+            PlaceringType: AppBundle\DBAL\Types\BelysningTiltagDetail\PlaceringType
+            ArealKildePrimaerType: AppBundle\DBAL\Types\Baseline\ArealKildePrimaerType
+            ArealKildeSekundaerType: AppBundle\DBAL\Types\Baseline\ArealKildeSekundaerType
+            ElKildePrimaerType: AppBundle\DBAL\Types\Baseline\ElKildePrimaerType
+            ElKildeSekundaerType: AppBundle\DBAL\Types\Baseline\ElKildeSekundaerType
+            VarmeKildePrimaerType: AppBundle\DBAL\Types\Baseline\VarmeKildePrimaerType
+            VarmeKildeSekundaerType: AppBundle\DBAL\Types\Baseline\VarmeKildeSekundaerType
+            GUFFastsaettesEfterType: AppBundle\DBAL\Types\Baseline\GUFFastsaettesEfterType
+            RisikovurderingType: AppBundle\DBAL\Types\RisikovurderingType
+            PrimaerEnterpriseType: AppBundle\DBAL\Types\PrimaerEnterpriseType
+            KlimaskaermType: AppBundle\DBAL\Types\KlimaskaermType
+        logging: false
+        profiling: false
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        # ??? naming_strategy: doctrine.orm.naming_strategy.underscore
+        # ??? auto_mapping: true
+        entity_managers:
+            default:
+              auto_mapping: true
+              dql:
+                datetime_functions:
+                  YEAR: DoctrineExtensions\Query\Mysql\Year
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -69,3 +116,112 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+# app/config/config.yml
+braincrafted_bootstrap:
+    icon_prefix: fa
+    output_dir:
+    assets_dir: '%kernel.root_dir%/../vendor/twbs/bootstrap'
+    jquery_path: '%kernel.root_dir%/../vendor/components/jquery/jquery.min.js'
+    fonts_dir: '%kernel.root_dir%/../web/fonts'
+    auto_configure:
+        assetic: false
+        twig: false
+        knp_menu: true
+        knp_paginator: true
+    customize:
+        variables_file: ~
+        bootstrap_output: '%kernel.root_dir%/Resources/less/bootstrap.less'
+        bootstrap_template: 'BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig'
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    group:
+        group_class: AppBundle\Entity\Group
+    profile:
+        form:
+            type: appbundle_user_profile
+    from_email:
+      address:        '%app.from_email_address%'
+      sender_name:    '%app.from_email_name%'
+
+simple_things_entity_audit:
+    audited_entities:
+        - AppBundle\Entity\Forsyningsvaerk
+        - AppBundle\Entity\Bilag
+        - AppBundle\Entity\Bygning
+        - AppBundle\Entity\Configuration
+        - AppBundle\Entity\Forsyningsvaerk
+        - AppBundle\Entity\Rapport
+        - AppBundle\Entity\Energiforsyning
+        - AppBundle\Entity\Energiforsyning\InternProduktion
+        - AppBundle\Entity\Pumpe
+        - AppBundle\Entity\Solcelle
+        - AppBundle\Entity\BelysningTiltag
+        - AppBundle\Entity\BelysningTiltagDetail
+        - AppBundle\Entity\KlimaskaermTiltag
+        - AppBundle\Entity\KlimaskaermTiltagDetail
+        - AppBundle\Entity\PumpeTiltag
+        - AppBundle\Entity\PumpeTiltagDetail
+        - AppBundle\Entity\SolcelleTiltag
+        - AppBundle\Entity\SolcelleTiltagDetail
+        - AppBundle\Entity\SpecialTiltag
+        - AppBundle\Entity\SpecialTiltagDetail
+        - AppBundle\Entity\TekniskIsoleringTiltag
+        - AppBundle\Entity\TekniskIsoleringTiltagDetail
+        - AppBundle\Entity\VindueTiltag
+        - AppBundle\Entity\VindueTiltagDetail
+        - AppBundle\Entity\Tiltag
+        - AppBundle\Entity\TiltagDetail
+        - AppBundle\Entity\Segment
+        - AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme
+        - AppBundle\Entity\Baseline
+        - AppBundle\Entity\BaselineKorrektion
+
+white_october_breadcrumbs:
+  separator:
+
+stof_doctrine_extensions:
+    default_locale: en_US
+
+    # Only used if you activated the Uploadable extension
+    uploadable:
+        # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
+        default_file_path:       %kernel.root_dir%/../web/uploads
+
+        # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
+        mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+
+        # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
+        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+
+    orm:
+        default:
+            uploadable: true
+            timestampable: true
+            blameable: true
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        options:    {page-size: A4, zoom: 1, footer-font-size: 8, javascript-delay: 300, debug-javascript: true, margin-top: 25, margin-right: 20, margin-bottom: 15, margin-left: 20, footer-spacing: 5, header-spacing: 5}
+
+# # https://twigexcelbundle.readthedocs.org/en/latest/installation.html#step-3-configure-the-bundle-optional
+# mewes_k_twig_excel:
+#     pre_calculate_formulas: false
+#     disk_caching_directory: "%kernel.cache_dir%/phpexcel"
+
+app:
+  pdf_export:
+    base_url: %app.pdf_export.base_url%
+    default_file_path: %app.pdf_export.default_file_path

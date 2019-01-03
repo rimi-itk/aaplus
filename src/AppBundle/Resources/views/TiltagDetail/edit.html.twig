@@ -1,0 +1,39 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body -%}
+  {% include 'AppBundle:_includes:calculation_changes.html.twig' %}</li>
+  {% include 'AppBundle:_includes:calculation_warnings.html.twig' %}</li>
+
+  <div class="row heading">
+    <div class="col-md-8">
+      {% if heading is defined and heading is not empty %}
+        <h1>{{ heading | trans }}</h1>
+      {% else %}
+        <h1>{{ 'tiltagdetail.actions.edit' | trans }}</h1>
+      {% endif %}
+    </div>
+    <div class="col-md-4 text-right">
+      {% if is_granted('ROLE_RAPPORT_EDIT') and delete_form is defined %}
+        {{ form(delete_form) }}
+      {% endif %}
+    </div>
+  </div>
+
+  {{ form_start(edit_form, { 'style': '' }) }}
+  {{ form_errors(edit_form) }}
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{ form_row(edit_form.tilvalgt) }}
+      {{ form_row(edit_form.ikkeElenaBerettiget) }}
+    </div>
+  </div>
+
+  {% block edit_form %}
+
+  {% endblock %}
+
+  {{ form_rest(edit_form) }}
+  {{ form_end(edit_form) }}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+
+  {% block body -%}
+
+    <div class="row heading">
+      <div class="col-md-9">
+        <h1>{{ 'solcelle.labels.plural' | trans }}</h1>
+      </div>
+      <div class="col-md-3 text-right">
+        <a class="btn btn-default" href="{{ path('solcelle_new') }}">
+          {{ icon('plus') }} {{ 'solcelle.actions.add' | trans }}
+        </a>
+      </div>
+
+    </div>
+
+
+    <table class="table table-condensed table-details">
+      <thead>
+      <tr>
+        {{ helper.header('appbundle.solcelle.KWp') }}
+        {{ helper.header('appbundle.solcelle.inverterpris') }}
+        {{ helper.header('appbundle.solcelle.drift') }}
+        {{ helper.header() }}
+      </tr>
+      <tr>
+        {{ helper.header_unit('appbundle.solcelle.KWp') }}
+        {{ helper.header_unit('appbundle.solcelle.inverterpris') }}
+        {{ helper.header_unit('appbundle.solcelle.drift') }}
+        {{ helper.header_unit() }}
+      </tr>
+      </thead>
+      <tbody>
+      {% for entity in entities %}
+        <tr id="{{ entity.id }}">
+          <td class="number">{{ entity.KWp | number_format}}</td>
+          <td class="number">{{ entity.inverterpris | format_amount(2) }}</td>
+          <td class="number">{{ entity.drift | number_format }}</td>
+          <td class="text-right"><a class="btn btn-default btn-xs" href="{{ path('solcelle_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  {% endblock %}

@@ -1,0 +1,55 @@
+<figure id="chart">
+  <canvas id="chart-canvas" width="950" height="400"></canvas>
+  <figcaption></figcaption>
+</figure>
+
+<script src="{{ absolute_url(asset('js/lib/Chart.js/Chart.min.js')) }}"></script>
+<script>(function() {
+    var formatData = function(data) {
+          var formatted = [], key;
+          for (key in data) {
+            if (key > 0) {
+              formatted[key-1] = data[key] ? data[key].toFixed(2) : null;
+            }
+          }
+          return formatted;
+        },
+        data = {
+          labels: (function(years) {
+            var currentYear = (new Date()).getFullYear();
+            return years.map(function(y) {
+              return y - 1 + currentYear;
+            });
+          }({{ entity.cashFlow['cash flow'] | keys | json_encode | raw }})),
+          datasets: [ {
+            label: {{ 'Besparelse' | trans | json_encode | raw }},
+            fillColor: 'rgba(75,195,68,0.2)',
+            strokeColor: 'rgba(75,195,68,1)',
+            pointColor: 'rgba(75,195,68,1)',
+            pointStrokeColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(75,195,68,1)',
+            data: formatData({{ entity.cashFlow['besparelse'] | json_encode | raw }})
+          }, {
+            label: {{ 'Ydelse, lån inkl. fællesomkostninger' | trans | json_encode | raw }},
+            fillColor: 'rgba(195,75,68,0.2)',
+            strokeColor: 'rgba(195,75,68,1)',
+            pointColor: 'rgba(195,75,68,1)',
+            pointStrokeColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(195,75,68,1)',
+            data: formatData({{ entity.cashFlow['ydelse laan inkl. faellesomkostninger'] | json_encode | raw }})
+          } ]
+        },
+        options = {
+          animation: false,
+          responsive: false,
+          maintainAspectRatio: false,
+          datasetFill: true,
+          bezierCurve : true,
+          bezierCurveTension : 0.2
+        },
+        ctx = document.querySelector('#chart canvas').getContext('2d'),
+        chart = new Chart(ctx).Line(data, options);
+    document.querySelector('#chart figcaption').innerHTML = chart.generateLegend();
+  }())</script>

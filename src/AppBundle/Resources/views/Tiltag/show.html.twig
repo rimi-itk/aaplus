@@ -1,0 +1,94 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% from 'AppBundle:_includes:calculation_warnings.html.twig' import renderWarnings as renderCalculationWarnings %}
+
+{% if add_action is not defined %}
+  {% set add_action = 'tiltagdetail.actions.add' %}
+{% endif %}
+
+{% block body -%}
+  <div class="row heading">
+    <div class="col-md-6"><h1>{% if entity.title is empty %}{{ 'tiltag.title.missing' | trans }}{% else %}{{ entity.title }}{% endif %}</h1></div>
+    <div class="col-md-6 text-right">
+      {% if is_granted('TILTAG_EDIT', entity) %}
+        <a class="btn btn-default" href="{{ path('tiltag_edit', { 'id': entity.id }) }}">{{ icon('edit') }} {{ 'tiltag.actions.edit' | trans }}</a>
+        <a href="{{ path('tiltag_detail_new', { 'id': entity.id }) }}" class="btn btn-primary">{{ icon('plus') }} {{ add_action | trans }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation"><a href="#oversigt" aria-controls="{{ 'tiltag.strings.oversigt' | trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.oversigt' | trans }}</a></li>
+      <li role="presentation" class="active"><a href="#detailark" aria-controls="{{ 'tiltag.strings.oversigt' | trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.detailark' | trans }}</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane" id="oversigt">
+        {% include 'AppBundle:Tiltag:show-include.html.twig' with {'extended': true} %}
+      </div>
+      <div role="tabpanel" class="tab-pane active" id="detailark">
+        {% block detailark -%}...{% endblock %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block tiltag_detail_edit %}
+  {% if is_granted('TILTAG_EDIT', entity) %}
+    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit' | trans }}</a></p>
+    <p><a href="{{ path('tiltag_detail_copy', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('clone') }} {{ 'common.copy' | trans }}</a></p>
+    {{ form_row(form_detail.batchEdit) }}
+  {% endif %}
+{% endblock %}
+
+{% block special_tiltag_detail_edit %}
+  {% if is_granted('TILTAG_EDIT', entity) %}
+    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit' | trans }}</a></p>
+  {% endif %}
+{% endblock %}
+
+{% block editform_button_row %}
+  {% if is_granted('TILTAG_EDIT', entity) %}
+    {{ form_row(edit_form.buttons) }}
+    {{ form_widget(edit_form.select_all_button, { 'attr': {'class': 'batch-edit'} }) }}
+    {{ form_widget(edit_form.batch_edit_button, { 'attr': {'class': 'batch-edit'} }) }}
+    {{ form_rest(edit_form) }}
+    {{ form_end(edit_form) }}
+  {% endif %}
+{% endblock %}
+
+{% block tiltag_detail_tilvalgt %}
+  {% if is_granted('TILTAG_EDIT', entity) %}
+    {{ form_row(form_detail.tilvalgt) }}
+    {{ renderCalculationWarnings(detail.calculationWarnings, detail.id, { edit_url: path('tiltag_detail_edit', { 'id': detail.id }) }) }}
+  {% else %}
+    {{ detail.tilvalgt | b2icon }}
+  {% endif %}
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+
+  {% include 'AppBundle:Tiltag:_documentReady.js.twig' %}
+{% endblock documentReady %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script>
+    var parseNumber = function (value) {
+      {% if ',' in (3.14 | format_decimal) %}
+      value = value.replace('.', '').replace(',', '.');
+      {% endif %}
+      return parseFloat(value);
+    };
+  </script>
+
+  <script src="{{ asset('js/lib/list.min.js') }}"></script>
+  <script src="{{ asset('js/detail-filter.js') }}"></script>
+{% endblock %}

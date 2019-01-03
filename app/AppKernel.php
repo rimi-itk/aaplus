@@ -1,8 +1,16 @@
 <?php
 
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -16,13 +24,32 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+                        new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+                        new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+                        new FOS\UserBundle\FOSUserBundle(),
+                        new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new AppBundle\AppBundle(),
+                        new SimpleThings\EntityAudit\SimpleThingsEntityAuditBundle(),
+                        new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+                        new JMS\SerializerBundle\JMSSerializerBundle(),
+                        new Rollerworks\Bundle\PasswordStrengthBundle\RollerworksPasswordStrengthBundle(),
+                        new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
+                        new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+                        new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+                        new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+                        // Deprecated; This project is no longer maintained and should not be used anymore.
+                        // new MewesK\TwigExcelBundle\MewesKTwigExcelBundle(),
+                        new ItkDev\DatabaseBundle\ItkDevDatabaseBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            // This library has been renamed to PortPHP and will be deprecated. Please use PortPHP instead.
+            // $bundles[] = new Ddeboer\DataImportBundle\DdeboerDataImportBundle();
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

@@ -1,0 +1,213 @@
+<?php
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tiltag.
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\SpecialTiltagRepository")
+ */
+class SpecialTiltag extends Tiltag
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="besparelseGUF", type="decimal", scale=4, precision=14)
+     */
+    protected $besparelseGUF;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="besparelseGAF", type="decimal", scale=4, precision=14)
+     */
+    protected $besparelseGAF;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="besparelseEl", type="decimal", scale=4, precision=14)
+     */
+    protected $besparelseEl;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="yderligereBesparelse", type="decimal", scale=4, precision=14)
+     */
+    protected $yderligereBesparelse;
+
+    protected $propertiesRequiredForCalculation = [
+    'besparelseEl',
+    'besparelseGAF',
+    'besparelseGUF',
+    'faktorForReinvesteringer',
+    'forsyningEl',
+    'forsyningVarme',
+    'levetid',
+    'primaerEnterprise',
+    'tiltagskategori',
+    'yderligereBesparelse',
+  ];
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // @Todo: Find af way to use the translations system or move this to some place else....
+        $this->setTitle('Specialtiltag');
+    }
+
+    /**
+     * @return float
+     */
+    public function getYderligereBesparelse()
+    {
+        return $this->yderligereBesparelse;
+    }
+
+    /**
+     * @param float $yderligereBesparelse
+     */
+    public function setYderligereBesparelse($yderligereBesparelse)
+    {
+        $this->yderligereBesparelse = $yderligereBesparelse;
+    }
+
+    public function setBesparelseGUF($besparelseGUF)
+    {
+        $this->besparelseGUF = $besparelseGUF;
+
+        return $this;
+    }
+
+    public function getBesparelseGUF()
+    {
+        return $this->besparelseGUF;
+    }
+
+    public function setBesparelseGAF($besparelseGAF)
+    {
+        $this->besparelseGAF = $besparelseGAF;
+
+        return $this;
+    }
+
+    public function getBesparelseGAF()
+    {
+        return $this->besparelseGAF;
+    }
+
+    public function setBesparelseEl($besparelseEl)
+    {
+        $this->besparelseEl = $besparelseEl;
+
+        return $this;
+    }
+
+    public function getBesparelseEl()
+    {
+        return $this->besparelseEl;
+    }
+
+    /**
+     * Set anlaegsinvestering.
+     *
+     * @param float
+     * @param mixed $anlaegsinvestering
+     *
+     * @return SpecialTiltag
+     */
+    public function setAnlaegsinvestering($anlaegsinvestering)
+    {
+        $this->anlaegsinvestering = $anlaegsinvestering;
+
+        return $this;
+    }
+
+    /**
+     * @param float $anlaegsinvesteringExRisiko
+     *
+     * @return SpecialTiltag
+     */
+    public function setAnlaegsinvesteringExRisiko($anlaegsinvesteringExRisiko)
+    {
+        $this->anlaegsinvesteringExRisiko = $anlaegsinvesteringExRisiko;
+
+        return $this;
+    }
+
+    public function calculateSavingsForYear($year)
+    {
+        return parent::calculateSavingsForYear($year) + $this->getYderligereBesparelse();
+    }
+
+    protected function calculateVarmebesparelseGUF($value = null)
+    {
+        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGUF : $this->fordelbesparelse($this->besparelseGUF, $this->getForsyningVarme(), 'VARME')) * $this->rapport->getFaktorPaaVarmebesparelse();
+
+        return parent::calculateVarmebesparelseGUF($value);
+    }
+
+    protected function calculateVarmebesparelseGAF($value = null)
+    {
+        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGAF : $this->fordelbesparelse($this->besparelseGAF, $this->getForsyningVarme(), 'VARME')) * $this->rapport->getFaktorPaaVarmebesparelse();
+
+        return parent::calculateVarmebesparelseGAF($value);
+    }
+
+    protected function calculateElbesparelse($value = null)
+    {
+        if ($this->rapport->getStandardForsyning()) {
+            $value = $this->besparelseEl;
+        } else {
+            $value = ($this->fordelbesparelse($this->besparelseGUF, $this->getForsyningVarme(), 'EL')
+        + $this->fordelbesparelse($this->besparelseGAF, $this->getForsyningVarme(), 'EL')
+        + $this->besparelseEl);
+        }
+
+        return parent::calculateElbesparelse($value);
+    }
+
+    protected function calculateSamletEnergibesparelse()
+    {
+        return ($this->varmebesparelseGAF + $this->varmebesparelseGUF) * $this->calculateVarmepris()
+      + $this->elbesparelse * $this->getRapport()->getElKrKWh() + $this->yderligereBesparelse;
+    }
+
+    protected function calculateSamletCo2besparelse()
+    {
+        return ((($this->varmebesparelseGAF + $this->varmebesparelseGUF) / 1000) * $this->getRapport()->getVarmeKgCo2MWh()
+            + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
+    }
+
+    protected function calculateCashFlow($numberOfYears, $yderligereBesparelseKrAar = 0)
+    {
+        return parent::calculateCashFlow($numberOfYears, $this->getYderligereBesparelse());
+    }
+
+    protected function calculateAnlaegsinvestering($value = null)
+    {
+        return parent::calculateAnlaegsinvestering($this->getAnlaegsinvesteringExRisiko());
+    }
+}
+
+// solcelle=(C4+C5)*INDIREKTE("'1.TiltagslisteRådgiver'!AI6")+INDIREKTE("'1.TiltagslisteRådgiver'!AI7")*C6*INDIREKTE("'1.TiltagslisteRådgiver'!$F$22")+C7*INDIREKTE("'1.TiltagslisteRådgiver'!AI8")+L48
+
+// special=(C4+C5)*INDIREKTE("'1.TiltagslisteRådgiver'!AI6")+INDIREKTE("'1.TiltagslisteRådgiver'!AI7")*C6*INDIREKTE("'1.TiltagslisteRådgiver'!$F$22")+C7*INDIREKTE("'1.TiltagslisteRådgiver'!AI8")
+
+// teknisk=(C4+C5)*INDIREKTE("'1.TiltagslisteRådgiver'!AI6")+INDIREKTE("'1.TiltagslisteRådgiver'!AI7")*C6+C7*INDIREKTE("'1.TiltagslisteRådgiver'!AI8")
