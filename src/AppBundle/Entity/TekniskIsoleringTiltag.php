@@ -53,7 +53,7 @@ class TekniskIsoleringTiltag extends Tiltag
     protected function calculateSamletCo2besparelse()
     {
         return (($this->varmebesparelseGAF / 1000) * $this->getRapport()->getVarmeKgCo2MWh()
-            + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
+                + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
     }
 
     protected function calculateAnlaegsinvestering($value = null)

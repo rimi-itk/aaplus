@@ -123,21 +123,14 @@ class Configuration
         $this->id = $id;
     }
 
-    public function setRapportKalkulationsrente($kalkulationsrente)
-    {
-        $this->rapportKalkulationsrente = $kalkulationsrente;
-
-        return $this;
-    }
-
     public function getRapportKalkulationsrente()
     {
         return $this->rapportKalkulationsrente;
     }
 
-    public function setRapportInflation($inflation)
+    public function setRapportKalkulationsrente($kalkulationsrente)
     {
-        $this->rapportInflation = $inflation;
+        $this->rapportKalkulationsrente = $kalkulationsrente;
 
         return $this;
     }
@@ -147,9 +140,9 @@ class Configuration
         return $this->rapportInflation;
     }
 
-    public function setRapportLobetid($lobetid)
+    public function setRapportInflation($inflation)
     {
-        $this->rapportLobetid = $lobetid;
+        $this->rapportInflation = $inflation;
 
         return $this;
     }
@@ -159,9 +152,9 @@ class Configuration
         return $this->rapportLobetid;
     }
 
-    public function setRapportDriftomkostningerfaktor($faktor)
+    public function setRapportLobetid($lobetid)
     {
-        $this->rapportDriftomkostningerfaktor = $faktor;
+        $this->rapportLobetid = $lobetid;
 
         return $this;
     }
@@ -171,9 +164,9 @@ class Configuration
         return $this->rapportDriftomkostningerfaktor;
     }
 
-    public function setRapportNominelEnergiprisstigning($rapport_nominelEnergiprisstigning)
+    public function setRapportDriftomkostningerfaktor($faktor)
     {
-        $this->rapportNominelEnergiprisstigning = $rapport_nominelEnergiprisstigning;
+        $this->rapportDriftomkostningerfaktor = $faktor;
 
         return $this;
     }
@@ -183,9 +176,9 @@ class Configuration
         return $this->rapportNominelEnergiprisstigning;
     }
 
-    public function setRapportProcentAfInvestering($rapport_procentAfInvestering)
+    public function setRapportNominelEnergiprisstigning($rapport_nominelEnergiprisstigning)
     {
-        $this->rapportProcentAfInvestering = $rapport_procentAfInvestering;
+        $this->rapportNominelEnergiprisstigning = $rapport_nominelEnergiprisstigning;
 
         return $this;
     }
@@ -195,9 +188,9 @@ class Configuration
         return $this->rapportProcentAfInvestering;
     }
 
-    public function setTekniskIsoleringVarmeledningsevneEksistLamelmaatter($varmeledningsevneEksistLamelmaatter)
+    public function setRapportProcentAfInvestering($rapport_procentAfInvestering)
     {
-        $this->tekniskisoleringVarmeledningsevneEksistLamelmaatter = $varmeledningsevneEksistLamelmaatter;
+        $this->rapportProcentAfInvestering = $rapport_procentAfInvestering;
 
         return $this;
     }
@@ -207,9 +200,9 @@ class Configuration
         return $this->tekniskisoleringVarmeledningsevneEksistLamelmaatter;
     }
 
-    public function setTekniskIsoleringVarmeledningsevneNyIsolering($varmeledningsevneNyIsolering)
+    public function setTekniskIsoleringVarmeledningsevneEksistLamelmaatter($varmeledningsevneEksistLamelmaatter)
     {
-        $this->tekniskisoleringVarmeledningsevneNyIsolering = $varmeledningsevneNyIsolering;
+        $this->tekniskisoleringVarmeledningsevneEksistLamelmaatter = $varmeledningsevneEksistLamelmaatter;
 
         return $this;
     }
@@ -219,9 +212,9 @@ class Configuration
         return $this->tekniskisoleringVarmeledningsevneNyIsolering;
     }
 
-    public function setSolcelletiltagdetailEnergiprisstigningPctPrAar($solcelletiltagdetailEnergiprisstigningPctPrAar)
+    public function setTekniskIsoleringVarmeledningsevneNyIsolering($varmeledningsevneNyIsolering)
     {
-        $this->solcelletiltagdetailEnergiprisstigningPctPrAar = $solcelletiltagdetailEnergiprisstigningPctPrAar;
+        $this->tekniskisoleringVarmeledningsevneNyIsolering = $varmeledningsevneNyIsolering;
 
         return $this;
     }
@@ -231,9 +224,9 @@ class Configuration
         return $this->solcelletiltagdetailEnergiprisstigningPctPrAar;
     }
 
-    public function setSolcelletiltagdetailSalgsprisFoerste10AarKrKWh($solcelletiltagdetailSalgsprisFoerste10AarKrKWh)
+    public function setSolcelletiltagdetailEnergiprisstigningPctPrAar($solcelletiltagdetailEnergiprisstigningPctPrAar)
     {
-        $this->solcelletiltagdetailSalgsprisFoerste10AarKrKWh = $solcelletiltagdetailSalgsprisFoerste10AarKrKWh;
+        $this->solcelletiltagdetailEnergiprisstigningPctPrAar = $solcelletiltagdetailEnergiprisstigningPctPrAar;
 
         return $this;
     }
@@ -243,9 +236,9 @@ class Configuration
         return $this->solcelletiltagdetailSalgsprisFoerste10AarKrKWh;
     }
 
-    public function setSolcelletiltagdetailSalgsprisEfter10AarKrKWh($solcelletiltagdetailSalgsprisEfter10AarKrKWh)
+    public function setSolcelletiltagdetailSalgsprisFoerste10AarKrKWh($solcelletiltagdetailSalgsprisFoerste10AarKrKWh)
     {
-        $this->solcelletiltagdetailSalgsprisEfter10AarKrKWh = $solcelletiltagdetailSalgsprisEfter10AarKrKWh;
+        $this->solcelletiltagdetailSalgsprisFoerste10AarKrKWh = $solcelletiltagdetailSalgsprisFoerste10AarKrKWh;
 
         return $this;
     }
@@ -255,9 +248,9 @@ class Configuration
         return $this->solcelletiltagdetailSalgsprisEfter10AarKrKWh;
     }
 
-    public function setMtmFaellesomkostningerGrundpris($mtmFaellesomkostningerGrundpris)
+    public function setSolcelletiltagdetailSalgsprisEfter10AarKrKWh($solcelletiltagdetailSalgsprisEfter10AarKrKWh)
     {
-        $this->mtmFaellesomkostningerGrundpris = $mtmFaellesomkostningerGrundpris;
+        $this->solcelletiltagdetailSalgsprisEfter10AarKrKWh = $solcelletiltagdetailSalgsprisEfter10AarKrKWh;
 
         return $this;
     }
@@ -267,9 +260,9 @@ class Configuration
         return $this->mtmFaellesomkostningerGrundpris;
     }
 
-    public function setMtmFaellesomkostningerPrisPrM2($mtmFaellesomkostningerPrisPrM2)
+    public function setMtmFaellesomkostningerGrundpris($mtmFaellesomkostningerGrundpris)
     {
-        $this->mtmFaellesomkostningerPrisPrM2 = $mtmFaellesomkostningerPrisPrM2;
+        $this->mtmFaellesomkostningerGrundpris = $mtmFaellesomkostningerGrundpris;
 
         return $this;
     }
@@ -279,9 +272,9 @@ class Configuration
         return $this->mtmFaellesomkostningerPrisPrM2;
     }
 
-    public function setMtmFaellesomkostningerNulHvisArealMindreEnd($mtmFaellesomkostningerNulHvisArealMindreEnd)
+    public function setMtmFaellesomkostningerPrisPrM2($mtmFaellesomkostningerPrisPrM2)
     {
-        $this->mtmFaellesomkostningerNulHvisArealMindreEnd = $mtmFaellesomkostningerNulHvisArealMindreEnd;
+        $this->mtmFaellesomkostningerPrisPrM2 = $mtmFaellesomkostningerPrisPrM2;
 
         return $this;
     }
@@ -291,9 +284,9 @@ class Configuration
         return $this->mtmFaellesomkostningerNulHvisArealMindreEnd;
     }
 
-    public function setMtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd($mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd)
+    public function setMtmFaellesomkostningerNulHvisArealMindreEnd($mtmFaellesomkostningerNulHvisArealMindreEnd)
     {
-        $this->mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd = $mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd;
+        $this->mtmFaellesomkostningerNulHvisArealMindreEnd = $mtmFaellesomkostningerNulHvisArealMindreEnd;
 
         return $this;
     }
@@ -301,5 +294,13 @@ class Configuration
     public function getMtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd()
     {
         return $this->mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd;
+    }
+
+    public function setMtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd(
+        $mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd
+    ) {
+        $this->mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd = $mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd;
+
+        return $this;
     }
 }

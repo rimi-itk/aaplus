@@ -67,6 +67,16 @@ class Leverandoer
     }
 
     /**
+     * Get title.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set title.
      *
      * @param string $title
@@ -78,16 +88,6 @@ class Leverandoer
         $this->title = $title;
 
         return $this;
-    }
-
-    /**
-     * Get title.
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

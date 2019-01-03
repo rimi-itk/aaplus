@@ -1,7 +1,11 @@
 <?php
-/**
- * @file
- * @TODO: Missing description.
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
  */
 
 namespace AppBundle\Form\Type;
@@ -15,29 +19,31 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Class BygningType
- * @package AppBundle\Form
+ * Class BygningType.
  */
-class BygningType extends AbstractType {
+class BygningType extends AbstractType
+{
+    private $doctrine;
+    private $authorizationChecker;
 
-  private $doctrine;
-  private $authorizationChecker;
+    public function __construct(RegistryInterface $doctrine, AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $this->doctrine = $doctrine;
+        $this->authorizationChecker = $authorizationChecker;
+    }
 
-  public function __construct(RegistryInterface $doctrine, AuthorizationCheckerInterface $authorizationChecker) {
-    $this->doctrine = $doctrine;
-    $this->authorizationChecker = $authorizationChecker;
-  }
-
-  /**
-   * @TODO: Missing description.
-   *
-   * @param FormBuilderInterface $builder
-   * @TODO: Missing description.
-   * @param array $options
-   * @TODO: Missing description.
-   */
-  public function buildForm(FormBuilderInterface $builder, array $options) {
-    $builder
+    /**
+     * @TODO: Missing description.
+     *
+     * @param FormBuilderInterface $builder
+     * @TODO: Missing description.
+     *
+     * @param array $options
+     * @TODO: Missing description.
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
       ->add('bygId')
       ->add('navn')
       ->add('OpfoerselsAar')
@@ -50,105 +56,106 @@ class BygningType extends AbstractType {
       ->add('ejerA')
       ->add('anvendelse')
       ->add('bruttoetageareal')
-      ->add('forsyningsvaerkVarme', 'entity', array(
+      ->add('forsyningsvaerkVarme', 'entity', [
         'class' => 'AppBundle:Forsyningsvaerk',
-        'required' => FALSE,
+        'required' => false,
         'empty_value' => '--',
-      ))
-      ->add('forsyningsvaerkEl', 'entity', array(
+      ])
+      ->add('forsyningsvaerkEl', 'entity', [
         'class' => 'AppBundle:Forsyningsvaerk',
-        'required' => FALSE,
+        'required' => false,
         'empty_value' => '--',
-      ))
+      ])
       ->add('divisionnavn')
       ->add('omraadenavn')
       ->add('ejerforhold')
-      ->add('segment', 'entity', array(
+      ->add('segment', 'entity', [
         'class' => 'AppBundle:Segment',
-        'required' => FALSE,
+        'required' => false,
         'empty_value' => '--',
-      ))
-      ->add('aaplusAnsvarlig', 'entity', array(
+      ])
+      ->add('aaplusAnsvarlig', 'entity', [
         'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup("Aa+"),
-        'required' => FALSE,
+        'choices' => $this->getUsersFromGroup('Aa+'),
+        'required' => false,
         'empty_value' => 'common.none',
-      ))
-      ->add('projektleder', 'entity', array(
+      ])
+      ->add('projektleder', 'entity', [
         'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup("Projektleder"),
-        'required' => FALSE,
+        'choices' => $this->getUsersFromGroup('Projektleder'),
+        'required' => false,
         'empty_value' => 'common.none',
-      ))
-      ->add('energiRaadgiver', 'entity', array(
+      ])
+      ->add('energiRaadgiver', 'entity', [
         'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup("Rådgiver"),
-        'required' => FALSE,
+        'choices' => $this->getUsersFromGroup('Rådgiver'),
+        'required' => false,
         'empty_value' => 'common.none',
-      ))
-      ->add('projekterende', 'entity', array(
+      ])
+      ->add('projekterende', 'entity', [
         'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup("Projekterende"),
-        'required' => FALSE,
+        'choices' => $this->getUsersFromGroup('Projekterende'),
+        'required' => false,
         'empty_value' => 'common.none',
-      ))
-      ->add('users', null, array(
-        'expanded' => TRUE,
-        'choices' => $this->getUsersFromGroup("Interessent"),
-        ));
+      ])
+      ->add('users', null, [
+        'expanded' => true,
+        'choices' => $this->getUsersFromGroup('Interessent'),
+        ]);
 
-    // Only show the editable status field to super admins
-    if ($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
-      $builder->add('status');
+        // Only show the editable status field to super admins
+        if ($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
+            $builder->add('status');
+        } else {
+            $builder->add('status', 'hidden', [
+        'read_only' => true,
+      ]);
+        }
+
+        //->add('users', null, array('by_reference' => false, 'expanded' => true , 'multiple' => true));
     }
-    else {
-      $builder->add('status', 'hidden', array(
-        'read_only' => TRUE
-      ));
-    }
 
-    //->add('users', null, array('by_reference' => false, 'expanded' => true , 'multiple' => true));
-  }
-
-  private function getUsersFromGroup($groupname) {
-    $em = $this->doctrine->getRepository('AppBundle:Group');
-
-    $group = $em->findOneByName($groupname);
-
-    return $group->getUsers();
-  }
-
-  /**
-   * @TODO: Missing description.
-   *
-   * @param OptionsResolver $resolver
-   * @TODO: Missing description.
-   */
-  public function configureOptions(OptionsResolver $resolver) {
-    $resolver->setDefaults(array(
+    /**
+     * @TODO: Missing description.
+     *
+     * @param OptionsResolver $resolver
+     * @TODO: Missing description.
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
       'data_class' => 'AppBundle\Entity\Bygning',
       'validation_groups' => function (FormInterface $form) {
-        $data = $form->getData();
+          $data = $form->getData();
 
-        if (BygningStatusType::DATA_VERIFICERET == $data->getStatus()) {
-          return array('Default', 'DATA_VERIFICERET');
-        }
-        else if (BygningStatusType::TILKNYTTET_RAADGIVER == $data->getStatus()) {
-          return array('Default', 'TILKNYTTET_RAADGIVER');
-        }
+          if (BygningStatusType::DATA_VERIFICERET === $data->getStatus()) {
+              return ['Default', 'DATA_VERIFICERET'];
+          } elseif (BygningStatusType::TILKNYTTET_RAADGIVER === $data->getStatus()) {
+              return ['Default', 'TILKNYTTET_RAADGIVER'];
+          }
 
-        return array('Default');
+          return ['Default'];
       },
-    ));
-  }
+    ]);
+    }
 
-  /**
-   * @TODO: Missing description.
-   *
-   * @return string
-   * @TODO: Missing description.
-   */
-  public function getName() {
-    return 'appbundle_bygning';
-  }
+    /**
+     * @TODO: Missing description.
+     *
+     * @return string
+     * @TODO: Missing description.
+     */
+    public function getName()
+    {
+        return 'appbundle_bygning';
+    }
+
+    private function getUsersFromGroup($groupname)
+    {
+        $em = $this->doctrine->getRepository('AppBundle:Group');
+
+        $group = $em->findOneByName($groupname);
+
+        return $group->getUsers();
+    }
 }

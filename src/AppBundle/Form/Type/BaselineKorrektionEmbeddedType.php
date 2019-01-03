@@ -1,7 +1,11 @@
 <?php
-/**
- * @file
- * @TODO: Missing description.
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
  */
 
 namespace AppBundle\Form\Type;
@@ -9,30 +13,28 @@ namespace AppBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-
 
 /**
- * Class BaselineKorrektionEmbeddedType
- * @package AppBundle\Form
+ * Class BaselineKorrektionEmbeddedType.
  */
-class BaselineKorrektionEmbeddedType extends AbstractType {
+class BaselineKorrektionEmbeddedType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('indvirkning', 'checkbox', ['label' => false, 'required' => false]);
+    }
 
-
-  public function buildForm(FormBuilderInterface $builder, array $options) {
-    $builder->add('indvirkning', 'checkbox', array('label' => FALSE, 'required' => FALSE));
-  }
-
-  public function configureOptions(OptionsResolver $resolver) {
-    $resolver->setDefaults(
-      array(
-        'data_class' => 'AppBundle\Entity\BaselineKorrektion'
-      )
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+      [
+        'data_class' => 'AppBundle\Entity\BaselineKorrektion',
+      ]
     );
-  }
+    }
 
-  public function getName() {
-    return 'appbundle_baselinekorrektion';
-  }
+    public function getName()
+    {
+        return 'appbundle_baselinekorrektion';
+    }
 }

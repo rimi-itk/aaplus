@@ -12,12 +12,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Pumpe;
 use AppBundle\Form\Type\PumpeType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Pumpe controller.
@@ -229,25 +227,6 @@ class PumpeController extends BaseController
     }
 
     /**
-     * Creates a form to edit a Pumpe entity.
-     *
-     * @param Pumpe $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Pumpe $entity)
-    {
-        $form = $this->createForm(new PumpeType(), $entity, [
-            'action' => $this->generateUrl('pumpe_update', ['id' => $entity->getId()]),
-            'method' => 'PUT',
-        ]);
-
-        $this->addUpdate($form, $this->generateUrl('pumpe_show', ['id' => $entity->getId()]));
-
-        return $form;
-    }
-
-    /**
      * Creates a form to delete a Pumpe entity by id.
      *
      * @param mixed $id The entity id
@@ -270,7 +249,25 @@ class PumpeController extends BaseController
                     'disabled_message' => $message,
                 ],
             ])
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    /**
+     * Creates a form to edit a Pumpe entity.
+     *
+     * @param Pumpe $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Pumpe $entity)
+    {
+        $form = $this->createForm(new PumpeType(), $entity, [
+            'action' => $this->generateUrl('pumpe_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form, $this->generateUrl('pumpe_show', ['id' => $entity->getId()]));
+
+        return $form;
     }
 }

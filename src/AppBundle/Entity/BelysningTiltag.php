@@ -53,7 +53,7 @@ class BelysningTiltag extends Tiltag
     protected function calculateSamletCo2besparelse()
     {
         return (($this->varmebesparelseGAF / 1000) * $this->getRapport()->getVarmeKgCo2MWh()
-            + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
+                + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
     }
 
     protected function calculateAnlaegsinvestering($value = null)
@@ -80,9 +80,11 @@ class BelysningTiltag extends Tiltag
     protected function calculateLevetid()
     {
         return round($this->divide(
-        $this->sum(function ($detail) { return $detail->getUdgiftSensorer() * $detail->getLevetidSensor(); }) + $this->sum('armaturvaegtning') + $this->sum('lyskildevaegtning'),
-                               $this->sum('udgiftSensorer') + $this->sum('udgiftArmaturer') + $this->sum('udgiftLyskilde')
-    ));
+            $this->sum(function ($detail) {
+                return $detail->getUdgiftSensorer() * $detail->getLevetidSensor();
+            }) + $this->sum('armaturvaegtning') + $this->sum('lyskildevaegtning'),
+            $this->sum('udgiftSensorer') + $this->sum('udgiftArmaturer') + $this->sum('udgiftLyskilde')
+        ));
     }
 
     protected function calculateMaengde()

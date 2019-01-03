@@ -16,26 +16,25 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Yaml;
 
 class CalculateCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-      ->setName('aaplus:calculate')
-      ->setDescription('Calculate entities')
-      ->addArgument(
-        'entity',
-        InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-        'What do you want to calculate? Format: «type»[:«id»]'
-      )
-      ->addOption(
-        'persist',
-        null,
-        InputOption::VALUE_NONE,
-        'If set, the calculated values will be persisted'
-      );
+            ->setName('aaplus:calculate')
+            ->setDescription('Calculate entities')
+            ->addArgument(
+                'entity',
+                InputArgument::REQUIRED | InputArgument::IS_ARRAY,
+                'What do you want to calculate? Format: «type»[:«id»]'
+            )
+            ->addOption(
+                'persist',
+                null,
+                InputOption::VALUE_NONE,
+                'If set, the calculated values will be persisted'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -69,26 +68,6 @@ class CalculateCommand extends ContainerAwareCommand
         $em->flush();
     }
 
-    private function getValues($entity)
-    {
-        $class = new \ReflectionClass($entity);
-        $getters = array_filter($class->getMethods(\ReflectionMethod::IS_PUBLIC), function ($method) {
-            return preg_match('/^get/', $method->name);
-        });
-
-        $values = [];
-
-        foreach ($getters as $getter) {
-            $name = preg_replace('/^get/', '', $getter->name);
-            $value = $getter->invoke($entity);
-            if (!\is_object($value)) {
-                $values[$name] = $value;
-            }
-        }
-
-        return $values;
-    }
-
     private function getEntities(InputInterface $input)
     {
         $entities = new ArrayCollection();
@@ -114,6 +93,26 @@ class CalculateCommand extends ContainerAwareCommand
         }
 
         return $entities;
+    }
+
+    private function getValues($entity)
+    {
+        $class = new \ReflectionClass($entity);
+        $getters = array_filter($class->getMethods(\ReflectionMethod::IS_PUBLIC), function ($method) {
+            return preg_match('/^get/', $method->name);
+        });
+
+        $values = [];
+
+        foreach ($getters as $getter) {
+            $name = preg_replace('/^get/', '', $getter->name);
+            $value = $getter->invoke($entity);
+            if (!\is_object($value)) {
+                $values[$name] = $value;
+            }
+        }
+
+        return $values;
     }
 
     private function array_diff_assoc_recursive($array1, $array2)

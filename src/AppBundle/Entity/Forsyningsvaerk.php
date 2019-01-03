@@ -1030,6 +1030,17 @@ class Forsyningsvaerk
     }
 
     /**
+     * Get navn.
+     *
+     * @return string
+     *                The navn
+     */
+    public function getNavn()
+    {
+        return $this->navn;
+    }
+
+    /**
      * Set navn.
      *
      * @param string $navn
@@ -1046,14 +1057,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get navn.
+     * Get energiform.
      *
-     * @return string
-     *                The navn
+     * @return float
+     *               The energiform
      */
-    public function getNavn()
+    public function getEnergiform()
     {
-        return $this->navn;
+        return $this->energiform;
     }
 
     /**
@@ -1073,14 +1084,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get energiform.
+     * Get noter.
      *
-     * @return float
-     *               The energiform
+     * @return string
+     *                The noter
      */
-    public function getEnergiform()
+    public function getNoter()
     {
-        return $this->energiform;
+        return $this->noter;
     }
 
     /**
@@ -1100,14 +1111,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get noter.
+     * Get noterTBeregningAfRabat.
      *
      * @return string
-     *                The noter
+     *                The noterTBeregningAfRabat
      */
-    public function getNoter()
+    public function getNoterTBeregningAfRabat()
     {
-        return $this->noter;
+        return $this->noterTBeregningAfRabat;
     }
 
     /**
@@ -1127,14 +1138,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get noterTBeregningAfRabat.
+     * Get vedForbrugOverKWh.
      *
-     * @return string
-     *                The noterTBeregningAfRabat
+     * @return float
+     *               The vedForbrugOverKWh
      */
-    public function getNoterTBeregningAfRabat()
+    public function getVedForbrugOverKWh()
     {
-        return $this->noterTBeregningAfRabat;
+        return $this->vedForbrugOverKWh;
     }
 
     /**
@@ -1154,14 +1165,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get vedForbrugOverKWh.
+     * Get pris2015.
      *
      * @return float
-     *               The vedForbrugOverKWh
+     *               The pris2015
      */
-    public function getVedForbrugOverKWh()
+    public function getPris2015()
     {
-        return $this->vedForbrugOverKWh;
+        return $this->pris2015;
     }
 
     /**
@@ -1181,14 +1192,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2015.
+     * Get pris2016.
      *
      * @return float
-     *               The pris2015
+     *               The pris2016
      */
-    public function getPris2015()
+    public function getPris2016()
     {
-        return $this->pris2015;
+        return $this->pris2016;
     }
 
     /**
@@ -1208,14 +1219,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2016.
+     * Get pris2017.
      *
      * @return float
-     *               The pris2016
+     *               The pris2017
      */
-    public function getPris2016()
+    public function getPris2017()
     {
-        return $this->pris2016;
+        return $this->pris2017;
     }
 
     /**
@@ -1235,14 +1246,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2017.
+     * Get pris2018.
      *
      * @return float
-     *               The pris2017
+     *               The pris2018
      */
-    public function getPris2017()
+    public function getPris2018()
     {
-        return $this->pris2017;
+        return $this->pris2018;
     }
 
     /**
@@ -1262,14 +1273,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2018.
+     * Get pris2019.
      *
      * @return float
-     *               The pris2018
+     *               The pris2019
      */
-    public function getPris2018()
+    public function getPris2019()
     {
-        return $this->pris2018;
+        return $this->pris2019;
     }
 
     /**
@@ -1289,14 +1300,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2019.
+     * Get pris2020.
      *
      * @return float
-     *               The pris2019
+     *               The pris2020
      */
-    public function getPris2019()
+    public function getPris2020()
     {
-        return $this->pris2019;
+        return $this->pris2020;
     }
 
     /**
@@ -1316,14 +1327,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2020.
+     * Get pris2021.
      *
      * @return float
-     *               The pris2020
+     *               The pris2021
      */
-    public function getPris2020()
+    public function getPris2021()
     {
-        return $this->pris2020;
+        return $this->pris2021;
     }
 
     /**
@@ -1343,14 +1354,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2021.
+     * Get pris2022.
      *
      * @return float
-     *               The pris2021
+     *               The pris2022
      */
-    public function getPris2021()
+    public function getPris2022()
     {
-        return $this->pris2021;
+        return $this->pris2022;
     }
 
     /**
@@ -1370,14 +1381,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2022.
+     * Get pris2023.
      *
      * @return float
-     *               The pris2022
+     *               The pris2023
      */
-    public function getPris2022()
+    public function getPris2023()
     {
-        return $this->pris2022;
+        return $this->pris2023;
     }
 
     /**
@@ -1397,14 +1408,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2023.
+     * Get pris2024.
      *
      * @return float
-     *               The pris2023
+     *               The pris2024
      */
-    public function getPris2023()
+    public function getPris2024()
     {
-        return $this->pris2023;
+        return $this->pris2024;
     }
 
     /**
@@ -1424,14 +1435,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2024.
+     * Get pris2025.
      *
      * @return float
-     *               The pris2024
+     *               The pris2025
      */
-    public function getPris2024()
+    public function getPris2025()
     {
-        return $this->pris2024;
+        return $this->pris2025;
     }
 
     /**
@@ -1451,14 +1462,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2025.
+     * Get pris2026.
      *
      * @return float
-     *               The pris2025
+     *               The pris2026
      */
-    public function getPris2025()
+    public function getPris2026()
     {
-        return $this->pris2025;
+        return $this->pris2026;
     }
 
     /**
@@ -1478,14 +1489,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2026.
+     * Get pris2027.
      *
      * @return float
-     *               The pris2026
+     *               The pris2027
      */
-    public function getPris2026()
+    public function getPris2027()
     {
-        return $this->pris2026;
+        return $this->pris2027;
     }
 
     /**
@@ -1505,14 +1516,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2027.
+     * Get pris2028.
      *
      * @return float
-     *               The pris2027
+     *               The pris2028
      */
-    public function getPris2027()
+    public function getPris2028()
     {
-        return $this->pris2027;
+        return $this->pris2028;
     }
 
     /**
@@ -1532,14 +1543,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2028.
+     * Get pris2029.
      *
      * @return float
-     *               The pris2028
+     *               The pris2029
      */
-    public function getPris2028()
+    public function getPris2029()
     {
-        return $this->pris2028;
+        return $this->pris2029;
     }
 
     /**
@@ -1559,14 +1570,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2029.
+     * Get pris2030.
      *
      * @return float
-     *               The pris2029
+     *               The pris2030
      */
-    public function getPris2029()
+    public function getPris2030()
     {
-        return $this->pris2029;
+        return $this->pris2030;
     }
 
     /**
@@ -1586,14 +1597,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2030.
+     * Get pris2031.
      *
      * @return float
-     *               The pris2030
+     *               The pris2031
      */
-    public function getPris2030()
+    public function getPris2031()
     {
-        return $this->pris2030;
+        return $this->pris2031;
     }
 
     /**
@@ -1613,14 +1624,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2031.
+     * Get pris2032.
      *
      * @return float
-     *               The pris2031
+     *               The pris2032
      */
-    public function getPris2031()
+    public function getPris2032()
     {
-        return $this->pris2031;
+        return $this->pris2032;
     }
 
     /**
@@ -1640,14 +1651,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2032.
+     * Get pris2033.
      *
      * @return float
-     *               The pris2032
+     *               The pris2033
      */
-    public function getPris2032()
+    public function getPris2033()
     {
-        return $this->pris2032;
+        return $this->pris2033;
     }
 
     /**
@@ -1667,14 +1678,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2033.
+     * Get pris2034.
      *
      * @return float
-     *               The pris2033
+     *               The pris2034
      */
-    public function getPris2033()
+    public function getPris2034()
     {
-        return $this->pris2033;
+        return $this->pris2034;
     }
 
     /**
@@ -1694,14 +1705,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2034.
+     * Get pris2035.
      *
      * @return float
-     *               The pris2034
+     *               The pris2035
      */
-    public function getPris2034()
+    public function getPris2035()
     {
-        return $this->pris2034;
+        return $this->pris2035;
     }
 
     /**
@@ -1721,14 +1732,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2035.
+     * Get pris2036.
      *
      * @return float
-     *               The pris2035
+     *               The pris2036
      */
-    public function getPris2035()
+    public function getPris2036()
     {
-        return $this->pris2035;
+        return $this->pris2036;
     }
 
     /**
@@ -1748,14 +1759,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2036.
+     * Get pris2037.
      *
      * @return float
-     *               The pris2036
+     *               The pris2037
      */
-    public function getPris2036()
+    public function getPris2037()
     {
-        return $this->pris2036;
+        return $this->pris2037;
     }
 
     /**
@@ -1775,14 +1786,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2037.
+     * Get pris2038.
      *
      * @return float
-     *               The pris2037
+     *               The pris2038
      */
-    public function getPris2037()
+    public function getPris2038()
     {
-        return $this->pris2037;
+        return $this->pris2038;
     }
 
     /**
@@ -1802,14 +1813,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2038.
+     * Get pris2039.
      *
      * @return float
-     *               The pris2038
+     *               The pris2039
      */
-    public function getPris2038()
+    public function getPris2039()
     {
-        return $this->pris2038;
+        return $this->pris2039;
     }
 
     /**
@@ -1829,14 +1840,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2039.
+     * Get pris2040.
      *
      * @return float
-     *               The pris2039
+     *               The pris2040
      */
-    public function getPris2039()
+    public function getPris2040()
     {
-        return $this->pris2039;
+        return $this->pris2040;
     }
 
     /**
@@ -1856,14 +1867,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2040.
+     * Get pris2041.
      *
      * @return float
-     *               The pris2040
+     *               The pris2041
      */
-    public function getPris2040()
+    public function getPris2041()
     {
-        return $this->pris2040;
+        return $this->pris2041;
     }
 
     /**
@@ -1883,14 +1894,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2041.
+     * Get pris2042.
      *
      * @return float
-     *               The pris2041
+     *               The pris2042
      */
-    public function getPris2041()
+    public function getPris2042()
     {
-        return $this->pris2041;
+        return $this->pris2042;
     }
 
     /**
@@ -1910,14 +1921,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2042.
+     * Get pris2043.
      *
      * @return float
-     *               The pris2042
+     *               The pris2043
      */
-    public function getPris2042()
+    public function getPris2043()
     {
-        return $this->pris2042;
+        return $this->pris2043;
     }
 
     /**
@@ -1937,14 +1948,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2043.
+     * Get pris2044.
      *
      * @return float
-     *               The pris2043
+     *               The pris2044
      */
-    public function getPris2043()
+    public function getPris2044()
     {
-        return $this->pris2043;
+        return $this->pris2044;
     }
 
     /**
@@ -1964,14 +1975,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2044.
+     * Get pris2045.
      *
      * @return float
-     *               The pris2044
+     *               The pris2045
      */
-    public function getPris2044()
+    public function getPris2045()
     {
-        return $this->pris2044;
+        return $this->pris2045;
     }
 
     /**
@@ -1991,14 +2002,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2045.
+     * Get pris2046.
      *
      * @return float
-     *               The pris2045
+     *               The pris2046
      */
-    public function getPris2045()
+    public function getPris2046()
     {
-        return $this->pris2045;
+        return $this->pris2046;
     }
 
     /**
@@ -2018,14 +2029,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2046.
+     * Get pris2047.
      *
      * @return float
-     *               The pris2046
+     *               The pris2047
      */
-    public function getPris2046()
+    public function getPris2047()
     {
-        return $this->pris2046;
+        return $this->pris2047;
     }
 
     /**
@@ -2045,14 +2056,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2047.
+     * Get pris2048.
      *
      * @return float
-     *               The pris2047
+     *               The pris2048
      */
-    public function getPris2047()
+    public function getPris2048()
     {
-        return $this->pris2047;
+        return $this->pris2048;
     }
 
     /**
@@ -2072,14 +2083,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2048.
+     * Get pris2049.
      *
      * @return float
-     *               The pris2048
+     *               The pris2049
      */
-    public function getPris2048()
+    public function getPris2049()
     {
-        return $this->pris2048;
+        return $this->pris2049;
     }
 
     /**
@@ -2099,14 +2110,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2049.
+     * Get pris2050.
      *
      * @return float
-     *               The pris2049
+     *               The pris2050
      */
-    public function getPris2049()
+    public function getPris2050()
     {
-        return $this->pris2049;
+        return $this->pris2050;
     }
 
     /**
@@ -2126,14 +2137,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2050.
+     * Get pris2051.
      *
      * @return float
-     *               The pris2050
+     *               The pris2051
      */
-    public function getPris2050()
+    public function getPris2051()
     {
-        return $this->pris2050;
+        return $this->pris2051;
     }
 
     /**
@@ -2153,14 +2164,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2051.
+     * Get pris2052.
      *
      * @return float
-     *               The pris2051
+     *               The pris2052
      */
-    public function getPris2051()
+    public function getPris2052()
     {
-        return $this->pris2051;
+        return $this->pris2052;
     }
 
     /**
@@ -2180,14 +2191,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2052.
+     * Get pris2053.
      *
      * @return float
-     *               The pris2052
+     *               The pris2053
      */
-    public function getPris2052()
+    public function getPris2053()
     {
-        return $this->pris2052;
+        return $this->pris2053;
     }
 
     /**
@@ -2207,14 +2218,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2053.
+     * Get pris2054.
      *
      * @return float
-     *               The pris2053
+     *               The pris2054
      */
-    public function getPris2053()
+    public function getPris2054()
     {
-        return $this->pris2053;
+        return $this->pris2054;
     }
 
     /**
@@ -2234,14 +2245,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2054.
+     * Get pris2055.
      *
      * @return float
-     *               The pris2054
+     *               The pris2055
      */
-    public function getPris2054()
+    public function getPris2055()
     {
-        return $this->pris2054;
+        return $this->pris2055;
     }
 
     /**
@@ -2261,14 +2272,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2055.
+     * Get pris2056.
      *
      * @return float
-     *               The pris2055
+     *               The pris2056
      */
-    public function getPris2055()
+    public function getPris2056()
     {
-        return $this->pris2055;
+        return $this->pris2056;
     }
 
     /**
@@ -2288,14 +2299,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2056.
+     * Get pris2057.
      *
      * @return float
-     *               The pris2056
+     *               The pris2057
      */
-    public function getPris2056()
+    public function getPris2057()
     {
-        return $this->pris2056;
+        return $this->pris2057;
     }
 
     /**
@@ -2315,14 +2326,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2057.
+     * Get pris2058.
      *
      * @return float
-     *               The pris2057
+     *               The pris2058
      */
-    public function getPris2057()
+    public function getPris2058()
     {
-        return $this->pris2057;
+        return $this->pris2058;
     }
 
     /**
@@ -2342,14 +2353,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2058.
+     * Get pris2059.
      *
      * @return float
-     *               The pris2058
+     *               The pris2059
      */
-    public function getPris2058()
+    public function getPris2059()
     {
-        return $this->pris2058;
+        return $this->pris2059;
     }
 
     /**
@@ -2369,14 +2380,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2059.
+     * Get pris2060.
      *
      * @return float
-     *               The pris2059
+     *               The pris2060
      */
-    public function getPris2059()
+    public function getPris2060()
     {
-        return $this->pris2059;
+        return $this->pris2060;
     }
 
     /**
@@ -2396,14 +2407,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2060.
+     * Get pris2061.
      *
      * @return float
-     *               The pris2060
+     *               The pris2061
      */
-    public function getPris2060()
+    public function getPris2061()
     {
-        return $this->pris2060;
+        return $this->pris2061;
     }
 
     /**
@@ -2423,14 +2434,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2061.
+     * Get pris2062.
      *
      * @return float
-     *               The pris2061
+     *               The pris2062
      */
-    public function getPris2061()
+    public function getPris2062()
     {
-        return $this->pris2061;
+        return $this->pris2062;
     }
 
     /**
@@ -2450,14 +2461,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2062.
+     * Get pris2063.
      *
      * @return float
-     *               The pris2062
+     *               The pris2063
      */
-    public function getPris2062()
+    public function getPris2063()
     {
-        return $this->pris2062;
+        return $this->pris2063;
     }
 
     /**
@@ -2477,14 +2488,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2063.
+     * Get pris2064.
      *
      * @return float
-     *               The pris2063
+     *               The pris2064
      */
-    public function getPris2063()
+    public function getPris2064()
     {
-        return $this->pris2063;
+        return $this->pris2064;
     }
 
     /**
@@ -2504,14 +2515,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2064.
+     * Get pris2065.
      *
      * @return float
-     *               The pris2064
+     *               The pris2065
      */
-    public function getPris2064()
+    public function getPris2065()
     {
-        return $this->pris2064;
+        return $this->pris2065;
     }
 
     /**
@@ -2531,14 +2542,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2065.
+     * Get pris2066.
      *
      * @return float
-     *               The pris2065
+     *               The pris2066
      */
-    public function getPris2065()
+    public function getPris2066()
     {
-        return $this->pris2065;
+        return $this->pris2066;
     }
 
     /**
@@ -2558,14 +2569,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2066.
+     * Get pris2067.
      *
      * @return float
-     *               The pris2066
+     *               The pris2067
      */
-    public function getPris2066()
+    public function getPris2067()
     {
-        return $this->pris2066;
+        return $this->pris2067;
     }
 
     /**
@@ -2585,14 +2596,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2067.
+     * Get pris2068.
      *
      * @return float
-     *               The pris2067
+     *               The pris2068
      */
-    public function getPris2067()
+    public function getPris2068()
     {
-        return $this->pris2067;
+        return $this->pris2068;
     }
 
     /**
@@ -2612,14 +2623,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2068.
+     * Get pris2069.
      *
      * @return float
-     *               The pris2068
+     *               The pris2069
      */
-    public function getPris2068()
+    public function getPris2069()
     {
-        return $this->pris2068;
+        return $this->pris2069;
     }
 
     /**
@@ -2639,14 +2650,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2069.
+     * Get pris2070.
      *
      * @return float
-     *               The pris2069
+     *               The pris2070
      */
-    public function getPris2069()
+    public function getPris2070()
     {
-        return $this->pris2069;
+        return $this->pris2070;
     }
 
     /**
@@ -2666,14 +2677,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2070.
+     * Get pris2071.
      *
      * @return float
-     *               The pris2070
+     *               The pris2071
      */
-    public function getPris2070()
+    public function getPris2071()
     {
-        return $this->pris2070;
+        return $this->pris2071;
     }
 
     /**
@@ -2693,14 +2704,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2071.
+     * Get pris2072.
      *
      * @return float
-     *               The pris2071
+     *               The pris2072
      */
-    public function getPris2071()
+    public function getPris2072()
     {
-        return $this->pris2071;
+        return $this->pris2072;
     }
 
     /**
@@ -2720,14 +2731,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2072.
+     * Get pris2073.
      *
      * @return float
-     *               The pris2072
+     *               The pris2073
      */
-    public function getPris2072()
+    public function getPris2073()
     {
-        return $this->pris2072;
+        return $this->pris2073;
     }
 
     /**
@@ -2747,14 +2758,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2073.
+     * Get pris2074.
      *
      * @return float
-     *               The pris2073
+     *               The pris2074
      */
-    public function getPris2073()
+    public function getPris2074()
     {
-        return $this->pris2073;
+        return $this->pris2074;
     }
 
     /**
@@ -2774,14 +2785,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2074.
+     * Get pris2075.
      *
      * @return float
-     *               The pris2074
+     *               The pris2075
      */
-    public function getPris2074()
+    public function getPris2075()
     {
-        return $this->pris2074;
+        return $this->pris2075;
     }
 
     /**
@@ -2801,14 +2812,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get pris2075.
+     * Get co2ynoter.
      *
      * @return float
-     *               The pris2075
+     *               The co2ynoter
      */
-    public function getPris2075()
+    public function getCo2Noter()
     {
-        return $this->pris2075;
+        return $this->co2Noter;
     }
 
     /**
@@ -2829,14 +2840,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2ynoter.
+     * Get co2y2015.
      *
      * @return float
-     *               The co2ynoter
+     *               The co2y2015
      */
-    public function getCo2Noter()
+    public function getCo2y2015()
     {
-        return $this->co2Noter;
+        return $this->co2y2015;
     }
 
     /**
@@ -2856,14 +2867,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2015.
+     * Get co2y2016.
      *
      * @return float
-     *               The co2y2015
+     *               The co2y2016
      */
-    public function getCo2y2015()
+    public function getCo2y2016()
     {
-        return $this->co2y2015;
+        return $this->co2y2016;
     }
 
     /**
@@ -2883,14 +2894,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2016.
+     * Get co2y2017.
      *
      * @return float
-     *               The co2y2016
+     *               The co2y2017
      */
-    public function getCo2y2016()
+    public function getCo2y2017()
     {
-        return $this->co2y2016;
+        return $this->co2y2017;
     }
 
     /**
@@ -2910,14 +2921,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2017.
+     * Get co2y2018.
      *
      * @return float
-     *               The co2y2017
+     *               The co2y2018
      */
-    public function getCo2y2017()
+    public function getCo2y2018()
     {
-        return $this->co2y2017;
+        return $this->co2y2018;
     }
 
     /**
@@ -2937,14 +2948,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2018.
+     * Get co2y2019.
      *
      * @return float
-     *               The co2y2018
+     *               The co2y2019
      */
-    public function getCo2y2018()
+    public function getCo2y2019()
     {
-        return $this->co2y2018;
+        return $this->co2y2019;
     }
 
     /**
@@ -2964,14 +2975,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2019.
+     * Get co2y2020.
      *
      * @return float
-     *               The co2y2019
+     *               The co2y2020
      */
-    public function getCo2y2019()
+    public function getCo2y2020()
     {
-        return $this->co2y2019;
+        return $this->co2y2020;
     }
 
     /**
@@ -2991,14 +3002,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2020.
+     * Get co2y2021.
      *
      * @return float
-     *               The co2y2020
+     *               The co2y2021
      */
-    public function getCo2y2020()
+    public function getCo2y2021()
     {
-        return $this->co2y2020;
+        return $this->co2y2021;
     }
 
     /**
@@ -3018,14 +3029,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2021.
+     * Get co2y2022.
      *
      * @return float
-     *               The co2y2021
+     *               The co2y2022
      */
-    public function getCo2y2021()
+    public function getCo2y2022()
     {
-        return $this->co2y2021;
+        return $this->co2y2022;
     }
 
     /**
@@ -3045,14 +3056,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2022.
+     * Get co2y2023.
      *
      * @return float
-     *               The co2y2022
+     *               The co2y2023
      */
-    public function getCo2y2022()
+    public function getCo2y2023()
     {
-        return $this->co2y2022;
+        return $this->co2y2023;
     }
 
     /**
@@ -3072,14 +3083,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2023.
+     * Get co2y2024.
      *
      * @return float
-     *               The co2y2023
+     *               The co2y2024
      */
-    public function getCo2y2023()
+    public function getCo2y2024()
     {
-        return $this->co2y2023;
+        return $this->co2y2024;
     }
 
     /**
@@ -3099,14 +3110,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2024.
+     * Get co2y2025.
      *
      * @return float
-     *               The co2y2024
+     *               The co2y2025
      */
-    public function getCo2y2024()
+    public function getCo2y2025()
     {
-        return $this->co2y2024;
+        return $this->co2y2025;
     }
 
     /**
@@ -3126,14 +3137,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2025.
+     * Get co2y2026.
      *
      * @return float
-     *               The co2y2025
+     *               The co2y2026
      */
-    public function getCo2y2025()
+    public function getCo2y2026()
     {
-        return $this->co2y2025;
+        return $this->co2y2026;
     }
 
     /**
@@ -3153,14 +3164,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2026.
+     * Get co2y2027.
      *
      * @return float
-     *               The co2y2026
+     *               The co2y2027
      */
-    public function getCo2y2026()
+    public function getCo2y2027()
     {
-        return $this->co2y2026;
+        return $this->co2y2027;
     }
 
     /**
@@ -3180,14 +3191,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2027.
+     * Get co2y2028.
      *
      * @return float
-     *               The co2y2027
+     *               The co2y2028
      */
-    public function getCo2y2027()
+    public function getCo2y2028()
     {
-        return $this->co2y2027;
+        return $this->co2y2028;
     }
 
     /**
@@ -3207,14 +3218,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2028.
+     * Get co2y2029.
      *
      * @return float
-     *               The co2y2028
+     *               The co2y2029
      */
-    public function getCo2y2028()
+    public function getCo2y2029()
     {
-        return $this->co2y2028;
+        return $this->co2y2029;
     }
 
     /**
@@ -3234,14 +3245,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2029.
+     * Get co2y2030.
      *
      * @return float
-     *               The co2y2029
+     *               The co2y2030
      */
-    public function getCo2y2029()
+    public function getCo2y2030()
     {
-        return $this->co2y2029;
+        return $this->co2y2030;
     }
 
     /**
@@ -3261,14 +3272,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2030.
+     * Get co2y2031.
      *
      * @return float
-     *               The co2y2030
+     *               The co2y2031
      */
-    public function getCo2y2030()
+    public function getCo2y2031()
     {
-        return $this->co2y2030;
+        return $this->co2y2031;
     }
 
     /**
@@ -3288,14 +3299,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2031.
+     * Get co2y2032.
      *
      * @return float
-     *               The co2y2031
+     *               The co2y2032
      */
-    public function getCo2y2031()
+    public function getCo2y2032()
     {
-        return $this->co2y2031;
+        return $this->co2y2032;
     }
 
     /**
@@ -3315,14 +3326,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2032.
+     * Get co2y2033.
      *
      * @return float
-     *               The co2y2032
+     *               The co2y2033
      */
-    public function getCo2y2032()
+    public function getCo2y2033()
     {
-        return $this->co2y2032;
+        return $this->co2y2033;
     }
 
     /**
@@ -3342,14 +3353,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2033.
+     * Get co2y2034.
      *
      * @return float
-     *               The co2y2033
+     *               The co2y2034
      */
-    public function getCo2y2033()
+    public function getCo2y2034()
     {
-        return $this->co2y2033;
+        return $this->co2y2034;
     }
 
     /**
@@ -3369,14 +3380,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2034.
+     * Get co2y2035.
      *
      * @return float
-     *               The co2y2034
+     *               The co2y2035
      */
-    public function getCo2y2034()
+    public function getCo2y2035()
     {
-        return $this->co2y2034;
+        return $this->co2y2035;
     }
 
     /**
@@ -3396,14 +3407,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2035.
+     * Get co2y2036.
      *
      * @return float
-     *               The co2y2035
+     *               The co2y2036
      */
-    public function getCo2y2035()
+    public function getCo2y2036()
     {
-        return $this->co2y2035;
+        return $this->co2y2036;
     }
 
     /**
@@ -3423,14 +3434,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2036.
+     * Get co2y2037.
      *
      * @return float
-     *               The co2y2036
+     *               The co2y2037
      */
-    public function getCo2y2036()
+    public function getCo2y2037()
     {
-        return $this->co2y2036;
+        return $this->co2y2037;
     }
 
     /**
@@ -3450,14 +3461,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2037.
+     * Get co2y2038.
      *
      * @return float
-     *               The co2y2037
+     *               The co2y2038
      */
-    public function getCo2y2037()
+    public function getCo2y2038()
     {
-        return $this->co2y2037;
+        return $this->co2y2038;
     }
 
     /**
@@ -3477,14 +3488,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2038.
+     * Get co2y2039.
      *
      * @return float
-     *               The co2y2038
+     *               The co2y2039
      */
-    public function getCo2y2038()
+    public function getCo2y2039()
     {
-        return $this->co2y2038;
+        return $this->co2y2039;
     }
 
     /**
@@ -3504,14 +3515,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2039.
+     * Get co2y2040.
      *
      * @return float
-     *               The co2y2039
+     *               The co2y2040
      */
-    public function getCo2y2039()
+    public function getCo2y2040()
     {
-        return $this->co2y2039;
+        return $this->co2y2040;
     }
 
     /**
@@ -3531,14 +3542,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2040.
+     * Get co2y2041.
      *
      * @return float
-     *               The co2y2040
+     *               The co2y2041
      */
-    public function getCo2y2040()
+    public function getCo2y2041()
     {
-        return $this->co2y2040;
+        return $this->co2y2041;
     }
 
     /**
@@ -3558,14 +3569,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2041.
+     * Get co2y2042.
      *
      * @return float
-     *               The co2y2041
+     *               The co2y2042
      */
-    public function getCo2y2041()
+    public function getCo2y2042()
     {
-        return $this->co2y2041;
+        return $this->co2y2042;
     }
 
     /**
@@ -3585,14 +3596,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2042.
+     * Get co2y2043.
      *
      * @return float
-     *               The co2y2042
+     *               The co2y2043
      */
-    public function getCo2y2042()
+    public function getCo2y2043()
     {
-        return $this->co2y2042;
+        return $this->co2y2043;
     }
 
     /**
@@ -3612,14 +3623,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2043.
+     * Get co2y2044.
      *
      * @return float
-     *               The co2y2043
+     *               The co2y2044
      */
-    public function getCo2y2043()
+    public function getCo2y2044()
     {
-        return $this->co2y2043;
+        return $this->co2y2044;
     }
 
     /**
@@ -3639,14 +3650,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2044.
+     * Get co2y2045.
      *
      * @return float
-     *               The co2y2044
+     *               The co2y2045
      */
-    public function getCo2y2044()
+    public function getCo2y2045()
     {
-        return $this->co2y2044;
+        return $this->co2y2045;
     }
 
     /**
@@ -3666,14 +3677,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2045.
+     * Get co2y2046.
      *
      * @return float
-     *               The co2y2045
+     *               The co2y2046
      */
-    public function getCo2y2045()
+    public function getCo2y2046()
     {
-        return $this->co2y2045;
+        return $this->co2y2046;
     }
 
     /**
@@ -3693,14 +3704,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2046.
+     * Get co2y2047.
      *
      * @return float
-     *               The co2y2046
+     *               The co2y2047
      */
-    public function getCo2y2046()
+    public function getCo2y2047()
     {
-        return $this->co2y2046;
+        return $this->co2y2047;
     }
 
     /**
@@ -3720,14 +3731,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2047.
+     * Get co2y2048.
      *
      * @return float
-     *               The co2y2047
+     *               The co2y2048
      */
-    public function getCo2y2047()
+    public function getCo2y2048()
     {
-        return $this->co2y2047;
+        return $this->co2y2048;
     }
 
     /**
@@ -3747,14 +3758,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2048.
+     * Get co2y2049.
      *
      * @return float
-     *               The co2y2048
+     *               The co2y2049
      */
-    public function getCo2y2048()
+    public function getCo2y2049()
     {
-        return $this->co2y2048;
+        return $this->co2y2049;
     }
 
     /**
@@ -3774,14 +3785,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2049.
+     * Get co2y2050.
      *
      * @return float
-     *               The co2y2049
+     *               The co2y2050
      */
-    public function getCo2y2049()
+    public function getCo2y2050()
     {
-        return $this->co2y2049;
+        return $this->co2y2050;
     }
 
     /**
@@ -3801,14 +3812,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2050.
+     * Get co2y2051.
      *
      * @return float
-     *               The co2y2050
+     *               The co2y2051
      */
-    public function getCo2y2050()
+    public function getCo2y2051()
     {
-        return $this->co2y2050;
+        return $this->co2y2051;
     }
 
     /**
@@ -3828,14 +3839,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2051.
+     * Get co2y2052.
      *
      * @return float
-     *               The co2y2051
+     *               The co2y2052
      */
-    public function getCo2y2051()
+    public function getCo2y2052()
     {
-        return $this->co2y2051;
+        return $this->co2y2052;
     }
 
     /**
@@ -3855,14 +3866,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2052.
+     * Get co2y2053.
      *
      * @return float
-     *               The co2y2052
+     *               The co2y2053
      */
-    public function getCo2y2052()
+    public function getCo2y2053()
     {
-        return $this->co2y2052;
+        return $this->co2y2053;
     }
 
     /**
@@ -3882,14 +3893,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2053.
+     * Get co2y2054.
      *
      * @return float
-     *               The co2y2053
+     *               The co2y2054
      */
-    public function getCo2y2053()
+    public function getCo2y2054()
     {
-        return $this->co2y2053;
+        return $this->co2y2054;
     }
 
     /**
@@ -3909,14 +3920,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2054.
+     * Get co2y2055.
      *
      * @return float
-     *               The co2y2054
+     *               The co2y2055
      */
-    public function getCo2y2054()
+    public function getCo2y2055()
     {
-        return $this->co2y2054;
+        return $this->co2y2055;
     }
 
     /**
@@ -3936,14 +3947,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2055.
+     * Get co2y2056.
      *
      * @return float
-     *               The co2y2055
+     *               The co2y2056
      */
-    public function getCo2y2055()
+    public function getCo2y2056()
     {
-        return $this->co2y2055;
+        return $this->co2y2056;
     }
 
     /**
@@ -3963,14 +3974,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2056.
+     * Get co2y2057.
      *
      * @return float
-     *               The co2y2056
+     *               The co2y2057
      */
-    public function getCo2y2056()
+    public function getCo2y2057()
     {
-        return $this->co2y2056;
+        return $this->co2y2057;
     }
 
     /**
@@ -3990,14 +4001,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2057.
+     * Get co2y2058.
      *
      * @return float
-     *               The co2y2057
+     *               The co2y2058
      */
-    public function getCo2y2057()
+    public function getCo2y2058()
     {
-        return $this->co2y2057;
+        return $this->co2y2058;
     }
 
     /**
@@ -4017,14 +4028,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2058.
+     * Get co2y2059.
      *
      * @return float
-     *               The co2y2058
+     *               The co2y2059
      */
-    public function getCo2y2058()
+    public function getCo2y2059()
     {
-        return $this->co2y2058;
+        return $this->co2y2059;
     }
 
     /**
@@ -4044,14 +4055,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2059.
+     * Get co2y2060.
      *
      * @return float
-     *               The co2y2059
+     *               The co2y2060
      */
-    public function getCo2y2059()
+    public function getCo2y2060()
     {
-        return $this->co2y2059;
+        return $this->co2y2060;
     }
 
     /**
@@ -4071,14 +4082,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2060.
+     * Get co2y2061.
      *
      * @return float
-     *               The co2y2060
+     *               The co2y2061
      */
-    public function getCo2y2060()
+    public function getCo2y2061()
     {
-        return $this->co2y2060;
+        return $this->co2y2061;
     }
 
     /**
@@ -4098,14 +4109,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2061.
+     * Get co2y2062.
      *
      * @return float
-     *               The co2y2061
+     *               The co2y2062
      */
-    public function getCo2y2061()
+    public function getCo2y2062()
     {
-        return $this->co2y2061;
+        return $this->co2y2062;
     }
 
     /**
@@ -4125,14 +4136,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2062.
+     * Get co2y2063.
      *
      * @return float
-     *               The co2y2062
+     *               The co2y2063
      */
-    public function getCo2y2062()
+    public function getCo2y2063()
     {
-        return $this->co2y2062;
+        return $this->co2y2063;
     }
 
     /**
@@ -4152,14 +4163,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2063.
+     * Get co2y2064.
      *
      * @return float
-     *               The co2y2063
+     *               The co2y2064
      */
-    public function getCo2y2063()
+    public function getCo2y2064()
     {
-        return $this->co2y2063;
+        return $this->co2y2064;
     }
 
     /**
@@ -4179,14 +4190,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2064.
+     * Get co2y2065.
      *
      * @return float
-     *               The co2y2064
+     *               The co2y2065
      */
-    public function getCo2y2064()
+    public function getCo2y2065()
     {
-        return $this->co2y2064;
+        return $this->co2y2065;
     }
 
     /**
@@ -4206,14 +4217,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2065.
+     * Get co2y2066.
      *
      * @return float
-     *               The co2y2065
+     *               The co2y2066
      */
-    public function getCo2y2065()
+    public function getCo2y2066()
     {
-        return $this->co2y2065;
+        return $this->co2y2066;
     }
 
     /**
@@ -4233,14 +4244,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2066.
+     * Get co2y2067.
      *
      * @return float
-     *               The co2y2066
+     *               The co2y2067
      */
-    public function getCo2y2066()
+    public function getCo2y2067()
     {
-        return $this->co2y2066;
+        return $this->co2y2067;
     }
 
     /**
@@ -4260,14 +4271,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2067.
+     * Get co2y2068.
      *
      * @return float
-     *               The co2y2067
+     *               The co2y2068
      */
-    public function getCo2y2067()
+    public function getCo2y2068()
     {
-        return $this->co2y2067;
+        return $this->co2y2068;
     }
 
     /**
@@ -4287,14 +4298,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2068.
+     * Get co2y2069.
      *
      * @return float
-     *               The co2y2068
+     *               The co2y2069
      */
-    public function getCo2y2068()
+    public function getCo2y2069()
     {
-        return $this->co2y2068;
+        return $this->co2y2069;
     }
 
     /**
@@ -4314,14 +4325,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2069.
+     * Get co2y2070.
      *
      * @return float
-     *               The co2y2069
+     *               The co2y2070
      */
-    public function getCo2y2069()
+    public function getCo2y2070()
     {
-        return $this->co2y2069;
+        return $this->co2y2070;
     }
 
     /**
@@ -4341,14 +4352,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2070.
+     * Get co2y2071.
      *
      * @return float
-     *               The co2y2070
+     *               The co2y2071
      */
-    public function getCo2y2070()
+    public function getCo2y2071()
     {
-        return $this->co2y2070;
+        return $this->co2y2071;
     }
 
     /**
@@ -4368,14 +4379,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2071.
+     * Get co2y2072.
      *
      * @return float
-     *               The co2y2071
+     *               The co2y2072
      */
-    public function getCo2y2071()
+    public function getCo2y2072()
     {
-        return $this->co2y2071;
+        return $this->co2y2072;
     }
 
     /**
@@ -4395,14 +4406,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2072.
+     * Get co2y2073.
      *
      * @return float
-     *               The co2y2072
+     *               The co2y2073
      */
-    public function getCo2y2072()
+    public function getCo2y2073()
     {
-        return $this->co2y2072;
+        return $this->co2y2073;
     }
 
     /**
@@ -4422,14 +4433,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2073.
+     * Get co2y2074.
      *
      * @return float
-     *               The co2y2073
+     *               The co2y2074
      */
-    public function getCo2y2073()
+    public function getCo2y2074()
     {
-        return $this->co2y2073;
+        return $this->co2y2074;
     }
 
     /**
@@ -4449,14 +4460,14 @@ class Forsyningsvaerk
     }
 
     /**
-     * Get co2y2074.
+     * Get co2y2075.
      *
      * @return float
-     *               The co2y2074
+     *               The co2y2075
      */
-    public function getCo2y2074()
+    public function getCo2y2075()
     {
-        return $this->co2y2074;
+        return $this->co2y2075;
     }
 
     /**
@@ -4473,17 +4484,6 @@ class Forsyningsvaerk
         $this->co2y2075 = $co2y2075;
 
         return $this;
-    }
-
-    /**
-     * Get co2y2075.
-     *
-     * @return float
-     *               The co2y2075
-     */
-    public function getCo2y2075()
-    {
-        return $this->co2y2075;
     }
 
     /**
@@ -4679,22 +4679,6 @@ class Forsyningsvaerk
     }
 
     /**
-     * Return price in a given year. Defaults to the current year.
-     *
-     * @param int $year
-     *                  The year. Leave empty to use current year.
-     *
-     * @return float
-     *               The price in the given year
-     */
-    public function getKrKWh($year)
-    {
-        $property = 'pris'.$year;
-
-        return isset($this->{$property}) ? $this->{$property} : 0;
-    }
-
-    /**
      * Return co2 stuff in a given year. Defaults to the current year.
      *
      * @param int $year
@@ -4720,9 +4704,28 @@ class Forsyningsvaerk
 
         $faktor = 0;
         for ($year = 1; $year <= $numberOfYears; ++$year) {
-            $faktor += $this->getKrKWh($startYear + $year - 1) / pow(1 + $configuration->getRapportKalkulationsrente(), $year);
+            $faktor += $this->getKrKWh($startYear + $year - 1) / pow(
+                1 + $configuration->getRapportKalkulationsrente(),
+                    $year
+            );
         }
 
         return $faktor;
+    }
+
+    /**
+     * Return price in a given year. Defaults to the current year.
+     *
+     * @param int $year
+     *                  The year. Leave empty to use current year.
+     *
+     * @return float
+     *               The price in the given year
+     */
+    public function getKrKWh($year)
+    {
+        $property = 'pris'.$year;
+
+        return isset($this->{$property}) ? $this->{$property} : 0;
     }
 }

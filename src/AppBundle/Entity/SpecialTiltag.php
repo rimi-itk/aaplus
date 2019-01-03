@@ -49,17 +49,17 @@ class SpecialTiltag extends Tiltag
     protected $yderligereBesparelse;
 
     protected $propertiesRequiredForCalculation = [
-    'besparelseEl',
-    'besparelseGAF',
-    'besparelseGUF',
-    'faktorForReinvesteringer',
-    'forsyningEl',
-    'forsyningVarme',
-    'levetid',
-    'primaerEnterprise',
-    'tiltagskategori',
-    'yderligereBesparelse',
-  ];
+        'besparelseEl',
+        'besparelseGAF',
+        'besparelseGUF',
+        'faktorForReinvesteringer',
+        'forsyningEl',
+        'forsyningVarme',
+        'levetid',
+        'primaerEnterprise',
+        'tiltagskategori',
+        'yderligereBesparelse',
+    ];
 
     /**
      * Constructor.
@@ -72,20 +72,9 @@ class SpecialTiltag extends Tiltag
         $this->setTitle('Specialtiltag');
     }
 
-    /**
-     * @return float
-     */
-    public function getYderligereBesparelse()
+    public function getBesparelseGUF()
     {
-        return $this->yderligereBesparelse;
-    }
-
-    /**
-     * @param float $yderligereBesparelse
-     */
-    public function setYderligereBesparelse($yderligereBesparelse)
-    {
-        $this->yderligereBesparelse = $yderligereBesparelse;
+        return $this->besparelseGUF;
     }
 
     public function setBesparelseGUF($besparelseGUF)
@@ -95,9 +84,9 @@ class SpecialTiltag extends Tiltag
         return $this;
     }
 
-    public function getBesparelseGUF()
+    public function getBesparelseGAF()
     {
-        return $this->besparelseGUF;
+        return $this->besparelseGAF;
     }
 
     public function setBesparelseGAF($besparelseGAF)
@@ -107,9 +96,9 @@ class SpecialTiltag extends Tiltag
         return $this;
     }
 
-    public function getBesparelseGAF()
+    public function getBesparelseEl()
     {
-        return $this->besparelseGAF;
+        return $this->besparelseEl;
     }
 
     public function setBesparelseEl($besparelseEl)
@@ -117,11 +106,6 @@ class SpecialTiltag extends Tiltag
         $this->besparelseEl = $besparelseEl;
 
         return $this;
-    }
-
-    public function getBesparelseEl()
-    {
-        return $this->besparelseEl;
     }
 
     /**
@@ -156,16 +140,40 @@ class SpecialTiltag extends Tiltag
         return parent::calculateSavingsForYear($year) + $this->getYderligereBesparelse();
     }
 
+    /**
+     * @return float
+     */
+    public function getYderligereBesparelse()
+    {
+        return $this->yderligereBesparelse;
+    }
+
+    /**
+     * @param float $yderligereBesparelse
+     */
+    public function setYderligereBesparelse($yderligereBesparelse)
+    {
+        $this->yderligereBesparelse = $yderligereBesparelse;
+    }
+
     protected function calculateVarmebesparelseGUF($value = null)
     {
-        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGUF : $this->fordelbesparelse($this->besparelseGUF, $this->getForsyningVarme(), 'VARME')) * $this->rapport->getFaktorPaaVarmebesparelse();
+        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGUF : $this->fordelbesparelse(
+            $this->besparelseGUF,
+                $this->getForsyningVarme(),
+            'VARME'
+        )) * $this->rapport->getFaktorPaaVarmebesparelse();
 
         return parent::calculateVarmebesparelseGUF($value);
     }
 
     protected function calculateVarmebesparelseGAF($value = null)
     {
-        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGAF : $this->fordelbesparelse($this->besparelseGAF, $this->getForsyningVarme(), 'VARME')) * $this->rapport->getFaktorPaaVarmebesparelse();
+        $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGAF : $this->fordelbesparelse(
+            $this->besparelseGAF,
+                $this->getForsyningVarme(),
+            'VARME'
+        )) * $this->rapport->getFaktorPaaVarmebesparelse();
 
         return parent::calculateVarmebesparelseGAF($value);
     }
@@ -176,8 +184,8 @@ class SpecialTiltag extends Tiltag
             $value = $this->besparelseEl;
         } else {
             $value = ($this->fordelbesparelse($this->besparelseGUF, $this->getForsyningVarme(), 'EL')
-        + $this->fordelbesparelse($this->besparelseGAF, $this->getForsyningVarme(), 'EL')
-        + $this->besparelseEl);
+                + $this->fordelbesparelse($this->besparelseGAF, $this->getForsyningVarme(), 'EL')
+                + $this->besparelseEl);
         }
 
         return parent::calculateElbesparelse($value);
@@ -186,13 +194,13 @@ class SpecialTiltag extends Tiltag
     protected function calculateSamletEnergibesparelse()
     {
         return ($this->varmebesparelseGAF + $this->varmebesparelseGUF) * $this->calculateVarmepris()
-      + $this->elbesparelse * $this->getRapport()->getElKrKWh() + $this->yderligereBesparelse;
+            + $this->elbesparelse * $this->getRapport()->getElKrKWh() + $this->yderligereBesparelse;
     }
 
     protected function calculateSamletCo2besparelse()
     {
         return ((($this->varmebesparelseGAF + $this->varmebesparelseGUF) / 1000) * $this->getRapport()->getVarmeKgCo2MWh()
-            + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
+                + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
     }
 
     protected function calculateCashFlow($numberOfYears, $yderligereBesparelseKrAar = 0)

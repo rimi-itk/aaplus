@@ -1,18 +1,32 @@
 <?php
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
 namespace AppBundle\Tests\Entity;
 
+use AppBundle\Entity\Bygning;
 use AppBundle\Entity\Configuration;
 use AppBundle\Entity\Forsyningsvaerk;
-use AppBundle\Entity\Bygning;
 use AppBundle\Entity\Rapport;
 use AppBundle\Entity\SpecialTiltag;
 use AppBundle\Entity\SpecialTiltagDetail;
 
-class TiltagDetailTest extends EntityTestCase {
-  public function test_nvPTO2() {
-    $tests = array(
-      array(
-        'variables' => array(
+/**
+ * @coversNothing
+ */
+class TiltagDetailTest extends EntityTestCase
+{
+    public function test_nvPTO2()
+    {
+        $tests = [
+      [
+        'variables' => [
           'Invest' => 13200,
           'BesparKwhVarme' => 384.73776,
           'BesparKwhEl' => 3246,
@@ -22,11 +36,11 @@ class TiltagDetailTest extends EntityTestCase {
           'Levetid' => 15,
           'FaktorReInvest' => 1,
           'SalgAfEnergibesparelse' => 0,
-        ),
+        ],
         'expected' => 65910.54549,
-      ),
-      array(
-        'variables' => array(
+      ],
+      [
+        'variables' => [
           'Invest' => 11350,
           'BesparKwhVarme' => -234.66045708,
           'BesparKwhEl' => 586.6511427,
@@ -36,11 +50,11 @@ class TiltagDetailTest extends EntityTestCase {
           'Levetid' => 15,
           'FaktorReInvest' => 1,
           'SalgAfEnergibesparelse' => 0,
-        ),
+        ],
         'expected' => 2104.661029,
-      ),
-      array(
-        'variables' => array(
+      ],
+      [
+        'variables' => [
           'Invest' => 1933.1,
           'BesparKwhVarme' => 0,
           'BesparKwhEl' => 110.2464,
@@ -50,28 +64,28 @@ class TiltagDetailTest extends EntityTestCase {
           'Levetid' => 10,
           'FaktorReInvest' => 1,
           'SalgAfEnergibesparelse' => 0,
-        ),
+        ],
         'expected' => 6.421993941587971,
-      ),
-    );
-    foreach ($tests as $test) {
-      extract($test['variables']);
-      $expected = $test['expected'];
+      ],
+    ];
+        foreach ($tests as $test) {
+            extract($test['variables']);
+            $expected = $test['expected'];
 
-      $configuration = $this->setProperties(new Configuration(), array(
+            $configuration = $this->setProperties(new Configuration(), [
         'kalkulationsrente' => 0.0292,
         'inflation' => 0.019,
         'lobetid' => 15,
         'varmeledningsevneEksistLamelmaatter' => 0.05,
-        'varmeledningsevneNyIsolering' => 0.044
-      ));
+        'varmeledningsevneNyIsolering' => 0.044,
+      ]);
 
-      $rapport = $this->setProperties(new Rapport(), array())
+            $rapport = $this->setProperties(new Rapport(), [])
                ->setConfiguration($configuration)
                ->setBygning(
-                 $this->setProperties(new Bygning(), array(
-                 ))
-                 ->setForsyningsvaerkEl($this->setProperties(new Forsyningsvaerk(), array(
+                 $this->setProperties(new Bygning(), [
+                 ])
+                 ->setForsyningsvaerkEl($this->setProperties(new Forsyningsvaerk(), [
                    'pris2015' => 1.609478,
                    'pris2016' => 1.65776234,
                    'pris2017' => 1.7074952102,
@@ -103,8 +117,8 @@ class TiltagDetailTest extends EntityTestCase {
                    'pris2043' => 3.379270918284039,
                    'pris2044' => 3.443477065731436,
                    'pris2045' => 3.508903129980333,
-                 )))
-                 ->setForsyningsvaerkVarme($this->setProperties(new Forsyningsvaerk(), array(
+                 ]))
+                 ->setForsyningsvaerkVarme($this->setProperties(new Forsyningsvaerk(), [
                    'pris2015' => 0.491,
                    'pris2016' => 0.49,
                    'pris2017' => 0.459,
@@ -136,8 +150,8 @@ class TiltagDetailTest extends EntityTestCase {
                    'pris2043' => 0.459,
                    'pris2044' => 0.459,
                    'pris2045' => 0.459,
-                 )))
-                 ->setForsyningsvaerkVand($this->setProperties(new Forsyningsvaerk(), array(
+                 ]))
+                 ->setForsyningsvaerkVand($this->setProperties(new Forsyningsvaerk(), [
                    'pris2015' => 41.64652999999999,
                    'pris2016' => 42.43781406999999,
                    'pris2017' => 43.24413253732998,
@@ -168,21 +182,20 @@ class TiltagDetailTest extends EntityTestCase {
                    'pris2042' => 69.22800077880721,
                    'pris2043' => 70.54333279360455,
                    'pris2044' => 71.88365611668303,
-                   'pris2045' => 73.24944558289999
-                 )))
+                   'pris2045' => 73.24944558289999,
+                 ]))
                );
-      $tiltag = $this->setProperties(new SpecialTiltag(), array())
+            $tiltag = $this->setProperties(new SpecialTiltag(), [])
               ->setRapport($rapport)
               ->setLevetid(15);
-      $detail = (new SpecialTiltagDetail())->setTiltag($tiltag);
-      $this->setProperties($detail, array());
+            $detail = (new SpecialTiltagDetail())->setTiltag($tiltag);
+            $this->setProperties($detail, []);
 
-      $nvPTO2 = new \ReflectionMethod($detail, 'nvPTO2');
-      $nvPTO2->setAccessible(true);
-      $actual = $nvPTO2->invoke($detail, $Invest, $BesparKwhVarme, $BesparKwhEl, $Besparm3Vand, $DogV, $Straf, $Levetid, $FaktorReInvest, $SalgAfEnergibesparelse);
+            $nvPTO2 = new \ReflectionMethod($detail, 'nvPTO2');
+            $nvPTO2->setAccessible(true);
+            $actual = $nvPTO2->invoke($detail, $Invest, $BesparKwhVarme, $BesparKwhEl, $Besparm3Vand, $DogV, $Straf, $Levetid, $FaktorReInvest, $SalgAfEnergibesparelse);
 
-      $this->assertAlmostEquals($expected, $actual, null, 0.001);
+            $this->assertAlmostEquals($expected, $actual, null, 0.001);
+        }
     }
-  }
-
 }

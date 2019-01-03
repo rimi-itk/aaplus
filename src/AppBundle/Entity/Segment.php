@@ -80,13 +80,13 @@ class Segment
     }
 
     /**
-     * Get id.
+     * Get navn.
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getNavn()
     {
-        return $this->id;
+        return $this->navn;
     }
 
     /**
@@ -104,13 +104,13 @@ class Segment
     }
 
     /**
-     * Get navn.
+     * Get forkortelse.
      *
      * @return string
      */
-    public function getNavn()
+    public function getForkortelse()
     {
-        return $this->navn;
+        return $this->forkortelse;
     }
 
     /**
@@ -128,13 +128,23 @@ class Segment
     }
 
     /**
-     * Get forkortelse.
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get magistrat.
      *
      * @return string
      */
-    public function getForkortelse()
+    public function getMagistrat()
     {
-        return $this->forkortelse;
+        return $this->magistrat;
     }
 
     /**
@@ -149,16 +159,6 @@ class Segment
         $this->magistrat = $magistrat;
 
         return $this;
-    }
-
-    /**
-     * Get magistrat.
-     *
-     * @return string
-     */
-    public function getMagistrat()
-    {
-        return $this->magistrat;
     }
 
     /**
@@ -202,20 +202,6 @@ class Segment
      *
      * @return Segment
      */
-    public function setSegmentAnsvarlig(\AppBundle\Entity\User $segmentAnsvarlig = null)
-    {
-        $this->segmentAnsvarlig = $segmentAnsvarlig;
-
-        return $this;
-    }
-
-    /**
-     * Set segmentAnsvarlig.
-     *
-     * @param \AppBundle\Entity\User $segmentAnsvarlig
-     *
-     * @return Segment
-     */
     public function removeSegmentAnsvarlig()
     {
         $this->segmentAnsvarlig = null;
@@ -231,5 +217,19 @@ class Segment
     public function getSegmentAnsvarlig()
     {
         return $this->segmentAnsvarlig;
+    }
+
+    /**
+     * Set segmentAnsvarlig.
+     *
+     * @param \AppBundle\Entity\User $segmentAnsvarlig
+     *
+     * @return Segment
+     */
+    public function setSegmentAnsvarlig(\AppBundle\Entity\User $segmentAnsvarlig = null)
+    {
+        $this->segmentAnsvarlig = $segmentAnsvarlig;
+
+        return $this;
     }
 }

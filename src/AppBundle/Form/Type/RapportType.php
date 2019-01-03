@@ -1,7 +1,11 @@
 <?php
-/**
- * @file
- * @TODO: Missing description.
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
  */
 
 namespace AppBundle\Form\Type;
@@ -13,78 +17,80 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Class RapportType
- * @package AppBundle\Form
+ * Class RapportType.
  */
 class RapportType extends AbstractType
 {
-  protected $authorizationChecker;
-  protected $rapport;
+    protected $authorizationChecker;
+    protected $rapport;
 
-// @TODO  public function __construct(AuthorizationCheckerInterface $authorizationChecker, Rapport $rapport)
-  public function __construct(AuthorizationCheckerInterface $authorizationChecker)
-  {
-    $this->authorizationChecker = $authorizationChecker;
+    // @TODO  public function __construct(AuthorizationCheckerInterface $authorizationChecker, Rapport $rapport)
+    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $this->authorizationChecker = $authorizationChecker;
 //    $this->rapport = $rapport;
-  }
+    }
 
-  /**
-   * @TODO: Missing description.
-   *
-   * @param FormBuilderInterface $builder
-   * @TODO: Missing description.
-   * @param array $options
-   * @TODO: Missing description.
-   */
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
+    /**
+     * @TODO: Missing description.
+     *
+     * @param FormBuilderInterface $builder
+     * @TODO: Missing description.
+     *
+     * @param array $options
+     * @TODO: Missing description.
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        // If there is a Baseline attached disable editing of baseline fields
+        $disabled = $this->rapport->getBygning()->getBaseline() ? 'disabled' : '';
 
-    // If there is a Baseline attached disable editing of baseline fields
-    $disabled = $this->rapport->getBygning()->getBaseline() ? 'disabled' : '';
-
-    $builder
-      ->add('datering', 'date', array(
+        $builder
+      ->add(
+          'datering',
+          'date',
+          [
         // render as a single HTML5 text box
-        'widget' => 'single_text')
+        'widget' => 'single_text', ]
       )
-      ->add('BaselineEl', null, array('disabled' => $disabled))
-      ->add('BaselineVarmeGUF', null, array('disabled' => $disabled))
-      ->add('BaselineVarmeGAF', null, array('disabled' => $disabled))
-      ->add('BaselineStrafAfkoeling', null, array('disabled' => $disabled))
-      ->add('bygning', new BygningBaselineEmbedType(), array('label' => false))
+      ->add('BaselineEl', null, ['disabled' => $disabled])
+      ->add('BaselineVarmeGUF', null, ['disabled' => $disabled])
+      ->add('BaselineVarmeGAF', null, ['disabled' => $disabled])
+      ->add('BaselineStrafAfkoeling', null, ['disabled' => $disabled])
+      ->add('bygning', new BygningBaselineEmbedType(), ['label' => false])
       ->add('faktorPaaVarmebesparelse')
       ->add('energiscreening');
 
-    if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-      $builder->add('elena');
+        if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+            $builder->add('elena');
+        }
+
+        if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
+            $builder->add('ava');
+        }
     }
 
-    if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
-      $builder->add('ava');
+    /**
+     * @TODO: Missing description.
+     *
+     * @param OptionsResolver $resolver
+     * @TODO: Missing description.
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+      'data_class' => 'AppBundle\Entity\Rapport',
+    ]);
     }
-  }
 
-  /**
-   * @TODO: Missing description.
-   *
-   * @param OptionsResolver $resolver
-   * @TODO: Missing description.
-   */
-  public function configureOptions(OptionsResolver $resolver)
-  {
-    $resolver->setDefaults(array(
-      'data_class' => 'AppBundle\Entity\Rapport'
-    ));
-  }
-
-  /**
-   * @TODO: Missing description.
-   *
-   * @return string
-   * @TODO: Missing description.
-   */
-  public function getName()
-  {
-    return 'appbundle_rapport';
-  }
+    /**
+     * @TODO: Missing description.
+     *
+     * @return string
+     * @TODO: Missing description.
+     */
+    public function getName()
+    {
+        return 'appbundle_rapport';
+    }
 }

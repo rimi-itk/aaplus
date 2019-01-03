@@ -195,16 +195,26 @@ class PumpeTiltagDetail extends TiltagDetail
     protected $kwhBesparelseVarmeFraVaerket;
 
     protected $propertiesRequiredForCalculation = [
-    'applikation',
-    'eksisterendeDrifttid',
-    'forsyningsomraade',
-    'nyDrifttid',
-    'nyttiggjortVarme',
-    'placering',
-    'prisfaktor',
-    'pumpe',
-    'pumpeID',
-  ];
+        'applikation',
+        'eksisterendeDrifttid',
+        'forsyningsomraade',
+        'nyDrifttid',
+        'nyttiggjortVarme',
+        'placering',
+        'prisfaktor',
+        'pumpe',
+        'pumpeID',
+    ];
+
+    /**
+     * Get pumpeID.
+     *
+     * @return string
+     */
+    public function getPumpeID()
+    {
+        return $this->pumpeID;
+    }
 
     /**
      * Set pumpeID.
@@ -221,13 +231,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get pumpeID.
+     * Get forsyningsomraade.
      *
      * @return string
      */
-    public function getPumpeID()
+    public function getForsyningsomraade()
     {
-        return $this->pumpeID;
+        return $this->forsyningsomraade;
     }
 
     /**
@@ -245,13 +255,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get forsyningsomraade.
+     * Get placering.
      *
      * @return string
      */
-    public function getForsyningsomraade()
+    public function getPlacering()
     {
-        return $this->forsyningsomraade;
+        return $this->placering;
     }
 
     /**
@@ -269,13 +279,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get placering.
+     * Get applikation.
      *
      * @return string
      */
-    public function getPlacering()
+    public function getApplikation()
     {
-        return $this->placering;
+        return $this->applikation;
     }
 
     /**
@@ -293,13 +303,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get applikation.
+     * Get isoleringskappe.
      *
-     * @return string
+     * @return bool
      */
-    public function getApplikation()
+    public function getIsoleringskappe()
     {
-        return $this->applikation;
+        return $this->isoleringskappe;
     }
 
     /**
@@ -317,16 +327,6 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get isoleringskappe.
-     *
-     * @return bool
-     */
-    public function getIsoleringskappe()
-    {
-        return $this->isoleringskappe;
-    }
-
-    /**
      * Get bFaktor.
      *
      * @deprecated
@@ -339,20 +339,6 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Set nyttiggjortVarme.
-     *
-     * @param \AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme $nyttiggjortVarme
-     *
-     * @return TekniskIsoleringTiltagDetail
-     */
-    public function setNyttiggjortVarme(\AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme $nyttiggjortVarme = null)
-    {
-        $this->nyttiggjortVarme = $nyttiggjortVarme;
-
-        return $this;
-    }
-
-    /**
      * Get nyttiggjortVarme.
      *
      * @return \AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme
@@ -360,6 +346,31 @@ class PumpeTiltagDetail extends TiltagDetail
     public function getNyttiggjortVarme()
     {
         return $this->nyttiggjortVarme;
+    }
+
+    /**
+     * Set nyttiggjortVarme.
+     *
+     * @param \AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme $nyttiggjortVarme
+     *
+     * @return TekniskIsoleringTiltagDetail
+     */
+    public function setNyttiggjortVarme(
+        \AppBundle\Entity\TekniskIsoleringTiltagDetail\NyttiggjortVarme $nyttiggjortVarme = null
+    ) {
+        $this->nyttiggjortVarme = $nyttiggjortVarme;
+
+        return $this;
+    }
+
+    /**
+     * Get noter.
+     *
+     * @return string
+     */
+    public function getNoter()
+    {
+        return $this->noter;
     }
 
     /**
@@ -377,13 +388,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get noter.
+     * Get eksisterendeDrifttid.
      *
-     * @return string
+     * @return int
      */
-    public function getNoter()
+    public function getEksisterendeDrifttid()
     {
-        return $this->noter;
+        return $this->eksisterendeDrifttid;
     }
 
     /**
@@ -401,13 +412,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get eksisterendeDrifttid.
+     * Get nyDrifttid.
      *
      * @return int
      */
-    public function getEksisterendeDrifttid()
+    public function getNyDrifttid()
     {
-        return $this->eksisterendeDrifttid;
+        return $this->nyDrifttid;
     }
 
     /**
@@ -425,13 +436,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyDrifttid.
+     * Get prisfaktor.
      *
-     * @return int
+     * @return string
      */
-    public function getNyDrifttid()
+    public function getPrisfaktor()
     {
-        return $this->nyDrifttid;
+        return $this->prisfaktor;
     }
 
     /**
@@ -449,13 +460,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get prisfaktor.
+     * Get pumpe.
      *
-     * @return string
+     * @return \AppBundle\Entity\Pumpe
      */
-    public function getPrisfaktor()
+    public function getPumpe()
     {
-        return $this->prisfaktor;
+        return $this->pumpe;
     }
 
     /**
@@ -473,13 +484,13 @@ class PumpeTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get pumpe.
+     * Get overskrevetPris.
      *
-     * @return \AppBundle\Entity\Pumpe
+     * @return float
      */
-    public function getPumpe()
+    public function getOverskrevetPris()
     {
-        return $this->pumpe;
+        return $this->overskrevetPris;
     }
 
     /**
@@ -496,14 +507,9 @@ class PumpeTiltagDetail extends TiltagDetail
         return $this;
     }
 
-    /**
-     * Get overskrevetPris.
-     *
-     * @return float
-     */
-    public function getOverskrevetPris()
+    public function getVarmetabIftAekvivalentRoerstoerrelse()
     {
-        return $this->overskrevetPris;
+        return $this->varmetabIftAekvivalentRoerstoerrelse;
     }
 
     public function setVarmetabIftAekvivalentRoerstoerrelse($varmetabIftAekvivalentRoerstoerrelse)
@@ -511,11 +517,6 @@ class PumpeTiltagDetail extends TiltagDetail
         $this->varmetabIftAekvivalentRoerstoerrelse = $varmetabIftAekvivalentRoerstoerrelse;
 
         return $this;
-    }
-
-    public function getVarmetabIftAekvivalentRoerstoerrelse()
-    {
-        return $this->varmetabIftAekvivalentRoerstoerrelse;
     }
 
     public function getPristillaeg()
@@ -619,29 +620,6 @@ class PumpeTiltagDetail extends TiltagDetail
         return $this->nyttiggjortVarme->getFaktor() * $this->getBesparelseVedIsoleringskappe();
     }
 
-    public function calculateSimpelTilbagebetalingstidAar()
-    {
-        // 'AS'
-        if (0 === $this->kwhBesparelseElFraVaerket && 0 === $this->kwhBesparelseVarmeFraVaerket) {
-            return 0;
-        }
-
-        return $this->divide(
-          $this->samletInvesteringInklPristillaeg,
-                           $this->kwhBesparelseElFraVaerket * $this->getRapport()->getElKrKWh() + $this->kwhBesparelseVarmeFraVaerket * $this->getRapport()->getVarmeKrKWh()
-      );
-    }
-
-    public function calculateNutidsvaerdiSetOver15AarKr()
-    {
-        // 'AT'
-        if (0 === $this->kwhBesparelseElFraVaerket && 0 === $this->kwhBesparelseVarmeFraVaerket) {
-            return 0;
-        }
-
-        return $this->nvPTO2($this->samletInvesteringInklPristillaeg, $this->kwhBesparelseVarmeFraVaerket, $this->kwhBesparelseElFraVaerket, 0, 0, 0, $this->tiltag->getLevetid(), 1, 0);
-    }
-
     public function calculateKwhBesparelseElFraVaerket()
     {
         // 'AU'
@@ -653,7 +631,11 @@ class PumpeTiltagDetail extends TiltagDetail
             return $this->elbespKWhAar;
         }
 
-        return $this->fordelbesparelse($this->varmebespIsokappeKWh, $this->tiltag->getForsyningVarme(), 'EL') + $this->elbespKWhAar;
+        return $this->fordelbesparelse(
+            $this->varmebespIsokappeKWh,
+            $this->tiltag->getForsyningVarme(),
+                'EL'
+        ) + $this->elbespKWhAar;
     }
 
     public function calculateKwhBesparelseVarmeFraVaerket()
@@ -668,6 +650,39 @@ class PumpeTiltagDetail extends TiltagDetail
         }
 
         return $this->fordelbesparelse($this->varmebespIsokappeKWh, $this->tiltag->getForsyningVarme(), 'VARME');
+    }
+
+    public function calculateSimpelTilbagebetalingstidAar()
+    {
+        // 'AS'
+        if (0 === $this->kwhBesparelseElFraVaerket && 0 === $this->kwhBesparelseVarmeFraVaerket) {
+            return 0;
+        }
+
+        return $this->divide(
+            $this->samletInvesteringInklPristillaeg,
+            $this->kwhBesparelseElFraVaerket * $this->getRapport()->getElKrKWh() + $this->kwhBesparelseVarmeFraVaerket * $this->getRapport()->getVarmeKrKWh()
+        );
+    }
+
+    public function calculateNutidsvaerdiSetOver15AarKr()
+    {
+        // 'AT'
+        if (0 === $this->kwhBesparelseElFraVaerket && 0 === $this->kwhBesparelseVarmeFraVaerket) {
+            return 0;
+        }
+
+        return $this->nvPTO2(
+            $this->samletInvesteringInklPristillaeg,
+            $this->kwhBesparelseVarmeFraVaerket,
+            $this->kwhBesparelseElFraVaerket,
+            0,
+            0,
+            0,
+            $this->tiltag->getLevetid(),
+            1,
+            0
+        );
     }
 
     private function getPris()

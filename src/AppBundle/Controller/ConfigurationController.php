@@ -12,11 +12,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Configuration;
 use AppBundle\Form\Type\ConfigurationType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Configuration controller.

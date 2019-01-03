@@ -139,13 +139,13 @@ abstract class TiltagDetail
     }
 
     /**
-     * Get id.
+     * Get ikkeelenaberettiget.
      *
-     * @return int
+     * @return bool
      */
-    final public function getId()
+    public function getIkkeElenaBerettiget()
     {
-        return $this->id;
+        return $this->ikkeElenaBerettiget;
     }
 
     /**
@@ -163,14 +163,9 @@ abstract class TiltagDetail
         return $this;
     }
 
-    /**
-     * Get ikkeelenaberettiget.
-     *
-     * @return bool
-     */
-    public function getIkkeElenaBerettiget()
+    public function getTitle()
     {
-        return $this->ikkeElenaBerettiget;
+        return $this->title;
     }
 
     public function setTitle($title)
@@ -180,9 +175,72 @@ abstract class TiltagDetail
         return $this;
     }
 
-    public function getTitle()
+    /**
+     * Get tilvalgt.
+     *
+     * @return bool
+     */
+    public function getTilvalgt()
     {
-        return $this->title;
+        return $this->tilvalgt;
+    }
+
+    /**
+     * Set tilvalgt.
+     *
+     * @param bool $tilvalgt
+     *
+     * @return TiltagDetail
+     */
+    public function setTilvalgt($tilvalgt)
+    {
+        $this->tilvalgt = $tilvalgt;
+
+        return $this;
+    }
+
+    /**
+     * Get laastAfEnergiraadgiver.
+     *
+     * @return bool
+     */
+    public function getLaastAfEnergiraadgiver()
+    {
+        return $this->laastAfEnergiraadgiver;
+    }
+
+    /**
+     * Set laastAfEnergiraadgiver.
+     *
+     * @param bool $laastAfEnergiraadgiver
+     *
+     * @return KlimaskaermTiltagDetail
+     */
+    public function setLaastAfEnergiraadgiver($laastAfEnergiraadgiver)
+    {
+        $this->laastAfEnergiraadgiver = $laastAfEnergiraadgiver;
+
+        return $this;
+    }
+
+    /**
+     * Get the rapport (convenience method).
+     *
+     * @return Rapport
+     */
+    public function getRapport()
+    {
+        return $this->getTiltag()->getRapport();
+    }
+
+    /**
+     * Get tiltag.
+     *
+     * @return \AppBundle\Entity\tiltag
+     */
+    public function getTiltag()
+    {
+        return $this->tiltag;
     }
 
     /**
@@ -206,74 +264,6 @@ abstract class TiltagDetail
     }
 
     /**
-     * Get tiltag.
-     *
-     * @return \AppBundle\Entity\tiltag
-     */
-    public function getTiltag()
-    {
-        return $this->tiltag;
-    }
-
-    /**
-     * Set tilvalgt.
-     *
-     * @param bool $tilvalgt
-     *
-     * @return TiltagDetail
-     */
-    public function setTilvalgt($tilvalgt)
-    {
-        $this->tilvalgt = $tilvalgt;
-
-        return $this;
-    }
-
-    /**
-     * Get tilvalgt.
-     *
-     * @return bool
-     */
-    public function getTilvalgt()
-    {
-        return $this->tilvalgt;
-    }
-
-    /**
-     * Set laastAfEnergiraadgiver.
-     *
-     * @param bool $laastAfEnergiraadgiver
-     *
-     * @return KlimaskaermTiltagDetail
-     */
-    public function setLaastAfEnergiraadgiver($laastAfEnergiraadgiver)
-    {
-        $this->laastAfEnergiraadgiver = $laastAfEnergiraadgiver;
-
-        return $this;
-    }
-
-    /**
-     * Get laastAfEnergiraadgiver.
-     *
-     * @return bool
-     */
-    public function getLaastAfEnergiraadgiver()
-    {
-        return $this->laastAfEnergiraadgiver;
-    }
-
-    /**
-     * Get the rapport (convenience method).
-     *
-     * @return Rapport
-     */
-    public function getRapport()
-    {
-        return $this->getTiltag()->getRapport();
-    }
-
-    /**
      * Get all files on this TiltagDetail.
      *
      * @return array
@@ -292,11 +282,6 @@ abstract class TiltagDetail
     {
     }
 
-    public function getPropertiesRequiredForCalculation()
-    {
-        return $this->propertiesRequiredForCalculation;
-    }
-
     /**
      * Check if calculating this Tiltag makes sense.
      * Some values may be required to make a meaningful calculation.
@@ -310,6 +295,11 @@ abstract class TiltagDetail
         $d = Calculation::getCalculationWarnings($this, $properties, $prefix);
 
         return Calculation::getCalculationWarnings($this, $properties, $prefix);
+    }
+
+    public function getPropertiesRequiredForCalculation()
+    {
+        return $this->propertiesRequiredForCalculation;
     }
 
     /**
@@ -329,6 +319,16 @@ abstract class TiltagDetail
         }
 
         return 0;
+    }
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    final public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -373,8 +373,17 @@ abstract class TiltagDetail
         return Calculation::fordelbesparelse($BesparKwh, $kilde, $type);
     }
 
-    protected function nvPTO2($Invest, $BesparKwhVarme, $BesparKwhEl, $Besparm3Vand, $DogV, $Straf, $Levetid, $FaktorReInvest, $SalgAfEnergibesparelse)
-    {
+    protected function nvPTO2(
+        $Invest,
+        $BesparKwhVarme,
+        $BesparKwhEl,
+        $Besparm3Vand,
+        $DogV,
+        $Straf,
+        $Levetid,
+        $FaktorReInvest,
+        $SalgAfEnergibesparelse
+    ) {
         $rapport = $this->tiltag->getRapport();
         $Kalkulationsrente = $rapport->getKalkulationsrente();
         $Inflationsfaktor = $rapport->getInflationsfaktor();
@@ -393,10 +402,16 @@ abstract class TiltagDetail
                 $AntalReinvest = floor($Lobetid / $Levetid);
 
                 if (1 === $AntalReinvest) {
-                    $Reinvest = ($Invest * $FaktorReInvest * pow(1 + $Inflation, $Levetid + 1)) / pow(1 + $Kalkulationsrente, $Levetid + 1);
+                    $Reinvest = ($Invest * $FaktorReInvest * pow(
+                        1 + $Inflation,
+                                $Levetid + 1
+                    )) / pow(1 + $Kalkulationsrente, $Levetid + 1);
                 } elseif ($AntalReinvest > 1) { // 'kan evt. forbedres til mere statisk formel aht. beregningshastigheden
                     for ($x = 1; $x <= $AntalReinvest; ++$x) {
-                        $Reinvest = $Reinvest + ($Invest * $FaktorReInvest * pow(1 + $Inflation, $Levetid * $x + 1)) / (pow(1 + $Kalkulationsrente, $Levetid * $x + 1));
+                        $Reinvest = $Reinvest + ($Invest * $FaktorReInvest * pow(
+                            1 + $Inflation,
+                                    $Levetid * $x + 1
+                        )) / (pow(1 + $Kalkulationsrente, $Levetid * $x + 1));
                     }
                 }
             }
@@ -406,13 +421,19 @@ abstract class TiltagDetail
             } elseif (0 === $Lobetid - $AntalReinvest * $Levetid) {
                 $Scrapvaerdi = 0;
             } else {
-                $Scrapvaerdi = (1 - ($Lobetid - $AntalReinvest * $Levetid) / $Levetid) * $Invest * $FaktorReInvest * pow(1 + $Inflation, $Lobetid);
+                $Scrapvaerdi = (1 - ($Lobetid - $AntalReinvest * $Levetid) / $Levetid) * $Invest * $FaktorReInvest * pow(
+                    1 + $Inflation,
+                        $Lobetid
+                );
             }
             // $Scrapvaerdi is defined as long in Excel.
             $Scrapvaerdi = round($Scrapvaerdi);
         }
 
-        return ((-$Invest + $SalgAfEnergibesparelse) / (1 + $Kalkulationsrente)) + $BesparKwhVarme * $Varmefaktor + $BesparKwhEl * $Elfaktor + $Besparm3Vand * $Vandfaktor + ($Scrapvaerdi / pow(1 + $Kalkulationsrente, $Lobetid)) + ($DogV + $Straf) * $Inflationsfaktor - $Reinvest;
+        return ((-$Invest + $SalgAfEnergibesparelse) / (1 + $Kalkulationsrente)) + $BesparKwhVarme * $Varmefaktor + $BesparKwhEl * $Elfaktor + $Besparm3Vand * $Vandfaktor + ($Scrapvaerdi / pow(
+            1 + $Kalkulationsrente,
+                    $Lobetid
+        )) + ($DogV + $Straf) * $Inflationsfaktor - $Reinvest;
     }
 
     /*

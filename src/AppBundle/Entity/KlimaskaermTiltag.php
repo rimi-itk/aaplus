@@ -53,7 +53,7 @@ class KlimaskaermTiltag extends Tiltag
     protected function calculateSamletCo2besparelse()
     {
         return (($this->varmebesparelseGAF / 1000) * $this->getRapport()->getVarmeKgCo2MWh()
-      + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
+                + ($this->elbesparelse / 1000) * $this->getRapport()->getElKgCo2MWh()) / 1000;
     }
 
     protected function calculateAnlaegsinvestering($value = null)
@@ -74,16 +74,16 @@ class KlimaskaermTiltag extends Tiltag
         }
 
         return round($this->divide(
-      $this->sum(function ($detail) {
-          // AK
-          if ($detail->getLevetidAar() > 0) {
-              return $detail->getLevetidAar() * $detail->getEnhedsprisEksklMoms() * $detail->getArealM2();
-          }
+            $this->sum(function ($detail) {
+                // AK
+                if ($detail->getLevetidAar() > 0) {
+                    return $detail->getLevetidAar() * $detail->getEnhedsprisEksklMoms() * $detail->getArealM2();
+                }
 
-          return 0;
-      }),
-      $denominator
-    ));
+                return 0;
+            }),
+            $denominator
+        ));
     }
 
     protected function calculateMaengde()

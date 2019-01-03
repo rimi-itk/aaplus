@@ -13,11 +13,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserFilterType;
 use AppBundle\Form\Type\UserType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * User controller.
@@ -43,13 +42,13 @@ class UserController extends BaseController
     {
         // initialize a query builder
         $filterBuilder = $this->get('doctrine.orm.entity_manager')
-      ->getRepository('AppBundle:User')
-      ->createQueryBuilder('u');
+            ->getRepository('AppBundle:User')
+            ->createQueryBuilder('u');
 
         $form = $this->get('form.factory')->create(new UserFilterType(), null, [
-      'action' => $this->generateUrl('user'),
-      'method' => 'GET',
-    ]);
+            'action' => $this->generateUrl('user'),
+            'method' => 'GET',
+        ]);
 
         if ($request->query->has($form->getName())) {
             $this->breadcrumbs->addItem('Søg', $this->generateUrl('user'));
@@ -65,12 +64,15 @@ class UserController extends BaseController
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-      $query,
-      $request->query->get('page', 1),
-      20
-    );
+            $query,
+            $request->query->get('page', 1),
+            20
+        );
 
-        return $this->render('AppBundle:User:index.html.twig', ['pagination' => $pagination, 'form' => $form->createView()]);
+        return $this->render(
+            'AppBundle:User:index.html.twig',
+            ['pagination' => $pagination, 'form' => $form->createView()]
+        );
     }
 
     /**
@@ -100,9 +102,9 @@ class UserController extends BaseController
         $this->reportErrors($form);
 
         return [
-      'entity' => $user,
-      'edit_form' => $form->createView(),
-    ];
+            'entity' => $user,
+            'edit_form' => $form->createView(),
+        ];
     }
 
     /**
@@ -119,9 +121,9 @@ class UserController extends BaseController
         $form = $this->createCreateForm($entity);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $form->createView(),
+        ];
     }
 
     /**
@@ -146,9 +148,9 @@ class UserController extends BaseController
         $editForm = $this->createEditForm($entity);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -185,9 +187,9 @@ class UserController extends BaseController
         $this->reportErrors($editForm);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -200,13 +202,20 @@ class UserController extends BaseController
     private function createCreateForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, [
-      'action' => $this->generateUrl('user_create'),
-      'method' => 'POST',
-    ]);
+            'action' => $this->generateUrl('user_create'),
+            'method' => 'POST',
+        ]);
 
         $this->addCreate($form, $this->generateUrl('user'));
 
         return $form;
+    }
+
+    private function reportErrors($form)
+    {
+        foreach ($form->getErrors() as $error) {
+            $this->addFlash('error', $error->getMessage());
+        }
     }
 
     /**
@@ -219,19 +228,12 @@ class UserController extends BaseController
     private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, [
-      'action' => $this->generateUrl('user_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('user_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('user'));
 
         return $form;
-    }
-
-    private function reportErrors($form)
-    {
-        foreach ($form->getErrors() as $error) {
-            $this->addFlash('error', $error->getMessage());
-        }
     }
 }

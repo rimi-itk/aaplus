@@ -1,7 +1,11 @@
 <?php
-/**
- * @file
- * @TODO: Missing description.
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
  */
 
 namespace AppBundle\Form\Type\BygningUdtraekType;
@@ -10,54 +14,55 @@ use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EmbeddedFilterTypeInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Class RapportType
- * @package AppBundle\Form
+ * Class RapportType.
  */
-class RapportUdtraekType extends AbstractType implements EmbeddedFilterTypeInterface {
+class RapportUdtraekType extends AbstractType implements EmbeddedFilterTypeInterface
+{
+    /**
+     * @TODO: Missing description.
+     *
+     * @param FormBuilderInterface $builder
+     * @TODO: Missing description.
+     *
+     * @param array $options
+     * @TODO: Missing description.
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+      ->add('datering', 'filter_date_range', ['label' => false])
+      ->add('elena', 'filter_checkbox', ['label' => false])
+      ->add('ava', 'filter_checkbox', ['label' => false]);
+    }
 
+    /**
+     * @TODO: Missing description.
+     *
+     * @param OptionsResolver $resolver
+     * @TODO: Missing description.
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+      'data_class' => 'AppBundle\Entity\Rapport',
+    ]);
+    }
 
-  /**
-   * @TODO: Missing description.
-   *
-   * @param FormBuilderInterface $builder
-   *   @TODO: Missing description.
-   * @param array $options
-   *   @TODO: Missing description.
-   */
-  public function buildForm(FormBuilderInterface $builder, array $options) {
-    $builder
-      ->add('datering', 'filter_date_range', array('label' => false))
-      ->add('elena', 'filter_checkbox', array('label' => false))
-      ->add('ava', 'filter_checkbox', array('label' => false));
-  }
+    public function getParent()
+    {
+        return 'filter_sharedable'; // this allow us to use the "add_shared" option
+    }
 
-  /**
-   * @TODO: Missing description.
-   *
-   * @param OptionsResolver $resolver
-   *   @TODO: Missing description.
-   */
-  public function configureOptions(OptionsResolver $resolver) {
-    $resolver->setDefaults(array(
-      'data_class' => 'AppBundle\Entity\Rapport'
-    ));
-  }
-
-  public function getParent()
-  {
-    return 'filter_sharedable'; // this allow us to use the "add_shared" option
-  }
-
-  /**
-   * @TODO: Missing description.
-   *
-   * @return string
-   *   @TODO: Missing description.
-   */
-  public function getName() {
-    return 'filter_rapport';
-  }
+    /**
+     * @TODO: Missing description.
+     *
+     * @return string
+     * @TODO: Missing description.
+     */
+    public function getName()
+    {
+        return 'filter_rapport';
+    }
 }

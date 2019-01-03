@@ -109,6 +109,56 @@ class Energiforsyning
         return $this->id;
     }
 
+    public function getBeskrivelse()
+    {
+        return $this->beskrivelse;
+    }
+
+    public function setBeskrivelse($beskrivelse)
+    {
+        $this->beskrivelse = $beskrivelse;
+
+        return $this;
+    }
+
+    public function getNyEnhedspris()
+    {
+        return $this->getEnhedspris() * $this->getPrisfaktor();
+    }
+
+    public function getEnhedspris()
+    {
+        $forsyningsvaerk = $this->getForsyningsvaerk();
+
+        return $forsyningsvaerk ? $forsyningsvaerk->getKrKWh($this->getRapport()->getDatering()->format('Y')) : null;
+    }
+
+    public function getForsyningsvaerk()
+    {
+        if (!$this->getRapport() || !$this->getRapport()->getBygning()) {
+            return null;
+        }
+
+        switch ($this->getNavn()) {
+            case NavnType::FJERNVARME:
+                return $this->getRapport()->getBygning()->getForsyningsvaerkVarme();
+            case NavnType::OLIEFYR:
+                return $this->getRapport()->getOlie();
+            case NavnType::TRAEPILLEFYR:
+                return $this->getRapport()->getTraepillefyr();
+            case NavnType::HOVEDFORSYNING_EL:
+            case NavnType::VARMEPUMPE:
+                return $this->getRapport()->getBygning()->getForsyningsvaerkEl();
+        }
+
+        return null;
+    }
+
+    public function getRapport()
+    {
+        return $this->rapport;
+    }
+
     /**
      * Set rapport.
      *
@@ -123,9 +173,9 @@ class Energiforsyning
         return $this;
     }
 
-    public function getRapport()
+    public function getNavn()
     {
-        return $this->rapport;
+        return $this->navn;
     }
 
     public function setNavn($navn)
@@ -135,71 +185,14 @@ class Energiforsyning
         return $this;
     }
 
-    public function getNavn()
-    {
-        return $this->navn;
-    }
-
-    public function setBeskrivelse($beskrivelse)
-    {
-        $this->beskrivelse = $beskrivelse;
-
-        return $this;
-    }
-
-    public function getBeskrivelse()
-    {
-        return $this->beskrivelse;
-    }
-
-    public function getForsyningsvaerk()
-    {
-        if (!$this->getRapport() || !$this->getRapport()->getBygning()) {
-            return null;
-        }
-
-        switch ($this->getNavn()) {
-      case NavnType::FJERNVARME:
-        return $this->getRapport()->getBygning()->getForsyningsvaerkVarme();
-      case NavnType::OLIEFYR:
-        return $this->getRapport()->getOlie();
-      case NavnType::TRAEPILLEFYR:
-        return $this->getRapport()->getTraepillefyr();
-      case NavnType::HOVEDFORSYNING_EL:
-      case NavnType::VARMEPUMPE:
-        return $this->getRapport()->getBygning()->getForsyningsvaerkEl();
-    }
-
-        return null;
-    }
-
-    public function getEnhedspris()
-    {
-        $forsyningsvaerk = $this->getForsyningsvaerk();
-
-        return $forsyningsvaerk ? $forsyningsvaerk->getKrKWh($this->getRapport()->getDatering()->format('Y')) : null;
-    }
-
-    public function setPrisfaktor($prisfaktor)
-    {
-        $this->prisfaktor = $prisfaktor;
-
-        return $this;
-    }
-
     public function getPrisfaktor()
     {
         return $this->prisfaktor ? $this->prisfaktor : 1;
     }
 
-    public function getNyEnhedspris()
+    public function setPrisfaktor($prisfaktor)
     {
-        return $this->getEnhedspris() * $this->getPrisfaktor();
-    }
-
-    public function setInternProduktioner($internProduktioner)
-    {
-        $this->internProduktioner = $internProduktioner;
+        $this->prisfaktor = $prisfaktor;
 
         return $this;
     }
@@ -214,15 +207,16 @@ class Energiforsyning
         return $this;
     }
 
+    public function calculate()
+    {
+        $this->samletVarmeeffektivitet = $this->calculateSamletVarmeeffektivitet();
+        $this->samletEleffektivitet = $this->calculateSamletEleffektivitet();
+    }
+
     public function removeInternProduktion(InternProduktion $internProduktion)
     {
         $this->internProduktioner->removeElement($internProduktion);
         $this->calculate();
-    }
-
-    public function getInternProduktioner()
-    {
-        return $this->internProduktioner;
     }
 
     public function getSamletVarmeeffektivitet()
@@ -235,16 +229,11 @@ class Energiforsyning
         return $this->samletEleffektivitet;
     }
 
-    public function calculate()
-    {
-        $this->samletVarmeeffektivitet = $this->calculateSamletVarmeeffektivitet();
-        $this->samletEleffektivitet = $this->calculateSamletEleffektivitet();
-    }
-
     /*
      * Additional setter and getter to make automatic English singularization behave.
      * Symfony can thus get from internProduktions to internProduktion.
      */
+
     public function setInternProduktions($internProduktioner)
     {
         return $this->setInternProduktioner($internProduktioner);
@@ -253,6 +242,18 @@ class Energiforsyning
     public function getInternProduktions()
     {
         return $this->getInternProduktioner();
+    }
+
+    public function getInternProduktioner()
+    {
+        return $this->internProduktioner;
+    }
+
+    public function setInternProduktioner($internProduktioner)
+    {
+        $this->internProduktioner = $internProduktioner;
+
+        return $this;
     }
 
     private function calculateSamletVarmeeffektivitet()

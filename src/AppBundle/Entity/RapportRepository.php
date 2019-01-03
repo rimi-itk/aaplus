@@ -82,53 +82,53 @@ class RapportRepository extends BaseRepository
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select('r', 'b')
-      ->from('AppBundle:Rapport', 'r')
-      ->leftJoin('r.bygning', 'b')
-      ->leftJoin('b.segment', 's');
+            ->from('AppBundle:Rapport', 'r')
+            ->leftJoin('r.bygning', 'b')
+            ->leftJoin('b.segment', 's');
 
         if (!empty($search['elena'])) {
             $qb->andWhere('r.elena = :elena')
-        ->setParameter('elena', $search['elena']);
+                ->setParameter('elena', $search['elena']);
         }
 
         if (null !== $search['ava']) {
             $qb->andWhere('r.ava = :ava')
-        ->setParameter('ava', $search['ava']);
+                ->setParameter('ava', $search['ava']);
         }
 
         if (!empty($search['datering'])) {
             $qb->andWhere('r.datering LIKE :datering')
-        ->setParameter('datering', $search['datering'].'%');
+                ->setParameter('datering', $search['datering'].'%');
         }
 
         if (!empty($search['navn'])) {
             $qb->andWhere('b.navn LIKE :navn')
-        ->setParameter('navn', '%'.$search['navn'].'%');
+                ->setParameter('navn', '%'.$search['navn'].'%');
         }
 
         if (!empty($search['adresse'])) {
             $qb->andWhere('b.adresse LIKE :adresse')
-        ->setParameter('adresse', '%'.$search['adresse'].'%');
+                ->setParameter('adresse', '%'.$search['adresse'].'%');
         }
 
         if (!empty($search['postnummer'])) {
             $qb->andWhere('b.postnummer = :postnummer')
-        ->setParameter('postnummer', $search['postnummer']);
+                ->setParameter('postnummer', $search['postnummer']);
         }
 
         if (!empty($search['status'])) {
             $qb->andWhere('b.status = :status')
-        ->setParameter('status', $search['status']);
+                ->setParameter('status', $search['status']);
         }
 
         if (!empty($search['version'])) {
             $qb->andWhere('r.version = :version')
-        ->setParameter('version', $search['version']);
+                ->setParameter('version', $search['version']);
         }
 
         if (!empty($search['segment'])) {
             $qb->andWhere('b.segment = :segment')
-        ->setParameter('segment', $search['segment']);
+                ->setParameter('segment', $search['segment']);
         }
 
         $this->limitQueryToUserAccess($user, $qb);
@@ -151,10 +151,10 @@ class RapportRepository extends BaseRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('t')
-      ->from('AppBundle\Entity\Tiltag', 't')
-      ->where('t INSTANCE OF AppBundle\Entity\PumpeTiltag')
-      ->andWhere('t.rapport IN (:rapport)')
-      ->setParameter('rapport', $rapport);
+            ->from('AppBundle\Entity\Tiltag', 't')
+            ->where('t INSTANCE OF AppBundle\Entity\PumpeTiltag')
+            ->andWhere('t.rapport IN (:rapport)')
+            ->setParameter('rapport', $rapport);
 
         $query = $qb->getQuery();
 

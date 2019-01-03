@@ -12,16 +12,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Baseline;
 use AppBundle\Entity\BaselineKorrektion;
-use AppBundle\Entity\Bygning;
 use AppBundle\Entity\Rapport;
 use AppBundle\Form\BaselineType;
 use AppBundle\Form\Type\BaselineKorrektionOverviewType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Baseline controller.
@@ -64,8 +61,14 @@ class BaselineController extends BaseController
         if ($rapport) {
             $this->setRapportBreadcrumbs($rapport);
         } else {
-            $this->breadcrumbs->addItem($baseline->getBygning(), $this->generateUrl('bygning_show', ['id' => $baseline->getBygning()->getId()]));
-            $this->breadcrumbs->addItem('appbundle.bygning.baseline', $this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
+            $this->breadcrumbs->addItem(
+                $baseline->getBygning(),
+                $this->generateUrl('bygning_show', ['id' => $baseline->getBygning()->getId()])
+            );
+            $this->breadcrumbs->addItem(
+                'appbundle.bygning.baseline',
+                $this->generateUrl('baseline_show', ['id' => $baseline->getId()])
+            );
         }
 
         if (!$baseline) {
@@ -79,10 +82,10 @@ class BaselineController extends BaseController
         }
 
         return [
-      'entity' => $baseline,
-      'korrektioner' => $korrektioner,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $baseline,
+            'korrektioner' => $korrektioner,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -107,10 +110,12 @@ class BaselineController extends BaseController
         }
 
         return [
-      'entity' => $baseline,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $baseline,
+            'edit_form' => $editForm->createView(),
+        ];
     }
+
+    //---------------- Baseline Korrektion -------------------//
 
     /**
      * Displays a form to edit an existing Baseline entity.
@@ -127,7 +132,10 @@ class BaselineController extends BaseController
             $this->setRapportBreadcrumbs($rapport);
         } else {
             $this->breadcrumbs->addItem($bygning, $this->generateUrl('bygning_show', ['id' => $bygning->getId()]));
-            $this->breadcrumbs->addItem('appbundle.bygning.baseline', $this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
+            $this->breadcrumbs->addItem(
+                'appbundle.bygning.baseline',
+                $this->generateUrl('baseline_show', ['id' => $baseline->getId()])
+            );
         }
         $this->breadcrumbs->addItem('common.edit');
 
@@ -146,11 +154,11 @@ class BaselineController extends BaseController
         $editForm = $this->createEditForm($baseline);
 
         return [
-      'graddage' => $graddage,
-      'entity' => $baseline,
-      'edit_form' => $editForm->createView(),
-      'graddage_normal' => $GDNormalAar,
-    ];
+            'graddage' => $graddage,
+            'entity' => $baseline,
+            'edit_form' => $editForm->createView(),
+            'graddage_normal' => $GDNormalAar,
+        ];
     }
 
     /**
@@ -162,8 +170,14 @@ class BaselineController extends BaseController
      */
     public function updateAction(Request $request, Baseline $baseline)
     {
-        $this->breadcrumbs->addItem($baseline->getBygning(), $this->generateUrl('bygning_show', ['id' => $baseline->getBygning()->getId()]));
-        $this->breadcrumbs->addItem('appbundle.bygning.baseline', $this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
+        $this->breadcrumbs->addItem(
+            $baseline->getBygning(),
+            $this->generateUrl('bygning_show', ['id' => $baseline->getBygning()->getId()])
+        );
+        $this->breadcrumbs->addItem(
+            'appbundle.bygning.baseline',
+            $this->generateUrl('baseline_show', ['id' => $baseline->getId()])
+        );
         $this->breadcrumbs->addItem('common.edit');
 
         if (!$baseline) {
@@ -192,14 +206,12 @@ class BaselineController extends BaseController
         $graddage = $em->getRepository('AppBundle:GraddageFordeling')->findAll();
 
         return [
-      'graddage' => $graddage,
-      'entity' => $baseline,
-      'edit_form' => $editForm->createView(),
-      'graddage_normal' => $GDNormalAar,
-    ];
+            'graddage' => $graddage,
+            'entity' => $baseline,
+            'edit_form' => $editForm->createView(),
+            'graddage_normal' => $GDNormalAar,
+        ];
     }
-
-    //---------------- Baseline Korrektion -------------------//
 
     /**
      * Creates a new BaselineKorrektion entity.
@@ -221,7 +233,10 @@ class BaselineController extends BaseController
 
             $this->addFlash('success', 'baselinekorrektioner.confirmation.created');
 
-            return $this->redirect($this->generateUrl('baselinekorrektion_edit', ['id' => $baselineKorrektion->getId()]));
+            return $this->redirect($this->generateUrl(
+                'baselinekorrektion_edit',
+                ['id' => $baselineKorrektion->getId()]
+            ));
         }
 
         throw $this->createNotFoundException('Unable to find Baseline entity.');
@@ -241,7 +256,10 @@ class BaselineController extends BaseController
         // Add Rapport path.
         $this->breadcrumbs->addItem('Rapporter', $this->generateUrl('rapport'));
         $this->breadcrumbs->addItem($rapport, $this->generateUrl('rapport_show', ['id' => $rapport->getId()]));
-        $this->breadcrumbs->addItem('appbundle.bygning.baseline', $this->generateUrl('rapport_edit', ['id' => $rapport->getId()]));
+        $this->breadcrumbs->addItem(
+            'appbundle.bygning.baseline',
+            $this->generateUrl('rapport_edit', ['id' => $rapport->getId()])
+        );
     }
 
     /**
@@ -254,9 +272,9 @@ class BaselineController extends BaseController
     private function createOverviewForm(Baseline $baseline)
     {
         $form = $this->createForm(new BaselineKorrektionOverviewType(), $baseline, [
-      'action' => $this->generateUrl('baseline_overview_update', ['id' => $baseline->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('baseline_overview_update', ['id' => $baseline->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
 
@@ -273,9 +291,9 @@ class BaselineController extends BaseController
     private function createEditForm(Baseline $baseline)
     {
         $form = $this->createForm(new BaselineType(), $baseline, [
-      'action' => $this->generateUrl('baseline_update', ['id' => $baseline->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('baseline_update', ['id' => $baseline->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
 

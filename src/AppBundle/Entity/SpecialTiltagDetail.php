@@ -44,34 +44,14 @@ class SpecialTiltagDetail extends TiltagDetail
      */
     protected $filepath;
 
-    public function setKommentar($kommentar)
-    {
-        $this->kommentar = $kommentar;
-    }
-
     public function getKommentar()
     {
         return $this->kommentar;
     }
 
-    /**
-     * Sets filepath.
-     *
-     * @param UploadedFile $filepath
-     */
-    public function setFilepath(UploadedFile $filepath = null)
+    public function setKommentar($kommentar)
     {
-        $this->filepath = $filepath;
-    }
-
-    /**
-     * Get filepath.
-     *
-     * @return UploadedFile
-     */
-    public function getFilepath()
-    {
-        return $this->filepath;
+        $this->kommentar = $kommentar;
     }
 
     /**
@@ -87,6 +67,26 @@ class SpecialTiltagDetail extends TiltagDetail
     public function getAllFiles()
     {
         return $this->getFilepath() ? $this->getFilepath() : null;
+    }
+
+    /**
+     * Get filepath.
+     *
+     * @return UploadedFile
+     */
+    public function getFilepath()
+    {
+        return $this->filepath;
+    }
+
+    /**
+     * Sets filepath.
+     *
+     * @param UploadedFile $filepath
+     */
+    public function setFilepath(UploadedFile $filepath = null)
+    {
+        $this->filepath = $filepath;
     }
 
     public function handleUploads($manager)

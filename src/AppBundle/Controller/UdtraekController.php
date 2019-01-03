@@ -13,14 +13,13 @@ namespace AppBundle\Controller;
 use AppBundle\DataExport\ExcelExport;
 use AppBundle\Form\Type\BygningUdtraekType;
 use DateTime;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Routing\Annotation\Route;
 use Yavin\Symfony\Controller\InitControllerInterface;
 
 /**
@@ -68,13 +67,13 @@ class UdtraekController extends BaseController implements InitControllerInterfac
 
         // initialize a query builder
         $filterBuilder = $this->get('doctrine.orm.entity_manager')
-      ->getRepository('AppBundle:Bygning')
-      ->createQueryBuilder('e');
+            ->getRepository('AppBundle:Bygning')
+            ->createQueryBuilder('e');
 
         $form = $this->get('form.factory')->create(new BygningUdtraekType(), null, [
-      'action' => $this->generateUrl('udtraek'),
-      'method' => 'GET',
-    ]);
+            'action' => $this->generateUrl('udtraek'),
+            'method' => 'GET',
+        ]);
 
         if ($request->query->has($form->getName())) {
             // manually bind values from the request
@@ -88,7 +87,10 @@ class UdtraekController extends BaseController implements InitControllerInterfac
             $spec = $request->query->get('_timestamp');
 
             try {
-                $timestamp = DateTime::createFromFormat('Y-m-d', $spec['year'].'-'.$spec['month'].'-'.$spec['day']);
+                $timestamp = DateTime::createFromFormat(
+                    'Y-m-d',
+                    $spec['year'].'-'.$spec['month'].'-'.$spec['day']
+                );
                 if (false !== $timestamp) {
                     $timestamp->setTime(0, 0, 0);
 
@@ -111,18 +113,18 @@ class UdtraekController extends BaseController implements InitControllerInterfac
         }
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-        $query,
-        $request->query->get('page', 1) /*page number*/,
-        10 // limit per page
-      );
+            $query,
+            $request->query->get('page', 1) /*page number*/,
+            10 // limit per page
+        );
 
         return $this->render('AppBundle:Udtraek:index.html.twig', [
-        'pagination' => $pagination,
-        'form' => $form->createView(),
-        'columns' => $columns,
-        'types' => $types,
-        'type' => $type,
-      ]);
+            'pagination' => $pagination,
+            'form' => $form->createView(),
+            'columns' => $columns,
+            'types' => $types,
+            'type' => $type,
+        ]);
     }
 
     /**
@@ -225,7 +227,10 @@ class UdtraekController extends BaseController implements InitControllerInterfac
             }
         }
 
-        return ExcelExport::generateTwoDimensionalExcelResponse($results, 'udtraek--'.$field.'-pr-aar--'.date('d-m-Y_Hi').'.xlsx');
+        return ExcelExport::generateTwoDimensionalExcelResponse(
+            $results,
+            'udtraek--'.$field.'-pr-aar--'.date('d-m-Y_Hi').'.xlsx'
+        );
     }
 
     /**
@@ -314,48 +319,10 @@ class UdtraekController extends BaseController implements InitControllerInterfac
             }
         }
 
-        return ExcelExport::generateTwoDimensionalExcelResponse($results, 'udtraek--'.$field.'-'.$baseline.'-diff-pr-aar--'.date('d-m-Y_Hi').'.xlsx');
-    }
-
-    private function export(array $result, $format, $columns, $types, $type)
-    {
-        $filename = 'bygninger--'.date('d-m-Y_Hi').'.'.$format;
-
-        $streamer = $this->container->get('aaplus.exporter.bygning_stream');
-        $streamer->setConfig([
-      'columns' => $columns,
-      'types' => $types,
-      'type' => $type,
-    ]);
-
-        switch ($format) {
-      case 'csv':
-        $contentType = 'text/csv';
-
-        break;
-      case 'xlsx':
-        $contentType = 'application/vnd.ms-excel';
-
-        break;
-    }
-
-        $response = new StreamedResponse();
-        $response->headers->add([
-      'Content-type' => $contentType,
-      'Content-disposition' => 'attachment; filename="'.$filename.'"',
-      'Cache-control' => 'max-age=0',
-    ]);
-
-        $response->setCallback(function () use ($result, $streamer, $format) {
-            $streamer->start('php://output', $format);
-            $streamer->header();
-            foreach ($result as $item) {
-                $streamer->item($item);
-            }
-            $streamer->end();
-        });
-
-        return $response;
+        return ExcelExport::generateTwoDimensionalExcelResponse(
+            $results,
+            'udtraek--'.$field.'-'.$baseline.'-diff-pr-aar--'.date('d-m-Y_Hi').'.xlsx'
+        );
     }
 
     /**
@@ -366,8 +333,8 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     private function indexAtTimeAction(Request $request, Form $form, DateTime $timestamp, $_format)
     {
         $entities = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bygning')
-              ->setContainer($this->container)
-              ->findAtTime($timestamp, $form);
+            ->setContainer($this->container)
+            ->findAtTime($timestamp, $form);
 
         $columns = $this->getColumnGroupsInfo($request);
         $types = $this->getTypesInfo($request);
@@ -378,51 +345,38 @@ class UdtraekController extends BaseController implements InitControllerInterfac
         }
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-        $entities,
-        $request->query->get('page', 1) /*page number*/,
-        10 // limit per page
-      );
+            $entities,
+            $request->query->get('page', 1) /*page number*/,
+            10 // limit per page
+        );
 
         return $this->render('AppBundle:Udtraek:index.html.twig', [
-        'pagination' => $pagination,
-        'form' => $form->createView(),
-        'columns' => $columns,
-        'types' => $types,
-        'type' => $type,
-        'timestamp' => $timestamp,
-      ]);
+            'pagination' => $pagination,
+            'form' => $form->createView(),
+            'columns' => $columns,
+            'types' => $types,
+            'type' => $type,
+            'timestamp' => $timestamp,
+        ]);
     }
 
     private function getColumnGroupsInfo(Request $request)
     {
         $groups = [
-      'name' => '_columns',
-      'groups' => [],
-    ];
+            'name' => '_columns',
+            'groups' => [],
+        ];
         $values = $request->query->get($groups['name']);
         $names = [
-      UdtraekColumnGroups::ALT,
-      UdtraekColumnGroups::BYGNINGSINFORMATION,
-      UdtraekColumnGroups::BASELINEINFORMATION,
-      UdtraekColumnGroups::AA_SCREENINGSINFORMATION,
-      UdtraekColumnGroups::BESPARELSESINFORMATION,
-      UdtraekColumnGroups::OEKONOMI,
-    ];
+            UdtraekColumnGroups::ALT,
+            UdtraekColumnGroups::BYGNINGSINFORMATION,
+            UdtraekColumnGroups::BASELINEINFORMATION,
+            UdtraekColumnGroups::AA_SCREENINGSINFORMATION,
+            UdtraekColumnGroups::BESPARELSESINFORMATION,
+            UdtraekColumnGroups::OEKONOMI,
+        ];
         foreach ($names as $name) {
             $groups['groups'][$name] = isset($values[$name]) && !empty($values[$name]);
-        }
-
-        return $groups;
-    }
-
-    private function getColumnGroups(Request $request)
-    {
-        $info = $this->getColumnGroupsInfo($request);
-        $groups = [];
-        foreach ($info['groups'] as $name => $value) {
-            if ($value) {
-                $groups[$name] = $name;
-            }
         }
 
         return $groups;
@@ -431,17 +385,17 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     private function getTypesInfo(Request $request)
     {
         $types = [
-      'name' => '_entity',
-      'types' => [],
-    ];
+            'name' => '_entity',
+            'types' => [],
+        ];
         $value = $request->query->get($types['name'], UdtraekType::BYGNING);
         if (!$value) {
             $value = UdtraekType::BYGNING;
         }
         $names = [
-      UdtraekType::BYGNING,
-      UdtraekType::TILTAG,
-    ];
+            UdtraekType::BYGNING,
+            UdtraekType::TILTAG,
+        ];
         foreach ($names as $name) {
             $types['types'][$name] = ($name === $value);
         }
@@ -459,6 +413,60 @@ class UdtraekController extends BaseController implements InitControllerInterfac
         }
 
         return UdtraekType::BYGNING;
+    }
+
+    private function export(array $result, $format, $columns, $types, $type)
+    {
+        $filename = 'bygninger--'.date('d-m-Y_Hi').'.'.$format;
+
+        $streamer = $this->container->get('aaplus.exporter.bygning_stream');
+        $streamer->setConfig([
+            'columns' => $columns,
+            'types' => $types,
+            'type' => $type,
+        ]);
+
+        switch ($format) {
+            case 'csv':
+                $contentType = 'text/csv';
+
+                break;
+            case 'xlsx':
+                $contentType = 'application/vnd.ms-excel';
+
+                break;
+        }
+
+        $response = new StreamedResponse();
+        $response->headers->add([
+            'Content-type' => $contentType,
+            'Content-disposition' => 'attachment; filename="'.$filename.'"',
+            'Cache-control' => 'max-age=0',
+        ]);
+
+        $response->setCallback(function () use ($result, $streamer, $format) {
+            $streamer->start('php://output', $format);
+            $streamer->header();
+            foreach ($result as $item) {
+                $streamer->item($item);
+            }
+            $streamer->end();
+        });
+
+        return $response;
+    }
+
+    private function getColumnGroups(Request $request)
+    {
+        $info = $this->getColumnGroupsInfo($request);
+        $groups = [];
+        foreach ($info['groups'] as $name => $value) {
+            if ($value) {
+                $groups[$name] = $name;
+            }
+        }
+
+        return $groups;
     }
 }
 

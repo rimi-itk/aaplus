@@ -120,7 +120,9 @@ class LoadExcelRapport extends LoadData
                 for ($index = \ord('H'); $index <= \ord('V'); $index += 6) {
                     if ($row[\chr($index)] && $row[\chr($index + 1)]) {
                         $columnMapping = [];
-                        $columnMapping[\chr($index - 1)] = ['navn', function ($value) { return $value ? $value : ''; }];
+                        $columnMapping[\chr($index - 1)] = ['navn', function ($value) {
+                            return $value ? $value : '';
+                        }];
                         $columnMapping[\chr($index)] = 'fordeling';
                         $columnMapping[\chr($index + 1)] = 'effektivitet';
                         $columnMapping[\chr($index + 2)] = ['prisgrundlag', function ($value) {
@@ -373,20 +375,26 @@ class LoadExcelRapport extends LoadData
         'O' => 'Anvendelse',
         'P' => ['Bruttoetageareal', 'integer'],
         'Q' => 'Maalertype',
-        'R' => ['forsyningsvaerkVand', function ($value) { return $this->getEntityReference('forsyningsvaerk', $value); }],
+        'R' => ['forsyningsvaerkVand', function ($value) {
+            return $this->getEntityReference('forsyningsvaerk', $value);
+        }],
         // 'S' => 'Vand_InstNr',
         // 'T' => 'Vand_MaalerNr',
         // 'U' => 'Vand_Qn',
         'V' => 'kundenummer',
         'W' => 'kode',
-        'X' => ['forsyningsvaerkVarme', function ($value) { return $this->getEntityReference('forsyningsvaerk', $value); }],
+        'X' => ['forsyningsvaerkVarme', function ($value) {
+            return $this->getEntityReference('forsyningsvaerk', $value);
+        }],
         'Y' => 'kundenr_1',
         'Z' => 'kode_1',
         'AA' => 'MaalerskifteAFV',
         'AB' => 'AFVInstnr_1',
         // 'AC' => 'Varme_MaalerNr',
         // 'AD' => 'Varme_Qn',
-        'AE' => ['forsyningsvaerkEl', function ($value) { return $this->getEntityReference('forsyningsvaerk', $value); }],
+        'AE' => ['forsyningsvaerkEl', function ($value) {
+            return $this->getEntityReference('forsyningsvaerk', $value);
+        }],
         'AF' => 'Instnr',
         // 'AG' => 'El_MaalerNr',
         'AH' => 'kundenr_NRGI',
@@ -778,7 +786,9 @@ class LoadExcelRapport extends LoadData
       'Q' => 'lokale_antal',
       'R' => 'drifttidTAar',
       // 'S' => '',
-      'T' => ['lyskilde', function ($value) { return $this->getEntityReference('lyskilde', $value); }],
+      'T' => ['lyskilde', function ($value) {
+          return $this->getEntityReference('lyskilde', $value);
+      }],
       // 'U' => '',
       // 'V' => '',
       'W' => 'lyskildeStkArmatur',
@@ -842,7 +852,9 @@ class LoadExcelRapport extends LoadData
       'AM' => 'reduktionAfDrifttid',
       'AO' => 'standardinvestArmaturKrStk',
       'AP' => 'standardinvestLyskildeKrStk',
-      'AQ' => ['nyLyskilde', function ($value) { return $this->getEntityReference('lyskilde', $value); }],
+      'AQ' => ['nyLyskilde', function ($value) {
+          return $this->getEntityReference('lyskilde', $value);
+      }],
       // 'AR' => ''
       // 'AS' => ''
       'AT' => 'nyLyskildeStkArmatur',
@@ -1035,14 +1047,18 @@ class LoadExcelRapport extends LoadData
       'L' => 'forsyningsomraade',
       'M' => 'placering',
       'N' => 'applikation',
-      'N' => ['applikation', function ($value, $row) { return $this->getEntityReference('PumpeTiltagDetailApplikation', $value); }],
+      'N' => ['applikation', function ($value, $row) {
+          return $this->getEntityReference('PumpeTiltagDetailApplikation', $value);
+      }],
       'O' => 'isoleringskappe',
       'P' => 'bFaktor',
       'Q' => 'noter',
       'R' => 'eksisterendeDrifttid',
       'S' => 'nyDrifttid',
       'T' => 'prisfaktor',
-      'U' => ['pumpe', function ($value, $row) { return $this->getEntityReference('pumpe', $value); }],
+      'U' => ['pumpe', function ($value, $row) {
+          return $this->getEntityReference('pumpe', $value);
+      }],
       // 'V' => '',
       // 'W' => '',
       // 'X' => '',
@@ -1112,7 +1128,9 @@ class LoadExcelRapport extends LoadData
       'V' => 'tUdeC',
       'W' => 'tOpvarmningTimerAar',
       'X' => 'yderligereBesparelserPct',
-      'AA' => ['klimaskaerm', function ($value) { return $this->getEntityReference('klimaskaerm', $value); }],
+      'AA' => ['klimaskaerm', function ($value) {
+          return $this->getEntityReference('klimaskaerm', $value);
+      }],
       'AC' => 'prisfaktor',
       'AG' => 'noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet',
       'AJ' => 'levetidAar',
@@ -1158,7 +1176,9 @@ class LoadExcelRapport extends LoadData
         $columnMapping = [
       'H' => ['laastAfEnergiraadgiver', $this->isSelected],
       // Only one SolcelleTiltagDetail exists and it is selected
-      'I' => ['tilvalgt', function () { return true; }],
+      'I' => ['tilvalgt', function () {
+          return true;
+      }],
       'J' => 'anlaegsstoerrelseKWp',
       'K' => 'produktionKWh',
       'L' => 'tilNettetPct',
@@ -1171,7 +1191,9 @@ class LoadExcelRapport extends LoadData
       'AC' => 'energiprisstigningPctPrAar',
       'AD' => 'salgsprisFoerste10AarKrKWh',
       'AE' => 'salgsprisEfter10AarKrKWh',
-      'AF' => ['solcelle', function ($value, $row) { return $this->manager->getRepository('AppBundle:Solcelle')->findByKWp($row['J']); }],
+      'AF' => ['solcelle', function ($value, $row) {
+          return $this->manager->getRepository('AppBundle:Solcelle')->findByKWp($row['J']);
+      }],
 
       // Calculated
       'M' => 'tilEgetForbrugPct',
@@ -1249,7 +1271,9 @@ class LoadExcelRapport extends LoadData
     {
         $cells = array_filter($sheet->rangeToArray($range, null, false, false, true), $includeRow);
         $columns = $this->getColumns($cells, $columnMapping);
-        $inputColumns = array_filter($columns, function ($column) { return !$column['calculated']; });
+        $inputColumns = array_filter($columns, function ($column) {
+            return !$column['calculated'];
+        });
 
         $data = [];
         $inputData = [];
@@ -1302,9 +1326,13 @@ class LoadExcelRapport extends LoadData
         $formats = getenv('DUMP_UNITTEST_DATA') ? preg_split('/\s*,\s*/', getenv('DUMP_UNITTEST_DATA')) : [];
 
         $calculatedCells = $this->getCalculatedCells($cells, $sheet);
-        $inputColumns = array_filter($columns, function ($column) { return !$column['calculated']; });
+        $inputColumns = array_filter($columns, function ($column) {
+            return !$column['calculated'];
+        });
         $inputData = [];
-        $calculatedColumns = array_filter($columns, function ($column) { return $column['calculated']; });
+        $calculatedColumns = array_filter($columns, function ($column) {
+            return $column['calculated'];
+        });
         $calculatedData = [];
 
         foreach ($cells as $rowId => $row) {

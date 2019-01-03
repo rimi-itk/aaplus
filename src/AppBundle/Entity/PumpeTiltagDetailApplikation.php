@@ -47,13 +47,13 @@ class PumpeTiltagDetailApplikation
     }
 
     /**
-     * Get id.
+     * Get navn.
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getNavn()
     {
-        return $this->id;
+        return $this->navn;
     }
 
     /**
@@ -71,12 +71,12 @@ class PumpeTiltagDetailApplikation
     }
 
     /**
-     * Get navn.
+     * Get id.
      *
-     * @return string
+     * @return int
      */
-    public function getNavn()
+    public function getId()
     {
-        return $this->navn;
+        return $this->id;
     }
 }

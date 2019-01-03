@@ -125,6 +125,11 @@ class Bilag
         $this->id = $id;
     }
 
+    public function getRapport()
+    {
+        return $this->rapport;
+    }
+
     /**
      * Set rapport.
      *
@@ -139,9 +144,9 @@ class Bilag
         return $this;
     }
 
-    public function getRapport()
+    public function getTiltag()
     {
-        return $this->rapport;
+        return $this->tiltag;
     }
 
     /**
@@ -156,31 +161,6 @@ class Bilag
         $this->tiltag = $tiltag;
 
         return $this;
-    }
-
-    public function getTiltag()
-    {
-        return $this->tiltag;
-    }
-
-    /**
-     * Sets filepath.
-     *
-     * @param UploadedFile $filepath
-     */
-    public function setFilepath(UploadedFile $filepath = null)
-    {
-        $this->filepath = $filepath;
-    }
-
-    /**
-     * Get filepath.
-     *
-     * @return UploadedFile
-     */
-    public function getFilepath()
-    {
-        return $this->filepath;
     }
 
     /**
@@ -199,5 +179,25 @@ class Bilag
         if (\is_object($fileInfo) && $fileInfo instanceof UploadedFile) {
             $manager->markEntityToUpload($this, $fileInfo);
         }
+    }
+
+    /**
+     * Get filepath.
+     *
+     * @return UploadedFile
+     */
+    public function getFilepath()
+    {
+        return $this->filepath;
+    }
+
+    /**
+     * Sets filepath.
+     *
+     * @param UploadedFile $filepath
+     */
+    public function setFilepath(UploadedFile $filepath = null)
+    {
+        $this->filepath = $filepath;
     }
 }

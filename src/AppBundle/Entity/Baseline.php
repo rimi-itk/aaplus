@@ -11,13 +11,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Annotations\Calculated;
-use AppBundle\DBAL\Types\Baseline\ArealKildePrimaerType;
-use AppBundle\DBAL\Types\Baseline\ArealKildeSekundaerType;
-use AppBundle\DBAL\Types\Baseline\ElKildePrimaerType;
-use AppBundle\DBAL\Types\Baseline\ElKildeSekundaerType;
 use AppBundle\DBAL\Types\Baseline\GUFFastsaettesEfterType;
-use AppBundle\DBAL\Types\Baseline\VarmeKildePrimaerType;
-use AppBundle\DBAL\Types\Baseline\VarmeKildeSekundaerType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
@@ -885,28 +879,6 @@ class Baseline
     /**
      * @return mixed
      */
-    public function getBygning()
-    {
-        return $this->bygning;
-    }
-
-    /**
-     * Set bygning.
-     *
-     * @param \AppBundle\Entity\Bygning $bygning
-     *
-     * @return Baseline
-     */
-    public function setBygning(\AppBundle\Entity\Bygning $bygning = null)
-    {
-        $this->bygning = $bygning;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getKorrektioner()
     {
         return $this->korrektioner;
@@ -924,22 +896,6 @@ class Baseline
         $this->korrektioner[] = $korrektion;
 
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEloKategori()
-    {
-        return $this->eloKategori;
-    }
-
-    /**
-     * @param mixed $eloKategori
-     */
-    public function setEloKategori($eloKategori)
-    {
-        $this->eloKategori = $eloKategori;
     }
 
     /**
@@ -1377,22 +1333,6 @@ class Baseline
     /**
      * @return float
      */
-    public function getElBaselineFastsatForEjendom()
-    {
-        return $this->elBaselineFastsatForEjendom;
-    }
-
-    /**
-     * @param float $elBaselineFastsatForEjendom
-     */
-    public function setElBaselineFastsatForEjendom($elBaselineFastsatForEjendom)
-    {
-        $this->elBaselineFastsatForEjendom = $elBaselineFastsatForEjendom;
-    }
-
-    /**
-     * @return float
-     */
     public function getElBaselineNoegletalForEjendom()
     {
         return $this->elBaselineNoegletalForEjendom;
@@ -1537,8 +1477,9 @@ class Baseline
     /**
      * @param string $varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter
      */
-    public function setVarmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter($varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter)
-    {
+    public function setVarmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter(
+        $varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter
+    ) {
         $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter = $varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter;
     }
 
@@ -1553,8 +1494,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -1569,8 +1511,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -1585,8 +1528,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -1865,22 +1809,6 @@ class Baseline
     /**
      * @return float
      */
-    public function getVarmeForbrugsdataPrimaerGennemsnitKlimakorrigeret()
-    {
-        return $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret;
-    }
-
-    /**
-     * @param float $varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret
-     */
-    public function setVarmeForbrugsdataPrimaerGennemsnitKlimakorrigeret($varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret)
-    {
-        $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret = $varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret;
-    }
-
-    /**
-     * @return float
-     */
     public function getVarmeForbrugsdataPrimaerNoegletal()
     {
         return $this->varmeForbrugsdataPrimaerNoegletal;
@@ -2033,8 +1961,9 @@ class Baseline
     /**
      * @param string $varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter
      */
-    public function setVarmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter($varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter)
-    {
+    public function setVarmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter(
+        $varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter
+    ) {
         $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter = $varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter;
     }
 
@@ -2049,8 +1978,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -2065,8 +1995,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -2081,8 +2012,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust
      */
-    public function setVarmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust($varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust)
-    {
+    public function setVarmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust(
+        $varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust
+    ) {
         $this->varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust = $varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust;
     }
 
@@ -2289,8 +2221,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret
      */
-    public function setVarmeForbrugsdataSekundaer1ForbrugKlimakorrigeret($varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret)
-    {
+    public function setVarmeForbrugsdataSekundaer1ForbrugKlimakorrigeret(
+        $varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret
+    ) {
         $this->varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret = $varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret;
     }
 
@@ -2305,8 +2238,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret
      */
-    public function setVarmeForbrugsdataSekundaer2ForbrugKlimakorrigeret($varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret)
-    {
+    public function setVarmeForbrugsdataSekundaer2ForbrugKlimakorrigeret(
+        $varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret
+    ) {
         $this->varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret = $varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret;
     }
 
@@ -2321,8 +2255,9 @@ class Baseline
     /**
      * @param float $varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret
      */
-    public function setVarmeForbrugsdataSekundaer3ForbrugKlimakorrigeret($varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret)
-    {
+    public function setVarmeForbrugsdataSekundaer3ForbrugKlimakorrigeret(
+        $varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret
+    ) {
         $this->varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret = $varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret;
     }
 
@@ -2361,22 +2296,6 @@ class Baseline
     /**
      * @return float
      */
-    public function getVarmeForbrugsdataSekundaerGennemsnitKlimakorrigeret()
-    {
-        return $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret;
-    }
-
-    /**
-     * @param float $varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret
-     */
-    public function setVarmeForbrugsdataSekundaerGennemsnitKlimakorrigeret($varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret)
-    {
-        $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret = $varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret;
-    }
-
-    /**
-     * @return float
-     */
     public function getVarmeForbrugsdataSekundaerNoegletal()
     {
         return $this->varmeForbrugsdataSekundaerNoegletal;
@@ -2404,38 +2323,6 @@ class Baseline
     public function setVarmeForbrugsdataSekundaerNoter($varmeForbrugsdataSekundaerNoter)
     {
         $this->varmeForbrugsdataSekundaerNoter = $varmeForbrugsdataSekundaerNoter;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVarmeGAFForbrug()
-    {
-        return $this->varmeGAFForbrug;
-    }
-
-    /**
-     * @param float $varmeGAFForbrug
-     */
-    public function setVarmeGAFForbrug($varmeGAFForbrug)
-    {
-        $this->varmeGAFForbrug = $varmeGAFForbrug;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVarmeGUFForbrug()
-    {
-        return $this->varmeGUFForbrug;
-    }
-
-    /**
-     * @param float $varmeGUFForbrug
-     */
-    public function setVarmeGUFForbrug($varmeGUFForbrug)
-    {
-        $this->varmeGUFForbrug = $varmeGUFForbrug;
     }
 
     /**
@@ -2505,30 +2392,6 @@ class Baseline
     /**
      * @return float
      */
-    public function getElBaselineFastsatForEjendomKorrigeret()
-    {
-        return $this->elBaselineFastsatForEjendomKorrigeret;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVarmeGAFForbrugKorrigeret()
-    {
-        return $this->varmeGAFForbrugKorrigeret;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVarmeGUFForbrugKorrigeret()
-    {
-        return $this->varmeGUFForbrugKorrigeret;
-    }
-
-    /**
-     * @return float
-     */
     public function getVarmeBaselineFastsatForEjendomKorrigeret()
     {
         return $this->varmeBaselineFastsatForEjendomKorrigeret;
@@ -2548,14 +2411,6 @@ class Baseline
     public function setVarmeStrafafkoelingsafgiftKorrektion($varmeStrafafkoelingsafgiftKorrektion)
     {
         $this->varmeStrafafkoelingsafgiftKorrektion = $varmeStrafafkoelingsafgiftKorrektion;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVarmeStrafafkoelingsafgiftKorrigeret()
-    {
-        return $this->varmeStrafafkoelingsafgiftKorrigeret;
     }
 
     /**
@@ -2582,10 +2437,6 @@ class Baseline
         return $this->varmeGUFForbrugKorrektion;
     }
 
-    ///
-    // Calculations
-    ///
-
     /**
      * Calculate the entity.
      *
@@ -2594,45 +2445,161 @@ class Baseline
     public function calculate($GDNormalAar = null)
     {
         // El
-        $this->elForbrugsdataPrimaerGennemsnit = $this->calculateAverageOfThree($this->elForbrugsdataPrimaer1Forbrug, $this->elForbrugsdataPrimaer2Forbrug, $this->elForbrugsdataPrimaer3Forbrug);
+        $this->elForbrugsdataPrimaerGennemsnit = $this->calculateAverageOfThree(
+            $this->elForbrugsdataPrimaer1Forbrug,
+            $this->elForbrugsdataPrimaer2Forbrug,
+            $this->elForbrugsdataPrimaer3Forbrug
+        );
         $this->elForbrugsdataPrimaerNoegetal = $this->calculateElForbrugsdataPrimaerNoegetal();
-        $this->elForbrugsdataSekundaerGennemsnit = $this->calculateAverageOfThree($this->elForbrugsdataSekundaer1Forbrug, $this->elForbrugsdataSekundaer2Forbrug, $this->elForbrugsdataSekundaer3Forbrug);
+        $this->elForbrugsdataSekundaerGennemsnit = $this->calculateAverageOfThree(
+            $this->elForbrugsdataSekundaer1Forbrug,
+            $this->elForbrugsdataSekundaer2Forbrug,
+            $this->elForbrugsdataSekundaer3Forbrug
+        );
         $this->elForbrugsdataSekundaerNoegetal = $this->calculateElForbrugsdataSekundaerNoegetal();
         $this->elBaselineNoegletalForEjendom = $this->calculateElBaselineNoegletalForEjendom();
 
         // Varme
-        $this->varmeForbrugsdataPrimaer1GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataPrimaer1Forbrug, $this->varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataPrimaer2GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataPrimaer2Forbrug, $this->varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataPrimaer3GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataPrimaer3Forbrug, $this->varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataPrimaer1GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataPrimaer1Forbrug, $this->varmeForbrugsdataPrimaer1GUFRegAar);
-        $this->varmeForbrugsdataPrimaer2GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataPrimaer2Forbrug, $this->varmeForbrugsdataPrimaer2GUFRegAar);
-        $this->varmeForbrugsdataPrimaer3GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataPrimaer3Forbrug, $this->varmeForbrugsdataPrimaer3GUFRegAar);
-        $this->varmeForbrugsdataPrimaer1GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataPrimaer1GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataPrimaer1GDPeriode);
-        $this->varmeForbrugsdataPrimaer2GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataPrimaer2GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataPrimaer2GDPeriode);
-        $this->varmeForbrugsdataPrimaer3GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataPrimaer3GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataPrimaer3GDPeriode);
-        $this->varmeForbrugsdataPrimaer1ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataPrimaer1GUFRegAar, $this->varmeForbrugsdataPrimaer1GAFnormal);
-        $this->varmeForbrugsdataPrimaer2ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataPrimaer2GUFRegAar, $this->varmeForbrugsdataPrimaer2GAFnormal);
-        $this->varmeForbrugsdataPrimaer3ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataPrimaer3GUFRegAar, $this->varmeForbrugsdataPrimaer3GAFnormal);
-        $this->varmeForbrugsdataPrimaerGAFGennemsnit = $this->calculateAverageOfThree($this->varmeForbrugsdataPrimaer1GAFnormal, $this->varmeForbrugsdataPrimaer2GAFnormal, $this->varmeForbrugsdataPrimaer3GAFnormal);
-        $this->varmeForbrugsdataPrimaerGUFGennemsnit = $this->calculateAverageOfThree($this->varmeForbrugsdataPrimaer1GUFRegAar, $this->varmeForbrugsdataPrimaer2GUFRegAar, $this->varmeForbrugsdataPrimaer3GUFRegAar);
-        $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret = $this->calculateAverageOfThree($this->varmeForbrugsdataPrimaer1ForbrugKlimakorrigeret, $this->varmeForbrugsdataPrimaer2ForbrugKlimakorrigeret, $this->varmeForbrugsdataPrimaer3ForbrugKlimakorrigeret);
+        $this->varmeForbrugsdataPrimaer1GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataPrimaer1Forbrug,
+            $this->varmeForbrugsdataPrimaer1SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataPrimaer2GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataPrimaer2Forbrug,
+            $this->varmeForbrugsdataPrimaer2SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataPrimaer3GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataPrimaer3Forbrug,
+            $this->varmeForbrugsdataPrimaer3SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataPrimaer1GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataPrimaer1Forbrug,
+            $this->varmeForbrugsdataPrimaer1GUFRegAar
+        );
+        $this->varmeForbrugsdataPrimaer2GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataPrimaer2Forbrug,
+            $this->varmeForbrugsdataPrimaer2GUFRegAar
+        );
+        $this->varmeForbrugsdataPrimaer3GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataPrimaer3Forbrug,
+            $this->varmeForbrugsdataPrimaer3GUFRegAar
+        );
+        $this->varmeForbrugsdataPrimaer1GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataPrimaer1GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataPrimaer1GDPeriode
+        );
+        $this->varmeForbrugsdataPrimaer2GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataPrimaer2GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataPrimaer2GDPeriode
+        );
+        $this->varmeForbrugsdataPrimaer3GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataPrimaer3GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataPrimaer3GDPeriode
+        );
+        $this->varmeForbrugsdataPrimaer1ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataPrimaer1GUFRegAar,
+            $this->varmeForbrugsdataPrimaer1GAFnormal
+        );
+        $this->varmeForbrugsdataPrimaer2ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataPrimaer2GUFRegAar,
+            $this->varmeForbrugsdataPrimaer2GAFnormal
+        );
+        $this->varmeForbrugsdataPrimaer3ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataPrimaer3GUFRegAar,
+            $this->varmeForbrugsdataPrimaer3GAFnormal
+        );
+        $this->varmeForbrugsdataPrimaerGAFGennemsnit = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataPrimaer1GAFnormal,
+            $this->varmeForbrugsdataPrimaer2GAFnormal,
+            $this->varmeForbrugsdataPrimaer3GAFnormal
+        );
+        $this->varmeForbrugsdataPrimaerGUFGennemsnit = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataPrimaer1GUFRegAar,
+            $this->varmeForbrugsdataPrimaer2GUFRegAar,
+            $this->varmeForbrugsdataPrimaer3GUFRegAar
+        );
+        $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataPrimaer1ForbrugKlimakorrigeret,
+            $this->varmeForbrugsdataPrimaer2ForbrugKlimakorrigeret,
+            $this->varmeForbrugsdataPrimaer3ForbrugKlimakorrigeret
+        );
         $this->varmeForbrugsdataPrimaerNoegletal = $this->calculateVarmeForbrugsdataNoegletal($this->getVarmeForbrugsdataPrimaerGennemsnitKlimakorrigeret());
 
-        $this->varmeForbrugsdataSekundaer1GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataSekundaer1Forbrug, $this->varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataSekundaer2GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataSekundaer2Forbrug, $this->varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataSekundaer3GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar($this->varmeForbrugsdataSekundaer3Forbrug, $this->varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust, $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter);
-        $this->varmeForbrugsdataSekundaer1GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataSekundaer1Forbrug, $this->varmeForbrugsdataSekundaer1GUFRegAar);
-        $this->varmeForbrugsdataSekundaer2GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataSekundaer2Forbrug, $this->varmeForbrugsdataSekundaer2GUFRegAar);
-        $this->varmeForbrugsdataSekundaer3GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar($this->varmeForbrugsdataSekundaer3Forbrug, $this->varmeForbrugsdataSekundaer3GUFRegAar);
-        $this->varmeForbrugsdataSekundaer1GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataSekundaer1GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataSekundaer1GDPeriode);
-        $this->varmeForbrugsdataSekundaer2GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataSekundaer2GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataSekundaer2GDPeriode);
-        $this->varmeForbrugsdataSekundaer3GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal($this->varmeForbrugsdataSekundaer3GAFRegAar, $GDNormalAar, $this->varmeForbrugsdataSekundaer3GDPeriode);
-        $this->varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataSekundaer1GUFRegAar, $this->varmeForbrugsdataSekundaer1GAFnormal);
-        $this->varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataSekundaer2GUFRegAar, $this->varmeForbrugsdataSekundaer2GAFnormal);
-        $this->varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret($this->varmeForbrugsdataSekundaer3GUFRegAar, $this->varmeForbrugsdataSekundaer3GAFnormal);
-        $this->varmeForbrugsdataSekundaerGAFGennemsnit = $this->calculateAverageOfThree($this->varmeForbrugsdataSekundaer1GAFnormal, $this->varmeForbrugsdataSekundaer2GAFnormal, $this->varmeForbrugsdataSekundaer3GAFnormal);
-        $this->varmeForbrugsdataSekundaerGUFGennemsnit = $this->calculateAverageOfThree($this->varmeForbrugsdataSekundaer1GUFRegAar, $this->varmeForbrugsdataSekundaer2GUFRegAar, $this->varmeForbrugsdataSekundaer3GUFRegAar);
-        $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret = $this->calculateAverageOfThree($this->varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret, $this->varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret, $this->varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret);
+        $this->varmeForbrugsdataSekundaer1GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataSekundaer1Forbrug,
+            $this->varmeForbrugsdataSekundaer1SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataSekundaer2GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataSekundaer2Forbrug,
+            $this->varmeForbrugsdataSekundaer2SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataSekundaer3GUFRegAar = $this->calculateVarmeForbrugsdataGUFRegAar(
+            $this->varmeForbrugsdataSekundaer3Forbrug,
+            $this->varmeForbrugsdataSekundaer3SamletVarmeforbrugJuniJuliAugust,
+            $this->varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter
+        );
+        $this->varmeForbrugsdataSekundaer1GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataSekundaer1Forbrug,
+            $this->varmeForbrugsdataSekundaer1GUFRegAar
+        );
+        $this->varmeForbrugsdataSekundaer2GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataSekundaer2Forbrug,
+            $this->varmeForbrugsdataSekundaer2GUFRegAar
+        );
+        $this->varmeForbrugsdataSekundaer3GAFRegAar = $this->calculateVarmeForbrugsdataGAFRegAar(
+            $this->varmeForbrugsdataSekundaer3Forbrug,
+            $this->varmeForbrugsdataSekundaer3GUFRegAar
+        );
+        $this->varmeForbrugsdataSekundaer1GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataSekundaer1GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataSekundaer1GDPeriode
+        );
+        $this->varmeForbrugsdataSekundaer2GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataSekundaer2GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataSekundaer2GDPeriode
+        );
+        $this->varmeForbrugsdataSekundaer3GAFnormal = $this->calculateVarmeForbrugsdataGAFNormal(
+            $this->varmeForbrugsdataSekundaer3GAFRegAar,
+            $GDNormalAar,
+            $this->varmeForbrugsdataSekundaer3GDPeriode
+        );
+        $this->varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataSekundaer1GUFRegAar,
+            $this->varmeForbrugsdataSekundaer1GAFnormal
+        );
+        $this->varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataSekundaer2GUFRegAar,
+            $this->varmeForbrugsdataSekundaer2GAFnormal
+        );
+        $this->varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret = $this->calculateVarmeForbrugsdataForbrugKlimakorrigeret(
+            $this->varmeForbrugsdataSekundaer3GUFRegAar,
+            $this->varmeForbrugsdataSekundaer3GAFnormal
+        );
+        $this->varmeForbrugsdataSekundaerGAFGennemsnit = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataSekundaer1GAFnormal,
+            $this->varmeForbrugsdataSekundaer2GAFnormal,
+            $this->varmeForbrugsdataSekundaer3GAFnormal
+        );
+        $this->varmeForbrugsdataSekundaerGUFGennemsnit = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataSekundaer1GUFRegAar,
+            $this->varmeForbrugsdataSekundaer2GUFRegAar,
+            $this->varmeForbrugsdataSekundaer3GUFRegAar
+        );
+        $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret = $this->calculateAverageOfThree(
+            $this->varmeForbrugsdataSekundaer1ForbrugKlimakorrigeret,
+            $this->varmeForbrugsdataSekundaer2ForbrugKlimakorrigeret,
+            $this->varmeForbrugsdataSekundaer3ForbrugKlimakorrigeret
+        );
         $this->varmeForbrugsdataSekundaerNoegletal = $this->calculateVarmeForbrugsdataNoegletal($this->getVarmeForbrugsdataSekundaerGennemsnitKlimakorrigeret());
 
         $this->varmeBaselineFastsatForEjendom = $this->calculateVarmeBaselineFastsatForEjendom();
@@ -2656,72 +2623,37 @@ class Baseline
     }
 
     /**
-     * Calculate varmeStrafafkoelingsafgiftKorrigeret.
+     * Calculates the average of three values if set.
+     *
+     * @param float $value1
+     * @param float $value2
+     * @param float $value3
      *
      * @return null|float
      */
-    public function calculateVarmeStrafafkoelingsafgiftKorrigeret()
+    public function calculateAverageOfThree($value1, $value2, $value3)
     {
-        $this->varmeStrafafkoelingsafgiftKorrektion = null === $this->varmeStrafafkoelingsafgiftKorrektion ? 0 : $this->varmeStrafafkoelingsafgiftKorrektion;
+        $sum = 0.0;
+        $number = 0;
 
-        return $this->varmeStrafafkoelingsafgift + $this->varmeStrafafkoelingsafgiftKorrektion;
-    }
-
-    /**
-     * Calculate elBaselineFastsatForEjendomKorrigeret.
-     *
-     * @return null|float
-     */
-    public function calculateElBaselineFastsatForEjendomKorrigeret()
-    {
-        $this->elBaselineFastsatForEjendomKorrektion = 0;
-        if (!empty($this->korrektioner)) {
-            foreach ($this->korrektioner as $k) {
-                if ($k->getIndvirkning()) {
-                    $this->elBaselineFastsatForEjendomKorrektion += $k->getKorrektionEl();
-                }
-            }
+        if (isset($value1)) {
+            ++$number;
+            $sum += $value1;
+        }
+        if (isset($value2)) {
+            ++$number;
+            $sum += $value2;
+        }
+        if (isset($value3)) {
+            ++$number;
+            $sum += $value3;
         }
 
-        return $this->getElBaselineFastsatForEjendom() + $this->elBaselineFastsatForEjendomKorrektion;
-    }
-
-    /**
-     * Calculate varmeGAFForbrugKorrigeret.
-     *
-     * @return null|float
-     */
-    public function calculateVarmeGAFForbrugKorrigeret()
-    {
-        $this->varmeGAFForbrugKorrektion = 0;
-        if (!empty($this->korrektioner)) {
-            foreach ($this->korrektioner as $k) {
-                if ($k->getIndvirkning()) {
-                    $this->varmeGAFForbrugKorrektion += $k->getKorrektionGAF();
-                }
-            }
+        if (0 === $number) {
+            return null;
         }
 
-        return $this->getVarmeGAFForbrug() + $this->varmeGAFForbrugKorrektion;
-    }
-
-    /**
-     * Calculate varmeGAFForbrugKorrigeret.
-     *
-     * @return null|float
-     */
-    public function calculateVarmeGUFForbrugKorrigeret()
-    {
-        $this->varmeGUFForbrugKorrektion = 0;
-        if (!empty($this->korrektioner)) {
-            foreach ($this->korrektioner as $k) {
-                if ($k->getIndvirkning()) {
-                    $this->varmeGUFForbrugKorrektion += $k->getKorrektionGUF();
-                }
-            }
-        }
-
-        return $this->getVarmeGUFForbrug() + $this->varmeGUFForbrugKorrektion;
+        return $sum / $number;
     }
 
     /**
@@ -2801,8 +2733,11 @@ class Baseline
      *
      * @return null|float
      */
-    public function calculateVarmeForbrugsdataGUFRegAar($forbrugUkorrigeret, $samletVarmeforbrugJuniJuliAugust, $GUFFastsaettesEfterType)
-    {
+    public function calculateVarmeForbrugsdataGUFRegAar(
+        $forbrugUkorrigeret,
+        $samletVarmeforbrugJuniJuliAugust,
+        $GUFFastsaettesEfterType
+    ) {
         if (!isset($forbrugUkorrigeret)) {
             return null;
         }
@@ -2812,6 +2747,22 @@ class Baseline
         }
 
         return $samletVarmeforbrugJuniJuliAugust / 3 * 12;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEloKategori()
+    {
+        return $this->eloKategori;
+    }
+
+    /**
+     * @param mixed $eloKategori
+     */
+    public function setEloKategori($eloKategori)
+    {
+        $this->eloKategori = $eloKategori;
     }
 
     /**
@@ -2892,6 +2843,40 @@ class Baseline
     }
 
     /**
+     * @return float
+     */
+    public function getVarmeForbrugsdataPrimaerGennemsnitKlimakorrigeret()
+    {
+        return $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret;
+    }
+
+    /**
+     * @param float $varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret
+     */
+    public function setVarmeForbrugsdataPrimaerGennemsnitKlimakorrigeret(
+        $varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret
+    ) {
+        $this->varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret = $varmeForbrugsdataPrimaerGennemsnitKlimakorrigeret;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeForbrugsdataSekundaerGennemsnitKlimakorrigeret()
+    {
+        return $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret;
+    }
+
+    /**
+     * @param float $varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret
+     */
+    public function setVarmeForbrugsdataSekundaerGennemsnitKlimakorrigeret(
+        $varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret
+    ) {
+        $this->varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret = $varmeForbrugsdataSekundaerGennemsnitKlimakorrigeret;
+    }
+
+    /**
      * Calculate VarmeBaselineFastsatForEjendom.
      *
      * =IF(OR(C62="";C63="");"[C62] eller [C63] mangler";C62+C63)
@@ -2923,37 +2908,178 @@ class Baseline
         return null;
     }
 
+    ///
+    // Calculations
+    ///
+
     /**
-     * Calculates the average of three values if set.
-     *
-     * @param float $value1
-     * @param float $value2
-     * @param float $value3
+     * Calculate elBaselineFastsatForEjendomKorrigeret.
      *
      * @return null|float
      */
-    public function calculateAverageOfThree($value1, $value2, $value3)
+    public function calculateElBaselineFastsatForEjendomKorrigeret()
     {
-        $sum = 0.0;
-        $number = 0;
-
-        if (isset($value1)) {
-            ++$number;
-            $sum += $value1;
-        }
-        if (isset($value2)) {
-            ++$number;
-            $sum += $value2;
-        }
-        if (isset($value3)) {
-            ++$number;
-            $sum += $value3;
+        $this->elBaselineFastsatForEjendomKorrektion = 0;
+        if (!empty($this->korrektioner)) {
+            foreach ($this->korrektioner as $k) {
+                if ($k->getIndvirkning()) {
+                    $this->elBaselineFastsatForEjendomKorrektion += $k->getKorrektionEl();
+                }
+            }
         }
 
-        if (0 === $number) {
-            return null;
+        return $this->getElBaselineFastsatForEjendom() + $this->elBaselineFastsatForEjendomKorrektion;
+    }
+
+    /**
+     * @return float
+     */
+    public function getElBaselineFastsatForEjendom()
+    {
+        return $this->elBaselineFastsatForEjendom;
+    }
+
+    /**
+     * @param float $elBaselineFastsatForEjendom
+     */
+    public function setElBaselineFastsatForEjendom($elBaselineFastsatForEjendom)
+    {
+        $this->elBaselineFastsatForEjendom = $elBaselineFastsatForEjendom;
+    }
+
+    /**
+     * Calculate varmeGAFForbrugKorrigeret.
+     *
+     * @return null|float
+     */
+    public function calculateVarmeGAFForbrugKorrigeret()
+    {
+        $this->varmeGAFForbrugKorrektion = 0;
+        if (!empty($this->korrektioner)) {
+            foreach ($this->korrektioner as $k) {
+                if ($k->getIndvirkning()) {
+                    $this->varmeGAFForbrugKorrektion += $k->getKorrektionGAF();
+                }
+            }
         }
 
-        return $sum / $number;
+        return $this->getVarmeGAFForbrug() + $this->varmeGAFForbrugKorrektion;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeGAFForbrug()
+    {
+        return $this->varmeGAFForbrug;
+    }
+
+    /**
+     * @param float $varmeGAFForbrug
+     */
+    public function setVarmeGAFForbrug($varmeGAFForbrug)
+    {
+        $this->varmeGAFForbrug = $varmeGAFForbrug;
+    }
+
+    /**
+     * Calculate varmeGAFForbrugKorrigeret.
+     *
+     * @return null|float
+     */
+    public function calculateVarmeGUFForbrugKorrigeret()
+    {
+        $this->varmeGUFForbrugKorrektion = 0;
+        if (!empty($this->korrektioner)) {
+            foreach ($this->korrektioner as $k) {
+                if ($k->getIndvirkning()) {
+                    $this->varmeGUFForbrugKorrektion += $k->getKorrektionGUF();
+                }
+            }
+        }
+
+        return $this->getVarmeGUFForbrug() + $this->varmeGUFForbrugKorrektion;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeGUFForbrug()
+    {
+        return $this->varmeGUFForbrug;
+    }
+
+    /**
+     * @param float $varmeGUFForbrug
+     */
+    public function setVarmeGUFForbrug($varmeGUFForbrug)
+    {
+        $this->varmeGUFForbrug = $varmeGUFForbrug;
+    }
+
+    /**
+     * Calculate varmeStrafafkoelingsafgiftKorrigeret.
+     *
+     * @return null|float
+     */
+    public function calculateVarmeStrafafkoelingsafgiftKorrigeret()
+    {
+        $this->varmeStrafafkoelingsafgiftKorrektion = null === $this->varmeStrafafkoelingsafgiftKorrektion ? 0 : $this->varmeStrafafkoelingsafgiftKorrektion;
+
+        return $this->varmeStrafafkoelingsafgift + $this->varmeStrafafkoelingsafgiftKorrektion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBygning()
+    {
+        return $this->bygning;
+    }
+
+    /**
+     * Set bygning.
+     *
+     * @param \AppBundle\Entity\Bygning $bygning
+     *
+     * @return Baseline
+     */
+    public function setBygning(\AppBundle\Entity\Bygning $bygning = null)
+    {
+        $this->bygning = $bygning;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getElBaselineFastsatForEjendomKorrigeret()
+    {
+        return $this->elBaselineFastsatForEjendomKorrigeret;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeGAFForbrugKorrigeret()
+    {
+        return $this->varmeGAFForbrugKorrigeret;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeGUFForbrugKorrigeret()
+    {
+        return $this->varmeGUFForbrugKorrigeret;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVarmeStrafafkoelingsafgiftKorrigeret()
+    {
+        return $this->varmeStrafafkoelingsafgiftKorrigeret;
     }
 }

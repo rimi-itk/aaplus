@@ -14,9 +14,7 @@ use AppBundle\Entity\Bilag;
 use AppBundle\Entity\SpecialTiltag;
 use AppBundle\Entity\Tiltag;
 use AppBundle\Form\Type\TiltagBilagType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -24,6 +22,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * TiltagBilag controller.
@@ -61,8 +60,8 @@ class TiltagBilagController extends BaseController
         $this->setBreadcrumb($tiltag);
 
         return [
-      'entity' => $tiltag,
-    ];
+            'entity' => $tiltag,
+        ];
     }
 
     /**
@@ -75,10 +74,13 @@ class TiltagBilagController extends BaseController
     public function editAction(Tiltag $tiltag, Bilag $bilag)
     {
         $this->setBreadcrumb($tiltag);
-        $this->breadcrumbs->addItem($bilag->getTitel() ? $bilag->getTitel() : $bilag->getId(), $this->generateUrl('tiltag_bilag_edit', [
-      'tiltag_id' => $tiltag->getId(),
-      'bilag_id' => $bilag->getId(),
-    ]));
+        $this->breadcrumbs->addItem(
+            $bilag->getTitel() ? $bilag->getTitel() : $bilag->getId(),
+            $this->generateUrl('tiltag_bilag_edit', [
+                'tiltag_id' => $tiltag->getId(),
+                'bilag_id' => $bilag->getId(),
+            ])
+        );
 
         $editForm = $this->createEditForm($tiltag, $bilag);
         $deleteForm = $this->createDeleteForm($tiltag, $bilag);
@@ -86,11 +88,11 @@ class TiltagBilagController extends BaseController
         $template = $this->getTemplate('edit');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'tiltag' => $tiltag,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'tiltag' => $tiltag,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -118,9 +120,9 @@ class TiltagBilagController extends BaseController
         $template = $this->getTemplate('new');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+        ]);
     }
 
     /**
@@ -147,10 +149,10 @@ class TiltagBilagController extends BaseController
         }
 
         return [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -178,9 +180,9 @@ class TiltagBilagController extends BaseController
         }
 
         return [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -220,10 +222,13 @@ class TiltagBilagController extends BaseController
     public function showAction(Tiltag $tiltag, Bilag $bilag)
     {
         $this->setBreadcrumb($tiltag);
-        $this->breadcrumbs->addItem($bilag->getTitel() ? $bilag->getTitel() : $bilag->getId(), $this->generateUrl('tiltag_bilag_show', [
-      'tiltag_id' => $tiltag->getId(),
-      'bilag_id' => $bilag->getId(),
-    ]));
+        $this->breadcrumbs->addItem(
+            $bilag->getTitel() ? $bilag->getTitel() : $bilag->getId(),
+            $this->generateUrl('tiltag_bilag_show', [
+                'tiltag_id' => $tiltag->getId(),
+                'bilag_id' => $bilag->getId(),
+            ])
+        );
 
         $deleteForm = $this->createDeleteForm($tiltag, $bilag);
         $editForm = $this->createEditForm($tiltag, $bilag);
@@ -231,10 +236,10 @@ class TiltagBilagController extends BaseController
         $template = $this->getTemplate('show');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'delete_form' => $deleteForm->createView(),
-      'edit_form' => $editForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView(),
+        ]);
     }
 
     /**
@@ -253,9 +258,9 @@ class TiltagBilagController extends BaseController
         $file = new File($path);
         $response = new BinaryFileResponse($file->getRealPath());
         $response->setContentDisposition(
-      ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-      $file->getFilename()
-    );
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $file->getFilename()
+        );
 
         return $response;
     }
@@ -263,7 +268,10 @@ class TiltagBilagController extends BaseController
     private function setBreadcrumb(Tiltag $tiltag)
     {
         $this->breadcrumbs->addItem('Rapporter', $this->generateUrl('rapport'));
-        $this->breadcrumbs->addItem($tiltag->getRapport(), $this->generateUrl('rapport_show', ['id' => $tiltag->getRapport()->getId()]));
+        $this->breadcrumbs->addItem(
+            $tiltag->getRapport(),
+            $this->generateUrl('rapport_show', ['id' => $tiltag->getRapport()->getId()])
+        );
         $this->breadcrumbs->addItem($tiltag, $this->generateUrl('tiltag_show', ['id' => $tiltag->getId()]));
         $this->breadcrumbs->addItem('Bilag', $this->generateUrl('tiltag_bilag_get', ['tiltag_id' => $tiltag->getId()]));
     }
@@ -278,11 +286,17 @@ class TiltagBilagController extends BaseController
     private function createEditForm(Tiltag $tiltag, Bilag $bilag)
     {
         $form = $this->createForm(new TiltagBilagType($bilag), $bilag, [
-      'action' => $this->generateUrl('tiltag_bilag_update', ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl(
+                'tiltag_bilag_update',
+                ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()]
+            ),
+            'method' => 'PUT',
+        ]);
 
-        $this->addUpdate($form, $this->generateUrl('tiltag_bilag_edit', ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()]));
+        $this->addUpdate(
+            $form,
+            $this->generateUrl('tiltag_bilag_edit', ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()])
+        );
 
         return $form;
     }
@@ -297,9 +311,9 @@ class TiltagBilagController extends BaseController
     private function createNewForm(Tiltag $tiltag, Bilag $bilag)
     {
         $form = $this->createForm(new TiltagBilagType($bilag), $bilag, [
-      'action' => $this->generateUrl('tiltag_bilag_create', ['tiltag_id' => $tiltag->getId()]),
-      'method' => 'POST',
-    ]);
+            'action' => $this->generateUrl('tiltag_bilag_create', ['tiltag_id' => $tiltag->getId()]),
+            'method' => 'POST',
+        ]);
 
         $this->addCreate($form, $this->generateUrl('tiltag_bilag_create', ['tiltag_id' => $tiltag->getId()]));
 
@@ -316,10 +330,13 @@ class TiltagBilagController extends BaseController
     private function createDeleteForm(Tiltag $tiltag, Bilag $bilag)
     {
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('tiltag_bilag_delete', ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', ['label' => 'Delete'])
-      ->getForm();
+            ->setAction($this->generateUrl(
+                'tiltag_bilag_delete',
+                ['tiltag_id' => $tiltag->getId(), 'bilag_id' => $bilag->getId()]
+            ))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
     }
 
     /**

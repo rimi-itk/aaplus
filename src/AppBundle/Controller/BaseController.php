@@ -33,6 +33,11 @@ abstract class BaseController extends Controller implements InitControllerInterf
         return $this->redirect($request->headers->get('referer'));
     }
 
+    protected function addCreate(Form $form, $cancelUrl = null)
+    {
+        return $this->addSubmit($form, 'Create', $cancelUrl, 'Cancel');
+    }
+
     /**
      * Add a submit button and a cancel button to a form.
      *
@@ -51,33 +56,28 @@ abstract class BaseController extends Controller implements InitControllerInterf
         $buttons = [];
         if ($cancelUrl) {
             $buttons['cancel'] = [
-        'type' => 'button',
-        'options' => [
-          'label' => $cancelLabel,
-          'button_class' => 'default',
-          'attr' => [
-            'onclick' => 'document.location.href = \''.$cancelUrl.'\'',
-          ],
-        ],
-      ];
+                'type' => 'button',
+                'options' => [
+                    'label' => $cancelLabel,
+                    'button_class' => 'default',
+                    'attr' => [
+                        'onclick' => 'document.location.href = \''.$cancelUrl.'\'',
+                    ],
+                ],
+            ];
         }
         $buttons['submit'] = [
-      'type' => 'submit',
-      'options' => [
-        'label' => $submitLabel,
-      ],
-    ];
+            'type' => 'submit',
+            'options' => [
+                'label' => $submitLabel,
+            ],
+        ];
 
         $form->add('buttons', 'form_actions', [
-      'buttons' => $buttons,
-    ]);
+            'buttons' => $buttons,
+        ]);
 
         return $form;
-    }
-
-    protected function addCreate(Form $form, $cancelUrl = null)
-    {
-        return $this->addSubmit($form, 'Create', $cancelUrl, 'Cancel');
     }
 
     protected function addUpdate(Form $form, $cancelUrl = null, $label = 'Update')

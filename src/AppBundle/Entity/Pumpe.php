@@ -24,20 +24,20 @@ class Pumpe
     use TimestampableEntity;
 
     public static $varmetabstabel = [
-    // 'Isol. (mm' => [ 'Isolering/Diameter mm', '0 mm', '30 mm' ]
-    '3/8"' => [17.2, 0.83, 0.16],
-    '1/2"' => [21.3, 1.01, 0.17],
-    '3/4"' => [26.9, 1.23, 0.2],
-    '1"' => [33.7, 1.49, 0.23],
-    '1-1/4"' => [42.4, 1.82, 0.26],
-    '1-1/2"' => [48.3, 2.04, 0.28],
-    '2"' => [60.3, 2.47, 0.33],
-    '2-1/2"' => [76.1, 3.03, 0.39],
-    '3"' => [88.9, 3.46, 0.44],
-    '4"' => [114.3, 4.31, 0.54],
-    '5"' => [139.7, 5.15, 0.63],
-    '6"' => [168.2, 6.03, 0.74],
-  ];
+        // 'Isol. (mm' => [ 'Isolering/Diameter mm', '0 mm', '30 mm' ]
+        '3/8"' => [17.2, 0.83, 0.16],
+        '1/2"' => [21.3, 1.01, 0.17],
+        '3/4"' => [26.9, 1.23, 0.2],
+        '1"' => [33.7, 1.49, 0.23],
+        '1-1/4"' => [42.4, 1.82, 0.26],
+        '1-1/2"' => [48.3, 2.04, 0.28],
+        '2"' => [60.3, 2.47, 0.33],
+        '2-1/2"' => [76.1, 3.03, 0.39],
+        '3"' => [88.9, 3.46, 0.44],
+        '4"' => [114.3, 4.31, 0.54],
+        '5"' => [139.7, 5.15, 0.63],
+        '6"' => [168.2, 6.03, 0.74],
+    ];
 
     /**
      * @var int
@@ -200,7 +200,12 @@ class Pumpe
      */
     public function __toString()
     {
-        return $this->id.'. '.$this->nuvaerendeType.' / '.$this->nyPumpe.' - Stand.inv: '.number_format($this->standInvestering, 0, ',', '.').' Kr, Indst: '.$this->indst.', Rørstr: '.$this->roerstoerrelse;
+        return $this->id.'. '.$this->nuvaerendeType.' / '.$this->nyPumpe.' - Stand.inv: '.number_format(
+            $this->standInvestering,
+                0,
+            ',',
+            '.'
+        ).' Kr, Indst: '.$this->indst.', Rørstr: '.$this->roerstoerrelse;
     }
 
     /**
@@ -211,6 +216,16 @@ class Pumpe
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get nuvaerendeType.
+     *
+     * @return string
+     */
+    public function getNuvaerendeType()
+    {
+        return $this->nuvaerendeType;
     }
 
     /**
@@ -228,13 +243,13 @@ class Pumpe
     }
 
     /**
-     * Get nuvaerendeType.
+     * Get byggemaal.
      *
-     * @return string
+     * @return int
      */
-    public function getNuvaerendeType()
+    public function getByggemaal()
     {
-        return $this->nuvaerendeType;
+        return $this->byggemaal;
     }
 
     /**
@@ -252,13 +267,13 @@ class Pumpe
     }
 
     /**
-     * Get byggemaal.
+     * Get tilslutning.
      *
-     * @return int
+     * @return string
      */
-    public function getByggemaal()
+    public function getTilslutning()
     {
-        return $this->byggemaal;
+        return $this->tilslutning;
     }
 
     /**
@@ -276,13 +291,13 @@ class Pumpe
     }
 
     /**
-     * Get tilslutning.
+     * Get indst.
      *
-     * @return string
+     * @return int
      */
-    public function getTilslutning()
+    public function getIndst()
     {
-        return $this->tilslutning;
+        return $this->indst;
     }
 
     /**
@@ -300,13 +315,13 @@ class Pumpe
     }
 
     /**
-     * Get indst.
+     * Get forbrug.
      *
-     * @return int
+     * @return string
      */
-    public function getIndst()
+    public function getForbrug()
     {
-        return $this->indst;
+        return $this->forbrug;
     }
 
     /**
@@ -324,13 +339,13 @@ class Pumpe
     }
 
     /**
-     * Get forbrug.
+     * Get q.
      *
      * @return string
      */
-    public function getForbrug()
+    public function getQ()
     {
-        return $this->forbrug;
+        return $this->q;
     }
 
     /**
@@ -348,13 +363,13 @@ class Pumpe
     }
 
     /**
-     * Get q.
+     * Get h.
      *
      * @return string
      */
-    public function getQ()
+    public function getH()
     {
-        return $this->q;
+        return $this->h;
     }
 
     /**
@@ -372,13 +387,13 @@ class Pumpe
     }
 
     /**
-     * Get h.
+     * Get aarsforbrug.
      *
-     * @return string
+     * @return int
      */
-    public function getH()
+    public function getAarsforbrug()
     {
-        return $this->h;
+        return $this->aarsforbrug;
     }
 
     /**
@@ -396,13 +411,13 @@ class Pumpe
     }
 
     /**
-     * Get aarsforbrug.
+     * Get nyPumpe.
      *
-     * @return int
+     * @return string
      */
-    public function getAarsforbrug()
+    public function getNyPumpe()
     {
-        return $this->aarsforbrug;
+        return $this->nyPumpe;
     }
 
     /**
@@ -420,13 +435,13 @@ class Pumpe
     }
 
     /**
-     * Get nyPumpe.
+     * Get nyByggemaal.
      *
-     * @return string
+     * @return int
      */
-    public function getNyPumpe()
+    public function getNyByggemaal()
     {
-        return $this->nyPumpe;
+        return $this->nyByggemaal;
     }
 
     /**
@@ -444,13 +459,13 @@ class Pumpe
     }
 
     /**
-     * Get nyByggemaal.
+     * Get nyTilslutning.
      *
-     * @return int
+     * @return string
      */
-    public function getNyByggemaal()
+    public function getNyTilslutning()
     {
-        return $this->nyByggemaal;
+        return $this->nyTilslutning;
     }
 
     /**
@@ -468,13 +483,13 @@ class Pumpe
     }
 
     /**
-     * Get nyTilslutning.
+     * Get vvsnr.
      *
      * @return string
      */
-    public function getNyTilslutning()
+    public function getVvsNr()
     {
-        return $this->nyTilslutning;
+        return $this->vvsnr;
     }
 
     /**
@@ -492,13 +507,13 @@ class Pumpe
     }
 
     /**
-     * Get vvsnr.
+     * Get nytAarsforbrug.
      *
-     * @return string
+     * @return int
      */
-    public function getVvsNr()
+    public function getNytAarsforbrug()
     {
-        return $this->vvsnr;
+        return $this->nytAarsforbrug;
     }
 
     /**
@@ -516,13 +531,13 @@ class Pumpe
     }
 
     /**
-     * Get nytAarsforbrug.
+     * Get elbesparelse.
      *
      * @return int
      */
-    public function getNytAarsforbrug()
+    public function getElbesparelse()
     {
-        return $this->nytAarsforbrug;
+        return $this->elbesparelse;
     }
 
     /**
@@ -540,13 +555,13 @@ class Pumpe
     }
 
     /**
-     * Get elbesparelse.
+     * Get udligningssaet.
      *
-     * @return int
+     * @return string
      */
-    public function getElbesparelse()
+    public function getUdligningssaet()
     {
-        return $this->elbesparelse;
+        return $this->udligningssaet;
     }
 
     /**
@@ -564,13 +579,13 @@ class Pumpe
     }
 
     /**
-     * Get udligningssaet.
+     * Get kommentarer.
      *
      * @return string
      */
-    public function getUdligningssaet()
+    public function getKommentarer()
     {
-        return $this->udligningssaet;
+        return $this->kommentarer;
     }
 
     /**
@@ -588,13 +603,13 @@ class Pumpe
     }
 
     /**
-     * Get kommentarer.
+     * Get standInvestering.
      *
-     * @return string
+     * @return float
      */
-    public function getKommentarer()
+    public function getStandInvestering()
     {
-        return $this->kommentarer;
+        return $this->standInvestering;
     }
 
     /**
@@ -612,13 +627,13 @@ class Pumpe
     }
 
     /**
-     * Get standInvestering.
+     * Get fabrikant.
      *
-     * @return float
+     * @return string
      */
-    public function getStandInvestering()
+    public function getFabrikant()
     {
-        return $this->standInvestering;
+        return $this->fabrikant;
     }
 
     /**
@@ -636,13 +651,13 @@ class Pumpe
     }
 
     /**
-     * Get fabrikant.
+     * Get roerlaengde.
      *
-     * @return string
+     * @return int
      */
-    public function getFabrikant()
+    public function getRoerlaengde()
     {
-        return $this->fabrikant;
+        return $this->roerlaengde;
     }
 
     /**
@@ -660,13 +675,13 @@ class Pumpe
     }
 
     /**
-     * Get roerlaengde.
+     * Get roerstoerrelse.
      *
-     * @return int
+     * @return string
      */
-    public function getRoerlaengde()
+    public function getRoerstoerrelse()
     {
-        return $this->roerlaengde;
+        return $this->roerstoerrelse;
     }
 
     /**
@@ -681,16 +696,6 @@ class Pumpe
         $this->roerstoerrelse = $roerstoerrelse;
 
         return $this;
-    }
-
-    /**
-     * Get roerstoerrelse.
-     *
-     * @return string
-     */
-    public function getRoerstoerrelse()
-    {
-        return $this->roerstoerrelse;
     }
 
     /**

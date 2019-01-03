@@ -40,37 +40,37 @@ class TiltagRepository extends EntityRepository
         $tiltag = new $className();
 
         switch ($type) {
-      case 'Solcelle':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VE);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Solceller'));
+            case 'Solcelle':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VE);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Solceller'));
 
-        break;
-      case 'Tekniskisolering':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VVS);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Varmeanlæg - generelt'));
+                break;
+            case 'Tekniskisolering':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VVS);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Varmeanlæg - generelt'));
 
-        break;
-      case 'Belysning':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::EL);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Belysning'));
+                break;
+            case 'Belysning':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::EL);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Belysning'));
 
-        break;
-      case 'Klimaskaerm':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::TOEMRER_ISOLATOER);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Klimaskærm'));
+                break;
+            case 'Klimaskaerm':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::TOEMRER_ISOLATOER);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Klimaskærm'));
 
-        break;
-      case 'Pumpe':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VVS);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Pumper'));
+                break;
+            case 'Pumpe':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::VVS);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Pumper'));
 
-        break;
-      case 'Vindue':
-        $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::TOEMRER);
-        $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Vinduer, ovenlys, døre'));
+                break;
+            case 'Vindue':
+                $tiltag->setPrimaerEnterprise(PrimaerEnterpriseType::TOEMRER);
+                $tiltag->setTiltagskategori($this->getTiltagskategoriByName('Vinduer, ovenlys, døre'));
 
-        break;
-    }
+                break;
+        }
 
         return $tiltag;
     }

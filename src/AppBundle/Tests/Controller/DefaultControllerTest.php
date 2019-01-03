@@ -1,9 +1,20 @@
 <?php
 
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @coversNothing
+ */
 class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
@@ -12,7 +23,7 @@ class DefaultControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/app/example');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
         $this->assertTrue($crawler->filter('html:contains("Homepage")')->count() > 0);
     }
 }

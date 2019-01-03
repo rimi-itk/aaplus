@@ -20,8 +20,8 @@ class PostMigrate20160711133430Command extends ContainerAwareCommand
     protected function configure()
     {
         $this
-      ->setName('aaplus:post-migrate:20160711133430')
-      ->setDescription('Run code after doctrine migration 20160711133430');
+            ->setName('aaplus:post-migrate:20160711133430')
+            ->setDescription('Run code after doctrine migration 20160711133430');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -63,27 +63,27 @@ class PostMigrate20160711133430Command extends ContainerAwareCommand
             $changedValues = [];
             if ($newBesparelseVarmeGUF !== $oldBesparelseVarmeGUF) {
                 $changedValues['besparelseVarmeGUF'] = [
-          'old' => $oldBesparelseVarmeGUF,
-          'new' => $newBesparelseVarmeGUF,
-        ];
+                    'old' => $oldBesparelseVarmeGUF,
+                    'new' => $newBesparelseVarmeGUF,
+                ];
             }
             if ($newBesparelseVarmeGAF !== $oldBesparelseVarmeGAF) {
                 $changedValues['besparelseVarmeGAF'] = [
-          'old' => $oldBesparelseVarmeGAF,
-          'new' => $newBesparelseVarmeGAF,
-        ];
+                    'old' => $oldBesparelseVarmeGAF,
+                    'new' => $newBesparelseVarmeGAF,
+                ];
             }
             if ($newFravalgtBesparelseVarmeGUF !== $oldFravalgtBesparelseVarmeGUF) {
                 $changedValues['fravalgtBesparelseVarmeGUF'] = [
-          'old' => $oldFravalgtBesparelseVarmeGUF,
-          'new' => $newFravalgtBesparelseVarmeGUF,
-        ];
+                    'old' => $oldFravalgtBesparelseVarmeGUF,
+                    'new' => $newFravalgtBesparelseVarmeGUF,
+                ];
             }
             if ($newFravalgtBesparelseVarmeGAF !== $oldFravalgtBesparelseVarmeGAF) {
                 $changedValues['fravalgtBesparelseVarmeGAF'] = [
-          'old' => $oldFravalgtBesparelseVarmeGAF,
-          'new' => $newFravalgtBesparelseVarmeGAF,
-        ];
+                    'old' => $oldFravalgtBesparelseVarmeGAF,
+                    'new' => $newFravalgtBesparelseVarmeGAF,
+                ];
             }
 
             if ($changedValues) {

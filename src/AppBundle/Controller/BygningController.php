@@ -14,11 +14,10 @@ use AppBundle\Entity\Baseline;
 use AppBundle\Entity\Bygning;
 use AppBundle\Form\Type\BygningSearchType;
 use AppBundle\Form\Type\BygningType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 use Yavin\Symfony\Controller\InitControllerInterface;
 
 /**
@@ -71,12 +70,15 @@ class BygningController extends BaseController implements InitControllerInterfac
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-      $query,
-      $request->query->get('page', 1),
-      20
-    );
+            $query,
+            $request->query->get('page', 1),
+            20
+        );
 
-        return $this->render('AppBundle:Bygning:index.html.twig', ['pagination' => $pagination, 'search' => $search, 'form' => $form->createView()]);
+        return $this->render(
+            'AppBundle:Bygning:index.html.twig',
+            ['pagination' => $pagination, 'search' => $search, 'form' => $form->createView()]
+        );
     }
 
     /**
@@ -102,9 +104,9 @@ class BygningController extends BaseController implements InitControllerInterfac
         }
 
         return [
-      'entity' => $entity,
-      'form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -120,9 +122,9 @@ class BygningController extends BaseController implements InitControllerInterfac
         $form = $this->createCreateForm($entity);
 
         return [
-      'entity' => $entity,
-      'form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -139,10 +141,12 @@ class BygningController extends BaseController implements InitControllerInterfac
         $this->breadcrumbs->addItem($bygning, $this->generateUrl('bygning'));
 
         return [
-      'entity' => $bygning,
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $bygning,
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
+
+    //---------------- Baseline -------------------//
 
     /**
      * Displays a form to edit an existing Bygning entity.
@@ -160,10 +164,10 @@ class BygningController extends BaseController implements InitControllerInterfac
         $this->breadcrumbs->addItem('common.edit', $this->generateUrl('bygning'));
 
         return [
-      'entity' => $bygning,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $bygning,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -187,10 +191,10 @@ class BygningController extends BaseController implements InitControllerInterfac
         }
 
         return [
-      'entity' => $bygning,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $bygning,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -212,8 +216,6 @@ class BygningController extends BaseController implements InitControllerInterfac
 
         return $this->redirect($this->generateUrl('bygning'));
     }
-
-    //---------------- Baseline -------------------//
 
     /**
      * Creates a new Baseline entity.
@@ -255,9 +257,9 @@ class BygningController extends BaseController implements InitControllerInterfac
     private function createSearchForm(Bygning $entity)
     {
         $form = $this->createForm(new BygningSearchType(), $entity, [
-      'action' => $this->generateUrl('bygning'),
-      'method' => 'GET',
-    ]);
+            'action' => $this->generateUrl('bygning'),
+            'method' => 'GET',
+        ]);
 
         return $form;
     }
@@ -271,31 +273,16 @@ class BygningController extends BaseController implements InitControllerInterfac
      */
     private function createCreateForm(Bygning $entity)
     {
-        $form = $this->createForm(new BygningType($this->getDoctrine(), $this->get('security.authorization_checker')), $entity, [
-      'action' => $this->generateUrl('bygning_create'),
-      'method' => 'POST',
-    ]);
+        $form = $this->createForm(
+            new BygningType($this->getDoctrine(), $this->get('security.authorization_checker')),
+            $entity,
+            [
+                'action' => $this->generateUrl('bygning_create'),
+                'method' => 'POST',
+            ]
+        );
 
         $this->addCreate($form, $this->generateUrl('bygning'));
-
-        return $form;
-    }
-
-    /**
-     * Creates a form to edit a Bygning entity.
-     *
-     * @param Bygning $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Bygning $entity)
-    {
-        $form = $this->createForm(new BygningType($this->getDoctrine(), $this->get('security.authorization_checker')), $entity, [
-      'action' => $this->generateUrl('bygning_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
-
-        $this->addUpdate($form, $this->generateUrl('bygning_show', ['id' => $entity->getId()]));
 
         return $form;
     }
@@ -314,15 +301,38 @@ class BygningController extends BaseController implements InitControllerInterfac
         $message = $repository->getRemoveErrorMessage($bygning);
 
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('bygning_delete', ['id' => $bygning->getId()]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', [
-        'label' => 'Delete',
-        'disabled' => $message,
-        'attr' => [
-          'disabled_message' => $message,
-        ],
-      ])
-      ->getForm();
+            ->setAction($this->generateUrl('bygning_delete', ['id' => $bygning->getId()]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', [
+                'label' => 'Delete',
+                'disabled' => $message,
+                'attr' => [
+                    'disabled_message' => $message,
+                ],
+            ])
+            ->getForm();
+    }
+
+    /**
+     * Creates a form to edit a Bygning entity.
+     *
+     * @param Bygning $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Bygning $entity)
+    {
+        $form = $this->createForm(
+            new BygningType($this->getDoctrine(), $this->get('security.authorization_checker')),
+            $entity,
+            [
+                'action' => $this->generateUrl('bygning_update', ['id' => $entity->getId()]),
+                'method' => 'PUT',
+            ]
+        );
+
+        $this->addUpdate($form, $this->generateUrl('bygning_show', ['id' => $entity->getId()]));
+
+        return $form;
     }
 }

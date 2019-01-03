@@ -119,6 +119,16 @@ class BaselineKorrektion
     }
 
     /**
+     * Get datoForImplementering.
+     *
+     * @return \DateTime
+     */
+    public function getDatoForImplementering()
+    {
+        return $this->datoForImplementering;
+    }
+
+    /**
      * Set datoForImplementering.
      *
      * @param \DateTime $datoForImplementering
@@ -133,13 +143,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get datoForImplementering.
+     * Get beskrivelse.
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDatoForImplementering()
+    public function getBeskrivelse()
     {
-        return $this->datoForImplementering;
+        return $this->beskrivelse;
     }
 
     /**
@@ -157,13 +167,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get beskrivelse.
+     * Get korrektionEl.
      *
      * @return string
      */
-    public function getBeskrivelse()
+    public function getKorrektionEl()
     {
-        return $this->beskrivelse;
+        return $this->korrektionEl;
     }
 
     /**
@@ -181,13 +191,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get korrektionEl.
+     * Get korrektionGAF.
      *
      * @return string
      */
-    public function getKorrektionEl()
+    public function getKorrektionGAF()
     {
-        return $this->korrektionEl;
+        return $this->korrektionGAF;
     }
 
     /**
@@ -205,13 +215,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get korrektionGAF.
+     * Get korrektionGUF.
      *
      * @return string
      */
-    public function getKorrektionGAF()
+    public function getKorrektionGUF()
     {
-        return $this->korrektionGAF;
+        return $this->korrektionGUF;
     }
 
     /**
@@ -229,13 +239,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get korrektionGUF.
+     * Get kilde.
      *
      * @return string
      */
-    public function getKorrektionGUF()
+    public function getKilde()
     {
-        return $this->korrektionGUF;
+        return $this->kilde;
     }
 
     /**
@@ -253,13 +263,13 @@ class BaselineKorrektion
     }
 
     /**
-     * Get kilde.
+     * Get indvirkning.
      *
-     * @return string
+     * @return bool
      */
-    public function getKilde()
+    public function getIndvirkning()
     {
-        return $this->kilde;
+        return $this->indvirkning;
     }
 
     /**
@@ -274,15 +284,5 @@ class BaselineKorrektion
         $this->indvirkning = $indvirkning;
 
         return $this;
-    }
-
-    /**
-     * Get indvirkning.
-     *
-     * @return bool
-     */
-    public function getIndvirkning()
-    {
-        return $this->indvirkning;
     }
 }

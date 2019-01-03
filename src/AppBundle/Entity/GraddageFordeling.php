@@ -54,21 +54,34 @@ class GraddageFordeling extends AarsFordeling
      * @param null|mixed $december
      */
     public function __construct(
-      $titel = null,
-      $januar = null,
-      $februar = null,
-      $marts = null,
-      $april = null,
-      $maj = null,
-      $juni = null,
-                              $juli = null,
-      $august = null,
-      $september = null,
-      $oktober = null,
-      $november = null,
-      $december = null
-  ) {
-        parent::__construct($januar, $februar, $marts, $april, $maj, $juni, $juli, $august, $september, $oktober, $november, $december);
+        $titel = null,
+        $januar = null,
+        $februar = null,
+        $marts = null,
+        $april = null,
+        $maj = null,
+        $juni = null,
+        $juli = null,
+        $august = null,
+        $september = null,
+        $oktober = null,
+        $november = null,
+        $december = null
+    ) {
+        parent::__construct(
+            $januar,
+            $februar,
+            $marts,
+            $april,
+            $maj,
+            $juni,
+            $juli,
+            $august,
+            $september,
+            $oktober,
+            $november,
+            $december
+        );
         $this->titel = $titel;
     }
 
@@ -116,9 +129,9 @@ class GraddageFordeling extends AarsFordeling
     public function getSumAar()
     {
         return
-      $this->januar + $this->februar + $this->marts +
-      $this->april + $this->maj + $this->juni +
-      $this->juli + $this->august + $this->september +
-      $this->oktober + $this->november + $this->december;
+            $this->januar + $this->februar + $this->marts +
+            $this->april + $this->maj + $this->juni +
+            $this->juli + $this->august + $this->september +
+            $this->oktober + $this->november + $this->december;
     }
 }

@@ -127,19 +127,19 @@ class AarsFordeling
      * @param null|mixed $december
      */
     public function __construct(
-      $januar = null,
-      $februar = null,
-      $marts = null,
-      $april = null,
-      $maj = null,
-      $juni = null,
-                              $juli = null,
-      $august = null,
-      $september = null,
-      $oktober = null,
-      $november = null,
-      $december = null
-  ) {
+        $januar = null,
+        $februar = null,
+        $marts = null,
+        $april = null,
+        $maj = null,
+        $juni = null,
+        $juli = null,
+        $august = null,
+        $september = null,
+        $oktober = null,
+        $november = null,
+        $december = null
+    ) {
         $this->januar = $januar;
         $this->februar = $februar;
         $this->marts = $marts;
@@ -164,19 +164,31 @@ class AarsFordeling
     public function getMonth($month)
     {
         switch ($month) {
-      case 1: return $this->januar;
-      case 2: return $this->februar;
-      case 3: return $this->marts;
-      case 4: return $this->april;
-      case 5: return $this->maj;
-      case 6: return $this->juni;
-      case 7: return $this->juli;
-      case 8: return $this->august;
-      case 9: return $this->september;
-      case 10: return $this->oktober;
-      case 11: return $this->november;
-      case 12: return $this->december;
-    }
+            case 1:
+                return $this->januar;
+            case 2:
+                return $this->februar;
+            case 3:
+                return $this->marts;
+            case 4:
+                return $this->april;
+            case 5:
+                return $this->maj;
+            case 6:
+                return $this->juni;
+            case 7:
+                return $this->juli;
+            case 8:
+                return $this->august;
+            case 9:
+                return $this->september;
+            case 10:
+                return $this->oktober;
+            case 11:
+                return $this->november;
+            case 12:
+                return $this->december;
+        }
     }
 
     /**
@@ -190,55 +202,55 @@ class AarsFordeling
     public function setMonth($month, $value)
     {
         switch ($month) {
-      case 1:
-        $this->januar = $value;
+            case 1:
+                $this->januar = $value;
 
-        break;
-      case 2:
-        $this->februar = $value;
+                break;
+            case 2:
+                $this->februar = $value;
 
-        break;
-      case 3:
-        $this->marts = $value;
+                break;
+            case 3:
+                $this->marts = $value;
 
-        break;
-      case 4:
-        $this->april = $value;
+                break;
+            case 4:
+                $this->april = $value;
 
-        break;
-      case 5:
-        $this->maj = $value;
+                break;
+            case 5:
+                $this->maj = $value;
 
-        break;
-      case 6:
-        $this->juni = $value;
+                break;
+            case 6:
+                $this->juni = $value;
 
-        break;
-      case 7:
-        $this->juli = $value;
+                break;
+            case 7:
+                $this->juli = $value;
 
-        break;
-      case 8:
-        $this->august = $value;
+                break;
+            case 8:
+                $this->august = $value;
 
-        break;
-      case 9:
-        $this->september = $value;
+                break;
+            case 9:
+                $this->september = $value;
 
-        break;
-      case 10:
-        $this->oktober = $value;
+                break;
+            case 10:
+                $this->oktober = $value;
 
-        break;
-      case 11:
-        $this->november = $value;
+                break;
+            case 11:
+                $this->november = $value;
 
-        break;
-      case 12:
-        $this->december = $value;
+                break;
+            case 12:
+                $this->december = $value;
 
-        break;
-    }
+                break;
+        }
     }
 
     /**

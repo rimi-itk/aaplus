@@ -92,6 +92,16 @@ class Regning
     }
 
     /**
+     * Get nummer.
+     *
+     * @return int
+     */
+    public function getNummer()
+    {
+        return $this->nummer;
+    }
+
+    /**
      * Set nummer.
      *
      * @param int $nummer
@@ -106,13 +116,13 @@ class Regning
     }
 
     /**
-     * Get nummer.
+     * Get faktureret.
      *
-     * @return int
+     * @return float
      */
-    public function getNummer()
+    public function getFaktureret()
     {
-        return $this->nummer;
+        return $this->faktureret;
     }
 
     /**
@@ -130,13 +140,13 @@ class Regning
     }
 
     /**
-     * Get faktureret.
+     * Get startdato.
      *
-     * @return float
+     * @return \DateTime
      */
-    public function getFaktureret()
+    public function getStartdato()
     {
-        return $this->faktureret;
+        return $this->startdato;
     }
 
     /**
@@ -154,13 +164,13 @@ class Regning
     }
 
     /**
-     * Get startdato.
+     * Get slutdato.
      *
      * @return \DateTime
      */
-    public function getStartdato()
+    public function getSlutdato()
     {
-        return $this->startdato;
+        return $this->slutdato;
     }
 
     /**
@@ -178,13 +188,13 @@ class Regning
     }
 
     /**
-     * Get slutdato.
+     * Get tiltag.
      *
-     * @return \DateTime
+     * @return \AppBundle\Entity\Tiltag
      */
-    public function getSlutdato()
+    public function getTiltag()
     {
-        return $this->slutdato;
+        return $this->tiltag;
     }
 
     /**
@@ -202,13 +212,13 @@ class Regning
     }
 
     /**
-     * Get tiltag.
+     * Get leverandoer.
      *
-     * @return \AppBundle\Entity\Tiltag
+     * @return \AppBundle\Entity\Leverandoer
      */
-    public function getTiltag()
+    public function getLeverandoer()
     {
-        return $this->tiltag;
+        return $this->leverandoer;
     }
 
     /**
@@ -223,15 +233,5 @@ class Regning
         $this->leverandoer = $leverandoer;
 
         return $this;
-    }
-
-    /**
-     * Get leverandoer.
-     *
-     * @return \AppBundle\Entity\Leverandoer
-     */
-    public function getLeverandoer()
-    {
-        return $this->leverandoer;
     }
 }

@@ -91,6 +91,11 @@ class Fil
         return $this->id;
     }
 
+    public function getEntityType()
+    {
+        return $this->entityType;
+    }
+
     /**
      * Set entityType.
      *
@@ -105,9 +110,9 @@ class Fil
         return $this;
     }
 
-    public function getEntityType()
+    public function getEntityId()
     {
-        return $this->entityType;
+        return $this->entityId;
     }
 
     /**
@@ -124,27 +129,10 @@ class Fil
         return $this;
     }
 
-    public function getEntityId()
-    {
-        return $this->entityId;
-    }
-
     public function setEntity($entity)
     {
         $this->setEntityType(\get_class($entity));
         $this->setEntityId($entity->getId());
-
-        return $this;
-    }
-
-    /**
-     * Sets filepath.
-     *
-     * @param string $filepath
-     */
-    public function setFilepath($filepath)
-    {
-        $this->filepath = $filepath;
 
         return $this;
     }
@@ -160,13 +148,13 @@ class Fil
     }
 
     /**
-     * Sets type.
+     * Sets filepath.
      *
-     * @param string $type
+     * @param string $filepath
      */
-    public function setType($type)
+    public function setFilepath($filepath)
     {
-        $this->type = $type;
+        $this->filepath = $filepath;
 
         return $this;
     }
@@ -179,5 +167,17 @@ class Fil
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Sets type.
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

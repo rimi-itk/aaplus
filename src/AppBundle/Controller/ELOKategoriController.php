@@ -12,12 +12,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\ELOKategori;
 use AppBundle\Form\ELOKategoriType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * ELOKategori controller.
@@ -229,6 +227,22 @@ class ELOKategoriController extends BaseController
     }
 
     /**
+     * Creates a form to delete a ELOKategori entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('elokategori_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
+    }
+
+    /**
      * Creates a form to edit a ELOKategori entity.
      *
      * @param ELOKategori $entity The entity
@@ -245,22 +259,5 @@ class ELOKategoriController extends BaseController
         $this->addUpdate($form, $this->generateUrl('elokategori_show', ['id' => $entity->getId()]));
 
         return $form;
-    }
-
-    /**
-     * Creates a form to delete a ELOKategori entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('elokategori_delete', ['id' => $id]))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', ['label' => 'Delete'])
-            ->getForm()
-        ;
     }
 }

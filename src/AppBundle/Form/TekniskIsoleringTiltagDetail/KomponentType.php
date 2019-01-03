@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
 namespace AppBundle\Form\TekniskIsoleringTiltagDetail;
 
 use Symfony\Component\Form\AbstractType;
@@ -10,7 +18,7 @@ class KomponentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,9 +33,9 @@ class KomponentType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TekniskIsoleringTiltagDetail\Komponent'
-        ));
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\TekniskIsoleringTiltagDetail\Komponent',
+        ]);
     }
 
     /**

@@ -1,36 +1,37 @@
 <?php
-/**
- * @file
- * @TODO: Missing description.
+
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
  */
 
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\BelysningTiltagDetail;
-use AppBundle\Entity\BelysningTiltagDetail\PlaceringRepository;
-use AppBundle\Entity\BelysningTiltagDetail\StyringRepository;
-use AppBundle\Entity\BelysningTiltagDetail\TiltagRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class BelysningTiltagDetailType
- * @package AppBundle\Form
+ * Class BelysningTiltagDetailType.
  */
-class BelysningTiltagDetailType extends TiltagDetailType {
-
-// @TODO public function __construct(ContainerInterface $container, BelysningTiltagDetail $detail, $isBatchEdit = false) {
-    public function __construct(ContainerInterface $container) {
+class BelysningTiltagDetailType extends TiltagDetailType
+{
+    // @TODO public function __construct(ContainerInterface $container, BelysningTiltagDetail $detail, $isBatchEdit = false) {
+    public function __construct(ContainerInterface $container)
+    {
         $detail = null;
         $isBatchEdit = false;
         parent::__construct($container, $detail, $isBatchEdit);
-  }
+    }
 
-  public function buildForm(FormBuilderInterface $builder, array $options) {
-
-    parent::buildForm($builder, $options);
-    $builder
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+        $builder
       //->add('tilvalgt')
       ->add('lokale_navn')
       ->add('lokale_type')
@@ -45,12 +46,12 @@ class BelysningTiltagDetailType extends TiltagDetailType {
       ->add('armaturerStkLokale')
       ->add('placering')
       ->add('styring')
-      ->add('nyStyring', 'entity', array(
+      ->add('nyStyring', 'entity', [
         'class' => 'AppBundle:BelysningTiltagDetail\NyStyring',
         'choices' => $this->getAktuelNyStyring(),
-        'required' => FALSE,
+        'required' => false,
         'empty_value' => 'common.none',
-      ))
+      ])
       ->add('erstatningsLyskilde')
       ->add('nytArmatur')
       ->add('noter')
@@ -58,7 +59,7 @@ class BelysningTiltagDetailType extends TiltagDetailType {
       ->add('belysningstiltag')
       ->add('nyeSensorerStkLokale')
       ->add('standardinvestSensorKrStk')
-      ->add('reduktionAfDrifttid', 'percent', array('scale' => 2, 'required' => false))
+      ->add('reduktionAfDrifttid', 'percent', ['scale' => 2, 'required' => false])
       ->add('standardinvestArmaturKrStk')
       ->add('standardinvestLyskildeKrStk')
       ->add('nyLyskilde')
@@ -66,25 +67,27 @@ class BelysningTiltagDetailType extends TiltagDetailType {
       ->add('nyLyskildeWLyskilde')
       ->add('nyForkoblingStkArmatur')
       ->add('nyeArmaturerStkLokale')
-      ->add('nyttiggjortVarmeAfElBesparelse', 'percent', array('scale' => 2, 'required' => false))
+      ->add('nyttiggjortVarmeAfElBesparelse', 'percent', ['scale' => 2, 'required' => false])
       ->add('prisfaktor')
       ;
+    }
 
-  }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+      'data_class' => 'AppBundle\Entity\BelysningTiltagDetail',
+    ]);
+    }
 
-  private function getAktuelNyStyring() {
-    $em = $this->doctrine->getRepository('AppBundle:BelysningTiltagDetail\NyStyring');
+    public function getName()
+    {
+        return 'appbundle_belysningtiltagdetail';
+    }
 
-    return $em->findActive();
-  }
+    private function getAktuelNyStyring()
+    {
+        $em = $this->doctrine->getRepository('AppBundle:BelysningTiltagDetail\NyStyring');
 
-  public function configureOptions(OptionsResolver $resolver) {
-    $resolver->setDefaults(array(
-      'data_class' => 'AppBundle\Entity\BelysningTiltagDetail'
-    ));
-  }
-
-  public function getName() {
-    return 'appbundle_belysningtiltagdetail';
-  }
+        return $em->findActive();
+    }
 }

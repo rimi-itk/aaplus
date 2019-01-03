@@ -12,7 +12,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Leverandoer;
 use AppBundle\Form\Type\LeverandoerType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -220,6 +219,22 @@ class LeverandoerController extends BaseController
     }
 
     /**
+     * Creates a form to delete a Leverandoer entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('leverandoer_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
+    }
+
+    /**
      * Creates a form to edit a Leverandoer entity.
      *
      * @param Leverandoer $entity The entity
@@ -236,22 +251,5 @@ class LeverandoerController extends BaseController
         $form->add('submit', 'submit', ['label' => 'Update']);
 
         return $form;
-    }
-
-    /**
-     * Creates a form to delete a Leverandoer entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('leverandoer_delete', ['id' => $id]))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', ['label' => 'Delete'])
-            ->getForm()
-        ;
     }
 }

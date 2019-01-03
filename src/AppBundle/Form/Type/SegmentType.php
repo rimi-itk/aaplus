@@ -1,62 +1,72 @@
 <?php
 
+/*
+ * This file is part of aaplusplus.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
 namespace AppBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class SegmentType extends AbstractType
 {
-  private $doctrine;
+    private $doctrine;
 
-  public function __construct(RegistryInterface $doctrine) {
-    $this->doctrine = $doctrine;
-  }
+    public function __construct(RegistryInterface $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
 
-  /**
-   * @param FormBuilderInterface $builder
-   * @param array $options
-   */
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-    $builder
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
       ->add('navn')
       ->add('forkortelse')
       ->add('magistrat')
-      ->add('segmentAnsvarlig', 'entity', array(
+      ->add('segmentAnsvarlig', 'entity', [
         'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup("Aa+"),
+        'choices' => $this->getUsersFromGroup('Aa+'),
         'required' => false,
-        'empty_value'  => 'common.none',
-      ))
+        'empty_value' => 'common.none',
+      ])
     ;
-  }
+    }
 
-  private function getUsersFromGroup($groupname) {
-    $em = $this->doctrine->getRepository('AppBundle:Group');
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults([
+      'data_class' => 'AppBundle\Entity\Segment',
+    ]);
+    }
 
-    $group = $em->findOneByName($groupname);
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'appbundle_segment';
+    }
 
-    return $group->getUsers();
-  }
+    private function getUsersFromGroup($groupname)
+    {
+        $em = $this->doctrine->getRepository('AppBundle:Group');
 
-  /**
-   * @param OptionsResolverInterface $resolver
-   */
-  public function setDefaultOptions(OptionsResolverInterface $resolver)
-  {
-    $resolver->setDefaults(array(
-      'data_class' => 'AppBundle\Entity\Segment'
-    ));
-  }
+        $group = $em->findOneByName($groupname);
 
-  /**
-   * @return string
-   */
-  public function getName()
-  {
-    return 'appbundle_segment';
-  }
+        return $group->getUsers();
+    }
 }

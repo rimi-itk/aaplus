@@ -39,16 +39,6 @@ class SolcelleTiltag extends Tiltag
         $this->setTitle('Solceller');
     }
 
-    public function getSalgTilNettetAar1()
-    {
-        return $this->sum(function ($detail) { return $detail->getCashFlow()['Salg til nettet'][1]; }) / $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
-    }
-
-    public function getSolcelleproduktion()
-    {
-        return $this->solcelleproduktion;
-    }
-
     public function calculate()
     {
         $this->solcelleproduktion = $this->calculateSolcelleproduktion();
@@ -62,8 +52,20 @@ class SolcelleTiltag extends Tiltag
         }
 
         return parent::calculateSavingsForYear($year)
-      + $this->getSolcelleproduktion() * $this->getRapport()->getElKrKWh($year)
-      + $this->getSalgTilNettetAar1() * $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
+            + $this->getSolcelleproduktion() * $this->getRapport()->getElKrKWh($year)
+            + $this->getSalgTilNettetAar1() * $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
+    }
+
+    public function getSolcelleproduktion()
+    {
+        return $this->solcelleproduktion;
+    }
+
+    public function getSalgTilNettetAar1()
+    {
+        return $this->sum(function ($detail) {
+            return $detail->getCashFlow()['Salg til nettet'][1];
+        }) / $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
     }
 
     protected function calculateSolcelleproduktion($value = null)
@@ -79,7 +81,7 @@ class SolcelleTiltag extends Tiltag
     protected function calculateSamletEnergibesparelse()
     {
         return $this->solcelleproduktion * $this->getRapport()->getElKrKWh()
-      + $this->getSalgTilNettetAar1() * $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
+            + $this->getSalgTilNettetAar1() * $this->getRapport()->getConfiguration()->getSolcelletiltagdetailSalgsprisFoerste10AarKrKWh();
     }
 
     protected function calculateSamletCo2besparelse()
@@ -105,7 +107,10 @@ class SolcelleTiltag extends Tiltag
     protected function calculateNutidsvaerdiSetOver15AarKr()
     {
         if (1 === $this->getTilvalgteDetails()->count()) {
-            return Calculation::npv($this->getRapport()->getKalkulationsrente(), $this->getTilvalgteDetails()->first()->getCashFlow()['Cash flow']);
+            return Calculation::npv(
+                $this->getRapport()->getKalkulationsrente(),
+                $this->getTilvalgteDetails()->first()->getCashFlow()['Cash flow']
+            );
         }
 
         return 0;

@@ -82,12 +82,20 @@ class Klimaskaerm
 
     public function __toString()
     {
-        return $this->post.': '.$this->klimaskaerm.($this->arbejdeOmfang ? ' – '.$this->arbejdeOmfang : '').($this->enhedsprisEksklMoms ? ' - '.round($this->enhedsprisEksklMoms, 2).' '.$this->enhed : '');
+        return $this->post.': '.$this->klimaskaerm.($this->arbejdeOmfang ? ' – '.$this->arbejdeOmfang : '').($this->enhedsprisEksklMoms ? ' - '.round(
+            $this->enhedsprisEksklMoms,
+                    2
+        ).' '.$this->enhed : '');
     }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
     public function setType($type)
@@ -97,9 +105,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getType()
+    public function getPost()
     {
-        return $this->type;
+        return $this->post;
     }
 
     public function setPost($post)
@@ -109,9 +117,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getPost()
+    public function getKlimaskaerm()
     {
-        return $this->post;
+        return $this->klimaskaerm;
     }
 
     public function setKlimaskaerm($klimaskaerm)
@@ -121,9 +129,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getKlimaskaerm()
+    public function getArbejdeOmfang()
     {
-        return $this->klimaskaerm;
+        return $this->arbejdeOmfang;
     }
 
     public function setArbejdeOmfang($arbejdeOmfang)
@@ -133,9 +141,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getArbejdeOmfang()
+    public function getEnhedsprisEksklMoms()
     {
-        return $this->arbejdeOmfang;
+        return $this->enhedsprisEksklMoms;
     }
 
     public function setEnhedsprisEksklMoms($enhedsprisEksklMoms)
@@ -145,9 +153,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getEnhedsprisEksklMoms()
+    public function getEnhed()
     {
-        return $this->enhedsprisEksklMoms;
+        return $this->enhed;
     }
 
     public function setEnhed($enhed)
@@ -157,9 +165,9 @@ class Klimaskaerm
         return $this;
     }
 
-    public function getEnhed()
+    public function getNoter()
     {
-        return $this->enhed;
+        return $this->noter;
     }
 
     public function setNoter($noter)
@@ -167,10 +175,5 @@ class Klimaskaerm
         $this->noter = $noter;
 
         return $this;
-    }
-
-    public function getNoter()
-    {
-        return $this->noter;
     }
 }

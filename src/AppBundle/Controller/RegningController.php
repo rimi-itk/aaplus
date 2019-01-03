@@ -12,11 +12,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Regning;
 use AppBundle\Form\Type\RegningType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Regning controller.
@@ -221,6 +219,22 @@ class RegningController extends BaseController
     }
 
     /**
+     * Creates a form to delete a Regning entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('regning_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
+    }
+
+    /**
      * Creates a form to edit a Regning entity.
      *
      * @param Regning $entity The entity
@@ -237,22 +251,5 @@ class RegningController extends BaseController
         $form->add('submit', 'submit', ['label' => 'Update']);
 
         return $form;
-    }
-
-    /**
-     * Creates a form to delete a Regning entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('regning_delete', ['id' => $id]))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', ['label' => 'Delete'])
-            ->getForm()
-        ;
     }
 }

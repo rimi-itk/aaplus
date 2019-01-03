@@ -13,12 +13,11 @@ namespace AppBundle\Controller\BelysningTiltagDetail;
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\BelysningTiltagDetail\Lyskilde;
 use AppBundle\Form\BelysningTiltagDetail\LyskildeType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * BelysningTiltagDetail\Lyskilde controller.

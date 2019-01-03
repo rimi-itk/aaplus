@@ -11,7 +11,6 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Annotations\Calculated;
-use AppBundle\DBAL\Types\CardinalDirectionType;
 use Doctrine\ORM\Mapping as ORM;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -234,32 +233,32 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     protected $kWhBesparVarmevaerkEksternEnergikilde;
 
     protected $propertiesRequiredForCalculation = [
-    'andelAfArealDerEfterisoleres',
-    'antalStk',
-    'breddeM',
-    'hoejdeElLaengdeM',
-    'klimaskaerm',
-    'levetidAar',
-    'placering',
-    'prisfaktor',
-    'tIndeC',
-    'tOpvarmningTimerAar',
-    'tUdeC',
-    'type',
-    'uEksWM2K',
-    'uNyWM2K',
-  ];
+        'andelAfArealDerEfterisoleres',
+        'antalStk',
+        'breddeM',
+        'hoejdeElLaengdeM',
+        'klimaskaerm',
+        'levetidAar',
+        'placering',
+        'prisfaktor',
+        'tIndeC',
+        'tOpvarmningTimerAar',
+        'tUdeC',
+        'type',
+        'uEksWM2K',
+        'uNyWM2K',
+    ];
+
+    public function getKlimaskaerm()
+    {
+        return $this->klimaskaerm;
+    }
 
     public function setKlimaskaerm($klimaskaerm)
     {
         $this->klimaskaerm = $klimaskaerm;
 
         return $this;
-    }
-
-    public function getKlimaskaerm()
-    {
-        return $this->klimaskaerm;
     }
 
     /**
@@ -278,6 +277,11 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         $this->klimaskaermOverskrevetPris = $klimaskaermOverskrevetPris;
     }
 
+    public function getOrientering()
+    {
+        return $this->orientering;
+    }
+
     public function setOrientering($orientering)
     {
         $this->orientering = $orientering;
@@ -285,9 +289,14 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         return $this;
     }
 
-    public function getOrientering()
+    /**
+     * Get type.
+     *
+     * @return string
+     */
+    public function getType()
     {
-        return $this->orientering;
+        return $this->type;
     }
 
     /**
@@ -305,13 +314,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get type.
+     * Get placering.
      *
      * @return string
      */
-    public function getType()
+    public function getPlacering()
     {
-        return $this->type;
+        return $this->placering;
     }
 
     /**
@@ -329,13 +338,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get placering.
+     * Get hoejdeElLaengdeM.
      *
-     * @return string
+     * @return float
      */
-    public function getPlacering()
+    public function getHoejdeElLaengdeM()
     {
-        return $this->placering;
+        return $this->hoejdeElLaengdeM;
     }
 
     /**
@@ -353,13 +362,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get hoejdeElLaengdeM.
+     * Get breddeM.
      *
      * @return float
      */
-    public function getHoejdeElLaengdeM()
+    public function getBreddeM()
     {
-        return $this->hoejdeElLaengdeM;
+        return $this->breddeM;
     }
 
     /**
@@ -377,13 +386,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get breddeM.
+     * Get antalStk.
      *
-     * @return float
+     * @return string
      */
-    public function getBreddeM()
+    public function getAntalStk()
     {
-        return $this->breddeM;
+        return $this->antalStk;
     }
 
     /**
@@ -401,13 +410,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get antalStk.
+     * Get andelAfArealDerEfterisoleres.
      *
-     * @return string
+     * @return float
      */
-    public function getAntalStk()
+    public function getAndelAfArealDerEfterisoleres()
     {
-        return $this->antalStk;
+        return $this->andelAfArealDerEfterisoleres;
     }
 
     /**
@@ -425,13 +434,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get andelAfArealDerEfterisoleres.
+     * Get uEksWM2K.
      *
      * @return float
      */
-    public function getAndelAfArealDerEfterisoleres()
+    public function getUEksWM2K()
     {
-        return $this->andelAfArealDerEfterisoleres;
+        return $this->uEksWM2K;
     }
 
     /**
@@ -449,13 +458,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get uEksWM2K.
+     * Get uNyWM2K.
      *
      * @return float
      */
-    public function getUEksWM2K()
+    public function getUNyWM2K()
     {
-        return $this->uEksWM2K;
+        return $this->uNyWM2K;
     }
 
     /**
@@ -473,13 +482,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get uNyWM2K.
+     * Get tIndeC.
      *
      * @return float
      */
-    public function getUNyWM2K()
+    public function getTIndeC()
     {
-        return $this->uNyWM2K;
+        return $this->tIndeC;
     }
 
     /**
@@ -497,13 +506,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get tIndeC.
+     * Get tUdeC.
      *
      * @return float
      */
-    public function getTIndeC()
+    public function getTUdeC()
     {
-        return $this->tIndeC;
+        return $this->tUdeC;
     }
 
     /**
@@ -521,13 +530,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get tUdeC.
+     * Get tOpvarmningTimerAar.
      *
      * @return float
      */
-    public function getTUdeC()
+    public function getTOpvarmningTimerAar()
     {
-        return $this->tUdeC;
+        return $this->tOpvarmningTimerAar;
     }
 
     /**
@@ -545,13 +554,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get tOpvarmningTimerAar.
+     * Get yderligereBesparelserPct.
      *
      * @return float
      */
-    public function getTOpvarmningTimerAar()
+    public function getYderligereBesparelserPct()
     {
-        return $this->tOpvarmningTimerAar;
+        return $this->yderligereBesparelserPct;
     }
 
     /**
@@ -569,13 +578,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get yderligereBesparelserPct.
+     * Get prisfaktor.
      *
      * @return float
      */
-    public function getYderligereBesparelserPct()
+    public function getPrisfaktor()
     {
-        return $this->yderligereBesparelserPct;
+        return $this->prisfaktor;
     }
 
     /**
@@ -593,13 +602,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get prisfaktor.
+     * Get noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet.
      *
-     * @return float
+     * @return string
      */
-    public function getPrisfaktor()
+    public function getNoterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet()
     {
-        return $this->prisfaktor;
+        return $this->noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet;
     }
 
     /**
@@ -609,21 +618,22 @@ class KlimaskaermTiltagDetail extends TiltagDetail
      *
      * @return KlimaskaermTiltagDetail
      */
-    public function setNoterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet($noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet)
-    {
+    public function setNoterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet(
+        $noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet
+    ) {
         $this->noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet = $noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet;
 
         return $this;
     }
 
     /**
-     * Get noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet.
+     * Get levetidAar.
      *
-     * @return string
+     * @return int
      */
-    public function getNoterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet()
+    public function getLevetidAar()
     {
-        return $this->noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet;
+        return $this->levetidAar;
     }
 
     /**
@@ -641,13 +651,13 @@ class KlimaskaermTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get levetidAar.
+     * Get noteGenerelt.
      *
      * @return int
      */
-    public function getLevetidAar()
+    public function getNoteGenerelt()
     {
-        return $this->levetidAar;
+        return $this->noteGenerelt;
     }
 
     /**
@@ -662,16 +672,6 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         $this->noteGenerelt = $noteGenerelt;
 
         return $this;
-    }
-
-    /**
-     * Get noteGenerelt.
-     *
-     * @return int
-     */
-    public function getNoteGenerelt()
-    {
-        return $this->noteGenerelt;
     }
 
     /**
@@ -754,6 +754,19 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         return $this->kWhBesparVarmevaerkEksternEnergikilde;
     }
 
+    public function calculate()
+    {
+        $this->arealM2 = $this->calculateArealM2();
+        $this->besparelseKWhAar = $this->calculateBesparelseKWhAar();
+        $this->samletInvesteringKr = $this->calculateSamletInvesteringKr();
+        $this->faktorForReinvestering = $this->calculateFaktorForReinvestering();
+        $this->kWhBesparElvaerkEksternEnergikilde = $this->calculateKWhBesparElvaerkEksternEnergikilde();
+        $this->kWhBesparVarmevaerkEksternEnergikilde = $this->calculateKWhBesparVarmevaerkEksternEnergikilde();
+        $this->nutidsvaerdiSetOver15AarKr = $this->calculateNutidsvaerdiSetOver15AarKr();
+        $this->simpelTilbagebetalingstidAar = $this->calculateSimpelTilbagebetalingstidAar();
+        parent::calculate();
+    }
+
     /**
      * Get pris pr. m2 for klimaskærm.
      *
@@ -770,19 +783,6 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         }
 
         return 0;
-    }
-
-    public function calculate()
-    {
-        $this->arealM2 = $this->calculateArealM2();
-        $this->besparelseKWhAar = $this->calculateBesparelseKWhAar();
-        $this->samletInvesteringKr = $this->calculateSamletInvesteringKr();
-        $this->faktorForReinvestering = $this->calculateFaktorForReinvestering();
-        $this->kWhBesparElvaerkEksternEnergikilde = $this->calculateKWhBesparElvaerkEksternEnergikilde();
-        $this->kWhBesparVarmevaerkEksternEnergikilde = $this->calculateKWhBesparVarmevaerkEksternEnergikilde();
-        $this->nutidsvaerdiSetOver15AarKr = $this->calculateNutidsvaerdiSetOver15AarKr();
-        $this->simpelTilbagebetalingstidAar = $this->calculateSimpelTilbagebetalingstidAar();
-        parent::calculate();
     }
 
     protected function calculateArealM2()
@@ -811,30 +811,10 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         return $this->getEnhedsprisEksklMoms() * $this->prisfaktor * $this->arealM2;
     }
 
-    private function calculateSimpelTilbagebetalingstidAar()
-    {
-        // "AF": "Simpel tilbagebetalingstid (år)"
-        return $this->divide(
-        $this->samletInvesteringKr,
-      $this->kWhBesparElvaerkEksternEnergikilde * $this->getRapport()->getElKrKWh() + $this->kWhBesparVarmevaerkEksternEnergikilde * $this->getRapport()
-        ->getVarmeKrKWh()
-    );
-    }
-
     private function calculateFaktorForReinvestering()
     {
         // "AM": "Faktor for reinvestering"
         return 1;
-    }
-
-    private function calculateNutidsvaerdiSetOver15AarKr()
-    {
-        // "AN": "Nutidsværdi set over 15 år (kr)"
-        if (0 === $this->kWhBesparElvaerkEksternEnergikilde && 0 === $this->kWhBesparVarmevaerkEksternEnergikilde) {
-            return 0;
-        }
-
-        return $this->nvPTO2($this->samletInvesteringKr, $this->kWhBesparVarmevaerkEksternEnergikilde, $this->kWhBesparElvaerkEksternEnergikilde, 0, 0, 0, $this->levetidAar, $this->faktorForReinvestering, 0);
     }
 
     private function calculateKWhBesparElvaerkEksternEnergikilde()
@@ -869,5 +849,35 @@ class KlimaskaermTiltagDetail extends TiltagDetail
         }
 
         return 0;
+    }
+
+    private function calculateNutidsvaerdiSetOver15AarKr()
+    {
+        // "AN": "Nutidsværdi set over 15 år (kr)"
+        if (0 === $this->kWhBesparElvaerkEksternEnergikilde && 0 === $this->kWhBesparVarmevaerkEksternEnergikilde) {
+            return 0;
+        }
+
+        return $this->nvPTO2(
+            $this->samletInvesteringKr,
+            $this->kWhBesparVarmevaerkEksternEnergikilde,
+            $this->kWhBesparElvaerkEksternEnergikilde,
+            0,
+            0,
+            0,
+            $this->levetidAar,
+            $this->faktorForReinvestering,
+            0
+        );
+    }
+
+    private function calculateSimpelTilbagebetalingstidAar()
+    {
+        // "AF": "Simpel tilbagebetalingstid (år)"
+        return $this->divide(
+            $this->samletInvesteringKr,
+            $this->kWhBesparElvaerkEksternEnergikilde * $this->getRapport()->getElKrKWh() + $this->kWhBesparVarmevaerkEksternEnergikilde * $this->getRapport()
+                ->getVarmeKrKWh()
+        );
     }
 }

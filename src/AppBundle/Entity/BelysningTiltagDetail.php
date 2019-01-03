@@ -11,8 +11,6 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Annotations\Calculated;
-use AppBundle\DBAL\Types\BelysningTiltagDetail\PlaceringType;
-use AppBundle\DBAL\Types\BelysningTiltagDetail\StyringType;
 use AppBundle\DBAL\Types\BelysningTiltagDetail\TiltagType;
 use AppBundle\Entity\BelysningTiltagDetail\Lyskilde as BelysningTiltagDetailLyskilde;
 use Doctrine\ORM\Mapping as ORM;
@@ -354,21 +352,21 @@ class BelysningTiltagDetail extends TiltagDetail
     protected $kWhBesparelseVarmeFraVarmevaerket;
 
     protected $propertiesRequiredForCalculation = [
-    'lokaleNavn',
-    'lyskilde',
-    'placering',
-    'drifttidTAar',
-    'lyskildeStkArmatur',
-    'lyskildeWLyskilde',
-    'forkoblingStkArmatur',
-    'armaturerStkLokale',
-    'belysningstiltag',
-    'reduktionAfDrifttid',
-    'nyLyskildeStkArmatur',
-    'nyLyskildeWLyskilde',
-    'nyForkoblingStkArmatur',
-    'prisfaktor',
-  ];
+        'lokaleNavn',
+        'lyskilde',
+        'placering',
+        'drifttidTAar',
+        'lyskildeStkArmatur',
+        'lyskildeWLyskilde',
+        'forkoblingStkArmatur',
+        'armaturerStkLokale',
+        'belysningstiltag',
+        'reduktionAfDrifttid',
+        'nyLyskildeStkArmatur',
+        'nyLyskildeWLyskilde',
+        'nyForkoblingStkArmatur',
+        'prisfaktor',
+    ];
 
     protected $udgiftSensorer;
 
@@ -407,34 +405,34 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         switch ($lyskilde->getType()) {
-        case 'LED-rør':
-        case 'LEDpære':
-          return ($lyskildeWLyskilde) * $lyskildeStkArmatur;
-        case 'Hal.':
-        case 'Gl':
-        case 'Sp.':
-        case 'LED-arm.':
-          return $lyskildeWLyskilde * $lyskildeStkArmatur;
-        case 'Kom. K':
-          return $lyskildeStkArmatur * $lyskildeWLyskilde * 1.1817 + 2.44275 + (1.2794 * ($lyskildeStkArmatur - 1)) * 0.9432;
-        case 'Hal.': // @FIXME: Duplicate case!
-          return 1.0832 * $lyskildeWLyskilde + 0.192;
-        default:
-          switch ($lyskilde->getForkobling()) {
-            case 'konv.':
-              if ($lyskildeWLyskilde < 14.99) {
-                  return 8.5 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
-              } elseif ($lyskildeWLyskilde < 35.99) {
-                  return 10 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
-              }
-
-                return 12 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
-            case 'hf':
-              return $forkoblingStkArmatur * 2 + $lyskildeWLyskilde * $lyskildeStkArmatur;
+            case 'LED-rør':
+            case 'LEDpære':
+                return ($lyskildeWLyskilde) * $lyskildeStkArmatur;
+            case 'Hal.':
+            case 'Gl':
+            case 'Sp.':
+            case 'LED-arm.':
+                return $lyskildeWLyskilde * $lyskildeStkArmatur;
+            case 'Kom. K':
+                return $lyskildeStkArmatur * $lyskildeWLyskilde * 1.1817 + 2.44275 + (1.2794 * ($lyskildeStkArmatur - 1)) * 0.9432;
+            case 'Hal.': // @FIXME: Duplicate case!
+                return 1.0832 * $lyskildeWLyskilde + 0.192;
             default:
-              return null;
-          }
-      }
+                switch ($lyskilde->getForkobling()) {
+                    case 'konv.':
+                        if ($lyskildeWLyskilde < 14.99) {
+                            return 8.5 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
+                        } elseif ($lyskildeWLyskilde < 35.99) {
+                            return 10 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
+                        }
+
+                        return 12 * $forkoblingStkArmatur + $lyskildeStkArmatur * $lyskildeWLyskilde;
+                    case 'hf':
+                        return $forkoblingStkArmatur * 2 + $lyskildeWLyskilde * $lyskildeStkArmatur;
+                    default:
+                        return null;
+                }
+        }
     }
 
     /**
@@ -454,6 +452,16 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
+     * Get lokale_navn.
+     *
+     * @return string
+     */
+    public function getLokaleNavn()
+    {
+        return $this->lokale_navn;
+    }
+
+    /**
      * Set lokale_navn.
      *
      * @param string $lokaleNavn
@@ -468,13 +476,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get lokale_navn.
+     * Get lokale_type.
      *
      * @return string
      */
-    public function getLokaleNavn()
+    public function getLokaleType()
     {
-        return $this->lokale_navn;
+        return $this->lokale_type;
     }
 
     /**
@@ -492,13 +500,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get lokale_type.
+     * Get armaturhoejdeM.
      *
-     * @return string
+     * @return float
      */
-    public function getLokaleType()
+    public function getArmaturhoejdeM()
     {
-        return $this->lokale_type;
+        return $this->armaturhoejdeM;
     }
 
     /**
@@ -516,13 +524,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get armaturhoejdeM.
+     * Get rumstoerrelseM2.
      *
      * @return float
      */
-    public function getArmaturhoejdeM()
+    public function getRumstoerrelseM2()
     {
-        return $this->armaturhoejdeM;
+        return $this->rumstoerrelseM2;
     }
 
     /**
@@ -540,13 +548,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get rumstoerrelseM2.
+     * Get lokale_antal.
      *
-     * @return float
+     * @return int
      */
-    public function getRumstoerrelseM2()
+    public function getLokaleAntal()
     {
-        return $this->rumstoerrelseM2;
+        return $this->lokale_antal;
     }
 
     /**
@@ -564,13 +572,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get lokale_antal.
+     * Get drifttidTAar.
      *
-     * @return int
+     * @return float
      */
-    public function getLokaleAntal()
+    public function getDrifttidTAar()
     {
-        return $this->lokale_antal;
+        return $this->drifttidTAar;
     }
 
     /**
@@ -588,37 +596,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get drifttidTAar.
+     * Get lyskildeStkArmatur.
      *
-     * @return float
+     * @return int
      */
-    public function getDrifttidTAar()
+    public function getLyskildeStkArmatur()
     {
-        return $this->drifttidTAar;
-    }
-
-    /**
-     * Set lyskilde.
-     *
-     * @param BelysningTiltagDetailLyskilde $lyskilde
-     *
-     * @return BelysningTiltagDetail
-     */
-    public function setLyskilde(BelysningTiltagDetailLyskilde $lyskilde = null)
-    {
-        $this->lyskilde = $lyskilde;
-
-        return $this;
-    }
-
-    /**
-     * Get lyskilde.
-     *
-     * @return BelysningTiltagDetailLyskilde
-     */
-    public function getLyskilde()
-    {
-        return $this->lyskilde;
+        return $this->lyskildeStkArmatur;
     }
 
     /**
@@ -636,13 +620,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get lyskildeStkArmatur.
+     * Get lyskildeWLyskilde.
      *
      * @return int
      */
-    public function getLyskildeStkArmatur()
+    public function getLyskildeWLyskilde()
     {
-        return $this->lyskildeStkArmatur;
+        return $this->lyskildeWLyskilde;
     }
 
     /**
@@ -660,13 +644,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get lyskildeWLyskilde.
+     * Get forkoblingStkArmatur.
      *
      * @return int
      */
-    public function getLyskildeWLyskilde()
+    public function getForkoblingStkArmatur()
     {
-        return $this->lyskildeWLyskilde;
+        return $this->forkoblingStkArmatur;
     }
 
     /**
@@ -684,13 +668,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get forkoblingStkArmatur.
+     * Get armaturerStkLokale.
      *
      * @return int
      */
-    public function getForkoblingStkArmatur()
+    public function getArmaturerStkLokale()
     {
-        return $this->forkoblingStkArmatur;
+        return $this->armaturerStkLokale;
     }
 
     /**
@@ -708,16 +692,6 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get armaturerStkLokale.
-     *
-     * @return int
-     */
-    public function getArmaturerStkLokale()
-    {
-        return $this->armaturerStkLokale;
-    }
-
-    /**
      * Get elforbrugWM2.
      *
      * @return float
@@ -725,6 +699,16 @@ class BelysningTiltagDetail extends TiltagDetail
     public function getElforbrugWM2()
     {
         return $this->elforbrugWM2;
+    }
+
+    /**
+     * Get placering.
+     *
+     * @return string
+     */
+    public function getPlacering()
+    {
+        return $this->placering;
     }
 
     /**
@@ -742,13 +726,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get placering.
+     * Get styring.
      *
      * @return string
      */
-    public function getPlacering()
+    public function getStyring()
     {
-        return $this->placering;
+        return $this->styring;
     }
 
     /**
@@ -766,13 +750,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get styring.
+     * Get noter.
      *
      * @return string
      */
-    public function getStyring()
+    public function getNoter()
     {
-        return $this->styring;
+        return $this->noter;
     }
 
     /**
@@ -790,37 +774,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get noter.
+     * Get nyeSensorerStkLokale.
      *
-     * @return string
+     * @return int
      */
-    public function getNoter()
+    public function getNyeSensorerStkLokale()
     {
-        return $this->noter;
-    }
-
-    /**
-     * Set tiltag.
-     *
-     * @param string $belysningstiltag
-     *
-     * @return BelysningTiltagDetail
-     */
-    public function setBelysningstiltag($belysningstiltag)
-    {
-        $this->belysningstiltag = $belysningstiltag;
-
-        return $this;
-    }
-
-    /**
-     * Get belysningtiltag.
-     *
-     * @return string
-     */
-    public function getBelysningstiltag()
-    {
-        return $this->belysningstiltag;
+        return $this->nyeSensorerStkLokale;
     }
 
     /**
@@ -838,13 +798,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyeSensorerStkLokale.
+     * Get standardinvestSensorKrStk.
      *
-     * @return int
+     * @return float
      */
-    public function getNyeSensorerStkLokale()
+    public function getStandardinvestSensorKrStk()
     {
-        return $this->nyeSensorerStkLokale;
+        return $this->standardinvestSensorKrStk;
     }
 
     /**
@@ -862,13 +822,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get standardinvestSensorKrStk.
+     * Get reduktionAfDrifttid.
      *
      * @return float
      */
-    public function getStandardinvestSensorKrStk()
+    public function getReduktionAfDrifttid()
     {
-        return $this->standardinvestSensorKrStk;
+        return $this->reduktionAfDrifttid;
     }
 
     /**
@@ -886,16 +846,6 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get reduktionAfDrifttid.
-     *
-     * @return float
-     */
-    public function getReduktionAfDrifttid()
-    {
-        return $this->reduktionAfDrifttid;
-    }
-
-    /**
      * Get nyDriftstid.
      *
      * @return float
@@ -903,6 +853,16 @@ class BelysningTiltagDetail extends TiltagDetail
     public function getNyDriftstid()
     {
         return $this->nyDriftstid;
+    }
+
+    /**
+     * Get standardinvestArmaturKrStk.
+     *
+     * @return float
+     */
+    public function getStandardinvestArmaturKrStk()
+    {
+        return $this->standardinvestArmaturKrStk;
     }
 
     /**
@@ -920,13 +880,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get standardinvestArmaturKrStk.
+     * Get standardinvestLyskildeKrStk.
      *
      * @return float
      */
-    public function getStandardinvestArmaturKrStk()
+    public function getStandardinvestLyskildeKrStk()
     {
-        return $this->standardinvestArmaturKrStk;
+        return $this->standardinvestLyskildeKrStk;
     }
 
     /**
@@ -944,39 +904,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get standardinvestLyskildeKrStk.
+     * Get nyLyskildeStkArmatur.
      *
-     * @return float
+     * @return int
      */
-    public function getStandardinvestLyskildeKrStk()
+    public function getNyLyskildeStkArmatur()
     {
-        return $this->standardinvestLyskildeKrStk;
-    }
-
-    /**
-     * Set nyLyskilde.
-     *
-     * @param BelysningTiltagDetailLyskilde $nyLyskilde
-     *
-     * @return BelysningTiltagDetail
-     */
-    public function setNyLyskilde($nyLyskilde = null)
-    {
-        $this->nyLyskilde = $nyLyskilde;
-
-        return $this;
-    }
-
-    /**
-     * Get nyLyskilde.
-     *
-     * @see getLyskilde()
-     *
-     * @return BelysningTiltagDetailLyskilde
-     */
-    public function getNyLyskilde()
-    {
-        return $this->nyLyskilde;
+        return $this->nyLyskildeStkArmatur;
     }
 
     /**
@@ -994,13 +928,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyLyskildeStkArmatur.
+     * Get nyLyskildeWLyskilde.
      *
      * @return int
      */
-    public function getNyLyskildeStkArmatur()
+    public function getNyLyskildeWLyskilde()
     {
-        return $this->nyLyskildeStkArmatur;
+        return $this->nyLyskildeWLyskilde;
     }
 
     /**
@@ -1018,13 +952,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyLyskildeWLyskilde.
+     * Get nyForkoblingStkArmatur.
      *
      * @return int
      */
-    public function getNyLyskildeWLyskilde()
+    public function getNyForkoblingStkArmatur()
     {
-        return $this->nyLyskildeWLyskilde;
+        return $this->nyForkoblingStkArmatur;
     }
 
     /**
@@ -1042,16 +976,6 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyForkoblingStkArmatur.
-     *
-     * @return int
-     */
-    public function getNyForkoblingStkArmatur()
-    {
-        return $this->nyForkoblingStkArmatur;
-    }
-
-    /**
      * Get nyArmatureffektWStk.
      *
      * @return float
@@ -1059,6 +983,16 @@ class BelysningTiltagDetail extends TiltagDetail
     public function getNyArmatureffektWStk()
     {
         return $this->nyArmatureffektWStk;
+    }
+
+    /**
+     * Get nyeArmaturerStkLokale.
+     *
+     * @return int
+     */
+    public function getNyeArmaturerStkLokale()
+    {
+        return $this->nyeArmaturerStkLokale;
     }
 
     /**
@@ -1076,13 +1010,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyeArmaturerStkLokale.
+     * Get nyttiggjortVarmeAfElBesparelse.
      *
-     * @return int
+     * @return float
      */
-    public function getNyeArmaturerStkLokale()
+    public function getNyttiggjortVarmeAfElBesparelse()
     {
-        return $this->nyeArmaturerStkLokale;
+        return $this->nyttiggjortVarmeAfElBesparelse;
     }
 
     /**
@@ -1100,13 +1034,13 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * Get nyttiggjortVarmeAfElBesparelse.
+     * Get prisfaktor.
      *
      * @return float
      */
-    public function getNyttiggjortVarmeAfElBesparelse()
+    public function getPrisfaktor()
     {
-        return $this->nyttiggjortVarmeAfElBesparelse;
+        return $this->prisfaktor;
     }
 
     /**
@@ -1121,16 +1055,6 @@ class BelysningTiltagDetail extends TiltagDetail
         $this->prisfaktor = $prisfaktor;
 
         return $this;
-    }
-
-    /**
-     * Get prisfaktor.
-     *
-     * @return float
-     */
-    public function getPrisfaktor()
-    {
-        return $this->prisfaktor;
     }
 
     /**
@@ -1224,22 +1148,6 @@ class BelysningTiltagDetail extends TiltagDetail
     }
 
     /**
-     * @return BelysningTiltagDetailNyStyring
-     */
-    public function getNyStyring()
-    {
-        return $this->nyStyring;
-    }
-
-    /**
-     * @param BelysningTiltagDetailNyStyring $nyStyring
-     */
-    public function setNyStyring($nyStyring)
-    {
-        $this->nyStyring = $nyStyring;
-    }
-
-    /**
      * @return BelysningTiltagDetailNytArmatur
      */
     public function getNytArmatur()
@@ -1282,21 +1190,61 @@ class BelysningTiltagDetail extends TiltagDetail
 
         $tiltag = $this->getBelysningstiltag();
         switch ($tiltag) {
-      case TiltagType::ARMATUR:
-        $properties[] = 'nytArmatur';
-        $properties[] = 'nyeArmaturerStkLokale';
-        $properties[] = 'standardinvestArmaturKrStk';
+            case TiltagType::ARMATUR:
+                $properties[] = 'nytArmatur';
+                $properties[] = 'nyeArmaturerStkLokale';
+                $properties[] = 'standardinvestArmaturKrStk';
 
-        break;
-      case TiltagType::LED_I_EKSIST_ARM:
-      case TiltagType::NY_INDSATS_I_ARM:
-        $properties[] = 'erstatningsLyskilde';
-        $properties[] = 'standardinvestLyskildeKrStk';
+                break;
+            case TiltagType::LED_I_EKSIST_ARM:
+            case TiltagType::NY_INDSATS_I_ARM:
+                $properties[] = 'erstatningsLyskilde';
+                $properties[] = 'standardinvestLyskildeKrStk';
 
-        break;
-    }
+                break;
+        }
 
         return $properties;
+    }
+
+    /**
+     * @return BelysningTiltagDetailNyStyring
+     */
+    public function getNyStyring()
+    {
+        return $this->nyStyring;
+    }
+
+    /**
+     * @param BelysningTiltagDetailNyStyring $nyStyring
+     */
+    public function setNyStyring($nyStyring)
+    {
+        $this->nyStyring = $nyStyring;
+    }
+
+    /**
+     * Get belysningtiltag.
+     *
+     * @return string
+     */
+    public function getBelysningstiltag()
+    {
+        return $this->belysningstiltag;
+    }
+
+    /**
+     * Set tiltag.
+     *
+     * @param string $belysningstiltag
+     *
+     * @return BelysningTiltagDetail
+     */
+    public function setBelysningstiltag($belysningstiltag)
+    {
+        $this->belysningstiltag = $belysningstiltag;
+
+        return $this;
     }
 
     public function calculate()
@@ -1316,6 +1264,56 @@ class BelysningTiltagDetail extends TiltagDetail
         parent::calculate();
     }
 
+    /**
+     * Get lyskilde.
+     *
+     * @return BelysningTiltagDetailLyskilde
+     */
+    public function getLyskilde()
+    {
+        return $this->lyskilde;
+    }
+
+    /**
+     * Set lyskilde.
+     *
+     * @param BelysningTiltagDetailLyskilde $lyskilde
+     *
+     * @return BelysningTiltagDetail
+     */
+    public function setLyskilde(BelysningTiltagDetailLyskilde $lyskilde = null)
+    {
+        $this->lyskilde = $lyskilde;
+
+        return $this;
+    }
+
+    /**
+     * Get nyLyskilde.
+     *
+     * @see getLyskilde()
+     *
+     * @return BelysningTiltagDetailLyskilde
+     */
+    public function getNyLyskilde()
+    {
+        return $this->nyLyskilde;
+    }
+
+    /**
+     * Set nyLyskilde.
+     *
+     * @param BelysningTiltagDetailLyskilde $nyLyskilde
+     *
+     * @return BelysningTiltagDetail
+     */
+    public function setNyLyskilde($nyLyskilde = null)
+    {
+        $this->nyLyskilde = $nyLyskilde;
+
+        return $this;
+    }
+
     public function getUdgiftSensorer()
     {
         if (null === $this->udgiftSensorer) {
@@ -1323,24 +1321,6 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return $this->udgiftSensorer;
-    }
-
-    public function getUdgiftArmaturer()
-    {
-        if (null === $this->udgiftArmaturer) {
-            $this->udgiftArmaturer = $this->_computeUdgiftArmatur();
-        }
-
-        return $this->udgiftArmaturer;
-    }
-
-    public function getUdgiftLyskilde()
-    {
-        if (null === $this->udgiftLyskilde) {
-            $this->udgiftLyskilde = $this->_computeUdgiftLyskilde();
-        }
-
-        return $this->udgiftLyskilde;
     }
 
     public function getLevetidSensor()
@@ -1361,6 +1341,15 @@ class BelysningTiltagDetail extends TiltagDetail
         return $this->armaturvaegtning;
     }
 
+    public function getUdgiftArmaturer()
+    {
+        if (null === $this->udgiftArmaturer) {
+            $this->udgiftArmaturer = $this->_computeUdgiftArmatur();
+        }
+
+        return $this->udgiftArmaturer;
+    }
+
     public function getLyskildevaegtning()
     {
         if (null === $this->lyskildevaegtning) {
@@ -1368,6 +1357,15 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return $this->lyskildevaegtning;
+    }
+
+    public function getUdgiftLyskilde()
+    {
+        if (null === $this->udgiftLyskilde) {
+            $this->udgiftLyskilde = $this->_computeUdgiftLyskilde();
+        }
+
+        return $this->udgiftLyskilde;
     }
 
     private function calculateElforbrugWM2()
@@ -1380,6 +1378,16 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return $armaturEffekt * $this->armaturerStkLokale / $this->rumstoerrelseM2;
+    }
+
+    private function _computeArmaturEffekt()
+    {
+        return $this->__computeArmaturEffekt(
+            $this->getLyskilde(true),
+            $this->lyskildeStkArmatur,
+            $this->lyskildeWLyskilde,
+            $this->forkoblingStkArmatur
+        );
     }
 
     private function calculateNyDriftstid()
@@ -1395,7 +1403,12 @@ class BelysningTiltagDetail extends TiltagDetail
     private function calculateNyArmatureffektWStk()
     {
         // AW
-        return $this->__computeArmaturEffekt($this->getNyLyskilde(true), $this->nyLyskildeStkArmatur, $this->nyLyskildeWLyskilde, $this->nyForkoblingStkArmatur);
+        return $this->__computeArmaturEffekt(
+            $this->getNyLyskilde(true),
+            $this->nyLyskildeStkArmatur,
+            $this->nyLyskildeWLyskilde,
+            $this->nyForkoblingStkArmatur
+        );
     }
 
     private function calculatePrisfaktorTillaegKrLokale()
@@ -1406,9 +1419,9 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return ($this->nyeSensorerStkLokale * $this->standardinvestSensorKrStk
-              + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
-              + $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur)
-        * ($this->prisfaktor - 1);
+                + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
+                + $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur)
+            * ($this->prisfaktor - 1);
     }
 
     private function calculateInvesteringAlleLokalerKr()
@@ -1419,14 +1432,14 @@ class BelysningTiltagDetail extends TiltagDetail
             return 0;
         } elseif ('LED-arm.' === $nyLyskilde->getType()) {
             return ($this->nyeSensorerStkLokale * $this->standardinvestSensorKrStk
-              + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
-              + $this->prisfaktorTillaegKrLokale) * $this->lokale_antal;
+                    + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
+                    + $this->prisfaktorTillaegKrLokale) * $this->lokale_antal;
         }
 
         return ($this->nyeSensorerStkLokale * $this->standardinvestSensorKrStk
-              + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
-              + $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur * $this->nyeArmaturerStkLokale
-              + $this->prisfaktorTillaegKrLokale) * $this->lokale_antal;
+                + $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale
+                + $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur * $this->nyeArmaturerStkLokale
+                + $this->prisfaktorTillaegKrLokale) * $this->lokale_antal;
     }
 
     private function calculateNytElforbrugWM2()
@@ -1464,8 +1477,8 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return ($this->lyskildeStkArmatur * $this->armaturerStkLokale * $lyskilde->getUdgift() * $this->drifttidTAar / $lyskilde->getLevetid()
-              - $this->nyLyskildeStkArmatur * $this->nyeArmaturerStkLokale * $nyLyskildeUdgift * $this->nyDriftstid / $nyLyskildeLevetid)
-        * $this->lokale_antal;
+                - $this->nyLyskildeStkArmatur * $this->nyeArmaturerStkLokale * $nyLyskildeUdgift * $this->nyDriftstid / $nyLyskildeLevetid)
+            * $this->lokale_antal;
     }
 
     private function calculateKwhBesparelseEl()
@@ -1551,9 +1564,9 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return $this->divide(
-          $this->investeringAlleLokalerKr,
-                           $this->kWhBesparelseEl * $this->getRapport()->getElKrKWh() + $this->kWhBesparelseVarmeFraVarmevaerket * $this->getRapport()->getVarmeKrKWh() + $this->driftsbesparelseTilLyskilderKrAar
-      );
+            $this->investeringAlleLokalerKr,
+            $this->kWhBesparelseEl * $this->getRapport()->getElKrKWh() + $this->kWhBesparelseVarmeFraVarmevaerket * $this->getRapport()->getVarmeKrKWh() + $this->driftsbesparelseTilLyskilderKrAar
+        );
     }
 
     private function calculateVaegtetLevetidAar()
@@ -1573,9 +1586,9 @@ class BelysningTiltagDetail extends TiltagDetail
         $levetidLyskilde = $this->_computeLevetidLyskilde();
 
         return $this->divide(
-          $udgiftSensorer * $levetidSensor + $udgiftArmatur * $levetidArmatur + $udgiftLyskilde * $levetidLyskilde,
-                           $udgiftSensorer + $udgiftArmatur + $udgiftLyskilde
-      );
+            $udgiftSensorer * $levetidSensor + $udgiftArmatur * $levetidArmatur + $udgiftLyskilde * $levetidLyskilde,
+            $udgiftSensorer + $udgiftArmatur + $udgiftLyskilde
+        );
     }
 
     private function _computeUdgiftSensorer()
@@ -1603,16 +1616,6 @@ class BelysningTiltagDetail extends TiltagDetail
         return $this->standardinvestArmaturKrStk * $this->nyeArmaturerStkLokale * $this->lokale_antal * $this->prisfaktor;
     }
 
-    private function _computeUdgiftLyskilde()
-    {
-        // BP
-        if (0 === $this->standardinvestLyskildeKrStk) {
-            return 0;
-        }
-
-        return $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur * $this->prisfaktor;
-    }
-
     private function _computeLevetidArmatur()
     {
         // BQ
@@ -1624,6 +1627,16 @@ class BelysningTiltagDetail extends TiltagDetail
         }
 
         return min(25, $levetid / $this->nyDriftstid);
+    }
+
+    private function _computeUdgiftLyskilde()
+    {
+        // BP
+        if (0 === $this->standardinvestLyskildeKrStk) {
+            return 0;
+        }
+
+        return $this->standardinvestLyskildeKrStk * $this->nyLyskildeStkArmatur * $this->prisfaktor;
     }
 
     private function _computeLevetidLyskilde()
@@ -1639,19 +1652,34 @@ class BelysningTiltagDetail extends TiltagDetail
         if (0 === $this->vaegtetLevetidAar || 0 === $faktorForReinvestering) {
             return 0;
         } elseif (null === $this->getNyLyskilde(true)) {
-            return $this->nvPTO2($this->investeringAlleLokalerKr, $this->kWhBesparelseVarmeFraVarmevaerket, $this->kWhBesparelseEl, 0, 0, 0, round($this->vaegtetLevetidAar), $faktorForReinvestering, 0);
+            return $this->nvPTO2(
+                $this->investeringAlleLokalerKr,
+                $this->kWhBesparelseVarmeFraVarmevaerket,
+                $this->kWhBesparelseEl,
+                0,
+                0,
+                0,
+                round($this->vaegtetLevetidAar),
+                $faktorForReinvestering,
+                0
+            );
         }
 
-        return $this->nvPTO2($this->investeringAlleLokalerKr, $this->kWhBesparelseVarmeFraVarmevaerket, $this->kWhBesparelseEl, 0, $this->driftsbesparelseTilLyskilderKrAar, 0, round($this->vaegtetLevetidAar), $faktorForReinvestering, 0);
+        return $this->nvPTO2(
+            $this->investeringAlleLokalerKr,
+            $this->kWhBesparelseVarmeFraVarmevaerket,
+            $this->kWhBesparelseEl,
+            0,
+            $this->driftsbesparelseTilLyskilderKrAar,
+            0,
+            round($this->vaegtetLevetidAar),
+            $faktorForReinvestering,
+            0
+        );
     }
 
     private function _computeFaktorForReinvestering()
     {
         return 1;
-    }
-
-    private function _computeArmaturEffekt()
-    {
-        return $this->__computeArmaturEffekt($this->getLyskilde(true), $this->lyskildeStkArmatur, $this->lyskildeWLyskilde, $this->forkoblingStkArmatur);
     }
 }

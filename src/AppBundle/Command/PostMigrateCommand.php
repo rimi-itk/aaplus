@@ -19,8 +19,8 @@ class PostMigrateCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-      ->setName('aaplus:post-migrate')
-      ->setDescription('Run code after doctrine migrations');
+            ->setName('aaplus:post-migrate')
+            ->setDescription('Run code after doctrine migrations');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

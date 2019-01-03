@@ -13,12 +13,11 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Energiforsyning;
 use AppBundle\Entity\Rapport;
 use AppBundle\Form\Type\EnergiforsyningType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Energiforsyning controller.

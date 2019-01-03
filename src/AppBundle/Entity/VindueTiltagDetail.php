@@ -76,38 +76,31 @@ class VindueTiltagDetail extends KlimaskaermTiltagDetail
     protected $eWNyKWhM2Aar;
 
     protected $propertiesRequiredForCalculation = [
-    'type',
-    'placering',
-    'orientering',
-    'antalStk',
-    'hoejdeElLaengdeM',
-    'Uekswm2k',
-    'solenergitransmittansEks',
-    'yderligereBesparelserPct',
-    'glasandel',
-    'breddeM',
-    'Unywm2k',
-    'solenergitransmittansNy',
-    'tiltag',
-    'levetidAar',
-    'prisfaktor',
-  ];
-
-    public function setSolenergitransmittansEks($solenergitransmittansEks)
-    {
-        $this->solenergitransmittansEks = $solenergitransmittansEks;
-
-        return $this;
-    }
+        'type',
+        'placering',
+        'orientering',
+        'antalStk',
+        'hoejdeElLaengdeM',
+        'Uekswm2k',
+        'solenergitransmittansEks',
+        'yderligereBesparelserPct',
+        'glasandel',
+        'breddeM',
+        'Unywm2k',
+        'solenergitransmittansNy',
+        'tiltag',
+        'levetidAar',
+        'prisfaktor',
+    ];
 
     public function getSolenergitransmittansEks()
     {
         return $this->solenergitransmittansEks;
     }
 
-    public function setSolenergitransmittansNy($solenergitransmittansNy)
+    public function setSolenergitransmittansEks($solenergitransmittansEks)
     {
-        $this->solenergitransmittansNy = $solenergitransmittansNy;
+        $this->solenergitransmittansEks = $solenergitransmittansEks;
 
         return $this;
     }
@@ -117,9 +110,9 @@ class VindueTiltagDetail extends KlimaskaermTiltagDetail
         return $this->solenergitransmittansNy;
     }
 
-    public function setGlasandel($glasandel)
+    public function setSolenergitransmittansNy($solenergitransmittansNy)
     {
-        $this->glasandel = $glasandel;
+        $this->solenergitransmittansNy = $solenergitransmittansNy;
 
         return $this;
     }
@@ -127,6 +120,13 @@ class VindueTiltagDetail extends KlimaskaermTiltagDetail
     public function getGlasandel()
     {
         return $this->glasandel;
+    }
+
+    public function setGlasandel($glasandel)
+    {
+        $this->glasandel = $glasandel;
+
+        return $this;
     }
 
     public function getERefEksKWhM2Aar()
@@ -172,20 +172,20 @@ class VindueTiltagDetail extends KlimaskaermTiltagDetail
 
         $solenergitransmittansFactor = 0;
         switch ($this->orientering) {
-      case CardinalDirectionType::NORTH:
-        $solenergitransmittansFactor = 73.15;
+            case CardinalDirectionType::NORTH:
+                $solenergitransmittansFactor = 73.15;
 
-        break;
-      case CardinalDirectionType::SOUTH:
-        $solenergitransmittansFactor = 301.98;
+                break;
+            case CardinalDirectionType::SOUTH:
+                $solenergitransmittansFactor = 301.98;
 
-        break;
-      case CardinalDirectionType::EAST:
-      case CardinalDirectionType::WEST:
-        $solenergitransmittansFactor = 162.47;
+                break;
+            case CardinalDirectionType::EAST:
+            case CardinalDirectionType::WEST:
+                $solenergitransmittansFactor = 162.47;
 
-        break;
-    }
+                break;
+        }
 
         return $this->glasandel * $solenergitransmittansFactor * $this->solenergitransmittansEks - 90.36 * $this->uEksWM2K;
     }
@@ -203,20 +203,20 @@ class VindueTiltagDetail extends KlimaskaermTiltagDetail
 
         $solenergitransmittansFactor = 0;
         switch ($this->orientering) {
-      case CardinalDirectionType::NORTH:
-        $solenergitransmittansFactor = 73.15;
+            case CardinalDirectionType::NORTH:
+                $solenergitransmittansFactor = 73.15;
 
-        break;
-      case CardinalDirectionType::SOUTH:
-        $solenergitransmittansFactor = 301.98;
+                break;
+            case CardinalDirectionType::SOUTH:
+                $solenergitransmittansFactor = 301.98;
 
-        break;
-      case CardinalDirectionType::EAST:
-      case CardinalDirectionType::WEST:
-        $solenergitransmittansFactor = 162.47;
+                break;
+            case CardinalDirectionType::EAST:
+            case CardinalDirectionType::WEST:
+                $solenergitransmittansFactor = 162.47;
 
-        break;
-    }
+                break;
+        }
 
         return $this->glasandel * $solenergitransmittansFactor * $this->solenergitransmittansNy - 90.36 * $this->uNyWM2K;
     }

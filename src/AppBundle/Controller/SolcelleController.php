@@ -12,12 +12,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Solcelle;
 use AppBundle\Form\Type\SolcelleType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Solcelle controller.
@@ -46,8 +44,8 @@ class SolcelleController extends BaseController
         $entities = $em->getRepository('AppBundle:Solcelle')->findAll();
 
         return [
-      'entities' => $entities,
-    ];
+            'entities' => $entities,
+        ];
     }
 
     /**
@@ -71,9 +69,9 @@ class SolcelleController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -90,9 +88,9 @@ class SolcelleController extends BaseController
         $form = $this->createCreateForm($entity);
 
         return [
-      'entity' => $entity,
-      'form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -117,9 +115,9 @@ class SolcelleController extends BaseController
         $deleteForm = $this->createDeleteForm($id);
 
         return [
-      'entity' => $entity,
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -141,10 +139,10 @@ class SolcelleController extends BaseController
         $deleteForm = $this->createDeleteForm($entity->getId());
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -176,10 +174,10 @@ class SolcelleController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -219,30 +217,11 @@ class SolcelleController extends BaseController
     private function createCreateForm(Solcelle $entity)
     {
         $form = $this->createForm(new SolcelleType(), $entity, [
-      'action' => $this->generateUrl('solcelle_create'),
-      'method' => 'POST',
-    ]);
+            'action' => $this->generateUrl('solcelle_create'),
+            'method' => 'POST',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('solcelle'));
-
-        return $form;
-    }
-
-    /**
-     * Creates a form to edit a Solcelle entity.
-     *
-     * @param Solcelle $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Solcelle $entity)
-    {
-        $form = $this->createForm(new SolcelleType(), $entity, [
-      'action' => $this->generateUrl('solcelle_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
-
-        $this->addUpdate($form, $this->generateUrl('solcelle_show', ['id' => $entity->getId()]));
 
         return $form;
     }
@@ -261,15 +240,34 @@ class SolcelleController extends BaseController
         $message = $repository->getRemoveErrorMessage($solcelle);
 
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('solcelle_delete', ['id' => $id]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', [
-        'label' => 'Delete',
-        'disabled' => $message,
-        'attr' => [
-          'disabled_message' => $message,
-        ],
-      ])
-      ->getForm();
+            ->setAction($this->generateUrl('solcelle_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', [
+                'label' => 'Delete',
+                'disabled' => $message,
+                'attr' => [
+                    'disabled_message' => $message,
+                ],
+            ])
+            ->getForm();
+    }
+
+    /**
+     * Creates a form to edit a Solcelle entity.
+     *
+     * @param Solcelle $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Solcelle $entity)
+    {
+        $form = $this->createForm(new SolcelleType(), $entity, [
+            'action' => $this->generateUrl('solcelle_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form, $this->generateUrl('solcelle_show', ['id' => $entity->getId()]));
+
+        return $form;
     }
 }

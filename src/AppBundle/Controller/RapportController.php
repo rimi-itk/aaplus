@@ -20,9 +20,6 @@ use AppBundle\Form\Type\RapportStatusType;
 use AppBundle\Form\Type\RapportType;
 use AppBundle\Form\Type\TiltagDatoForDriftType;
 use AppBundle\Form\Type\TiltagTilvalgtType;
-use Doctrine\ORM\Mapping\Entity;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -30,6 +27,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Rapport controller.
@@ -89,12 +87,15 @@ class RapportController extends BaseController
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-      $query,
-      $request->query->get('page', 1),
-      20
-    );
+            $query,
+            $request->query->get('page', 1),
+            20
+        );
 
-        return $this->render('AppBundle:Rapport:index.html.twig', ['pagination' => $pagination, 'search' => $search, 'form' => $form->createView()]);
+        return $this->render(
+            'AppBundle:Rapport:index.html.twig',
+            ['pagination' => $pagination, 'search' => $search, 'form' => $form->createView()]
+        );
     }
 
     /**
@@ -120,16 +121,40 @@ class RapportController extends BaseController
         // Bygning Status forms
         $formArray = [];
         if (BygningStatusType::TILKNYTTET_RAADGIVER === $status) {
-            $formArray['next_status_form'] = $this->createStatusForm($rapport, 'rapport_submit', 'rapporter.actions.submit')->createView();
+            $formArray['next_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_submit',
+                'rapporter.actions.submit'
+            )->createView();
         } elseif (BygningStatusType::AFLEVERET_RAADGIVER === $status) {
-            $formArray['prev_status_form'] = $this->createStatusForm($rapport, 'rapport_retur', 'rapporter.actions.retur')->createView();
-            $formArray['next_status_form'] = $this->createStatusForm($rapport, 'rapport_verify', 'rapporter.actions.verify')->createView();
+            $formArray['prev_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_retur',
+                'rapporter.actions.retur'
+            )->createView();
+            $formArray['next_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_verify',
+                'rapporter.actions.verify'
+            )->createView();
         } elseif (BygningStatusType::AAPLUS_VERIFICERET === $status) {
-            $formArray['next_status_form'] = $this->createStatusForm($rapport, 'rapport_approve', 'rapporter.actions.approve')->createView();
+            $formArray['next_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_approve',
+                'rapporter.actions.approve'
+            )->createView();
         } elseif (BygningStatusType::GODKENDT_AF_MAGISTRAT === $status) {
-            $formArray['next_status_form'] = $this->createStatusForm($rapport, 'rapport_implementation', 'rapporter.actions.implementation')->createView();
+            $formArray['next_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_implementation',
+                'rapporter.actions.implementation'
+            )->createView();
         } elseif (BygningStatusType::UNDER_UDFOERSEL === $status) {
-            $formArray['next_status_form'] = $this->createStatusForm($rapport, 'rapport_operation', 'rapporter.actions.operation')->createView();
+            $formArray['next_status_form'] = $this->createStatusForm(
+                $rapport,
+                'rapport_operation',
+                'rapporter.actions.operation'
+            )->createView();
         }
 
         // Tiltag tilvalgt/fravalgt forms
@@ -139,9 +164,15 @@ class RapportController extends BaseController
         if ($this->container->get('security.context')->isGranted('ROLE_ADMIN')) {
             foreach ($rapport->getTiltag() as $tiltag) {
                 if ($tiltag->getTilvalgt()) {
-                    $tilvalgtFormArray[$tiltag->getId()] = $this->createEditTilvalgTilvalgtForm($tiltag, $rapport)->createView();
+                    $tilvalgtFormArray[$tiltag->getId()] = $this->createEditTilvalgTilvalgtForm(
+                        $tiltag,
+                        $rapport
+                    )->createView();
                 } else {
-                    $fravalgtFormArray[$tiltag->getId()] = $this->createEditTilvalgTilvalgtForm($tiltag, $rapport)->createView();
+                    $fravalgtFormArray[$tiltag->getId()] = $this->createEditTilvalgTilvalgtForm(
+                        $tiltag,
+                        $rapport
+                    )->createView();
                 }
             }
         }
@@ -152,7 +183,10 @@ class RapportController extends BaseController
             if (BygningStatusType::UNDER_UDFOERSEL === $status || BygningStatusType::DRIFT === $status) {
                 foreach ($rapport->getTiltag() as $tiltag) {
                     if ($tiltag->getTilvalgt()) {
-                        $tiltagDatoForDriftFormArray[$tiltag->getId()] = $this->createEditTiltagDatoForDriftForm($tiltag, $rapport)->createView();
+                        $tiltagDatoForDriftFormArray[$tiltag->getId()] = $this->createEditTiltagDatoForDriftForm(
+                            $tiltag,
+                            $rapport
+                        )->createView();
                     }
                 }
             }
@@ -162,16 +196,16 @@ class RapportController extends BaseController
         $calculateForm = $this->createCalculateForm($rapport, $calculationChanges)->createView();
 
         $twigVars = [
-      'entity' => $rapport,
-      'dato_for_drift_form_array' => $tiltagDatoForDriftFormArray,
-      'tilvalgt_form_array' => $tilvalgtFormArray,
-      'fravalgt_form_array' => $fravalgtFormArray,
-      'delete_form' => $deleteForm,
-      'edit_form' => $editForm ? $editForm->createView() : null,
-      'calculate_form' => $calculateForm,
-      'calculation_changes' => $calculationChanges,
-      'calculation_warnings' => $rapport->getCalculationWarnings(),
-    ];
+            'entity' => $rapport,
+            'dato_for_drift_form_array' => $tiltagDatoForDriftFormArray,
+            'tilvalgt_form_array' => $tilvalgtFormArray,
+            'fravalgt_form_array' => $fravalgtFormArray,
+            'delete_form' => $deleteForm,
+            'edit_form' => $editForm ? $editForm->createView() : null,
+            'calculate_form' => $calculateForm,
+            'calculation_changes' => $calculationChanges,
+            'calculation_warnings' => $rapport->getCalculationWarnings(),
+        ];
 
         return array_merge($twigVars, $formArray);
     }
@@ -190,18 +224,23 @@ class RapportController extends BaseController
     public function baselineAction(Rapport $rapport)
     {
         $this->breadcrumbs->addItem($rapport, $this->generateUrl('rapport_show', ['id' => $rapport->getId()]));
-        $this->breadcrumbs->addItem('rapporter.actions.edit', $this->generateUrl('rapport_edit', ['id' => $rapport->getId()]));
+        $this->breadcrumbs->addItem(
+            'rapporter.actions.edit',
+            $this->generateUrl('rapport_edit', ['id' => $rapport->getId()])
+        );
 
         $showForm = $this->createForm(new RapportShowType($this->get('security.context'), $rapport), $rapport, [
-      'action' => '#',
-      'method' => 'PUT',
-    ]);
+            'action' => '#',
+            'method' => 'PUT',
+        ]);
 
         return [
-      'entity' => $rapport,
-      'show_form' => $showForm->createView(),
-    ];
+            'entity' => $rapport,
+            'show_form' => $showForm->createView(),
+        ];
     }
+
+    //---------------- Rådgiver aflever -------------------//
 
     /**
      * Finds and displays a Rapport entity in PDF form. (Resultatoversigt).
@@ -222,10 +261,12 @@ class RapportController extends BaseController
         $pdfName = $rapport->getBygning()->getAdresse().'-Dokument 2-'.date('Y-m-d').'-Status '.$rapport->getBygning()->getNummericStatus().'-Itt '.$rapport->getVersion();
 
         return new Response($pdf, 200, [
-      'Content-Type' => 'application/pdf',
-      'Content-Disposition' => 'attachment; filename="'.$pdfName.'.pdf"',
-    ]);
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="'.$pdfName.'.pdf"',
+        ]);
     }
+
+    //---------------- Retur til Rådgiver -------------------//
 
     /**
      * Finds and displays a Rapport entity in PDF form. (Detailark).
@@ -246,10 +287,12 @@ class RapportController extends BaseController
         $pdfName = $rapport->getBygning()->getAdresse().'-Dokument 5-'.date('Y-m-d').'-Status '.$rapport->getBygning()->getNummericStatus().'-Itt '.$rapport->getVersion();
 
         return new Response($pdf, 200, [
-      'Content-Type' => 'application/pdf',
-      'Content-Disposition' => 'attachment; filename="'.$pdfName.'.pdf"',
-    ]);
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="'.$pdfName.'.pdf"',
+        ]);
     }
+
+    //---------------- Aa+ Verificeret -------------------//
 
     /**
      * Finds and displays a Rapport entity.
@@ -265,10 +308,12 @@ class RapportController extends BaseController
     public function showPdf2TestAction(Rapport $rapport)
     {
         return [
-      'rapport' => $rapport,
-      'entity' => $rapport,
-    ];
+            'rapport' => $rapport,
+            'entity' => $rapport,
+        ];
     }
+
+    //---------------- Godkendt Magistrat -------------------//
 
     /**
      * Finds and displays a Rapport entity.
@@ -284,10 +329,12 @@ class RapportController extends BaseController
     public function showPdf5TestAction(Rapport $rapport)
     {
         return [
-      'rapport' => $rapport,
-      'entity' => $rapport,
-    ];
+            'rapport' => $rapport,
+            'entity' => $rapport,
+        ];
     }
+
+    //---------------- Under udførsel -------------------//
 
     /**
      * Displays a form to edit an existing Rapport entity.
@@ -305,11 +352,13 @@ class RapportController extends BaseController
         $deleteForm = $this->createDeleteForm($rapport->getId());
 
         return [
-      'entity' => $rapport,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $rapport,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
+
+    //---------------- Tiltag -------------------//
 
     /**
      * Edits an existing Rapport entity.
@@ -335,11 +384,13 @@ class RapportController extends BaseController
         }
 
         return [
-      'entity' => $rapport,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $rapport,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
+
+    //---------------- Regninger -------------------//
 
     /**
      * Deletes a Rapport entity.
@@ -368,8 +419,6 @@ class RapportController extends BaseController
         return $this->redirect($this->generateUrl('rapport'));
     }
 
-    //---------------- Rådgiver aflever -------------------//
-
     /**
      * Aaplus verifies a Rapport entity.
      *
@@ -378,14 +427,18 @@ class RapportController extends BaseController
      */
     public function submitAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::AFLEVERET_RAADGIVER, 'rapport_submit', 'rapporter.actions.submit');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::AFLEVERET_RAADGIVER,
+            'rapport_submit',
+            'rapporter.actions.submit'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.submitted');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Retur til Rådgiver -------------------//
 
     /**
      * Aaplus verifies a Rapport entity.
@@ -395,14 +448,18 @@ class RapportController extends BaseController
      */
     public function returAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::TILKNYTTET_RAADGIVER, 'rapport_retur', 'rapporter.actions.retur');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::TILKNYTTET_RAADGIVER,
+            'rapport_retur',
+            'rapporter.actions.retur'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.retur');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Aa+ Verificeret -------------------//
 
     /**
      * Aaplus verifies a Rapport entity.
@@ -412,14 +469,18 @@ class RapportController extends BaseController
      */
     public function verifyAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::AAPLUS_VERIFICERET, 'rapport_verify', 'rapporter.actions.verify');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::AAPLUS_VERIFICERET,
+            'rapport_verify',
+            'rapporter.actions.verify'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.verified');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Godkendt Magistrat -------------------//
 
     /**
      * Magistrat Godkendt.
@@ -429,14 +490,18 @@ class RapportController extends BaseController
      */
     public function approvedAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::GODKENDT_AF_MAGISTRAT, 'rapport_approve', 'rapporter.actions.approve');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::GODKENDT_AF_MAGISTRAT,
+            'rapport_approve',
+            'rapporter.actions.approve'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.approved');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Under udførsel -------------------//
 
     /**
      * Under udførsel.
@@ -446,14 +511,18 @@ class RapportController extends BaseController
      */
     public function implementationAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::UNDER_UDFOERSEL, 'rapport_implementation', 'rapporter.actions.implementation');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::UNDER_UDFOERSEL,
+            'rapport_implementation',
+            'rapporter.actions.implementation'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.implementation');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Drift -------------------//
 
     /**
      * Drift.
@@ -463,14 +532,18 @@ class RapportController extends BaseController
      */
     public function operationAction(Request $request, Rapport $rapport)
     {
-        $this->statusAction($request, $rapport, BygningStatusType::DRIFT, 'rapport_operation', 'rapporter.actions.operation');
+        $this->statusAction(
+            $request,
+            $rapport,
+            BygningStatusType::DRIFT,
+            'rapport_operation',
+            'rapporter.actions.operation'
+        );
 
         $this->addFlash('success', 'rapporter.confirmation.operation');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
-
-    //---------------- Tiltag -------------------//
 
     /**
      * Creates a new Tiltag entity.
@@ -496,8 +569,6 @@ class RapportController extends BaseController
         return $this->redirect($this->generateUrl('tiltag_edit', ['id' => $tiltag->getId()]));
     }
 
-    //---------------- Regninger -------------------//
-
     /**
      * Finds and displays a Rapport entity.
      *
@@ -512,19 +583,19 @@ class RapportController extends BaseController
     public function showRegningerAction(Rapport $rapport)
     {
         $this->breadcrumbs->addItem($rapport->getBygning(), $this->get('router')
-      ->generate('bygning_show', [
-        'id' => $rapport->getBygning()
-          ->getId(),
-      ]));
+            ->generate('bygning_show', [
+                'id' => $rapport->getBygning()
+                    ->getId(),
+            ]));
         $this->breadcrumbs->addItem($rapport->getVersion(), $this->get('router')
-      ->generate('rapport_show', ['id' => $rapport->getId()]));
+            ->generate('rapport_show', ['id' => $rapport->getId()]));
 
         $deleteForm = $this->createDeleteForm($rapport->getId());
 
         return [
-      'tiltag' => $rapport->getTiltag(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'tiltag' => $rapport->getTiltag(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -541,19 +612,19 @@ class RapportController extends BaseController
     public function showFinansieringAction(Rapport $rapport)
     {
         $this->breadcrumbs->addItem($rapport->getBygning(), $this->get('router')
-      ->generate('bygning_show', [
-        'id' => $rapport->getBygning()
-          ->getId(),
-      ]));
+            ->generate('bygning_show', [
+                'id' => $rapport->getBygning()
+                    ->getId(),
+            ]));
         $this->breadcrumbs->addItem($rapport->getVersion(), $this->get('router')
-      ->generate('rapport_show', ['id' => $rapport->getId()]));
+            ->generate('rapport_show', ['id' => $rapport->getId()]));
 
         $editForm = $this->createEditFormFinansiering($rapport);
 
         return [
-      'entity' => $rapport,
-      'edit_form' => $editForm ? $editForm->createView() : null,
-    ];
+            'entity' => $rapport,
+            'edit_form' => $editForm ? $editForm->createView() : null,
+        ];
     }
 
     /**
@@ -578,10 +649,12 @@ class RapportController extends BaseController
         }
 
         return [
-      'entity' => $rapport,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $rapport,
+            'edit_form' => $editForm->createView(),
+        ];
     }
+
+    //---------------- Generic Status -------------------//
 
     /**
      * Calculates and persists a Rapport entity.
@@ -633,9 +706,9 @@ class RapportController extends BaseController
         $filer = $filRepository->findByEntity($rapport);
 
         return [
-      'entity' => $rapport,
-      'filer' => $filer,
-    ];
+            'entity' => $rapport,
+            'filer' => $filer,
+        ];
     }
 
     /**
@@ -651,9 +724,9 @@ class RapportController extends BaseController
         $response = new BinaryFileResponse($file->getRealPath());
         if ($request->query->getBoolean('download', false)) {
             $response->setContentDisposition(
-        ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-        $fil->getNavn()
-      );
+                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+                $fil->getNavn()
+            );
         }
 
         return $response;
@@ -688,9 +761,9 @@ class RapportController extends BaseController
 
         $response = new BinaryFileResponse($zipPath);
         $response->setContentDisposition(
-        ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-        $zipName
-    );
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $zipName
+        );
 
         return $response;
     }
@@ -705,9 +778,9 @@ class RapportController extends BaseController
     private function createSearchForm(Rapport $entity)
     {
         $form = $this->createForm(new RapportSearchType($this->get('security.context')), $entity, [
-      'action' => $this->generateUrl('rapport'),
-      'method' => 'GET',
-    ]);
+            'action' => $this->generateUrl('rapport'),
+            'method' => 'GET',
+        ]);
 
         return $form;
     }
@@ -722,46 +795,62 @@ class RapportController extends BaseController
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('rapport_delete', ['id' => $id]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', ['label' => 'Delete'])
-      ->getForm();
+            ->setAction($this->generateUrl('rapport_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
     }
 
     /**
      * Creates a form to edit a Rapport entity.
      *
-     * @param Rapport $entity The entity
+     * @param Rapport $rapport The rapport
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Rapport $entity)
+    private function createEditFormFinansiering(Rapport $rapport)
     {
-        $form = $this->createForm(new RapportType($this->get('security.context'), $entity), $entity, [
-      'action' => $this->generateUrl('rapport_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+        if (!$this->container->get('security.context')->isGranted('RAPPORT_EDIT', $rapport)) {
+            return null;
+        }
 
-        $this->addUpdate($form, $this->generateUrl('rapport_show', ['id' => $entity->getId()]));
+        $form = $this->createFormBuilder($rapport)
+            ->setAction($this->generateUrl('rapport_finansiering_update', ['id' => $rapport->getId()]))
+            ->setMethod('PUT')
+            ->add('laanLoebetid', null, [
+                'label' => 'løbetid',
+                'attr' => [
+                    'input_group' => [
+                        'append' => 'år',
+                    ],
+                ],
+            ])
+            ->getForm();
+
+        $this->addUpdate($form);
 
         return $form;
     }
 
     /**
-     * Creates a form to edit a Tiltag entity.
+     * Creates a form to verify a Rapport entity by id.
      *
-     * @param Tiltag $entity The entity
+     * @param mixed $id    The entity id
+     * @param mixed $route
+     * @param mixed $label
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditTiltagDatoForDriftForm($entity)
+    private function createStatusForm(Rapport $entity, $route, $label)
     {
-        $form = $this->createForm(new TiltagDatoForDriftType($entity), $entity, [
-      'action' => $this->generateUrl('tiltag_dato_for_drift_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+        $status = $entity->getBygning()->getStatus();
 
-        $this->addUpdate($form);
+        $form = $this->createForm(new RapportStatusType($this->get('security.context'), $status), $entity, [
+            'action' => $this->generateUrl($route, ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form, null, $label);
 
         return $form;
     }
@@ -776,9 +865,9 @@ class RapportController extends BaseController
     private function createEditTilvalgTilvalgtForm($entity, Rapport $rapport)
     {
         $form = $this->createForm(new TiltagTilvalgtType($entity), $entity, [
-      'action' => $this->generateUrl('tiltag_tilvalgt_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('tiltag_tilvalgt_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form);
         //$form->add('submit', 'submit', array('label' => 'Create'));
@@ -786,7 +875,65 @@ class RapportController extends BaseController
         return $form;
     }
 
-    //---------------- Generic Status -------------------//
+    /**
+     * Creates a form to edit a Tiltag entity.
+     *
+     * @param Tiltag $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditTiltagDatoForDriftForm($entity)
+    {
+        $form = $this->createForm(new TiltagDatoForDriftType($entity), $entity, [
+            'action' => $this->generateUrl('tiltag_dato_for_drift_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form);
+
+        return $form;
+    }
+
+    /**
+     * Creates a form to calculate a Rapport entity.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCalculateForm(Rapport $rapport, array $changes)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('rapport_calculate', ['id' => $rapport->getId()]))
+            ->setMethod('POST')
+            ->add('submit', 'submit', [
+                'label' => 'rapporter.actions.re-calculate',
+                'disabled' => empty($changes),
+                'button_class' => 'default',
+            ])
+            ->getForm();
+    }
+
+    //---------------- Drift -------------------//
+
+    /**
+     * Creates a form to edit a Rapport entity.
+     *
+     * @param Rapport $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Rapport $entity)
+    {
+        $form = $this->createForm(new RapportType($this->get('security.context'), $entity), $entity, [
+            'action' => $this->generateUrl('rapport_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form, $this->generateUrl('rapport_show', ['id' => $entity->getId()]));
+
+        return $form;
+    }
 
     private function statusAction(Request $request, Rapport $rapport, $status, $route, $label)
     {
@@ -809,8 +956,8 @@ class RapportController extends BaseController
 
             $fil = new Fil();
             $fil
-        ->setNavn($pdfName)
-        ->setEntity($rapport);
+                ->setNavn($pdfName)
+                ->setEntity($rapport);
             $filRepository->saveContent($pdf, $fil, $this->container);
             $em->persist($fil);
 
@@ -819,8 +966,8 @@ class RapportController extends BaseController
 
             $fil = new Fil();
             $fil
-        ->setNavn($pdfName)
-        ->setEntity($rapport);
+                ->setNavn($pdfName)
+                ->setEntity($rapport);
             $filRepository->saveContent($pdf, $fil, $this->container);
             $em->persist($fil);
 
@@ -828,80 +975,6 @@ class RapportController extends BaseController
             $rapport->setVersion($rapport->getVersion() + 1);
             $em->flush();
         }
-    }
-
-    /**
-     * Creates a form to verify a Rapport entity by id.
-     *
-     * @param mixed $id    The entity id
-     * @param mixed $route
-     * @param mixed $label
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createStatusForm(Rapport $entity, $route, $label)
-    {
-        $status = $entity->getBygning()->getStatus();
-
-        $form = $this->createForm(new RapportStatusType($this->get('security.context'), $status), $entity, [
-      'action' => $this->generateUrl($route, ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
-
-        $this->addUpdate($form, null, $label);
-
-        return $form;
-    }
-
-    /**
-     * Creates a form to edit a Rapport entity.
-     *
-     * @param Rapport $rapport The rapport
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditFormFinansiering(Rapport $rapport)
-    {
-        if (!$this->container->get('security.context')->isGranted('RAPPORT_EDIT', $rapport)) {
-            return null;
-        }
-
-        $form = $this->createFormBuilder($rapport)
-      ->setAction($this->generateUrl('rapport_finansiering_update', ['id' => $rapport->getId()]))
-      ->setMethod('PUT')
-      ->add('laanLoebetid', null, [
-        'label' => 'løbetid',
-        'attr' => [
-          'input_group' => [
-            'append' => 'år',
-          ],
-        ],
-      ])
-      ->getForm();
-
-        $this->addUpdate($form);
-
-        return $form;
-    }
-
-    /**
-     * Creates a form to calculate a Rapport entity.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCalculateForm(Rapport $rapport, array $changes)
-    {
-        return $this->createFormBuilder()
-      ->setAction($this->generateUrl('rapport_calculate', ['id' => $rapport->getId()]))
-      ->setMethod('POST')
-      ->add('submit', 'submit', [
-        'label' => 'rapporter.actions.re-calculate',
-        'disabled' => empty($changes),
-        'button_class' => 'default',
-      ])
-      ->getForm();
     }
 
     /**

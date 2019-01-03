@@ -55,9 +55,9 @@ class Solcelle
         return $this->getKWp().' - '.$this->getInverterpris().' - '.$this->getDrift();
     }
 
-    public function getId()
+    public function getKWp()
     {
-        return $this->id;
+        return $this->KWp;
     }
 
     public function setKWp($KWp)
@@ -67,9 +67,9 @@ class Solcelle
         return $this;
     }
 
-    public function getKWp()
+    public function getInverterpris()
     {
-        return $this->KWp;
+        return $this->inverterpris;
     }
 
     public function setInverterpris($inverterpris)
@@ -79,9 +79,9 @@ class Solcelle
         return $this;
     }
 
-    public function getInverterpris()
+    public function getDrift()
     {
-        return $this->inverterpris;
+        return $this->drift;
     }
 
     public function setDrift($drift)
@@ -91,8 +91,8 @@ class Solcelle
         return $this;
     }
 
-    public function getDrift()
+    public function getId()
     {
-        return $this->drift;
+        return $this->id;
     }
 }

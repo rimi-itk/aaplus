@@ -13,10 +13,9 @@ namespace AppBundle\Controller;
 use AppBundle\DBAL\Types\BygningStatusType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BygningDashboardType;
-use Doctrine\ORM\Query;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class DashboardController.
@@ -175,11 +174,11 @@ class DashboardController extends BaseController
         // initialize a query builder
         $filterBuilder = $this->getDashboardFilterBuilder($user, $filterCondition);
 
-// @TODO        $form = $this->get('form.factory')->create(new BygningDashboardType($this->getDoctrine(), $filterCondition), null, [
+        // @TODO        $form = $this->get('form.factory')->create(new BygningDashboardType($this->getDoctrine(), $filterCondition), null, [
         $form = $this->get('form.factory')->create(BygningDashboardType::class, null, [
-      'action' => $this->generateUrl('dashboard_'.$filterCondition),
-      'method' => 'GET',
-    ]);
+            'action' => $this->generateUrl('dashboard_'.$filterCondition),
+            'method' => 'GET',
+        ]);
 
         if ($request->query->has($form->getName())) {
             // manually bind values from the request
@@ -192,28 +191,34 @@ class DashboardController extends BaseController
         $query = $filterBuilder->getQuery();
 
         $pagination = $paginator->paginate(
-      $query,
-      $request->query->get('page', 1) /*page number*/,
-      20, // limit per page
-      ['defaultSortFieldName' => 'b.updatedAt', 'defaultSortDirection' => 'desc']
-    );
+            $query,
+            $request->query->get('page', 1) /*page number*/,
+            20, // limit per page
+            ['defaultSortFieldName' => 'b.updatedAt', 'defaultSortDirection' => 'desc']
+        );
 
         $twigArray = [
-      'pagination' => $pagination,
-      'form' => $form->createView(),
-      'tab' => $filterCondition,
-      'aaplusAnsvarlig' => $user->hasGroup('Aa+'),
-      'energiRaadgiver' => $user->hasGroup('Rådgiver'),
-      'segmenter' => !$user->getSegmenter()->isEmpty(),
-      'projektleder' => $user->hasGroup('Projektleder'),
-      'projekterende' => $user->hasGroup('Projekterende'),
-    ];
+            'pagination' => $pagination,
+            'form' => $form->createView(),
+            'tab' => $filterCondition,
+            'aaplusAnsvarlig' => $user->hasGroup('Aa+'),
+            'energiRaadgiver' => $user->hasGroup('Rådgiver'),
+            'segmenter' => !$user->getSegmenter()->isEmpty(),
+            'projektleder' => $user->hasGroup('Projektleder'),
+            'projekterende' => $user->hasGroup('Projekterende'),
+        ];
 
         if ('igangvaerende' === $filterCondition || 'indsendt' === $filterCondition) {
             // Summary
             $em = $this->getDoctrine()->getManager();
-            $twigArray['summary_current'] = $em->getRepository('AppBundle:Rapport')->getSummaryByUserAndStatus($user, BygningStatusType::TILKNYTTET_RAADGIVER);
-            $twigArray['summary_finished'] = $em->getRepository('AppBundle:Rapport')->getSummaryByUserAndStatus($user, BygningStatusType::AFLEVERET_RAADGIVER);
+            $twigArray['summary_current'] = $em->getRepository('AppBundle:Rapport')->getSummaryByUserAndStatus(
+                $user,
+                BygningStatusType::TILKNYTTET_RAADGIVER
+            );
+            $twigArray['summary_finished'] = $em->getRepository('AppBundle:Rapport')->getSummaryByUserAndStatus(
+                $user,
+                BygningStatusType::AFLEVERET_RAADGIVER
+            );
         }
 
         return $this->render('AppBundle:Dashboard:default.html.twig', $twigArray);
@@ -228,52 +233,52 @@ class DashboardController extends BaseController
     private function getDashboardFilterBuilder(User $user, $filterCondition)
     {
         $filterBuilder = $this->get('doctrine.orm.entity_manager')
-      ->getRepository('AppBundle:Bygning')
-      ->createQueryBuilder('b');
+            ->getRepository('AppBundle:Bygning')
+            ->createQueryBuilder('b');
         $filterBuilder->leftJoin('b.rapport', 'r');
         $filterBuilder->leftJoin('b.segment', 's');
 
         switch ($filterCondition) {
-      case 'aaplusAnsvarlig':
-        $filterBuilder->andWhere('b.aaplusAnsvarlig = :aaplusAnsvarlig');
-        $filterBuilder->setParameter('aaplusAnsvarlig', $user);
+            case 'aaplusAnsvarlig':
+                $filterBuilder->andWhere('b.aaplusAnsvarlig = :aaplusAnsvarlig');
+                $filterBuilder->setParameter('aaplusAnsvarlig', $user);
 
-        break;
-      case 'igangvaerende':
-        $filterBuilder->andWhere('b.energiRaadgiver = :energiRaadgiver');
-        $filterBuilder->setParameter('energiRaadgiver', $user);
-        $filterBuilder->andWhere('b.status = :status');
-        $filterBuilder->setParameter('status', BygningStatusType::TILKNYTTET_RAADGIVER);
+                break;
+            case 'igangvaerende':
+                $filterBuilder->andWhere('b.energiRaadgiver = :energiRaadgiver');
+                $filterBuilder->setParameter('energiRaadgiver', $user);
+                $filterBuilder->andWhere('b.status = :status');
+                $filterBuilder->setParameter('status', BygningStatusType::TILKNYTTET_RAADGIVER);
 
-        break;
-      case 'indsendt':
-        $filterBuilder->andWhere('b.energiRaadgiver = :energiRaadgiver');
-        $filterBuilder->setParameter('energiRaadgiver', $user);
-        $filterBuilder->andWhere('b.status >= :status');
-        $filterBuilder->setParameter('status', BygningStatusType::AFLEVERET_RAADGIVER);
+                break;
+            case 'indsendt':
+                $filterBuilder->andWhere('b.energiRaadgiver = :energiRaadgiver');
+                $filterBuilder->setParameter('energiRaadgiver', $user);
+                $filterBuilder->andWhere('b.status >= :status');
+                $filterBuilder->setParameter('status', BygningStatusType::AFLEVERET_RAADGIVER);
 
-        break;
-      case 'projektleder':
-        $filterBuilder->andWhere('b.projektleder = :projektleder');
-        $filterBuilder->setParameter('projektleder', $user);
+                break;
+            case 'projektleder':
+                $filterBuilder->andWhere('b.projektleder = :projektleder');
+                $filterBuilder->setParameter('projektleder', $user);
 
-        break;
-      case 'projekterende':
-        $filterBuilder->andWhere('b.projekterende = :projekterende');
-        $filterBuilder->setParameter('projekterende', $user);
+                break;
+            case 'projekterende':
+                $filterBuilder->andWhere('b.projekterende = :projekterende');
+                $filterBuilder->setParameter('projekterende', $user);
 
-        break;
-      case 'segmenter':
-        $filterBuilder->andWhere('b.segment IN (:segmenter)');
-        $filterBuilder->setParameter('segmenter', $user->getSegmenter());
+                break;
+            case 'segmenter':
+                $filterBuilder->andWhere('b.segment IN (:segmenter)');
+                $filterBuilder->setParameter('segmenter', $user->getSegmenter());
 
-        break;
-      default:
-        $filterBuilder->andWhere(':user MEMBER OF b.users');
-        $filterBuilder->setParameter('user', $user);
+                break;
+            default:
+                $filterBuilder->andWhere(':user MEMBER OF b.users');
+                $filterBuilder->setParameter('user', $user);
 
-        break;
-    }
+                break;
+        }
 
         return $filterBuilder;
     }

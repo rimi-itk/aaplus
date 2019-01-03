@@ -34,12 +34,12 @@ class VindueTiltag extends KlimaskaermTiltag
     protected function calculateLevetid()
     {
         return round($this->divide(
-      $this->sum(function ($detail) {
-          return $detail->getSamletInvesteringKr() * $detail->getLevetidAar();
-      }),
-      $this->sum(function ($detail) {
-          return $detail->getSamletInvesteringKr();
-      })
-    ));
+            $this->sum(function ($detail) {
+                return $detail->getSamletInvesteringKr() * $detail->getLevetidAar();
+            }),
+            $this->sum(function ($detail) {
+                return $detail->getSamletInvesteringKr();
+            })
+        ));
     }
 }

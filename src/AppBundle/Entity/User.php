@@ -135,6 +135,54 @@ class User extends BaseUser
         return $this->getFirstname().' '.$this->getLastname();
     }
 
+    /**
+     * Get firstname.
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set firstname.
+     *
+     * @param string $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname.
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set lastname.
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
     public function setGroups($groups)
     {
         if (is_a($groups, 'Doctrine\Common\Collections\ArrayCollection')) {
@@ -151,6 +199,11 @@ class User extends BaseUser
         return implode(', ', $this->getGroupNames());
     }
 
+    public function getBygninger()
+    {
+        return $this->bygninger;
+    }
+
     /**
      * Set bygninger.
      */
@@ -159,11 +212,6 @@ class User extends BaseUser
         $this->bygninger = $bygninger;
 
         return $this;
-    }
-
-    public function getBygninger()
-    {
-        return $this->bygninger;
     }
 
     /**
@@ -193,51 +241,13 @@ class User extends BaseUser
     }
 
     /**
-     * Set firstname.
-     *
-     * @param string $firstname
-     *
-     * @return User
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * Get firstname.
+     * Get phone.
      *
      * @return string
      */
-    public function getFirstname()
+    public function getPhone()
     {
-        return $this->firstname;
-    }
-
-    /**
-     * Set lastname.
-     *
-     * @param string $lastname
-     *
-     * @return User
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    /**
-     * Get lastname.
-     *
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
+        return $this->phone;
     }
 
     /**
@@ -252,16 +262,6 @@ class User extends BaseUser
         $this->phone = $phone;
 
         return $this;
-    }
-
-    /**
-     * Get phone.
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
     }
 
     /**

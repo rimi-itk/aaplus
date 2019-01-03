@@ -12,12 +12,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Klimaskaerm;
 use AppBundle\Form\Type\KlimaskaermType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Klimaskaerm controller.
@@ -229,25 +227,6 @@ class KlimaskaermController extends BaseController
     }
 
     /**
-     * Creates a form to edit a Klimaskaerm entity.
-     *
-     * @param Klimaskaerm $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Klimaskaerm $entity)
-    {
-        $form = $this->createForm(new KlimaskaermType(), $entity, [
-            'action' => $this->generateUrl('klimaskaerm_update', ['id' => $entity->getId()]),
-            'method' => 'PUT',
-        ]);
-
-        $this->addUpdate($form, $this->generateUrl('klimaskaerm_show', ['id' => $entity->getId()]));
-
-        return $form;
-    }
-
-    /**
      * Creates a form to delete a Klimaskaerm entity by id.
      *
      * @param mixed $id The entity id
@@ -270,7 +249,25 @@ class KlimaskaermController extends BaseController
                     'disabled_message' => $message,
                 ],
             ])
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    /**
+     * Creates a form to edit a Klimaskaerm entity.
+     *
+     * @param Klimaskaerm $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Klimaskaerm $entity)
+    {
+        $form = $this->createForm(new KlimaskaermType(), $entity, [
+            'action' => $this->generateUrl('klimaskaerm_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
+
+        $this->addUpdate($form, $this->generateUrl('klimaskaerm_show', ['id' => $entity->getId()]));
+
+        return $form;
     }
 }

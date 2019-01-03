@@ -13,7 +13,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\BaselineKorrektion;
 use AppBundle\Entity\Rapport;
 use AppBundle\Form\BaselineKorrektionType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

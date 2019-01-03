@@ -196,19 +196,19 @@ class SolcelleTiltagDetail extends TiltagDetail
     protected $nutidsvaerdiSetOver15AarKr;
 
     protected $propertiesRequiredForCalculation = [
-    'anlaegsstoerrelseKWp',
-    'energiprisstigningPctPrAar',
-    'forringetYdeevnePrAar',
-    'inverterskift1Aar',
-    'inverterskift2Aar',
-    'investeringKr',
-    'omkostningTilMaalerKr',
-    'produktionKWh',
-    'salgsprisEfter10AarKrKWh',
-    'salgsprisFoerste10AarKrKWh',
-    'screeningOgProjekteringKr',
-    'tilNettetPct',
-  ];
+        'anlaegsstoerrelseKWp',
+        'energiprisstigningPctPrAar',
+        'forringetYdeevnePrAar',
+        'inverterskift1Aar',
+        'inverterskift2Aar',
+        'investeringKr',
+        'omkostningTilMaalerKr',
+        'produktionKWh',
+        'salgsprisEfter10AarKrKWh',
+        'salgsprisFoerste10AarKrKWh',
+        'screeningOgProjekteringKr',
+        'tilNettetPct',
+    ];
 
     /**
      * {@inheritdoc}
@@ -222,45 +222,14 @@ class SolcelleTiltagDetail extends TiltagDetail
         $this->salgsprisEfter10AarKrKWh = $configuration->getSolcelletiltagdetailSalgsprisEfter10AarKrKWh();
     }
 
-    public function setAnlaegsstoerrelseKWp($anlaegsstoerrelseKWp)
-    {
-        $this->anlaegsstoerrelseKWp = $anlaegsstoerrelseKWp;
-
-        return $this;
-    }
-
     public function getAnlaegsstoerrelseKWp()
     {
         return $this->anlaegsstoerrelseKWp;
     }
 
-    /**
-     * Set solcelle.
-     *
-     * @param Solcelle $solcelle
-     *
-     * @return SolcelleTiltagDetail
-     */
-    public function setSolcelle(Solcelle $solcelle = null)
+    public function setAnlaegsstoerrelseKWp($anlaegsstoerrelseKWp)
     {
-        $this->solcelle = $solcelle;
-
-        return $this;
-    }
-
-    /**
-     * Get solcelle.
-     *
-     * @return Solcelle
-     */
-    public function getSolcelle()
-    {
-        return $this->solcelle;
-    }
-
-    public function setProduktionKWh($produktionKWh)
-    {
-        $this->produktionKWh = $produktionKWh;
+        $this->anlaegsstoerrelseKWp = $anlaegsstoerrelseKWp;
 
         return $this;
     }
@@ -270,9 +239,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->produktionKWh;
     }
 
-    public function setTilNettetPct($tilNettetPct)
+    public function setProduktionKWh($produktionKWh)
     {
-        $this->tilNettetPct = $tilNettetPct;
+        $this->produktionKWh = $produktionKWh;
 
         return $this;
     }
@@ -282,9 +251,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->tilNettetPct;
     }
 
-    public function setForringetYdeevnePrAar($forringetYdeevnePrAar)
+    public function setTilNettetPct($tilNettetPct)
     {
-        $this->forringetYdeevnePrAar = $forringetYdeevnePrAar;
+        $this->tilNettetPct = $tilNettetPct;
 
         return $this;
     }
@@ -294,9 +263,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->forringetYdeevnePrAar;
     }
 
-    public function setInverterskift1Aar($inverterskift1Aar)
+    public function setForringetYdeevnePrAar($forringetYdeevnePrAar)
     {
-        $this->inverterskift1Aar = $inverterskift1Aar;
+        $this->forringetYdeevnePrAar = $forringetYdeevnePrAar;
 
         return $this;
     }
@@ -306,9 +275,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->inverterskift1Aar;
     }
 
-    public function setInverterskift2Aar($inverterskift2Aar)
+    public function setInverterskift1Aar($inverterskift1Aar)
     {
-        $this->inverterskift2Aar = $inverterskift2Aar;
+        $this->inverterskift1Aar = $inverterskift1Aar;
 
         return $this;
     }
@@ -318,9 +287,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->inverterskift2Aar;
     }
 
-    public function setSalgsprisFoerste10AarKrKWh($salgsprisFoerste10AarKrKWh)
+    public function setInverterskift2Aar($inverterskift2Aar)
     {
-        $this->salgsprisFoerste10AarKrKWh = $salgsprisFoerste10AarKrKWh;
+        $this->inverterskift2Aar = $inverterskift2Aar;
 
         return $this;
     }
@@ -330,9 +299,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->salgsprisFoerste10AarKrKWh;
     }
 
-    public function setSalgsprisEfter10AarKrKWh($salgsprisEfter10AarKrKWh)
+    public function setSalgsprisFoerste10AarKrKWh($salgsprisFoerste10AarKrKWh)
     {
-        $this->salgsprisEfter10AarKrKWh = $salgsprisEfter10AarKrKWh;
+        $this->salgsprisFoerste10AarKrKWh = $salgsprisFoerste10AarKrKWh;
 
         return $this;
     }
@@ -342,9 +311,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->salgsprisEfter10AarKrKWh;
     }
 
-    public function setEnergiprisstigningPctPrAar($energiprisstigningPctPrAar)
+    public function setSalgsprisEfter10AarKrKWh($salgsprisEfter10AarKrKWh)
     {
-        $this->energiprisstigningPctPrAar = $energiprisstigningPctPrAar;
+        $this->salgsprisEfter10AarKrKWh = $salgsprisEfter10AarKrKWh;
 
         return $this;
     }
@@ -354,9 +323,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->energiprisstigningPctPrAar;
     }
 
-    public function setInvesteringKr($investeringKr)
+    public function setEnergiprisstigningPctPrAar($energiprisstigningPctPrAar)
     {
-        $this->investeringKr = $investeringKr;
+        $this->energiprisstigningPctPrAar = $energiprisstigningPctPrAar;
 
         return $this;
     }
@@ -366,9 +335,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->investeringKr;
     }
 
-    public function setScreeningOgProjekteringKr($screeningOgProjekteringKr)
+    public function setInvesteringKr($investeringKr)
     {
-        $this->screeningOgProjekteringKr = $screeningOgProjekteringKr;
+        $this->investeringKr = $investeringKr;
 
         return $this;
     }
@@ -378,9 +347,9 @@ class SolcelleTiltagDetail extends TiltagDetail
         return $this->screeningOgProjekteringKr;
     }
 
-    public function setOmkostningTilMaalerKr($omkostningTilMaalerKr)
+    public function setScreeningOgProjekteringKr($screeningOgProjekteringKr)
     {
-        $this->omkostningTilMaalerKr = $omkostningTilMaalerKr;
+        $this->screeningOgProjekteringKr = $screeningOgProjekteringKr;
 
         return $this;
     }
@@ -388,6 +357,13 @@ class SolcelleTiltagDetail extends TiltagDetail
     public function getOmkostningTilMaalerKr()
     {
         return $this->omkostningTilMaalerKr;
+    }
+
+    public function setOmkostningTilMaalerKr($omkostningTilMaalerKr)
+    {
+        $this->omkostningTilMaalerKr = $omkostningTilMaalerKr;
+
+        return $this;
     }
 
     public function getTilEgetForbrugPct()
@@ -460,6 +436,91 @@ class SolcelleTiltagDetail extends TiltagDetail
         parent::calculate();
     }
 
+    /**
+     * Get solcelle.
+     *
+     * @return Solcelle
+     */
+    public function getSolcelle()
+    {
+        return $this->solcelle;
+    }
+
+    /**
+     * Set solcelle.
+     *
+     * @param Solcelle $solcelle
+     *
+     * @return SolcelleTiltagDetail
+     */
+    public function setSolcelle(Solcelle $solcelle = null)
+    {
+        $this->solcelle = $solcelle;
+
+        return $this;
+    }
+
+    /**
+     * Calculate cash flow for a number of years.
+     *
+     * @param int $numberOfYears
+     *                           The number of years
+     *
+     * @return array
+     *               The cash flow
+     */
+    private function calculateCashFlow($numberOfYears = 15)
+    {
+        $inflation = $this->getRapport()->getInflation();
+        $elKrKWh = $this->getRapport()->getElKrKWh();
+
+        $flow = [
+            'Investering' => array_fill(0, $numberOfYears + 1, 0),
+            'Drift' => array_fill(0, $numberOfYears + 1, 0),
+            'Eget forbrug' => array_fill(0, $numberOfYears + 1, 0),
+            'Salg til nettet' => array_fill(0, $numberOfYears + 1, 0),
+            'Inv. skift' => array_fill(0, $numberOfYears + 1, 0),
+            'Cash flow' => array_fill(0, $numberOfYears + 1, 0),
+            'STATUS' => array_fill(0, $numberOfYears + 1, 0),
+            'TBT' => array_fill(0, $numberOfYears + 1, 0),
+        ];
+
+        $flow['Investering'][1] = -$this->tiltag->getAnlaegsinvestering();
+
+        $tilNettetPct = $this->tilNettetPct;
+        if (!empty($this->tiltag->getRisikovurderingAendringIBesparelseFaktor())) {
+            $tilNettetPct *= 1 + $this->tiltag->getRisikovurderingAendringIBesparelseFaktor();
+        }
+
+        for ($year = 1; $year <= $numberOfYears; ++$year) {
+            $flow['Drift'][$year] = -$this->totalDriftomkostningerPrAar * pow(1 + $inflation, $year);
+            $flow['Eget forbrug'][$year] = $this->produktionKWh * $this->tilEgetForbrugPct * $elKrKWh
+                * pow(
+                    1 - $this->forringetYdeevnePrAar,
+                    $year - 1
+                ) * pow(1 + $inflation + $this->energiprisstigningPctPrAar, $year - 1);
+            $flow['Salg til nettet'][$year] = $this->produktionKWh * $tilNettetPct *
+                (($year > 10) ? $this->salgsprisEfter10AarKrKWh : $this->salgsprisFoerste10AarKrKWh)
+                * pow(1 - $this->forringetYdeevnePrAar, $year);
+            $flow['Inv. skift'][$year] = ($year === $this->inverterskift1Aar || $year === $this->inverterskift2Aar)
+                ? -$this->prisForNyInverterKr // -$R$39
+                * pow(1 + $inflation, $year) // *(1+$'1.TiltagslisteRådgiver'.$AK$23)^L44
+                : 0;
+            $flow['Cash flow'][$year] = $flow['Investering'][$year] + $flow['Drift'][$year] + $flow['Eget forbrug'][$year] + $flow['Salg til nettet'][$year] + $flow['Inv. skift'][$year];
+            if ($year === $numberOfYears) {
+                // Add scrapvaerdi
+                $flow['Cash flow'][$year] += (1 - ($numberOfYears / $this->tiltag->getLevetid())) * pow(
+                    1 + $inflation,
+                        $numberOfYears
+                ) * ($this->investeringKr + $this->screeningOgProjekteringKr);
+            }
+            $flow['STATUS'][$year] = $flow['STATUS'][$year - 1] + $flow['Cash flow'][$year];
+            $flow['TBT'][$year] = $flow['STATUS'][$year] > 0 ? 0 : 1;
+        }
+
+        return $flow;
+    }
+
     private function calculateTilEgetForbrugPct()
     {
         return 1 - $this->tilNettetPct;
@@ -507,60 +568,5 @@ class SolcelleTiltagDetail extends TiltagDetail
     private function calculateNutidsvaerdiSetOver15AarKr()
     {
         return Calculation::npv($this->getRapport()->getKalkulationsrente(), $this->cashFlow['Cash flow']);
-    }
-
-    /**
-     * Calculate cash flow for a number of years.
-     *
-     * @param int $numberOfYears
-     *                           The number of years
-     *
-     * @return array
-     *               The cash flow
-     */
-    private function calculateCashFlow($numberOfYears = 15)
-    {
-        $inflation = $this->getRapport()->getInflation();
-        $elKrKWh = $this->getRapport()->getElKrKWh();
-
-        $flow = [
-      'Investering' => array_fill(0, $numberOfYears + 1, 0),
-      'Drift' => array_fill(0, $numberOfYears + 1, 0),
-      'Eget forbrug' => array_fill(0, $numberOfYears + 1, 0),
-      'Salg til nettet' => array_fill(0, $numberOfYears + 1, 0),
-      'Inv. skift' => array_fill(0, $numberOfYears + 1, 0),
-      'Cash flow' => array_fill(0, $numberOfYears + 1, 0),
-      'STATUS' => array_fill(0, $numberOfYears + 1, 0),
-      'TBT' => array_fill(0, $numberOfYears + 1, 0),
-    ];
-
-        $flow['Investering'][1] = -$this->tiltag->getAnlaegsinvestering();
-
-        $tilNettetPct = $this->tilNettetPct;
-        if (!empty($this->tiltag->getRisikovurderingAendringIBesparelseFaktor())) {
-            $tilNettetPct *= 1 + $this->tiltag->getRisikovurderingAendringIBesparelseFaktor();
-        }
-
-        for ($year = 1; $year <= $numberOfYears; ++$year) {
-            $flow['Drift'][$year] = -$this->totalDriftomkostningerPrAar * pow(1 + $inflation, $year);
-            $flow['Eget forbrug'][$year] = $this->produktionKWh * $this->tilEgetForbrugPct * $elKrKWh
-                                   * pow(1 - $this->forringetYdeevnePrAar, $year - 1) * pow(1 + $inflation + $this->energiprisstigningPctPrAar, $year - 1);
-            $flow['Salg til nettet'][$year] = $this->produktionKWh * $tilNettetPct *
-                                      (($year > 10) ? $this->salgsprisEfter10AarKrKWh : $this->salgsprisFoerste10AarKrKWh)
-                                      * pow(1 - $this->forringetYdeevnePrAar, $year);
-            $flow['Inv. skift'][$year] = ($year === $this->inverterskift1Aar || $year === $this->inverterskift2Aar)
-                                 ? -$this->prisForNyInverterKr // -$R$39
-                                 * pow(1 + $inflation, $year) // *(1+$'1.TiltagslisteRådgiver'.$AK$23)^L44
-                                 : 0;
-            $flow['Cash flow'][$year] = $flow['Investering'][$year] + $flow['Drift'][$year] + $flow['Eget forbrug'][$year] + $flow['Salg til nettet'][$year] + $flow['Inv. skift'][$year];
-            if ($year === $numberOfYears) {
-                // Add scrapvaerdi
-                $flow['Cash flow'][$year] += (1 - ($numberOfYears / $this->tiltag->getLevetid())) * pow(1 + $inflation, $numberOfYears) * ($this->investeringKr + $this->screeningOgProjekteringKr);
-            }
-            $flow['STATUS'][$year] = $flow['STATUS'][$year - 1] + $flow['Cash flow'][$year];
-            $flow['TBT'][$year] = $flow['STATUS'][$year] > 0 ? 0 : 1;
-        }
-
-        return $flow;
     }
 }

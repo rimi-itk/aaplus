@@ -67,8 +67,8 @@ class BaseRepository extends EntityRepository
     public function findAtTime(DateTime $timestamp, FormInterface $form)
     {
         return $this->container->get('aaplus.entityaudit.reader')
-      ->setFilter($form)
-      ->getEntitiesAtTime($this->getClassName(), $timestamp);
+            ->setFilter($form)
+            ->getEntitiesAtTime($this->getClassName(), $timestamp);
     }
 
     /**
@@ -91,8 +91,12 @@ class BaseRepository extends EntityRepository
      * @param bool         $onlyOwnBuildings
      * @param string       $buildingAlias
      */
-    protected function limitQueryToUserAccess(User $user, QueryBuilder $qb, $onlyOwnBuildings = false, $buildingAlias = 'b')
-    {
+    protected function limitQueryToUserAccess(
+        User $user,
+        QueryBuilder $qb,
+        $onlyOwnBuildings = false,
+        $buildingAlias = 'b'
+    ) {
         if (!$this->hasFullAccess($user)) {
             $qb->andWhere(':user MEMBER OF '.$buildingAlias.'.users');
             $qb->setParameter('user', $user);

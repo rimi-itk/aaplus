@@ -286,6 +286,16 @@ class Bygning
     }
 
     /**
+     * Get bygId.
+     *
+     * @return int
+     */
+    public function getBygId()
+    {
+        return $this->bygId;
+    }
+
+    /**
      * Set bygId.
      *
      * @param int $bygId
@@ -300,13 +310,13 @@ class Bygning
     }
 
     /**
-     * Get bygId.
+     * Get OpfoerselsAar.
      *
      * @return int
      */
-    public function getBygId()
+    public function getOpfoerselsAar()
     {
-        return $this->bygId;
+        return $this->OpfoerselsAar;
     }
 
     /**
@@ -325,13 +335,13 @@ class Bygning
     }
 
     /**
-     * Get OpfoerselsAar.
+     * Get enhedsys.
      *
      * @return int
      */
-    public function getOpfoerselsAar()
+    public function getEnhedsys()
     {
-        return $this->OpfoerselsAar;
+        return $this->enhedsys;
     }
 
     /**
@@ -349,13 +359,13 @@ class Bygning
     }
 
     /**
-     * Get enhedsys.
+     * Get type.
      *
-     * @return int
+     * @return string
      */
-    public function getEnhedsys()
+    public function getType()
     {
-        return $this->enhedsys;
+        return $this->type;
     }
 
     /**
@@ -373,13 +383,13 @@ class Bygning
     }
 
     /**
-     * Get type.
+     * Get adresse.
      *
      * @return string
      */
-    public function getType()
+    public function getAdresse()
     {
-        return $this->type;
+        return $this->adresse;
     }
 
     /**
@@ -397,13 +407,13 @@ class Bygning
     }
 
     /**
-     * Get adresse.
+     * Get postnummer.
      *
      * @return string
      */
-    public function getAdresse()
+    public function getPostnummer()
     {
-        return $this->adresse;
+        return $this->postnummer;
     }
 
     /**
@@ -421,13 +431,13 @@ class Bygning
     }
 
     /**
-     * Get postnummer.
+     * Get postBy.
      *
      * @return string
      */
-    public function getPostnummer()
+    public function getPostBy()
     {
-        return $this->postnummer;
+        return $this->postBy;
     }
 
     /**
@@ -445,13 +455,13 @@ class Bygning
     }
 
     /**
-     * Get postBy.
+     * Get navn.
      *
      * @return string
      */
-    public function getPostBy()
+    public function getNavn()
     {
-        return $this->postBy;
+        return $this->navn;
     }
 
     /**
@@ -469,13 +479,13 @@ class Bygning
     }
 
     /**
-     * Get navn.
+     * Get afdelingsnavn.
      *
      * @return string
      */
-    public function getNavn()
+    public function getAfdelingsnavn()
     {
-        return $this->navn;
+        return $this->afdelingsnavn;
     }
 
     /**
@@ -493,13 +503,13 @@ class Bygning
     }
 
     /**
-     * Get afdelingsnavn.
+     * Get ejerA.
      *
      * @return string
      */
-    public function getAfdelingsnavn()
+    public function getEjerA()
     {
-        return $this->afdelingsnavn;
+        return $this->ejerA;
     }
 
     /**
@@ -517,13 +527,13 @@ class Bygning
     }
 
     /**
-     * Get ejerA.
+     * Get anvendelse.
      *
      * @return string
      */
-    public function getEjerA()
+    public function getAnvendelse()
     {
-        return $this->ejerA;
+        return $this->anvendelse;
     }
 
     /**
@@ -541,13 +551,25 @@ class Bygning
     }
 
     /**
-     * Get anvendelse.
+     * Get areal.
      *
-     * @return string
+     * @return int
      */
-    public function getAnvendelse()
+    public function getAreal()
     {
-        return $this->anvendelse;
+        return ($this->baseline && !empty($this->baseline->getArealTilNoegletalsanalyse()))
+            ? $this->baseline->getArealTilNoegletalsanalyse()
+            : $this->getBruttoetageareal();
+    }
+
+    /**
+     * Get bruttoetageareal.
+     *
+     * @return int
+     */
+    public function getBruttoetageareal()
+    {
+        return $this->bruttoetageareal;
     }
 
     /**
@@ -565,25 +587,13 @@ class Bygning
     }
 
     /**
-     * Get bruttoetageareal.
+     * Get forsyningsvaerkVand.
      *
-     * @return int
+     * @return Forsyningsvaerk
      */
-    public function getBruttoetageareal()
+    public function getForsyningsvaerkVand()
     {
-        return $this->bruttoetageareal;
-    }
-
-    /**
-     * Get areal.
-     *
-     * @return int
-     */
-    public function getAreal()
-    {
-        return ($this->baseline && !empty($this->baseline->getArealTilNoegletalsanalyse()))
-      ? $this->baseline->getArealTilNoegletalsanalyse()
-      : $this->getBruttoetageareal();
+        return $this->forsyningsvaerkVand;
     }
 
     /**
@@ -601,13 +611,13 @@ class Bygning
     }
 
     /**
-     * Get forsyningsvaerkVand.
+     * Get forsyningsvaerkVarme.
      *
      * @return Forsyningsvaerk
      */
-    public function getForsyningsvaerkVand()
+    public function getForsyningsvaerkVarme()
     {
-        return $this->forsyningsvaerkVand;
+        return $this->forsyningsvaerkVarme;
     }
 
     /**
@@ -625,13 +635,13 @@ class Bygning
     }
 
     /**
-     * Get forsyningsvaerkVarme.
+     * Get forsyningsvaerkEl.
      *
      * @return Forsyningsvaerk
      */
-    public function getForsyningsvaerkVarme()
+    public function getForsyningsvaerkEl()
     {
-        return $this->forsyningsvaerkVarme;
+        return $this->forsyningsvaerkEl;
     }
 
     /**
@@ -649,13 +659,13 @@ class Bygning
     }
 
     /**
-     * Get forsyningsvaerkEl.
+     * Get divisionnavn.
      *
-     * @return Forsyningsvaerk
+     * @return string
      */
-    public function getForsyningsvaerkEl()
+    public function getDivisionnavn()
     {
-        return $this->forsyningsvaerkEl;
+        return $this->divisionnavn;
     }
 
     /**
@@ -673,13 +683,13 @@ class Bygning
     }
 
     /**
-     * Get divisionnavn.
+     * Get omraadenavn.
      *
      * @return string
      */
-    public function getDivisionnavn()
+    public function getOmraadenavn()
     {
-        return $this->divisionnavn;
+        return $this->omraadenavn;
     }
 
     /**
@@ -697,13 +707,13 @@ class Bygning
     }
 
     /**
-     * Get omraadenavn.
+     * Get ejerforhold.
      *
-     * @return string
+     * @return int
      */
-    public function getOmraadenavn()
+    public function getEjerforhold()
     {
-        return $this->omraadenavn;
+        return $this->ejerforhold;
     }
 
     /**
@@ -721,13 +731,13 @@ class Bygning
     }
 
     /**
-     * Get ejerforhold.
+     * Get users.
      *
-     * @return int
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEjerforhold()
+    public function getUsers()
     {
-        return $this->ejerforhold;
+        return $this->users;
     }
 
     /**
@@ -738,16 +748,6 @@ class Bygning
         $this->users = $users;
 
         return $this;
-    }
-
-    /**
-     * Get users.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers()
-    {
-        return $this->users;
     }
 
     /**
@@ -775,6 +775,16 @@ class Bygning
     }
 
     /**
+     * Get segment.
+     *
+     * @return \AppBundle\Entity\Segment
+     */
+    public function getSegment()
+    {
+        return $this->segment;
+    }
+
+    /**
      * Set segment.
      *
      * @param \AppBundle\Entity\Segment $segment
@@ -789,13 +799,13 @@ class Bygning
     }
 
     /**
-     * Get segment.
+     * Get status.
      *
-     * @return \AppBundle\Entity\Segment
+     * @return \AppBundle\DBAL\Types\BygningStatusType
      */
-    public function getSegment()
+    public function getStatus()
     {
-        return $this->segment;
+        return $this->status;
     }
 
     /**
@@ -818,16 +828,6 @@ class Bygning
     }
 
     /**
-     * Get status.
-     *
-     * @return \AppBundle\DBAL\Types\BygningStatusType
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * Get nummeric status i.e. the first char from the status.
      *
      * @return string
@@ -835,6 +835,16 @@ class Bygning
     public function getNummericStatus()
     {
         return substr($this->status, 0, 1);
+    }
+
+    /**
+     * Get Aa+ Ansvarlig.
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAaplusAnsvarlig()
+    {
+        return $this->aaplusAnsvarlig;
     }
 
     /**
@@ -852,13 +862,13 @@ class Bygning
     }
 
     /**
-     * Get Aa+ Ansvarlig.
+     * Get Projektleder.
      *
      * @return \AppBundle\Entity\User
      */
-    public function getAaplusAnsvarlig()
+    public function getProjektleder()
     {
-        return $this->aaplusAnsvarlig;
+        return $this->projektleder;
     }
 
     /**
@@ -876,13 +886,13 @@ class Bygning
     }
 
     /**
-     * Get Projektleder.
+     * Get Energirådgiver.
      *
      * @return \AppBundle\Entity\User
      */
-    public function getProjektleder()
+    public function getEnergiRaadgiver()
     {
-        return $this->projektleder;
+        return $this->energiRaadgiver;
     }
 
     /**
@@ -904,9 +914,9 @@ class Bygning
      *
      * @return \AppBundle\Entity\User
      */
-    public function getEnergiRaadgiver()
+    public function getProjekterende()
     {
-        return $this->energiRaadgiver;
+        return $this->projekterende;
     }
 
     /**
@@ -924,13 +934,13 @@ class Bygning
     }
 
     /**
-     * Get Energirådgiver.
+     * Get rapport.
      *
-     * @return \AppBundle\Entity\User
+     * @return \AppBundle\Entity\Rapport
      */
-    public function getProjekterende()
+    public function getRapport()
     {
-        return $this->projekterende;
+        return $this->rapport;
     }
 
     /**
@@ -951,16 +961,6 @@ class Bygning
     }
 
     /**
-     * Get rapport.
-     *
-     * @return \AppBundle\Entity\Rapport
-     */
-    public function getRapport()
-    {
-        return $this->rapport;
-    }
-
-    /**
      * @return string
      */
     public function getKommentarer()
@@ -974,6 +974,20 @@ class Bygning
     public function setKommentarer($kommentarer)
     {
         $this->kommentarer = $kommentarer;
+    }
+
+    /**
+     * Note: This should really be done in BaseLine.postLoad, but apparently the
+     * relation to Bygning is not loaded on postLoad. An issue with OneToOne
+     * relations and owning side?
+     *
+     * @ORM\PostLoad()
+     */
+    public function postLoad()
+    {
+        if ($this->getBaseline()) {
+            $this->getBaseline()->setArealTilNoegletalsanalyse($this->getBruttoetageareal());
+        }
     }
 
     /**
@@ -991,19 +1005,5 @@ class Bygning
     {
         $this->baseline = $baseline;
         $baseline->setBygning($this);
-    }
-
-    /**
-     * Note: This should really be done in BaseLine.postLoad, but apparently the
-     * relation to Bygning is not loaded on postLoad. An issue with OneToOne
-     * relations and owning side?
-     *
-     * @ORM\PostLoad()
-     */
-    public function postLoad()
-    {
-        if ($this->getBaseline()) {
-            $this->getBaseline()->setArealTilNoegletalsanalyse($this->getBruttoetageareal());
-        }
     }
 }

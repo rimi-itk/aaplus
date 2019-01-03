@@ -72,42 +72,42 @@ class BygningRepository extends BaseRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('b', 's')
-      ->from('AppBundle:Bygning', 'b')
-      ->leftJoin('b.segment', 's');
+            ->from('AppBundle:Bygning', 'b')
+            ->leftJoin('b.segment', 's');
 
         if (!empty($search['navn'])) {
             $qb->andWhere('b.navn LIKE :navn')
-        ->setParameter('navn', '%'.$search['navn'].'%');
+                ->setParameter('navn', '%'.$search['navn'].'%');
         }
 
         if (!empty($search['adresse'])) {
             $qb->andWhere('b.adresse LIKE :adresse')
-        ->setParameter('adresse', '%'.$search['adresse'].'%');
+                ->setParameter('adresse', '%'.$search['adresse'].'%');
         }
 
         if (!empty($search['postBy'])) {
             $qb->andWhere('b.postBy LIKE :postBy')
-        ->setParameter('postBy', '%'.$search['postBy'].'%');
+                ->setParameter('postBy', '%'.$search['postBy'].'%');
         }
 
         if (!empty($search['bygId'])) {
             $qb->andWhere('b.bygId = :bygId')
-        ->setParameter('bygId', $search['bygId']);
+                ->setParameter('bygId', $search['bygId']);
         }
 
         if (!empty($search['postnummer'])) {
             $qb->andWhere('b.postnummer = :postnummer')
-        ->setParameter('postnummer', $search['postnummer']);
+                ->setParameter('postnummer', $search['postnummer']);
         }
 
         if (!empty($search['status'])) {
             $qb->andWhere('b.status = :status')
-        ->setParameter('status', $search['status']);
+                ->setParameter('status', $search['status']);
         }
 
         if (!empty($search['segment'])) {
             $qb->andWhere('b.segment = :segment')
-        ->setParameter('segment', $search['segment']);
+                ->setParameter('segment', $search['segment']);
         }
 
         $this->limitQueryToUserAccess($user, $qb);
@@ -130,28 +130,28 @@ class BygningRepository extends BaseRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('sum(r.'.$field.')')
-      ->from('AppBundle:Bygning', 'b')
-      ->leftJoin('b.rapport', 'r')
-      ->leftJoin('b.segment', 's');
+            ->from('AppBundle:Bygning', 'b')
+            ->leftJoin('b.rapport', 'r')
+            ->leftJoin('b.segment', 's');
 
         if (!empty($search['segment'])) {
             $qb->andWhere('b.segment = :segment')
-        ->setParameter('segment', $search['segment']);
+                ->setParameter('segment', $search['segment']);
         }
 
         if (!empty($search['forkortelse'])) {
             $qb->andWhere('s.forkortelse = :forkortelse')
-        ->setParameter('forkortelse', $search['forkortelse']);
+                ->setParameter('forkortelse', $search['forkortelse']);
         }
 
         if (!empty($search['type'])) {
             $qb->andWhere('b.type = :type')
-        ->setParameter('type', $search['type']);
+                ->setParameter('type', $search['type']);
         }
 
         if (!empty($search['year'])) {
             $qb->andWhere('YEAR(r.datering) = :year')
-        ->setParameter('year', $search['year']);
+                ->setParameter('year', $search['year']);
         }
 
         $this->limitQueryToUserAccess($user, $qb);
@@ -173,31 +173,31 @@ class BygningRepository extends BaseRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('(sum(r.'.$field.') / sum(r.'.$baseline.')) * (-100)')
-      ->where('r.'.$field.' IS NOT NULL')
-      ->andWhere('r.'.$baseline.' IS NOT NULL')
-      ->andWhere('r.'.$baseline.' != 0')
-      ->from('AppBundle:Bygning', 'b')
-      ->leftJoin('b.rapport', 'r')
-      ->leftJoin('b.segment', 's');
+            ->where('r.'.$field.' IS NOT NULL')
+            ->andWhere('r.'.$baseline.' IS NOT NULL')
+            ->andWhere('r.'.$baseline.' != 0')
+            ->from('AppBundle:Bygning', 'b')
+            ->leftJoin('b.rapport', 'r')
+            ->leftJoin('b.segment', 's');
 
         if (!empty($search['segment'])) {
             $qb->andWhere('b.segment = :segment')
-        ->setParameter('segment', $search['segment']);
+                ->setParameter('segment', $search['segment']);
         }
 
         if (!empty($search['forkortelse'])) {
             $qb->andWhere('s.forkortelse = :forkortelse')
-        ->setParameter('forkortelse', $search['forkortelse']);
+                ->setParameter('forkortelse', $search['forkortelse']);
         }
 
         if (!empty($search['type'])) {
             $qb->andWhere('b.type = :type')
-        ->setParameter('type', $search['type']);
+                ->setParameter('type', $search['type']);
         }
 
         if (!empty($search['year'])) {
             $qb->andWhere('YEAR(r.datering) = :year')
-        ->setParameter('year', $search['year']);
+                ->setParameter('year', $search['year']);
         }
 
         $this->limitQueryToUserAccess($user, $qb);
@@ -241,7 +241,7 @@ class BygningRepository extends BaseRepository
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select('SUM(b.bruttoetageareal AS totalareal')
-      ->from('AppBundle:Bygning', 'b');
+            ->from('AppBundle:Bygning', 'b');
 
         $qb->where('b.status = :status')->setParameter('status', $status);
 
@@ -260,8 +260,8 @@ class BygningRepository extends BaseRepository
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select('b.type')
-      ->distinct(true)
-      ->from('AppBundle:Bygning', 'b');
+            ->distinct(true)
+            ->from('AppBundle:Bygning', 'b');
 
         return $qb->getQuery()->getResult();
     }
