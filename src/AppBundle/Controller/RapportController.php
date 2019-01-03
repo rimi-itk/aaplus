@@ -380,7 +380,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::AFLEVERET_RAADGIVER, 'rapport_submit', 'rapporter.actions.submit');
 
-        $this->flash->success('rapporter.confirmation.submitted');
+        $this->addFlash('success', 'rapporter.confirmation.submitted');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -397,7 +397,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::TILKNYTTET_RAADGIVER, 'rapport_retur', 'rapporter.actions.retur');
 
-        $this->flash->success('rapporter.confirmation.retur');
+        $this->addFlash('success', 'rapporter.confirmation.retur');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -414,7 +414,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::AAPLUS_VERIFICERET, 'rapport_verify', 'rapporter.actions.verify');
 
-        $this->flash->success('rapporter.confirmation.verified');
+        $this->addFlash('success', 'rapporter.confirmation.verified');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -431,7 +431,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::GODKENDT_AF_MAGISTRAT, 'rapport_approve', 'rapporter.actions.approve');
 
-        $this->flash->success('rapporter.confirmation.approved');
+        $this->addFlash('success', 'rapporter.confirmation.approved');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -448,7 +448,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::UNDER_UDFOERSEL, 'rapport_implementation', 'rapporter.actions.implementation');
 
-        $this->flash->success('rapporter.confirmation.implementation');
+        $this->addFlash('success', 'rapporter.confirmation.implementation');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -465,7 +465,7 @@ class RapportController extends BaseController
     {
         $this->statusAction($request, $rapport, BygningStatusType::DRIFT, 'rapport_operation', 'rapporter.actions.operation');
 
-        $this->flash->success('rapporter.confirmation.operation');
+        $this->addFlash('success', 'rapporter.confirmation.operation');
 
         return $this->redirect($this->generateUrl('dashboard_default'));
     }
@@ -491,7 +491,7 @@ class RapportController extends BaseController
         $em->persist($tiltag);
         $em->flush();
 
-        $this->flash->success($type.'tiltag.confirmation.created');
+        $this->addFlash('success', $type.'tiltag.confirmation.created');
 
         return $this->redirect($this->generateUrl('tiltag_edit', ['id' => $tiltag->getId()]));
     }
@@ -592,7 +592,6 @@ class RapportController extends BaseController
     public function calculateAction(Request $request, Rapport $rapport)
     {
         $em = $this->getDoctrine()->getManager();
-        $flash = $this->get('braincrafted_bootstrap.flash');
 
         try {
             foreach ($rapport->getTiltag() as $tiltag) {
@@ -608,9 +607,9 @@ class RapportController extends BaseController
             $em->persist($rapport);
             $em->flush();
 
-            $flash->success('Rapport calculated');
+            $this->addFlash('success', 'Rapport calculated');
         } catch (\Exception $ex) {
-            $flash->error('Cannot calculate rapport');
+            $this->addFlash('error', 'Cannot calculate rapport');
         }
 
         return $this->redirect($this->generateUrl('rapport_show', ['id' => $rapport->getId()]));
@@ -671,7 +670,7 @@ class RapportController extends BaseController
         $allFiles = $rapport->getAllFiles();
 
         if (!$allFiles) {
-            $this->flash->error('rapporter.messages.no_files');
+            $this->addFlash('error', 'rapporter.messages.no_files');
 
             return $this->redirect($this->generateUrl('rapport_show', ['id' => $rapport->getId()]));
         }

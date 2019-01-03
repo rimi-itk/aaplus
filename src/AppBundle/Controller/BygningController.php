@@ -237,8 +237,7 @@ class BygningController extends BaseController implements InitControllerInterfac
                 $em->flush();
             }
 
-            $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('baseline.confirmation.created');
+            $this->addFlash('success', 'baseline.confirmation.created');
 
             return $this->redirect($this->generateUrl('baseline_edit', ['id' => $baseline->getId()]));
         }

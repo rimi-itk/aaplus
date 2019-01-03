@@ -76,12 +76,12 @@ class BygningIndfoerController extends BaseController implements InitControllerI
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->flash->success('bygninger.confirmation.bygning_infoert');
+            $this->addFlash('success', 'bygninger.confirmation.bygning_infoert');
 
             return $this->redirect($this->generateUrl('bygning_show', ['id' => $bygning->getId()]));
         }
 
-        $this->flash->error('common.form_error');
+        $this->addFlash('error', 'common.form_error');
 
         return [
       'entity' => $bygning,

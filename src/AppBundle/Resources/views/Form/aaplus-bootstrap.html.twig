@@ -85,7 +85,7 @@
 
 {% block button_widget %}
   {% spaceless %}
-    {% if label is empty and label is not sameas(false) %}
+    {% if label is empty and label is not same as(false) %}
       {% set label = name|humanize %}
     {% endif %}
     {# delete form #}
@@ -170,7 +170,7 @@
       {% else %}
         {% set attr = choice.attr %}
         <option
-            value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is sameas(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+            value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
       {% endif %}
     {% endfor %}
   {% endspaceless %}
@@ -206,7 +206,7 @@
         {% set col_size = attr.col_size %}
       {% endif %}
 
-      {% if label is not sameas(false) %}
+      {% if label is not same as(false) %}
         {% set style = style|default(bootstrap_get_style()) %}
         {% set label_col = label_col|default(bootstrap_get_label_col()) %}
 

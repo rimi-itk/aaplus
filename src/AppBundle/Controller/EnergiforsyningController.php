@@ -169,9 +169,9 @@ class EnergiforsyningController extends BaseController
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($entity);
                 $em->flush();
-                $this->flash->success('energiforsyninger.confirmation.deleted');
+                $this->addFlash('success', 'energiforsyninger.confirmation.deleted');
             } catch (\Exception $e) {
-                $this->flash->error('energiforsyninger.error.cannot_delete');
+                $this->addFlash('error', 'energiforsyninger.error.cannot_delete');
             }
         }
 

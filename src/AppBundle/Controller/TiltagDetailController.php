@@ -142,7 +142,7 @@ class TiltagDetailController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->flash->success('tiltagdetail.confirmation.updated');
+            $this->addFlash('success', 'tiltagdetail.confirmation.updated');
 
             return $this->redirect($this->generateUrl('tiltag_show', ['id' => $tiltagdetail->getTiltag()->getId()]).'#'.$tiltagdetail->getId());
         }
@@ -179,7 +179,7 @@ class TiltagDetailController extends BaseController
             $em->remove($tiltagdetail);
             $em->flush();
 
-            $this->flash->success('tiltagdetail.confirmation.deleted');
+            $this->addFlash('success', 'tiltagdetail.confirmation.deleted');
         }
 
         return $this->redirect($this->generateUrl('tiltag_show', ['id' => $tiltag->getId()]));

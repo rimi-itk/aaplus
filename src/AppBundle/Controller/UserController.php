@@ -92,7 +92,7 @@ class UserController extends BaseController
         if ($form->isValid()) {
             $userManager->updateUser($user);
 
-            $this->flash->success('user.confirmation.created');
+            $this->addFlash('success', 'user.confirmation.created');
 
             return $this->redirect($this->generateUrl('user'));
         }
@@ -177,7 +177,7 @@ class UserController extends BaseController
             $userManager->updatePassword($entity);
             $em->flush();
 
-            $this->flash->success('user.confirmation.updated');
+            $this->addFlash('success', 'user.confirmation.updated');
 
             return $this->redirect($this->generateUrl('user'));
         }
@@ -231,7 +231,7 @@ class UserController extends BaseController
     private function reportErrors($form)
     {
         foreach ($form->getErrors() as $error) {
-            $this->flash->error($error->getMessage());
+            $this->addFlash('error', $error->getMessage());
         }
     }
 }

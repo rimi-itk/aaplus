@@ -126,7 +126,7 @@ class RapportBilagController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->flash->success('bilag.confirmation.updated');
+            $this->addFlash('success', 'bilag.confirmation.updated');
 
             return $this->redirect($this->generateUrl('rapport_bilag_get', ['rapport_id' => $rapport->getId()]));
         }
@@ -158,7 +158,7 @@ class RapportBilagController extends BaseController
             $em->persist($bilag);
             $em->flush();
 
-            $this->flash->success('bilag.confirmation.created');
+            $this->addFlash('success', 'bilag.confirmation.created');
 
             return $this->redirect($this->generateUrl('rapport_bilag_get', ['rapport_id' => $rapport->getId()]));
         }
@@ -187,7 +187,7 @@ class RapportBilagController extends BaseController
             $em->remove($bilag);
             $em->flush();
 
-            $this->flash->success('bilag.confirmation.deleted');
+            $this->addFlash('success', 'bilag.confirmation.deleted');
         }
 
         return $this->redirect($this->generateUrl('rapport_bilag_get', ['rapport_id' => $rapport->getId()]));

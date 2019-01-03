@@ -101,7 +101,7 @@ class BaselineController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->flash->success('baseline.confirmation.updated');
+            $this->addFlash('success', 'baseline.confirmation.updated');
 
             return $this->redirect($this->generateUrl('baseline_show', ['id' => $baseline->getId()]));
         }
@@ -219,8 +219,7 @@ class BaselineController extends BaseController
             $em->persist($baselineKorrektion);
             $em->flush();
 
-            $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('baselinekorrektioner.confirmation.created');
+            $this->addFlash('success', 'baselinekorrektioner.confirmation.created');
 
             return $this->redirect($this->generateUrl('baselinekorrektion_edit', ['id' => $baselineKorrektion->getId()]));
         }

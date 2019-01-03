@@ -86,12 +86,12 @@ class BygningTilknytRaagiverController extends BaseController implements InitCon
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->flash->success('bygninger.confirmation.raadgiver_tilknyttet');
+            $this->addFlash('success', 'bygninger.confirmation.raadgiver_tilknyttet');
 
             return $this->redirect($this->generateUrl('bygning_show', ['id' => $bygning->getId()]));
         }
 
-        $this->flash->error('common.form_error');
+        $this->addFlash('error', 'common.form_error');
 
         return [
       'entity' => $bygning,
