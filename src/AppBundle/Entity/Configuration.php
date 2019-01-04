@@ -110,13 +110,13 @@ class Configuration
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $mtmFaellesomkostningerNulHvisArealMindreEnd;
+    protected $mtmFaellesomkostningerNulHvisArealMindreEnd = 0;
 
     /**
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd;
+    protected $mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd = 0;
 
     public function setId($id)
     {

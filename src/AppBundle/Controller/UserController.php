@@ -45,7 +45,7 @@ class UserController extends BaseController
             ->getRepository('AppBundle:User')
             ->createQueryBuilder('u');
 
-        $form = $this->get('form.factory')->create(new UserFilterType(), null, [
+        $form = $this->get('form.factory')->create(UserFilterType::class, null, [
             'action' => $this->generateUrl('user'),
             'method' => 'GET',
         ]);

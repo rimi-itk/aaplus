@@ -16,6 +16,7 @@ use AppBundle\Form\BelysningTiltagDetail\NytArmaturType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,7 +38,7 @@ class NytArmaturController extends BaseController
      * Lists all BelysningTiltagDetail\NytArmatur entities.
      *
      * @Route("/", name="belysningtiltagdetail_nytarmatur", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:index.html.twig")
      */
     public function indexAction()
     {
@@ -80,7 +81,7 @@ class NytArmaturController extends BaseController
      * Displays a form to create a new BelysningTiltagDetail\NytArmatur entity.
      *
      * @Route("/new", name="belysningtiltagdetail_nytarmatur_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:new.html.twig")
      */
     public function newAction()
     {
@@ -99,7 +100,7 @@ class NytArmaturController extends BaseController
      * Finds and displays a BelysningTiltagDetail\NytArmatur entity.
      *
      * @Route("/{id}", name="belysningtiltagdetail_nytarmatur_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:show.html.twig")
      *
      * @param mixed $id
      */
@@ -126,7 +127,7 @@ class NytArmaturController extends BaseController
      * Displays a form to edit an existing BelysningTiltagDetail\NytArmatur entity.
      *
      * @Route("/{id}/edit", name="belysningtiltagdetail_nytarmatur_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\NytArmatur:edit.html.twig")
      */
     public function editAction(NytArmatur $entity)
     {
@@ -218,7 +219,7 @@ class NytArmaturController extends BaseController
      */
     private function createCreateForm(NytArmatur $entity)
     {
-        $form = $this->createForm(new NytArmaturType(), $entity, [
+        $form = $this->createForm(NytArmaturType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_nytarmatur_create'),
             'method' => 'POST',
         ]);
@@ -237,7 +238,7 @@ class NytArmaturController extends BaseController
      */
     private function createEditForm(NytArmatur $entity)
     {
-        $form = $this->createForm(new NytArmaturType(), $entity, [
+        $form = $this->createForm(NytArmaturType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_nytarmatur_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);
@@ -263,7 +264,7 @@ class NytArmaturController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('belysningtiltagdetail_nytarmatur_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [

@@ -35,7 +35,7 @@ class KlimaskaermController extends BaseController
      * Lists all Klimaskaerm entities.
      *
      * @Route("/", name="klimaskaerm", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Klimaskaerm:index.html.twig")
      */
     public function indexAction()
     {

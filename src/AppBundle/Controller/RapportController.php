@@ -777,7 +777,8 @@ class RapportController extends BaseController
      */
     private function createSearchForm(Rapport $entity)
     {
-        $form = $this->createForm(new RapportSearchType($this->get('security.context')), $entity, [
+        // @TODO $form = $this->createForm(new RapportSearchType($this->get('security.context')), $entity, [
+        $form = $this->createForm(RapportSearchType::class, $entity, [
             'action' => $this->generateUrl('rapport'),
             'method' => 'GET',
         ]);

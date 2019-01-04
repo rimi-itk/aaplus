@@ -256,7 +256,7 @@ class BygningController extends BaseController implements InitControllerInterfac
      */
     private function createSearchForm(Bygning $entity)
     {
-        $form = $this->createForm(new BygningSearchType(), $entity, [
+        $form = $this->createForm(BygningSearchType::class, $entity, [
             'action' => $this->generateUrl('bygning'),
             'method' => 'GET',
         ]);

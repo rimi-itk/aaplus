@@ -14,6 +14,7 @@ use AppBundle\Entity\Pumpe;
 use AppBundle\Form\Type\PumpeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,7 +36,7 @@ class PumpeController extends BaseController
      * Lists all Pumpe entities.
      *
      * @Route("/", name="pumpe", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Pumpe:index.html.twig")
      */
     public function indexAction()
     {
@@ -78,7 +79,7 @@ class PumpeController extends BaseController
      * Displays a form to create a new Pumpe entity.
      *
      * @Route("/new", name="pumpe_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Pumpe:new.html.twig")
      */
     public function newAction()
     {
@@ -97,7 +98,7 @@ class PumpeController extends BaseController
      * Finds and displays a Pumpe entity.
      *
      * @Route("/{id}", name="pumpe_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Pumpe:show.html.twig")
      *
      * @param mixed $id
      */
@@ -124,7 +125,7 @@ class PumpeController extends BaseController
      * Displays a form to edit an existing Pumpe entity.
      *
      * @Route("/{id}/edit", name="pumpe_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Pumpe:edit.html.twig")
      */
     public function editAction(Pumpe $entity)
     {
@@ -216,7 +217,7 @@ class PumpeController extends BaseController
      */
     private function createCreateForm(Pumpe $entity)
     {
-        $form = $this->createForm(new PumpeType(), $entity, [
+        $form = $this->createForm(PumpeType::class, $entity, [
             'action' => $this->generateUrl('pumpe_create'),
             'method' => 'POST',
         ]);
@@ -242,7 +243,7 @@ class PumpeController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('pumpe_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [
@@ -261,7 +262,7 @@ class PumpeController extends BaseController
      */
     private function createEditForm(Pumpe $entity)
     {
-        $form = $this->createForm(new PumpeType(), $entity, [
+        $form = $this->createForm(PumpeType::class, $entity, [
             'action' => $this->generateUrl('pumpe_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);

@@ -10,8 +10,13 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\Group;
+use AppBundle\Entity\User;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterOperands;
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType;
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,13 +29,13 @@ class UserFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('username', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('firstname', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('lastname', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('phone', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-//      ->add('groups', 'filter_entity', array('class' => 'AppBundle:Group', 'label' => false))
-      ->add('Søg', 'submit')
-    ;
+            ->add('username', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('firstname', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('lastname', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('phone', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            // ->add('groups', EntityFilterType::class, array('class' => Group::class, 'label' => false))
+            ->add('Søg', SubmitType::class)
+        ;
     }
 
     /**
@@ -39,8 +44,8 @@ class UserFilterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\User',
-    ]);
+            'data_class' => User::class,
+        ]);
     }
 
     /**

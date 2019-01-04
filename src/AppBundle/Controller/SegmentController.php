@@ -14,6 +14,7 @@ use AppBundle\Entity\Segment;
 use AppBundle\Form\Type\SegmentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,7 +36,7 @@ class SegmentController extends BaseController
      * Lists all Segment entities.
      *
      * @Route("/", name="segment", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Segment:index.html.twig")
      */
     public function indexAction()
     {
@@ -78,7 +79,7 @@ class SegmentController extends BaseController
      * Displays a form to create a new Segment entity.
      *
      * @Route("/new", name="segment_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Segment:new.html.twig")
      */
     public function newAction()
     {
@@ -97,7 +98,7 @@ class SegmentController extends BaseController
      * Finds and displays a Segment entity.
      *
      * @Route("/{id}", name="segment_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Segment:show.html.twig")
      *
      * @param mixed $id
      */
@@ -124,7 +125,7 @@ class SegmentController extends BaseController
      * Displays a form to edit an existing Segment entity.
      *
      * @Route("/{id}/edit", name="segment_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Segment:edit.html.twig")
      */
     public function editAction(Segment $entity)
     {
@@ -216,7 +217,7 @@ class SegmentController extends BaseController
      */
     private function createCreateForm(Segment $entity)
     {
-        $form = $this->createForm(new SegmentType($this->getDoctrine()), $entity, [
+        $form = $this->createForm(SegmentType::class, $entity, [
             'action' => $this->generateUrl('segment_create'),
             'method' => 'POST',
         ]);
@@ -242,7 +243,7 @@ class SegmentController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('segment_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [
@@ -261,7 +262,7 @@ class SegmentController extends BaseController
      */
     private function createEditForm(Segment $entity)
     {
-        $form = $this->createForm(new SegmentType($this->getDoctrine()), $entity, [
+        $form = $this->createForm(SegmentType::class, $entity, [
             'action' => $this->generateUrl('segment_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);

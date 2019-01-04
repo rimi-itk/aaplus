@@ -11,6 +11,8 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,14 +33,22 @@ class BygningSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('bygId', 'text', ['label' => false, 'max_length' => 4, 'attr' => ['size' => '4']])
-      ->add('navn', null, ['label' => false])
-      ->add('adresse', null, ['label' => false])
-      ->add('postnummer', null, ['label' => false, 'max_length' => 4, 'attr' => ['size' => '4']])
-      ->add('postBy', null, ['label' => false])
-      ->add('segment', null, ['label' => false, 'required' => false])
-      ->add('status', null, ['label' => false, 'required' => false, 'data' => null])
-      ->add('Søg', 'submit');
+            ->add('bygId', TextType::class, [
+                'label' => false,
+                // @TODO 'max_length' => 4,
+                'attr' => ['size' => '4'],
+            ])
+            ->add('navn', null, ['label' => false])
+            ->add('adresse', null, ['label' => false])
+            ->add('postnummer', null, [
+                'label' => false,
+                // @TODO 'max_length' => 4,
+                'attr' => ['size' => '4'],
+            ])
+            ->add('postBy', null, ['label' => false])
+            ->add('segment', null, ['label' => false, 'required' => false])
+            ->add('status', null, ['label' => false, 'required' => false, 'data' => null])
+            ->add('Søg', SubmitType::class);
     }
 
     /**

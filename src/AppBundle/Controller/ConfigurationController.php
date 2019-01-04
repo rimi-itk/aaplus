@@ -31,7 +31,7 @@ class ConfigurationController extends BaseController
      * Lists all Configuration entities.
      *
      * @Route("/", name="configuration", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Configuration:index.html.twig")
      */
     public function indexAction()
     {
@@ -48,7 +48,7 @@ class ConfigurationController extends BaseController
      * Displays a form to edit an existing Configuration entity.
      *
      * @Route("/edit", name="configuration_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Configuration:edit.html.twig")
      */
     public function editAction()
     {
@@ -57,6 +57,7 @@ class ConfigurationController extends BaseController
 
         $entity = $this->getConfiguration();
 
+        // @TODO
         if (!$this->container->get('security.context')->isGranted('CONFIGURATION_EDIT', $entity)) {
             throw $this->createAccessDeniedException('You are not allowed to do this');
         }
@@ -123,10 +124,10 @@ class ConfigurationController extends BaseController
      */
     private function createEditForm(Configuration $configuration)
     {
-        $form = $this->createForm(new ConfigurationType($this->get('security.context')), $configuration, [
-      'action' => $this->generateUrl('configuration_update'),
-      'method' => 'PUT',
-    ]);
+        $form = $this->createForm(ConfigurationType::class, $configuration, [
+            'action' => $this->generateUrl('configuration_update'),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('configuration'));
 

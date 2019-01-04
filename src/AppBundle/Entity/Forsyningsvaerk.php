@@ -1016,7 +1016,7 @@ class Forsyningsvaerk
      */
     public function __toString()
     {
-        return $this->navn;
+        return $this->navn ?? self::class;
     }
 
     /**

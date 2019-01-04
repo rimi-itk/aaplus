@@ -15,7 +15,7 @@ use AppBundle\Entity\BelysningTiltagDetail\ErstatningsLyskilde;
 use AppBundle\Form\BelysningTiltagDetail\ErstatningsLyskildeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,7 +37,7 @@ class ErstatningsLyskildeController extends BaseController
      * Lists all BelysningTiltagDetail\ErstatningsLyskilde entities.
      *
      * @Route("/", name="belysningtiltagdetail_erstatningslyskilde", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\ErstatningsLyskilde:index.html.twig")
      */
     public function indexAction()
     {
@@ -80,7 +80,7 @@ class ErstatningsLyskildeController extends BaseController
      * Displays a form to create a new BelysningTiltagDetail\ErstatningsLyskilde entity.
      *
      * @Route("/new", name="belysningtiltagdetail_erstatningslyskilde_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\ErstatningsLyskilde:new.html.twig")
      */
     public function newAction()
     {
@@ -99,7 +99,7 @@ class ErstatningsLyskildeController extends BaseController
      * Finds and displays a BelysningTiltagDetail\ErstatningsLyskilde entity.
      *
      * @Route("/{id}", name="belysningtiltagdetail_erstatningslyskilde_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\ErstatningsLyskilde:show.html.twig")
      *
      * @param mixed $id
      */
@@ -126,7 +126,7 @@ class ErstatningsLyskildeController extends BaseController
      * Displays a form to edit an existing BelysningTiltagDetail\ErstatningsLyskilde entity.
      *
      * @Route("/{id}/edit", name="belysningtiltagdetail_erstatningslyskilde_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\ErstatningsLyskilde:edit.html.twig")
      */
     public function editAction(ErstatningsLyskilde $entity)
     {
@@ -218,7 +218,7 @@ class ErstatningsLyskildeController extends BaseController
      */
     private function createCreateForm(ErstatningsLyskilde $entity)
     {
-        $form = $this->createForm(new ErstatningsLyskildeType(), $entity, [
+        $form = $this->createForm(ErstatningsLyskildeType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_erstatningslyskilde_create'),
             'method' => 'POST',
         ]);
@@ -237,7 +237,7 @@ class ErstatningsLyskildeController extends BaseController
      */
     private function createEditForm(ErstatningsLyskilde $entity)
     {
-        $form = $this->createForm(new ErstatningsLyskildeType(), $entity, [
+        $form = $this->createForm(ErstatningsLyskildeType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_erstatningslyskilde_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);
@@ -263,7 +263,7 @@ class ErstatningsLyskildeController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('belysningtiltagdetail_erstatningslyskilde_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [

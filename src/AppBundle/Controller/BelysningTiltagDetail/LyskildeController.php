@@ -16,6 +16,7 @@ use AppBundle\Form\BelysningTiltagDetail\LyskildeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,7 +38,7 @@ class LyskildeController extends BaseController
      * Lists all BelysningTiltagDetail\Lyskilde entities.
      *
      * @Route("/", name="belysningtiltagdetail_lyskilde", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:index.html.twig")
      */
     public function indexAction()
     {
@@ -80,7 +81,7 @@ class LyskildeController extends BaseController
      * Displays a form to create a new BelysningTiltagDetail\Lyskilde entity.
      *
      * @Route("/new", name="belysningtiltagdetail_lyskilde_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:new.html.twig")
      */
     public function newAction()
     {
@@ -99,7 +100,7 @@ class LyskildeController extends BaseController
      * Finds and displays a BelysningTiltagDetail\Lyskilde entity.
      *
      * @Route("/{id}", name="belysningtiltagdetail_lyskilde_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:show.html.twig")
      *
      * @param mixed $id
      */
@@ -126,7 +127,7 @@ class LyskildeController extends BaseController
      * Displays a form to edit an existing BelysningTiltagDetail\Lyskilde entity.
      *
      * @Route("/{id}/edit", name="belysningtiltagdetail_lyskilde_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:BelysningTiltagDetail\Lyskilde:edit.html.twig")
      */
     public function editAction(Lyskilde $entity)
     {
@@ -218,7 +219,7 @@ class LyskildeController extends BaseController
      */
     private function createCreateForm(Lyskilde $entity)
     {
-        $form = $this->createForm(new LyskildeType(), $entity, [
+        $form = $this->createForm(LyskildeType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_lyskilde_create'),
             'method' => 'POST',
         ]);
@@ -237,7 +238,7 @@ class LyskildeController extends BaseController
      */
     private function createEditForm(Lyskilde $entity)
     {
-        $form = $this->createForm(new LyskildeType(), $entity, [
+        $form = $this->createForm(LyskildeType::class, $entity, [
             'action' => $this->generateUrl('belysningtiltagdetail_lyskilde_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);
@@ -263,7 +264,7 @@ class LyskildeController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('belysningtiltagdetail_lyskilde_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [

@@ -70,7 +70,7 @@ class UdtraekController extends BaseController implements InitControllerInterfac
             ->getRepository('AppBundle:Bygning')
             ->createQueryBuilder('e');
 
-        $form = $this->get('form.factory')->create(new BygningUdtraekType(), null, [
+        $form = $this->get('form.factory')->create(BygningUdtraekType::class, null, [
             'action' => $this->generateUrl('udtraek'),
             'method' => 'GET',
         ]);

@@ -108,7 +108,7 @@
             {{ bygning.rapport.ava | b2icon }}
           {% endif %}
         </td>
-        <td>{{ bygning.status  | readable }}</td>
+        <td>{{ bygning.status | readable_enum }}</td>
         <td class="text-right">
           <a href="{{ path('bygning_show', { 'id': bygning.id }) }}" class="btn btn-default btn-xs">{{ 'common.show' | trans }}</a>
         </td>

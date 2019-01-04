@@ -10,6 +10,7 @@
 
 namespace AppBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,11 +35,11 @@ class SegmentType extends AbstractType
       ->add('navn')
       ->add('forkortelse')
       ->add('magistrat')
-      ->add('segmentAnsvarlig', 'entity', [
+      ->add('segmentAnsvarlig', EntityType::class, [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Aa+'),
         'required' => false,
-        'empty_value' => 'common.none',
+        // @TODO 'empty_value' => 'common.none',
       ])
     ;
     }
@@ -67,6 +68,6 @@ class SegmentType extends AbstractType
 
         $group = $em->findOneByName($groupname);
 
-        return $group->getUsers();
+        return  $group ? $group->getUsers() : [];
     }
 }

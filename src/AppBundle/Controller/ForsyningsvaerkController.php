@@ -15,6 +15,7 @@ use AppBundle\Form\Type\ForsyningsvaerkType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,7 +37,7 @@ class ForsyningsvaerkController extends BaseController
      * Lists all Forsyningsvaerk entities.
      *
      * @Route("/", name="forsyningsvaerk", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Forsyningsvaerk:index.html.twig")
      */
     public function indexAction()
     {
@@ -79,7 +80,7 @@ class ForsyningsvaerkController extends BaseController
      * Displays a form to create a new Forsyningsvaerk entity.
      *
      * @Route("/new", name="forsyningsvaerk_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Forsyningsvaerk:new.html.twig")
      */
     public function newAction()
     {
@@ -98,7 +99,7 @@ class ForsyningsvaerkController extends BaseController
      * Finds and displays a Forsyningsvaerk entity.
      *
      * @Route("/{id}", name="forsyningsvaerk_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Forsyningsvaerk:show.html.twig")
      *
      * @param mixed $id
      */
@@ -125,7 +126,7 @@ class ForsyningsvaerkController extends BaseController
      * Displays a form to edit an existing Forsyningsvaerk entity.
      *
      * @Route("/{id}/edit", name="forsyningsvaerk_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Forsyningsvaerk:edit.html.twig")
      */
     public function editAction(Forsyningsvaerk $entity)
     {
@@ -217,7 +218,7 @@ class ForsyningsvaerkController extends BaseController
      */
     private function createCreateForm(Forsyningsvaerk $entity)
     {
-        $form = $this->createForm(new ForsyningsvaerkType(), $entity, [
+        $form = $this->createForm(ForsyningsvaerkType::class, $entity, [
             'action' => $this->generateUrl('forsyningsvaerk_create'),
             'method' => 'POST',
         ]);
@@ -236,7 +237,7 @@ class ForsyningsvaerkController extends BaseController
      */
     private function createEditForm(Forsyningsvaerk $entity)
     {
-        $form = $this->createForm(new ForsyningsvaerkType(), $entity, [
+        $form = $this->createForm(ForsyningsvaerkType::class, $entity, [
             'action' => $this->generateUrl('forsyningsvaerk_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);
@@ -262,7 +263,7 @@ class ForsyningsvaerkController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('forsyningsvaerk_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [

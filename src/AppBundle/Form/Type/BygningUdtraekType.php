@@ -16,7 +16,9 @@ use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderExecuterInterface;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterOperands;
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,12 +39,12 @@ class BygningUdtraekType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('adresse', 'filter_text', ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('postnummer', 'filter_text', ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
+      ->add('navn', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+      ->add('adresse', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+      ->add('postnummer', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
       ->add('status', null, ['required' => false, 'label' => false]);
 
-        $builder->add('segment', new SegmentUdtraekType(), ['label' => false,
+        $builder->add('segment', SegmentUdtraekType::class, ['label' => false,
       'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
           $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
               $filterBuilder->leftJoin($alias.'.segment', $joinAlias);
@@ -52,7 +54,7 @@ class BygningUdtraekType extends AbstractType
       },
     ]);
 
-        $builder->add('rapport', new RapportUdtraekType(), ['label' => false,
+        $builder->add('rapport', RapportUdtraekType::class, ['label' => false,
       'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
           $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
               $filterBuilder->leftJoin($alias.'.rapport', $joinAlias);
@@ -62,7 +64,7 @@ class BygningUdtraekType extends AbstractType
       },
     ]);
 
-        $builder->add('Søg', 'submit');
+        $builder->add('Søg', SubmitType::class);
     }
 
     /**

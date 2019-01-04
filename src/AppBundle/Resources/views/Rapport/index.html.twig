@@ -59,7 +59,7 @@
       <td>{{ rapport.bygning.adresse }}</td>
       <td>{{ rapport.bygning.postnummer }}</td>
       <td>{{ rapport.bygning.segment }}</td>
-      <td>{{ rapport.bygning.status  | readable }}</td>
+      <td>{{ rapport.bygning.status | readable_enum }}</td>
       <td class="text-center">{{ rapport.version }}</td>
       {% if form.elena is defined %}
         <td class="text-center">{{ rapport.elena | b2icon }}</td>

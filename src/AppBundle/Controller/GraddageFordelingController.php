@@ -36,7 +36,7 @@ class GraddageFordelingController extends BaseController
      * Lists all GraddageFordeling entities.
      *
      * @Route("/", name="graddage", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:GraddageFordeling:index.html.twig")
      */
     public function indexAction()
     {
@@ -79,7 +79,7 @@ class GraddageFordelingController extends BaseController
      * Displays a form to create a new GraddageFordeling entity.
      *
      * @Route("/new", name="graddage_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:GraddageFordeling:new.html.twig")
      */
     public function newAction()
     {
@@ -98,7 +98,7 @@ class GraddageFordelingController extends BaseController
      * Finds and displays a GraddageFordeling entity.
      *
      * @Route("/{id}", name="graddage_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:GraddageFordeling:show.html.twig")
      *
      * @param mixed $id
      */
@@ -122,7 +122,7 @@ class GraddageFordelingController extends BaseController
      * Displays a form to edit an existing GraddageFordeling entity.
      *
      * @Route("/{id}/edit", name="graddage_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:GraddageFordeling:edit.html.twig")
      */
     public function editAction(GraddageFordeling $entity)
     {
@@ -183,7 +183,7 @@ class GraddageFordelingController extends BaseController
      */
     private function createCreateForm(GraddageFordeling $entity)
     {
-        $form = $this->createForm(new GraddageFordelingType($entity), $entity, [
+        $form = $this->createForm(GraddageFordelingType::class, $entity, [
             'action' => $this->generateUrl('graddage_create'),
             'method' => 'POST',
         ]);
@@ -202,7 +202,7 @@ class GraddageFordelingController extends BaseController
      */
     private function createEditForm(GraddageFordeling $entity)
     {
-        $form = $this->createForm(new GraddageFordelingType($entity), $entity, [
+        $form = $this->createForm(GraddageFordelingType::class, $entity, [
             'action' => $this->generateUrl('graddage_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);

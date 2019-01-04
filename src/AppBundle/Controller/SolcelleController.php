@@ -35,7 +35,7 @@ class SolcelleController extends BaseController
      * Lists all Solcelle entities.
      *
      * @Route("/", name="solcelle", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:Solcelle:index.html.twig")
      */
     public function indexAction()
     {

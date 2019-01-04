@@ -32,7 +32,7 @@
     <tbody>
     {% for entity in entities %}
     <tr>
-        <td>{{ entity.type | readable('KlimaskaermType') | trans }}</td>
+        <td>{{ entity.type | readable_enum('KlimaskaermType') | trans }}</td>
         <td>{{ entity.post }}</td>
         <td>{{ entity.klimaskaerm }}</td>
         <td>{{ entity.arbejdeOmfang }}</td>

@@ -10,7 +10,10 @@
 
 namespace AppBundle\Form\Type\BygningUdtraekType;
 
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType;
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType;
 use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EmbeddedFilterTypeInterface;
+use Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,9 +35,9 @@ class RapportUdtraekType extends AbstractType implements EmbeddedFilterTypeInter
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('datering', 'filter_date_range', ['label' => false])
-      ->add('elena', 'filter_checkbox', ['label' => false])
-      ->add('ava', 'filter_checkbox', ['label' => false]);
+            ->add('datering', DateRangeFilterType::class, ['label' => false])
+            ->add('elena', CheckboxFilterType::class, ['label' => false])
+            ->add('ava', CheckboxFilterType::class, ['label' => false]);
     }
 
     /**
@@ -46,13 +49,13 @@ class RapportUdtraekType extends AbstractType implements EmbeddedFilterTypeInter
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     public function getParent()
     {
-        return 'filter_sharedable'; // this allow us to use the "add_shared" option
+        return SharedableFilterType::class; // this allow us to use the "add_shared" option
     }
 
     /**

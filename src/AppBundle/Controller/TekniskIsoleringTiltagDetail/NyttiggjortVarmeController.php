@@ -16,6 +16,7 @@ use AppBundle\Form\TekniskIsoleringTiltagDetail\NyttiggjortVarmeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,7 +38,7 @@ class NyttiggjortVarmeController extends BaseController
      * Lists all TekniskIsoleringTiltagDetail\NyttiggjortVarme entities.
      *
      * @Route("/", name="nyttiggjortvarme", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:index.html.twig")
      */
     public function indexAction()
     {
@@ -80,7 +81,7 @@ class NyttiggjortVarmeController extends BaseController
      * Displays a form to create a new TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
      * @Route("/new", name="nyttiggjortvarme_new", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:new.html.twig")
      */
     public function newAction()
     {
@@ -99,7 +100,7 @@ class NyttiggjortVarmeController extends BaseController
      * Finds and displays a TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
      * @Route("/{id}", name="nyttiggjortvarme_show", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:show.html.twig")
      *
      * @param mixed $id
      */
@@ -126,7 +127,7 @@ class NyttiggjortVarmeController extends BaseController
      * Displays a form to edit an existing TekniskIsoleringTiltagDetail\NyttiggjortVarme entity.
      *
      * @Route("/{id}/edit", name="nyttiggjortvarme_edit", methods={"GET"})
-     * @Template()
+     * @Template("AppBundle:TekniskIsoleringTiltagDetail\NyttiggjortVarme:edit.html.twig")
      */
     public function editAction(NyttiggjortVarme $entity)
     {
@@ -218,7 +219,7 @@ class NyttiggjortVarmeController extends BaseController
      */
     private function createCreateForm(NyttiggjortVarme $entity)
     {
-        $form = $this->createForm(new NyttiggjortVarmeType(), $entity, [
+        $form = $this->createForm(NyttiggjortVarmeType::class, $entity, [
             'action' => $this->generateUrl('nyttiggjortvarme_create'),
             'method' => 'POST',
         ]);
@@ -237,7 +238,7 @@ class NyttiggjortVarmeController extends BaseController
      */
     private function createEditForm(NyttiggjortVarme $entity)
     {
-        $form = $this->createForm(new NyttiggjortVarmeType(), $entity, [
+        $form = $this->createForm(NyttiggjortVarmeType::class, $entity, [
             'action' => $this->generateUrl('nyttiggjortvarme_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
         ]);
@@ -263,7 +264,7 @@ class NyttiggjortVarmeController extends BaseController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('nyttiggjortvarme_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Delete',
                 'disabled' => $message,
                 'attr' => [

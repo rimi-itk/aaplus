@@ -10,7 +10,10 @@
 
 namespace AppBundle\Controller;
 
+use Braincrafted\Bundle\BootstrapBundle\Form\Type\FormActionsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Yavin\Symfony\Controller\InitControllerInterface;
@@ -56,7 +59,7 @@ abstract class BaseController extends Controller implements InitControllerInterf
         $buttons = [];
         if ($cancelUrl) {
             $buttons['cancel'] = [
-                'type' => 'button',
+                'type' => ButtonType::class,
                 'options' => [
                     'label' => $cancelLabel,
                     'button_class' => 'default',
@@ -67,13 +70,13 @@ abstract class BaseController extends Controller implements InitControllerInterf
             ];
         }
         $buttons['submit'] = [
-            'type' => 'submit',
+            'type' => SubmitType::class,
             'options' => [
                 'label' => $submitLabel,
             ],
         ];
 
-        $form->add('buttons', 'form_actions', [
+        $form->add('buttons', FormActionsType::class, [
             'buttons' => $buttons,
         ]);
 

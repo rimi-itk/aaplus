@@ -11,6 +11,9 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -39,32 +42,32 @@ class RapportSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('bygning', new RapportSearchBygningEmbedType(), ['label' => false])
-      ->add('version', 'text', ['label' => false])
-      ->add('datering', 'text', ['label' => false]);
+            ->add('bygning', RapportSearchBygningEmbedType::class, ['label' => false])
+            ->add('version', TextType::class, ['label' => false])
+            ->add('datering', TextType::class, ['label' => false]);
 
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-            $builder->add('elena', 'choice', [
-        'choices' => [
-          '0' => 'Nej',
-          '1' => 'Ja',
-        ],
-        'empty_value' => '--',
-        'required' => false,
-        'label' => false,
-      ]);
-            $builder->add('ava', 'choice', [
-        'choices' => [
-          '0' => 'Nej',
-          '1' => 'Ja',
-        ],
-        'empty_value' => '--',
-        'required' => false,
-        'label' => false,
-      ]);
+            $builder->add('elena', ChoiceType::class, [
+                'choices' => [
+                    '0' => 'Nej',
+                    '1' => 'Ja',
+                ],
+                // @TODO 'empty_value' => '--',
+                'required' => false,
+                'label' => false,
+            ]);
+            $builder->add('ava', ChoiceType::class, [
+                'choices' => [
+                    '0' => 'Nej',
+                    '1' => 'Ja',
+                ],
+                // @TODO 'empty_value' => '--',
+                'required' => false,
+                'label' => false,
+            ]);
         }
 
-        $builder->add('Søg', 'submit');
+        $builder->add('Søg', SubmitType::class);
     }
 
     /**
