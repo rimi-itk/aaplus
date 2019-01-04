@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-9">
       <h1>
-        {{ 'bygninger.labels.plural' | trans }}{% if form.vars.submitted %}: {{ 'common.a_search' | trans }}{% endif %}
+        {{ 'bygninger.labels.plural'|trans }}{% if form.vars.submitted %}: {{ 'common.a_search'|trans }}{% endif %}
       </h1>
     </div>
     <div class="col-md-3 text-right">
@@ -21,15 +21,15 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <label>{{ 'udtraek.labels.showDataFrom' | trans }}</label>
+      <label>{{ 'udtraek.labels.showDataFrom'|trans }}</label>
       <div id="_timestamp" class="bootstrap-date-range">
         <select id="_timestamp_day" name="_timestamp[day]" class="form-control">
           <option value=""></option>
           {% for day in 1..31 %}
             {% if app.request.get('_timestamp')['day'] is defined and app.request.get('_timestamp')['day'] == day %}
-              <option value="{{ day }}" selected>{{ "%02d" | format(day) }}</option>
+              <option value="{{ day }}" selected>{{ "%02d"|format(day) }}</option>
             {% else %}
-              <option value="{{ day }}">{{ "%02d" | format(day) }}</option>
+              <option value="{{ day }}">{{ "%02d"|format(day) }}</option>
             {% endif %}
           {% endfor %}
         </select>
@@ -37,19 +37,19 @@
           <option value=""></option>
           {% for month in 1..12 %}
             {% if app.request.get('_timestamp')['month'] is defined and app.request.get('_timestamp')['month'] == month %}
-              <option value="{{ month }}" selected>{{ "%02d" | format(month) }}</option>
+              <option value="{{ month }}" selected>{{ "%02d"|format(month) }}</option>
             {% else %}
-              <option value="{{ month }}">{{ "%02d" | format(month) }}</option>
+              <option value="{{ month }}">{{ "%02d"|format(month) }}</option>
             {% endif %}
           {% endfor %}
         </select>
         <select id="_timestamp_year" name="_timestamp[year]" class="form-control">
           <option value=""></option>
-          {% for year in 2011..('now' | date('Y')) %}
+          {% for year in 2011..('now'|date('Y')) %}
             {% if app.request.get('_timestamp')['year'] is defined and app.request.get('_timestamp')['year'] == year %}
-              <option value="{{ year }}" selected>{{ "%02d" | format(year) }}</option>
+              <option value="{{ year }}" selected>{{ "%02d"|format(year) }}</option>
             {% else %}
-              <option value="{{ year }}">{{ "%02d" | format(year) }}</option>
+              <option value="{{ year }}">{{ "%02d"|format(year) }}</option>
             {% endif %}
           {% endfor %}
         </select>
@@ -95,28 +95,28 @@
         </td>
         <td class="text-center">
           {% if bygning.rapport is not empty %}
-            {{ bygning.rapport.datering | date('Y-m-d') }}
+            {{ bygning.rapport.datering|date('Y-m-d') }}
           {% endif %}
         </td>
         <td>
           {% if bygning.rapport is not empty %}
-            {{ bygning.rapport.elena | b2icon }}
+            {{ bygning.rapport.elena|b2icon }}
           {% endif %}
         </td>
         <td>
           {% if bygning.rapport is not empty %}
-            {{ bygning.rapport.ava | b2icon }}
+            {{ bygning.rapport.ava|b2icon }}
           {% endif %}
         </td>
-        <td>{{ bygning.status | readable_enum }}</td>
+        <td>{{ bygning.status|readable_enum }}</td>
         <td class="text-right">
-          <a href="{{ path('bygning_show', { 'id': bygning.id }) }}" class="btn btn-default btn-xs">{{ 'common.show' | trans }}</a>
+          <a href="{{ path('bygning_show', { 'id': bygning.id }) }}" class="btn btn-default btn-xs">{{ 'common.show'|trans }}</a>
         </td>
       </tr>
       {% else %}
         <tr>
           <td colspan="8">
-            <div class="alert alert-info" role="alert">{{ 'bygninger.strings.ingen' | trans }}</div>
+            <div class="alert alert-info" role="alert">{{ 'bygninger.strings.ingen'|trans }}</div>
           </td>
         </tr>
       {% endfor %}
@@ -124,7 +124,7 @@
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">{{ 'udtraek.labels.options' | trans }}</div>
+    <div class="panel-heading">{{ 'udtraek.labels.options'|trans }}</div>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-3">
@@ -135,8 +135,8 @@
         </div>
         <div class="col-md-3 text-right">
           {% if is_granted('ROLE_ADMIN') %}
-            <button type="submit" name="_format" value="xlsx" icon="download" class="btn btn-default" class="btn btn-default btn-xs"><span class="fa fa-download"></span> {{ 'common.downloadExcel' | trans }}</button>
-            <button type="submit" name="_format" value="csv" icon="download" class="btn btn-default" class="btn btn-default btn-xs"><span class="fa fa-download"></span> {{ 'common.downloadCsv' | trans }}</button>
+            <button type="submit" name="_format" value="xlsx" icon="download" class="btn btn-default" class="btn btn-default btn-xs"><span class="fa fa-download"></span> {{ 'common.downloadExcel'|trans }}</button>
+            <button type="submit" name="_format" value="csv" icon="download" class="btn btn-default" class="btn btn-default btn-xs"><span class="fa fa-download"></span> {{ 'common.downloadCsv'|trans }}</button>
           {% endif %}
         </div>
       </div>

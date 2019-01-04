@@ -1,13 +1,13 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block body -%}
-  <h1>{{ 'Finansiering' | trans }}</h1>
+  <h1>{{ 'Finansiering'|trans }}</h1>
 
   {% include('AppBundle::_includes/finansiering_graf.html.twig') %}
 
   {% set slices = [
-    entity.cashFlow['cash flow'] | keys | slice(0, 15),
-    entity.cashFlow['cash flow'] | keys | slice(15, 15)
+    entity.cashFlow['cash flow']|keys|slice(0, 15),
+    entity.cashFlow['cash flow']|keys|slice(15, 15)
   ] %}
 
   {% for years in slices %}
@@ -15,7 +15,7 @@
       <thead>
         <tr>
           <th scope="row">
-            {{ 'År' | trans }}
+            {{ 'År'|trans }}
           </th>
           {% for year in years %}
             <th scope="col">
@@ -31,10 +31,10 @@
           'Overskud [kr]': 'cash flow',
           } %}
           <tr>
-            <th scope="row">{{ name | trans }}</th>
+            <th scope="row">{{ name|trans }}</th>
             {% for year in years %}
               <td>
-                {{ entity.cashFlow[key][year] | format_amount }}
+                {{ entity.cashFlow[key][year]|format_amount }}
               </td>
             {% endfor %}
           </tr>
@@ -43,7 +43,7 @@
     </table>
   {% endfor %}
 
-  {{ 'Kalkulationsrente' | trans }}: {{ entity.configuration.kalkulationsrente }}
+  {{ 'Kalkulationsrente'|trans }}: {{ entity.configuration.kalkulationsrente }}
 
   {% if edit_form %}
     {{ form(edit_form, { 'style': 'horizontal' }) }}

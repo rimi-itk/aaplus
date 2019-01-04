@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'segment.labels.plural' | trans }}</h1>
+        <h1>{{ 'segment.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('segment_new') }}">
-          {{ icon('plus') }} {{ 'segment.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'segment.actions.add'|trans }}
         </a>
           </div>
 
@@ -37,7 +37,7 @@
         <td>{{ entity.navn }}</td>
         <td>{{ entity.forkortelse }}</td>
         <td>{{ entity.magistrat }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('segment_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('segment_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

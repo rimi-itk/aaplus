@@ -30,7 +30,7 @@
           <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
           <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
           <td>
-            <a href="{{ path('regning_edit', { 'id': entity.id }) }}" class="btn btn-default btn-xs">{{ 'common.edit' | trans }}</a>
+            <a href="{{ path('regning_edit', { 'id': entity.id }) }}" class="btn btn-default btn-xs">{{ 'common.edit'|trans }}</a>
           </td>
         </tr>
       {% endfor %}

@@ -7,11 +7,11 @@
 
 {% block body -%}
   <div class="row heading">
-    <div class="col-md-6"><h1>{% if entity.title is empty %}{{ 'tiltag.title.missing' | trans }}{% else %}{{ entity.title }}{% endif %}</h1></div>
+    <div class="col-md-6"><h1>{% if entity.title is empty %}{{ 'tiltag.title.missing'|trans }}{% else %}{{ entity.title }}{% endif %}</h1></div>
     <div class="col-md-6 text-right">
       {% if is_granted('TILTAG_EDIT', entity) %}
-        <a class="btn btn-default" href="{{ path('tiltag_edit', { 'id': entity.id }) }}">{{ icon('edit') }} {{ 'tiltag.actions.edit' | trans }}</a>
-        <a href="{{ path('tiltag_detail_new', { 'id': entity.id }) }}" class="btn btn-primary">{{ icon('plus') }} {{ add_action | trans }}</a>
+        <a class="btn btn-default" href="{{ path('tiltag_edit', { 'id': entity.id }) }}">{{ icon('edit') }} {{ 'tiltag.actions.edit'|trans }}</a>
+        <a href="{{ path('tiltag_detail_new', { 'id': entity.id }) }}" class="btn btn-primary">{{ icon('plus') }} {{ add_action|trans }}</a>
       {% endif %}
     </div>
   </div>
@@ -20,8 +20,8 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation"><a href="#oversigt" aria-controls="{{ 'tiltag.strings.oversigt' | trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.oversigt' | trans }}</a></li>
-      <li role="presentation" class="active"><a href="#detailark" aria-controls="{{ 'tiltag.strings.oversigt' | trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.detailark' | trans }}</a></li>
+      <li role="presentation"><a href="#oversigt" aria-controls="{{ 'tiltag.strings.oversigt'|trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.oversigt'|trans }}</a></li>
+      <li role="presentation" class="active"><a href="#detailark" aria-controls="{{ 'tiltag.strings.oversigt'|trans }}" role="tab" data-toggle="tab">{{ 'tiltag.strings.detailark'|trans }}</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -40,15 +40,15 @@
 
 {% block tiltag_detail_edit %}
   {% if is_granted('TILTAG_EDIT', entity) %}
-    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit' | trans }}</a></p>
-    <p><a href="{{ path('tiltag_detail_copy', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('clone') }} {{ 'common.copy' | trans }}</a></p>
+    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit'|trans }}</a></p>
+    <p><a href="{{ path('tiltag_detail_copy', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('clone') }} {{ 'common.copy'|trans }}</a></p>
     {{ form_row(form_detail.batchEdit) }}
   {% endif %}
 {% endblock %}
 
 {% block special_tiltag_detail_edit %}
   {% if is_granted('TILTAG_EDIT', entity) %}
-    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit' | trans }}</a></p>
+    <p><a href="{{ path('tiltag_detail_edit', { 'id': detail.id }) }}" class="btn btn-default btn-xs">{{ icon('edit') }} {{ 'common.edit'|trans }}</a></p>
   {% endif %}
 {% endblock %}
 
@@ -67,7 +67,7 @@
     {{ form_row(form_detail.tilvalgt) }}
     {{ renderCalculationWarnings(detail.calculationWarnings, detail.id, { edit_url: path('tiltag_detail_edit', { 'id': detail.id }) }) }}
   {% else %}
-    {{ detail.tilvalgt | b2icon }}
+    {{ detail.tilvalgt|b2icon }}
   {% endif %}
 {% endblock %}
 
@@ -82,7 +82,7 @@
 
   <script>
     var parseNumber = function (value) {
-      {% if ',' in (3.14 | format_decimal) %}
+      {% if ',' in (3.14|format_decimal) %}
       value = value.replace('.', '').replace(',', '.');
       {% endif %}
       return parseFloat(value);

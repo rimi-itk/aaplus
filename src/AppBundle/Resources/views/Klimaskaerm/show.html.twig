@@ -6,7 +6,7 @@
     <div class="col-md-9">
       <h1>{{ entity }}</h1>
     </div>
-    <div class="col-md-3 text-right">    <a class="btn btn-default btn-default" href="{{ path('klimaskaerm_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+    <div class="col-md-3 text-right">    <a class="btn btn-default btn-default" href="{{ path('klimaskaerm_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
     </div>
 
@@ -15,31 +15,31 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'klimaskaerm.labels.singular' | trans }}</div>
+        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'klimaskaerm.labels.singular'|trans }}</div>
         <table class="table table-condensed">
           <tbody>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.post' | trans }}</th>
+              <th>{{ 'appbundle.klimaskaerm.post'|trans }}</th>
                 <td>{{ entity.post }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.klimaskaerm' | trans }}</th>
+              <th>{{ 'appbundle.klimaskaerm.klimaskaerm'|trans }}</th>
                 <td>{{ entity.klimaskaerm }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.arbejdeOmfang' | trans }}</th>
+              <th>{{ 'appbundle.klimaskaerm.arbejdeOmfang'|trans }}</th>
                 <td>{{ entity.arbejdeOmfang }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.enhedsprisEksklMoms' | trans }}</th>
-                <td>{{ entity.enhedsprisEksklMoms | format_amount(2) }}</td>
+              <th>{{ 'appbundle.klimaskaerm.enhedsprisEksklMoms'|trans }}</th>
+                <td>{{ entity.enhedsprisEksklMoms|format_amount(2) }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.enhed' | trans }}</th>
+              <th>{{ 'appbundle.klimaskaerm.enhed'|trans }}</th>
                 <td>{{ entity.enhed }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.klimaskaerm.noter' | trans }}</th>
+              <th>{{ 'appbundle.klimaskaerm.noter'|trans }}</th>
                 <td>{{ entity.noter }}</td>
             </tr>          </tbody>
         </table>

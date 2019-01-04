@@ -1,28 +1,28 @@
 {% macro renderMessages(messages) %}
   {% if messages['errors'] is defined and messages['errors'] is not empty %}
-    <p>{{ 'Fields required for calculation' | trans }}</p>
+    <p>{{ 'Fields required for calculation'|trans }}</p>
 
     <ul>
       {% for message in messages['errors'] %}
-        <li>{{ message | trans }}</li>
+        <li>{{ message|trans }}</li>
       {% endfor %}
     </ul>
   {% endif %}
 
   <p>
     {% if messages['rapport'] is defined and messages['rapport'] is not empty %}
-      {{ 'Tiltag required for calculation' | trans }}:
+      {{ 'Tiltag required for calculation'|trans }}:
       <em>
         {% for message in messages['rapport'] %}
-          {{ message | trans }}{% if not loop.last %}, {% endif %}
+          {{ message|trans }}{% if not loop.last %}, {% endif %}
         {% endfor %}
       </em>
     {% endif %}
     {% if messages['tiltag'] is defined and messages['tiltag'] is not empty %}
-      {{ 'Details required for calculation' | trans }}:
+      {{ 'Details required for calculation'|trans }}:
       <em>
         {% for message in messages['tiltag'] %}
-          {{ message | trans }}{% if not loop.last %}, {% endif %}
+          {{ message|trans }}{% if not loop.last %}, {% endif %}
         {% endfor %}
       </em>
     {% endif %}
@@ -32,26 +32,26 @@
 {% macro renderMessagesInline(messages) %}
   <p>
     {% if messages['errors'] is defined and messages['errors'] is not empty %}
-      {{ 'Fields required for calculation' | trans }}:
+      {{ 'Fields required for calculation'|trans }}:
       <em>
         {% for message in messages['errors'] %}
-          {{ message | trans }}{% if not loop.last %}, {% else %}. {% endif %}
+          {{ message|trans }}{% if not loop.last %}, {% else %}. {% endif %}
         {% endfor %}
       </em>
     {% endif %}
     {% if messages['rapport'] is defined and messages['rapport'] is not empty %}
-      {{ 'Tiltag required for calculation' | trans }}:
+      {{ 'Tiltag required for calculation'|trans }}:
       <em>
         {% for message in messages['rapport'] %}
-          {{ message | trans }}{% if not loop.last %}, {% endif %}
+          {{ message|trans }}{% if not loop.last %}, {% endif %}
         {% endfor %}
       </em>
     {% endif %}
     {% if messages['tiltag'] is defined and messages['tiltag'] is not empty %}
-      {{ 'Details required for calculation' | trans }}:
+      {{ 'Details required for calculation'|trans }}:
       <em>
         {% for message in messages['tiltag'] %}
-          {{ message | trans }}{% if not loop.last %}, {% endif %}
+          {{ message|trans }}{% if not loop.last %}, {% endif %}
         {% endfor %}
       </em>
     {% endif %}
@@ -62,7 +62,7 @@
   {% import _self as this %}
 
   {% if messages %}
-    <span class="calculattion-warning" data-toggle="modal" data-target="#modal-calculation-warning-{{ key }}"><small>{{ icon( 'warning' ) }}</small></span>
+    <span class="calculattion-warning" data-toggle="modal" data-target="#modal-calculation-warning-{{ key }}"><small>{{ icon('warning') }}</small></span>
   {% endif %}
 {% endmacro %}
 
@@ -75,7 +75,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title text-left" id="myModalLabel">{{ (params.title is defined ? params.title : 'Incomplete calculation') | trans }}</h4>
+            <h4 class="modal-title text-left" id="myModalLabel">{{ (params.title is defined ? params.title : 'Incomplete calculation')|trans }}</h4>
           </div>
           <div class="modal-body text-left">
             {{ this.renderMessages(messages) }}
@@ -83,15 +83,15 @@
           <div class="modal-footer">
             {% if messages['tiltag'] is defined and params.details_url is defined and params.details_url is not empty %}
               <a href="{{ params.details_url }}" class="btn btn-default">
-                {{ icon('list') }} {{ 'rapporter.labels.detailark' | trans }}
+                {{ icon('list') }} {{ 'rapporter.labels.detailark'|trans }}
               </a>
             {% endif %}
             {% if params.edit_url is defined and params.edit_url is not empty %}
               <a href="{{ params.edit_url }}" class="btn btn-primary">
-                {{ icon('edit') }} {{ (params.edit_title is defined ? params.edit_title : 'common.edit') | trans }}
+                {{ icon('edit') }} {{ (params.edit_title is defined ? params.edit_title : 'common.edit')|trans }}
               </a>
             {% endif %}
-            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Ok' | trans }}</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Ok'|trans }}</button>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
 {% macro renderWarnings(messages, key, params) %}
   {% import _self as this %}
 
-  {% set key = key |default(random()) %}
+  {% set key = key|default(random()) %}
 
   {{ this.renderIcon(messages, key) }}
   {{ this.renderMessagesPopup(messages, key, params) }}
@@ -112,13 +112,13 @@
 
 {% if calculation_warnings is defined and calculation_warnings %}
   <div class="alert alert-warning">
-    <p><strong>{{ icon('warning') }} {{ 'Incomplete calculation' | trans }}</strong></p>
+    <p><strong>{{ icon('warning') }} {{ 'Incomplete calculation'|trans }}</strong></p>
 
     {{ macros.renderMessagesInline(calculation_warnings) }}
   </div>
   {# @TODO: Use JavaScript to provide user feedback when saving an incomplete entity
   <script>
-    var fieldsRequiredForCalculation = {{ calculation_warnings | json_encode | raw }};
+    var fieldsRequiredForCalculation = {{ calculation_warnings|json_encode|raw }};
   </script>
   #}
 {% endif %}

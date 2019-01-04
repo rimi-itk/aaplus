@@ -9,12 +9,12 @@
 
   <div class="aaplus-calculation-changes">
     {% for message in changes %}
-      {% if message.type in [ 'tiltag', 'tiltag_detail' ] %}
+      {% if message.type in ['tiltag', 'tiltag_detail'] %}
         <div class="change entity">
           <span class="property">
             {{ message.property }}
-            {% if message.type in [ 'tiltag' ] %}
-              ({{ tiltag_type(message.entity)  }})
+            {% if message.type in ['tiltag'] %}
+              ({{ tiltag_type(message.entity) }})
             {% endif %}
           </span>
           <div class="values">
@@ -24,13 +24,13 @@
       {% else %}
         <div class="change">
           <span class="property">
-            {{ message.property | trans_field(entity) }}:
+            {{ message.property|trans_field(entity) }}:
           </span>
           <span class="values">
             {% if message.type == 'float' %}
-              {{ message.oldValue | format_decimal }} → {{ message.newValue | format_decimal }}
+              {{ message.oldValue|format_decimal }} → {{ message.newValue|format_decimal }}
             {% elseif message.type == 'array' %}
-              {{ 'common.will_change' | trans }}
+              {{ 'common.will_change'|trans }}
             {% else %}
               {{ message.oldValue }} → {{ message.newValue }}
             {% endif %}

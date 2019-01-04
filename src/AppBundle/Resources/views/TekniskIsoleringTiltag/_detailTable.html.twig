@@ -36,19 +36,19 @@
   <tbody>
   {% for detail in entity.details %}
     <tr>
-      <td class="{{ detail.tilvalgt | b2class }}">{{ detail.tilvalgt | b2icon }}</td>
+      <td class="{{ detail.tilvalgt|b2class }}">{{ detail.tilvalgt|b2icon }}</td>
       <td>{{ detail.beskrivelseType }}</td>
       <td>{{ detail.type }}</td>
-      <td class="number">{{ detail.driftstidTAar | format_decimal(0) }}</td>
-      <td class="number">{{ detail.udvDiameterMm | format_decimal }}</td>
-      <td class="number">{{ detail.eksistIsolMm | format_decimal }}</td>
-      <td class="number">{{ detail.tempOmgivelC | format_decimal }}</td>
-      <td class="number">{{ detail.tempMedieC | format_decimal }}</td>
-      <td class="number">{{ detail.roerlaengdeEllerHoejdeAfVvbM | format_decimal }}</td>
-      <td class="number">{{ detail.nyIsolMm | format_decimal }}</td>
-      <td class="number">{{ detail.investeringKr | format_amount }}</td>
-      <td class="number">{{ detail.simpelTilbagebetalingstidAar | format_decimal }}</td>
-      <td class="number">{{ detail.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
+      <td class="number">{{ detail.driftstidTAar|format_decimal(0) }}</td>
+      <td class="number">{{ detail.udvDiameterMm|format_decimal }}</td>
+      <td class="number">{{ detail.eksistIsolMm|format_decimal }}</td>
+      <td class="number">{{ detail.tempOmgivelC|format_decimal }}</td>
+      <td class="number">{{ detail.tempMedieC|format_decimal }}</td>
+      <td class="number">{{ detail.roerlaengdeEllerHoejdeAfVvbM|format_decimal }}</td>
+      <td class="number">{{ detail.nyIsolMm|format_decimal }}</td>
+      <td class="number">{{ detail.investeringKr|format_amount }}</td>
+      <td class="number">{{ detail.simpelTilbagebetalingstidAar|format_decimal }}</td>
+      <td class="number">{{ detail.nutidsvaerdiSetOver15AarKr|format_amount }}</td>
       <td class="last"></td>
     </tr>
   {% endfor %}

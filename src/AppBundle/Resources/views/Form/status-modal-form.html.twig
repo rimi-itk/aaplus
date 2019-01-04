@@ -16,16 +16,16 @@
 
   <!-- Modal -->
 {{ parent() }}
-<div class="modal fade" id="{{ form.vars.action | replace({'/': ''}) }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{ form.vars.action|replace({'/': ''}) }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header text-left">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{ form.children.buttons.submit.vars.label | trans }}</h4>
+        <h4 class="modal-title" id="myModalLabel">{{ form.children.buttons.submit.vars.label|trans }}</h4>
       </div>
       <div class="modal-body">
         {% set modal_body = form.children.buttons.submit.vars.label ~ '_confirm' %}
-        <p><strong>{{ modal_body | trans({}, translation_domain) }}</strong></p>
+        <p><strong>{{ modal_body|trans({}, translation_domain) }}</strong></p>
 {% endblock %}
 
 {% block button_row %}
@@ -38,7 +38,7 @@
 {% endblock button_row %}
 
 {% block submit_widget %}
-  <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.cancel' | trans }}</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.cancel'|trans }}</button>
   {% spaceless %}
     {% set type = type|default('submit') %}
     {% set attr = attr|merge({ 'icon': 'caret-square-o-right' }) %}

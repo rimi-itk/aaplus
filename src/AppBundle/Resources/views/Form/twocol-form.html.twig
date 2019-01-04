@@ -5,24 +5,24 @@
   {% spaceless %}
     {% for child in form %}
 
-      {% set childAttr = {} %}
+      {% set child_attr = {} %}
       {% if attr.col_size is defined %}
-        {% set childAttr = childAttr|merge({ 'col_size': attr.col_size }) %}
+        {% set child_attr = child_attr|merge({ 'col_size': attr.col_size }) %}
       {% endif %}
       {% if attr.widget_col is defined %}
-        {% set childAttr = childAttr|merge({ 'widget_col': attr.widget_col }) %}
+        {% set child_attr = child_attr|merge({ 'widget_col': attr.widget_col }) %}
       {% endif %}
       {% if attr.label_col is defined %}
-        {% set childAttr = childAttr|merge({ 'label_col': attr.label_col }) %}
+        {% set child_attr = child_attr|merge({ 'label_col': attr.label_col }) %}
       {% endif %}
       {% if attr.simple_col is defined %}
-        {% set childAttr = childAttr|merge({ 'simple_col': attr.simple_col }) %}
+        {% set child_attr = child_attr|merge({ 'simple_col': attr.simple_col }) %}
       {% endif %}
       {% if attr.style is defined %}
-        {% set childAttr = childAttr|merge({ 'style': attr.style }) %}
+        {% set child_attr = child_attr|merge({ 'style': attr.style }) %}
       {% endif %}
-      {% set childAttr = childAttr|merge({ 'row_number': row_number }) %}
-      {{ form_row(child, childAttr, row_number) }}
+      {% set child_attr = child_attr|merge({ 'row_number': row_number }) %}
+      {{ form_row(child, child_attr, row_number) }}
 
 
       {% if row_number == 0 %}

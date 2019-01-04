@@ -118,30 +118,30 @@
                 <td class="tilvalgt" data-value="{{ detail.tilvalgt }}">
                   {{ block('tiltag_detail_tilvalgt') }}
                 </td>
-                <td class="laastAfEnergiraadgiver" data-value="{{ detail.laastAfEnergiraadgiver }}">{{ detail.laastAfEnergiraadgiver | b2icon }}</td>
+                <td class="laastAfEnergiraadgiver" data-value="{{ detail.laastAfEnergiraadgiver }}">{{ detail.laastAfEnergiraadgiver|b2icon }}</td>
                 <td class="beskrivelseType">{{ detail.beskrivelseType }}</td>
                 <td class="type">{{ detail.type }}</td>
-                <td class="driftstidTAar number">{{ detail.driftstidTAar | format_decimal(0) }}</td>
-                <td class="udvDiameterMm number">{{ detail.udvDiameterMm | format_decimal }}</td>
-                <td class="eksistIsolMm number">{{ detail.eksistIsolMm | format_decimal }}</td>
-                <td class="roerstoerrelseMmAekvivalent number">{{ detail.roerstoerrelseMmAekvivalent | format_decimal }}</td>
-                <td class="tempOmgivelC number">{{ detail.tempOmgivelC | format_decimal }}</td>
-                <td class="tempMedieC number">{{ detail.tempMedieC | format_decimal }}</td>
-                <td class="roerlaengdeEllerHoejdeAfVvbM number">{{ detail.roerlaengdeEllerHoejdeAfVvbM | format_decimal }}</td>
-                <td class="nyttiggjortVarme number">{{ detail.nyttiggjortVarme.faktor | format_decimal }}</td>
-                <td class="nyIsolMm number">{{ detail.nyIsolMm | format_decimal }}</td>
-                <td class="varmeledningsevnePaaEksistIsoleringWMK number">{{ detail.varmeledningsevnePaaEksistIsoleringWMK | format_decimal }}</td>
-                <td class="varmeledningsevnePaaNyIsoleringWMK number">{{ detail.varmeledningsevnePaaNyIsoleringWMK | format_decimal }}</td>
-                <td class="standardinvestKrM2EllerKrM number">{{ detail.standardinvestKrM2EllerKrM | format_amount(2) }}</td>
-                <td class="prisfaktor number">{{ detail.prisfaktor | format_decimal }}</td>
-                <td class="investeringKr number">{{ detail.investeringKr | format_amount(2) }}</td>
-                <td class="eksistVarmetabKwh number">{{ detail.eksistVarmetabKwh | format_decimal }}</td>
-                <td class="nytVarmetabKwh number">{{ detail.nytVarmetabKwh | format_decimal }}</td>
-                <td class="varmebespKwhAar number">{{ detail.varmebespKwhAar | format_decimal }}</td>
-                <td class="simpelTilbagebetalingstidAar number">{{ detail.simpelTilbagebetalingstidAar | format_decimal }}</td>
-                <td class="nutidsvaerdiSetOver15AarKr number">{{ detail.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
-                <td class="kwhBesparelseElFraVaerket number">{{ detail.kwhBesparelseElFraVaerket | format_decimal }}</td>
-                <td class="kwhBesparelseVarmeFraVaerket number">{{ detail.kwhBesparelseVarmeFraVaerket | format_decimal }}</td>
+                <td class="driftstidTAar number">{{ detail.driftstidTAar|format_decimal(0) }}</td>
+                <td class="udvDiameterMm number">{{ detail.udvDiameterMm|format_decimal }}</td>
+                <td class="eksistIsolMm number">{{ detail.eksistIsolMm|format_decimal }}</td>
+                <td class="roerstoerrelseMmAekvivalent number">{{ detail.roerstoerrelseMmAekvivalent|format_decimal }}</td>
+                <td class="tempOmgivelC number">{{ detail.tempOmgivelC|format_decimal }}</td>
+                <td class="tempMedieC number">{{ detail.tempMedieC|format_decimal }}</td>
+                <td class="roerlaengdeEllerHoejdeAfVvbM number">{{ detail.roerlaengdeEllerHoejdeAfVvbM|format_decimal }}</td>
+                <td class="nyttiggjortVarme number">{{ detail.nyttiggjortVarme.faktor|format_decimal }}</td>
+                <td class="nyIsolMm number">{{ detail.nyIsolMm|format_decimal }}</td>
+                <td class="varmeledningsevnePaaEksistIsoleringWMK number">{{ detail.varmeledningsevnePaaEksistIsoleringWMK|format_decimal }}</td>
+                <td class="varmeledningsevnePaaNyIsoleringWMK number">{{ detail.varmeledningsevnePaaNyIsoleringWMK|format_decimal }}</td>
+                <td class="standardinvestKrM2EllerKrM number">{{ detail.standardinvestKrM2EllerKrM|format_amount(2) }}</td>
+                <td class="prisfaktor number">{{ detail.prisfaktor|format_decimal }}</td>
+                <td class="investeringKr number">{{ detail.investeringKr|format_amount(2) }}</td>
+                <td class="eksistVarmetabKwh number">{{ detail.eksistVarmetabKwh|format_decimal }}</td>
+                <td class="nytVarmetabKwh number">{{ detail.nytVarmetabKwh|format_decimal }}</td>
+                <td class="varmebespKwhAar number">{{ detail.varmebespKwhAar|format_decimal }}</td>
+                <td class="simpelTilbagebetalingstidAar number">{{ detail.simpelTilbagebetalingstidAar|format_decimal }}</td>
+                <td class="nutidsvaerdiSetOver15AarKr number">{{ detail.nutidsvaerdiSetOver15AarKr|format_amount }}</td>
+                <td class="kwhBesparelseElFraVaerket number">{{ detail.kwhBesparelseElFraVaerket|format_decimal }}</td>
+                <td class="kwhBesparelseVarmeFraVaerket number">{{ detail.kwhBesparelseVarmeFraVaerket|format_decimal }}</td>
                 <td class="last"></td>
               </tr>
             {% endfor %}

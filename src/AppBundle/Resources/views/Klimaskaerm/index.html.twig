@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'klimaskaerm.labels.plural' | trans }}</h1>
+        <h1>{{ 'klimaskaerm.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('klimaskaerm_new') }}">
-          {{ icon('plus') }} {{ 'klimaskaerm.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'klimaskaerm.actions.add'|trans }}
         </a>
           </div>
 
@@ -32,14 +32,14 @@
     <tbody>
     {% for entity in entities %}
     <tr>
-        <td>{{ entity.type | readable_enum('KlimaskaermType') | trans }}</td>
+        <td>{{ entity.type|readable_enum('KlimaskaermType')|trans }}</td>
         <td>{{ entity.post }}</td>
         <td>{{ entity.klimaskaerm }}</td>
         <td>{{ entity.arbejdeOmfang }}</td>
-        <td class="number">{{ entity.enhedsprisEksklMoms | format_amount(2) }}</td>
+        <td class="number">{{ entity.enhedsprisEksklMoms|format_amount(2) }}</td>
         <td>{{ entity.enhed }}</td>
         <td>{{ entity.noter }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('klimaskaerm_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('klimaskaerm_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

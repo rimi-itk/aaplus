@@ -6,7 +6,7 @@
     <div class="col-md-9">
       <h1>{{ entity }}</h1>
     </div>
-    <div class="col-md-3 text-right">    <a class="btn btn-default btn-default" href="{{ path('nyttiggjortvarme_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+    <div class="col-md-3 text-right">    <a class="btn btn-default btn-default" href="{{ path('nyttiggjortvarme_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
     </div>
 
@@ -15,15 +15,15 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'nyttiggjortvarme.labels.singular' | trans }}</div>
+        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'nyttiggjortvarme.labels.singular'|trans }}</div>
         <table class="table table-condensed">
           <tbody>
             <tr>
-              <th>{{ 'appbundle.nyttiggjortvarme.faktor' | trans }}</th>
-                <td>{{ entity.faktor | format_decimal }}</td>
+              <th>{{ 'appbundle.nyttiggjortvarme.faktor'|trans }}</th>
+                <td>{{ entity.faktor|format_decimal }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nyttiggjortvarme.titel' | trans }}</th>
+              <th>{{ 'appbundle.nyttiggjortvarme.titel'|trans }}</th>
                 <td>{{ entity.titel }}</td>
             </tr>          </tbody>
         </table>

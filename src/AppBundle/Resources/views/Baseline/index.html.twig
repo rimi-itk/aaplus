@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'baseline.labels.plural' | trans }}</h1>
+        <h1>{{ 'baseline.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('baseline_new') }}">
-          {{ icon('plus') }} {{ 'baseline.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'baseline.actions.add'|trans }}
         </a>
           </div>
 
@@ -332,9 +332,9 @@
         <td>{{ entity.varmeBaselineNoter }}</td>
         <td>{{ entity.createdBy }}</td>
         <td>{{ entity.updatedBy }}</td>
-        <td>{{ entity.createdAt | date('Y-m-d') }}</td>
-        <td>{{ entity.updatedAt | date('Y-m-d') }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('baseline_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+        <td>{{ entity.createdAt|date('Y-m-d') }}</td>
+        <td>{{ entity.updatedAt|date('Y-m-d') }}</td>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('baseline_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

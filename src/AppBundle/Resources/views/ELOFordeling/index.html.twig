@@ -5,11 +5,11 @@
 
     <div class="row heading">
       <div class="col-md-9">
-        <h1>{{ 'elofordeling.labels.plural' | trans }}</h1>
+        <h1>{{ 'elofordeling.labels.plural'|trans }}</h1>
       </div>
       <div class="col-md-3 text-right">
         <a class="btn btn-default" href="{{ path('elofordeling_new') }}">
-          {{ icon('plus') }} {{ 'elofordeling.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'elofordeling.actions.add'|trans }}
         </a>
       </div>
 
@@ -65,7 +65,7 @@
           <td>{{ entity.november }}</td>
           <td>{{ entity.december }}</td>
           <td class="text-right"><a class="btn btn-default btn-xs"
-                                    href="{{ path('elofordeling_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+                                    href="{{ path('elofordeling_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
           </td>
 

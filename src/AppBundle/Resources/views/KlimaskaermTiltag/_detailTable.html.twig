@@ -34,18 +34,18 @@
   <tbody>
   {% for detail in entity.details %}
     <tr>
-      <td class="{{ detail.tilvalgt | b2class }}">{{ detail.tilvalgt | b2icon }}</td>
+      <td class="{{ detail.tilvalgt|b2class }}">{{ detail.tilvalgt|b2icon }}</td>
       <td>{{ detail.type }}</td>
       <td>{{ detail.placering }}</td>
-      <td class="number">{{ detail.antalStk | format_integer }}</td>
-      <td class="number">{{ detail.arealM2 | format_zeros }}</td>
+      <td class="number">{{ detail.antalStk|format_integer }}</td>
+      <td class="number">{{ detail.arealM2|format_zeros }}</td>
       <td>{{ detail.klimaskaerm }}</td>
-      <td class="number">{{ detail.klimaskaerm.enhedsprisEksklMoms | format_zeros}}</td>
-      <td class="number">{{ detail.samletInvesteringKr | format_amount }}</td>
-      <td class="number">{{ detail.simpelTilbagebetalingstidAar | format_decimal }}</td>
+      <td class="number">{{ detail.klimaskaerm.enhedsprisEksklMoms|format_zeros }}</td>
+      <td class="number">{{ detail.samletInvesteringKr|format_amount }}</td>
+      <td class="number">{{ detail.simpelTilbagebetalingstidAar|format_decimal }}</td>
       <td>{{ detail.noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet }}</td>
-      <td class="number">{{ detail.levetidAar | format_decimal }}</td>
-      <td class="number">{{ detail.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
+      <td class="number">{{ detail.levetidAar|format_decimal }}</td>
+      <td class="number">{{ detail.nutidsvaerdiSetOver15AarKr|format_amount }}</td>
       <td class="last"></td>
     </tr>
   {% endfor %}

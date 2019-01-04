@@ -35,9 +35,9 @@
       {% set attr = attr|merge({ 'class': 'bootstrap-date-range' }) %}
       <div {{ block('widget_container_attributes') }}>
         {{ date_pattern|replace({
-          '{{ year }}':  form_widget(form.year),
+          '{{ year }}': form_widget(form.year),
           '{{ month }}': form_widget(form.month),
-          '{{ day }}':   form_widget(form.day),
+          '{{ day }}': form_widget(form.day),
         })|raw }}
       </div>
     {% endif %}
@@ -47,7 +47,7 @@
 {% block filter_date_range_widget %}
   <div class="filter-date-range">
     {{ form_widget(form.left_date, {'attr': attr}) }}
-    {{ icon('chevron-left')}} {{ 'common.date' | trans }} {{ icon('chevron-right')}}&nbsp;
+    {{ icon('chevron-left') }} {{ 'common.date'|trans }} {{ icon('chevron-right') }}&nbsp;
     {{ form_widget(form.right_date, {'attr': attr}) }}
   </div>
 {% endblock filter_date_range_widget %}

@@ -10,12 +10,12 @@ function changeType() {
 }
 
 function formatNumber(value) {
-	var length = {{ ((1 | format_decimal | length) - 2) | json_encode | raw }};
+	var length = {{ ((1|format_decimal|length) - 2)|json_encode|raw }};
 	var x = parseFloat(value);
 	var s = x.toFixed(length);
 
   {# Localize number #}
-  {% if ',' in (3.14 | format_decimal) %}
+  {% if ',' in (3.14|format_decimal) %}
   s = s.replace('.', ',');
   {% endif %}
 
@@ -24,7 +24,7 @@ function formatNumber(value) {
 
 var komponenter = {};
 {% for komponent in komponenter %}
-komponenter[{{ komponent.data.id }}] = {{ komponent.data.roerlaengde | json_encode | raw }};
+komponenter[{{ komponent.data.id }}] = {{ komponent.data.roerlaengde|json_encode|raw }};
 {% endfor %}
 
 function changeKomponent() {

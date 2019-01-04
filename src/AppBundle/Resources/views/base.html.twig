@@ -36,13 +36,13 @@
     <div id="navbar" class="collapse navbar-collapse">
       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
       <ul class="nav navbar-nav">
-        <li><a href="/bygning">{{ icon('home') }} {{ 'bygninger.labels.plural' | trans }}</a></li>
-        <li><a href="/rapport">{{ icon('file-text-o') }} {{ 'rapporter.labels.plural' | trans }}</a></li>
+        <li><a href="/bygning">{{ icon('home') }} {{ 'bygninger.labels.plural'|trans }}</a></li>
+        <li><a href="/rapport">{{ icon('file-text-o') }} {{ 'rapporter.labels.plural'|trans }}</a></li>
         {% if is_granted('ROLE_ADMIN') %}
-          <li><a href="/udtraek">{{ icon('file-excel-o') }} {{ 'udtraek.labels.plural' | trans }}</a></li>
+          <li><a href="/udtraek">{{ icon('file-excel-o') }} {{ 'udtraek.labels.plural'|trans }}</a></li>
         {% endif %}
         {% if is_granted('ROLE_SUPER_ADMIN') %}
-          <li><a href="/user">{{ icon('user') }} {{ 'user.labels.plural' | trans }}</a></li>
+          <li><a href="/user">{{ icon('user') }} {{ 'user.labels.plural'|trans }}</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ icon('gears') }} Indstillinger <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -58,10 +58,10 @@
                 'belysningtiltagdetail_lyskilde': 'D & V – Udgift til lyskilder',
                 'graddage': 'Graddage-fordelinger'
               } %}
-                <li><a href="{{ path(route) }}">{{ name | trans }}</a></li>
+                <li><a href="{{ path(route) }}">{{ name|trans }}</a></li>
               {% endfor %}
               <li role="separator" class="divider"></li>
-              <li><a href="{{ path('configuration') }}">{{ 'Indstillinger' | trans }}</a></li>
+              <li><a href="{{ path('configuration') }}">{{ 'Indstillinger'|trans }}</a></li>
             </ul>
           </li>
         {% endif %}
@@ -93,9 +93,9 @@
   <th class="rotate">
     <div>
       {% if calculation is null %}
-        <span>{{ key | trans }}</span>
+        <span>{{ key|trans }}</span>
       {% else %}
-        <span data-calculation="{{ calculation }}">{{ key | trans }}</span>
+        <span data-calculation="{{ calculation }}">{{ key|trans }}</span>
       {% endif %}
     </div>
   </th>

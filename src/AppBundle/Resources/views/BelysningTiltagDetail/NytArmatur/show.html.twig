@@ -7,38 +7,38 @@
       <h1>{{ entity }}</h1>
     </div>
     <div class="col-md-3 text-right">
-      <a class="btn btn-default btn-default" href="{{ path('belysningtiltagdetail_nytarmatur_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <a class="btn btn-default btn-default" href="{{ path('belysningtiltagdetail_nytarmatur_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'nytArmatur.labels.singular' | trans }}</div>
+        <div class="panel-heading">{{ icon('chevron-right') }} {{ 'nytArmatur.labels.singular'|trans }}</div>
         <table class="table table-condensed">
           <tbody>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.arbejdeOmfang' | trans }}</th>
+              <th>{{ 'appbundle.nytArmatur.arbejdeOmfang'|trans }}</th>
               <td>{{ entity.arbejdeOmfang }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.nyLyskildeAntal' | trans }}</th>
+              <th>{{ 'appbundle.nytArmatur.nyLyskildeAntal'|trans }}</th>
               <td>{{ entity.nyLyskildeAntal }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.wattage' | trans }}</th>
+              <th>{{ 'appbundle.nytArmatur.wattage'|trans }}</th>
               <td>{{ entity.wattage }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.nyeForkoblingerAntal' | trans }}</th>
+              <th>{{ 'appbundle.nytArmatur.nyeForkoblingerAntal'|trans }}</th>
               <td>{{ entity.nyeForkoblingerAntal }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.pris' | trans }}</th>
-              <td>{{ entity.pris | format_amount(2) }}</td>
+              <th>{{ 'appbundle.nytArmatur.pris'|trans }}</th>
+              <td>{{ entity.pris|format_amount(2) }}</td>
             </tr>
             <tr>
-              <th>{{ 'appbundle.nytArmatur.noter' | trans }}</th>
+              <th>{{ 'appbundle.nytArmatur.noter'|trans }}</th>
               <td>{{ entity.noter }}</td>
             </tr>
           </tbody>

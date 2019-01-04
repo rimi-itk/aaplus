@@ -27,9 +27,9 @@
   <th class="rotate">
     <div>
       {% if calculation is null %}
-        <span>{{ key | trans }}</span>
+        <span>{{ key|trans }}</span>
       {% else %}
-        <span data-calculation="{{ calculation }}">{{ key | trans }}</span>
+        <span data-calculation="{{ calculation }}">{{ key|trans }}</span>
       {% endif %}
     </div>
   </th>

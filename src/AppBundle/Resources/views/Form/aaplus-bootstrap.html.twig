@@ -34,7 +34,7 @@
       {% endif %}
       <ul{% if not global_errors %} class="help-block"{% endif %}>
         {% for error in errors %}
-          <li>{{ error.message | trans({}, translation_domain) }}</li>
+          <li>{{ error.message|trans({}, translation_domain) }}</li>
         {% endfor %}
       </ul>
       {% if global_errors == true %}
@@ -92,9 +92,9 @@
     {% if type is defined and type == 'submit' and label is defined and label == 'Delete' %}
       {# Set a random id to namespace the form so that two delete forms on the same page doesn't conflict modals#}
       {% set form_id = random() %}
-      {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('danger'))|trim }) %}
+      {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-' ~ button_class|default('danger'))|trim }) %}
       {% if disabled and attr.disabled_message is defined and attr.disabled_message %}
-        <div class="tooltip-wrapper disabled" data-toggle="tooltip" data-placement="left" title="{{ attr.disabled_message | trans }}">
+        <div class="tooltip-wrapper disabled" data-toggle="tooltip" data-placement="left" title="{{ attr.disabled_message|trans }}">
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{ form_id }}" {{ block('button_attributes') }}>{{ icon('trash-o') }} {{ label|trans({}, translation_domain) }}</button>
         </div>
       {% else %}
@@ -107,14 +107,14 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-left" id="myModalLabel">{{ 'Delete' | trans({}, translation_domain) }}</h4>
+                <h4 class="modal-title text-left" id="myModalLabel">{{ 'Delete'|trans({}, translation_domain) }}</h4>
               </div>
               <div class="modal-body text-left">
-                {{ 'common.confirmDelete' | trans({}, translation_domain) }}
+                {{ 'common.confirmDelete'|trans({}, translation_domain) }}
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Cancel' | trans({}, translation_domain) }}</button>
-                <button type="submit" class="btn btn-danger">{{ icon('trash-o') }} {{ 'Delete' | trans({}, translation_domain) }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Cancel'|trans({}, translation_domain) }}</button>
+                <button type="submit" class="btn btn-danger">{{ icon('trash-o') }} {{ 'Delete'|trans({}, translation_domain) }}</button>
               </div>
             </div>
           </div>
@@ -123,9 +123,9 @@
 
     {% else %}
       {% if type is defined and type == 'submit' %}
-        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('primary'))|trim }) %}
+        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-' ~ button_class|default('primary'))|trim }) %}
       {% else %}
-        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('default'))|trim }) %}
+        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-' ~ button_class|default('default'))|trim }) %}
       {% endif %}
       {% if as_link is defined and as_link == true %}
         <a {{ block('button_attributes') }}>{% if attr.icon is defined and attr.icon != '' %}{{ icon(attr.icon) }}{% endif %}{{ label|trans({}, translation_domain) }}</a>
@@ -181,9 +181,9 @@
     <div {{ block('widget_container_attributes') }}>
       {% for child in form %}
         {% if multiple %}
-          {{ checkbox_row(child, { 'no_form_group': true, 'inline' : (attr.inline is defined and attr.inline), 'label_attr': label_attr }) }}
+          {{ checkbox_row(child, { 'no_form_group': true, 'inline': (attr.inline is defined and attr.inline), 'label_attr': label_attr }) }}
         {% else %}
-          {{ radio_row(child, { 'no_form_group': true, 'inline' : (attr.inline is defined and attr.inline), 'label_attr': label_attr  }) }}
+          {{ radio_row(child, { 'no_form_group': true, 'inline': (attr.inline is defined and attr.inline), 'label_attr': label_attr  }) }}
         {% endif %}
       {% endfor %}
     </div>
@@ -219,7 +219,7 @@
         {% if style == 'horizontal' %}
           {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default('') ~ ' col-' ~ col_size ~ '-' ~ label_col)|trim }) %}
         {% elseif style == 'inline' %}
-          {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default('') )|trim }) %}
+          {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default(''))|trim }) %}
         {% endif %}
 
         {% if not compound %}
@@ -245,16 +245,16 @@
     {{ block('form_widget') }}
     {% if attachment_url is defined and attachment_url is not null %}
       {% set href = asset(attachment_url) %}
-      {% set filename = attachment_url | split('/') | slice(-1) | join %}
+      {% set filename = attachment_url|split('/')|slice(-1)|join %}
       {% if form.vars.id == 'appbundle_specialtiltagdetail_filepath' %}
         {% set href = path('tiltag_detail_download', { 'id': form.parent.vars.value.id }) %}
       {% endif %}
       <a id="{{ id }}-display" class="form-control" href="{{ href }}">{{ filename }}</a>
-      <label><input type="checkbox" id="{{ id }}-replace"/> {{ 'common.replace_file' | trans }}</label>
+      <label><input type="checkbox" id="{{ id }}-replace"/> {{ 'common.replace_file'|trans }}</label>
       <script>(function () {
-          var target = document.getElementById('{{id}}'),
-              display = document.getElementById('{{id}}-display'),
-              handle = document.getElementById('{{id}}-replace'),
+          var target = document.getElementById('{{ id }}'),
+              display = document.getElementById('{{ id }}-display'),
+              handle = document.getElementById('{{ id }}-replace'),
               updateUI = function () {
                 target.disabled = !handle.checked;
                 target.style.display = !handle.checked ? 'none' : target._display;
@@ -293,7 +293,7 @@
 
     {% if attr.simple_col is defined and attr.simple_col is not empty %}
       {% set simple_col = attr.simple_col %}
-    {% endif  %}
+    {% endif %}
     {% if attr.col_size is defined and attr.col_size is not empty %}
       {% set col_size = attr.col_size %}
     {% endif %}

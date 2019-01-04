@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'nyttiggjortvarme.labels.plural' | trans }}</h1>
+        <h1>{{ 'nyttiggjortvarme.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('nyttiggjortvarme_new') }}">
-          {{ icon('plus') }} {{ 'nyttiggjortvarme.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'nyttiggjortvarme.actions.add'|trans }}
         </a>
           </div>
 
@@ -34,7 +34,7 @@
     <tr>
         <td>{{ entity.faktor }}</td>
         <td>{{ entity.titel }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('nyttiggjortvarme_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('nyttiggjortvarme_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'erstatningslyskilde.labels.plural' | trans }}</h1>
+        <h1>{{ 'erstatningslyskilde.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('belysningtiltagdetail_erstatningslyskilde_new') }}">
-          {{ icon('plus') }} {{ 'erstatningslyskilde.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'erstatningslyskilde.actions.add'|trans }}
         </a>
           </div>
 
@@ -44,9 +44,9 @@
         <td>{{ entity.antal }}</td>
         <td>{{ entity.wattage }}</td>
         <td>{{ entity.nyeForkoblinger }}</td>
-        <td>{{ entity.pris | format_amount(2) }}</td>
+        <td>{{ entity.pris|format_amount(2) }}</td>
         <td>{{ entity.noter }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('belysningtiltagdetail_erstatningslyskilde_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('belysningtiltagdetail_erstatningslyskilde_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

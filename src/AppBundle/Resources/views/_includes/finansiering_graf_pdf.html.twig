@@ -20,26 +20,26 @@
             return years.map(function(y) {
               return y - 1 + currentYear;
             });
-          }({{ entity.cashFlow['cash flow'] | keys | json_encode | raw }})),
-          datasets: [ {
-            label: {{ 'Besparelse' | trans | json_encode | raw }},
+          }({{ entity.cashFlow['cash flow']|keys|json_encode|raw }})),
+          datasets: [{
+            label: {{ 'Besparelse'|trans|json_encode|raw }},
             fillColor: 'rgba(75,195,68,0.2)',
             strokeColor: 'rgba(75,195,68,1)',
             pointColor: 'rgba(75,195,68,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(75,195,68,1)',
-            data: formatData({{ entity.cashFlow['besparelse'] | json_encode | raw }})
+            data: formatData({{ entity.cashFlow['besparelse']|json_encode|raw }})
           }, {
-            label: {{ 'Ydelse, lån inkl. fællesomkostninger' | trans | json_encode | raw }},
+            label: {{ 'Ydelse, lån inkl. fællesomkostninger'|trans|json_encode|raw }},
             fillColor: 'rgba(195,75,68,0.2)',
             strokeColor: 'rgba(195,75,68,1)',
             pointColor: 'rgba(195,75,68,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(195,75,68,1)',
-            data: formatData({{ entity.cashFlow['ydelse laan inkl. faellesomkostninger'] | json_encode | raw }})
-          } ]
+            data: formatData({{ entity.cashFlow['ydelse laan inkl. faellesomkostninger']|json_encode|raw }})
+          }]
         },
         options = {
           animation: false,

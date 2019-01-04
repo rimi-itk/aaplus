@@ -1,10 +1,9 @@
-
 var allSelected = true;
 var noneSelected = true;
 
 var selectAll = true;
-var selectAllLabel = '{{ 'tiltag.actions.batch_select_all' | trans }}';
-var selectNoneLabel = '{{ 'tiltag.actions.batch_select_none' | trans }}';
+var selectAllLabel = '{{ 'tiltag.actions.batch_select_all'|trans }}';
+var selectNoneLabel = '{{ 'tiltag.actions.batch_select_none'|trans }}';
 
 $('input.js-batch-edit').change(function () {
   var selected = false;
@@ -33,14 +32,14 @@ $('input.js-batch-edit').change(function () {
 $('#appbundle_tiltag_detail_index_select_all_button').click(function() {
   if(selectAll) {
     $('input.js-batch-edit').each(function (index) {
-      $(this).prop( "checked", true );
+      $(this).prop("checked", true);
     });
     $(this).html(selectNoneLabel);
     $('#appbundle_tiltag_detail_index_batch_edit_button').prop('disabled', false);
     selectAll = false;
   } else {
     $('input.js-batch-edit').each(function (index) {
-      $(this).prop( "checked", false );
+      $(this).prop("checked", false);
     });
     selectAll = true;
     $('#appbundle_tiltag_detail_index_batch_edit_button').prop('disabled', true);

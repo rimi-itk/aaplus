@@ -1,7 +1,7 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block body -%}
-  <h1>{{ icon('gears') }} {{ 'configuration.labels.singular' | trans }}</h1>
+  <h1>{{ icon('gears') }} {{ 'configuration.labels.singular'|trans }}</h1>
 
   {{ form_start(edit_form) }}
 
@@ -42,18 +42,18 @@
       {{ form_row(edit_form.mtmFaellesomkostningerGrundpris) }}
       {{ form_row(edit_form.mtmFaellesomkostningerPrisPrM2) }}
       <div class="form-inline">
-        <label class="control-label">Sæt <span class="property">fællesomkostninger</span> til {{ 0 | format_amount(2) }} {{ 'appbundle.configuration.mtmFaellesomkostningerGrundpris' | get_unit }} hvis</label>
+        <label class="control-label">Sæt <span class="property">fællesomkostninger</span> til {{ 0|format_amount(2) }} {{ 'appbundle.configuration.mtmFaellesomkostningerGrundpris'|get_unit }} hvis</label>
         <div>
-          <span class="property">{{ 'appbundle.bygning.areal' | trans }}</span> &lt;
+          <span class="property">{{ 'appbundle.bygning.areal'|trans }}</span> &lt;
           <div class="input-group">
             {{ form_widget(edit_form.mtmFaellesomkostningerNulHvisArealMindreEnd, {label: 'null'}) }}
-            <span class="input-group-addon">{{ 'appbundle.configuration.mtmFaellesomkostningerNulHvisArealMindreEnd' | get_unit }}</span>
+            <span class="input-group-addon">{{ 'appbundle.configuration.mtmFaellesomkostningerNulHvisArealMindreEnd'|get_unit }}</span>
           </div>
           <strong>eller</strong>
-          <span class="property">{{ 'appbundle.rapport.totalEntreprisesum' | trans }}</span> &lt;
+          <span class="property">{{ 'appbundle.rapport.totalEntreprisesum'|trans }}</span> &lt;
           <div class="input-group">
             {{ form_widget(edit_form.mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd) }}
-            <span class="input-group-addon">{{ 'appbundle.configuration.mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd' | get_unit }}</span>
+            <span class="input-group-addon">{{ 'appbundle.configuration.mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd'|get_unit }}</span>
           </div>
         </div>
       </div>

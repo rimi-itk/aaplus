@@ -1,8 +1,9 @@
 function changeErstatningslyskilde() {
   selected_val = $('#appbundle_belysningtiltagdetail_erstatningsLyskilde :selected').attr('value');
 
+{# @TODO use json_encode #}
   erstatningsvalues = {
-  {% for c in erstatningsLyskildeChoices %} "{{c.data.id}}": { "id": "{{ c.data.id }}", "antal": "{{ c.data.antal }}", "wattage": "{{ c.data.wattage }}", "nyeForkoblinger": "{{ c.data.nyeForkoblinger }}", "noter": "{{ c.data.noter | json_encode }}", "pris": "{{ c.data.pris | format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
+  {% for c in erstatningsLyskildeChoices %} "{{ c.data.id }}": { "id": "{{ c.data.id }}", "antal": "{{ c.data.antal }}", "wattage": "{{ c.data.wattage }}", "nyeForkoblinger": "{{ c.data.nyeForkoblinger }}", "noter": "{{ c.data.noter|json_encode }}", "pris": "{{ c.data.pris|format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
   };
 
   if (selected_val) {
@@ -52,8 +53,9 @@ function changeErstatningslyskilde() {
 function changeNytArmatur() {
     selected_val = $('#appbundle_belysningtiltagdetail_nytArmatur :selected').attr('value');
 
+{# @TODO use json_encode #}
     erstatningsvalues = {
-    {% for c in nytArmaturChoices %} "{{c.data.id}}": { "id": "{{ c.data.id }}", "antal": "{{ c.data.nyLyskildeAntal }}", "wattage": "{{ c.data.wattage }}", "nyeForkoblinger": "{{ c.data.nyeForkoblingerAntal }}", "noter": "{{ c.data.noter | json_encode }}", "pris": "{{ c.data.pris | format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
+    {% for c in nytArmaturChoices %} "{{ c.data.id }}": { "id": "{{ c.data.id }}", "antal": "{{ c.data.nyLyskildeAntal }}", "wattage": "{{ c.data.wattage }}", "nyeForkoblinger": "{{ c.data.nyeForkoblingerAntal }}", "noter": "{{ c.data.noter|json_encode }}", "pris": "{{ c.data.pris|format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
     };
 
     if (selected_val) {
@@ -103,8 +105,9 @@ function changeNytArmatur() {
 function changeNyStyring() {
   selected_val = $('#appbundle_belysningtiltagdetail_nyStyring :selected').attr('value');
 
+{# @TODO use json_encode #}
   erstatningsvalues = {
-  {% for c in nyStyringChoices %} "{{c.data.id}}": { "id": "{{ c.data.id }}", "noter": "{{ c.data.noter | json_encode }}", "pris": "{{ c.data.pris | format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
+  {% for c in nyStyringChoices %} "{{ c.data.id }}": { "id": "{{ c.data.id }}", "noter": "{{ c.data.noter|json_encode }}", "pris": "{{ c.data.pris|format_json }}" }{% if not loop.last %},{% endif %} {% endfor %}
   };
 
   if (selected_val) {

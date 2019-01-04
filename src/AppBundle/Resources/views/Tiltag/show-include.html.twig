@@ -3,10 +3,10 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <ul class="list-inline">
-          <li>{{ entity.tilvalgtAfRaadgiver | b2icon }} {{ 'appbundle.tiltag.tilvalgt' | trans }} {{ 'appbundle.tiltag.tilvalgtAfRaadgiver' | trans }}</li>
-          <li>{{ entity.tilvalgtAfAaPlus | b2icon }} {{ 'appbundle.tiltag.tilvalgt' | trans }} {{ 'appbundle.tiltag.tilvalgtAfAaPlus' | trans }}</li>
-          <li>{{ entity.tilvalgtAfMagistrat | b2icon }} {{ 'appbundle.tiltag.tilvalgt' | trans }} {{ 'appbundle.tiltag.tilvalgtAfMagistrat' | trans }}</li>
-          <li class="float-right">{{ 'appbundle.tiltag.datoForDrift' | trans }}: {{ entity.datoForDrift ? entity.datoForDrift | date('Y-m-d') : '--' }}</li>
+          <li>{{ entity.tilvalgtAfRaadgiver|b2icon }} {{ 'appbundle.tiltag.tilvalgt'|trans }} {{ 'appbundle.tiltag.tilvalgtAfRaadgiver'|trans }}</li>
+          <li>{{ entity.tilvalgtAfAaPlus|b2icon }} {{ 'appbundle.tiltag.tilvalgt'|trans }} {{ 'appbundle.tiltag.tilvalgtAfAaPlus'|trans }}</li>
+          <li>{{ entity.tilvalgtAfMagistrat|b2icon }} {{ 'appbundle.tiltag.tilvalgt'|trans }} {{ 'appbundle.tiltag.tilvalgtAfMagistrat'|trans }}</li>
+          <li class="float-right">{{ 'appbundle.tiltag.datoForDrift'|trans }}: {{ entity.datoForDrift ? entity.datoForDrift|date('Y-m-d') : '--' }}</li>
         </ul>
       </div>
     </div>
@@ -25,78 +25,78 @@
   <div class="col-xs-12 col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ 'appbundle.tiltag.besparelsesoverblik' | trans }}</h3>
+        <h3 class="panel-title">{{ 'appbundle.tiltag.besparelsesoverblik'|trans }}</h3>
       </div>
       <table class="table">
         <tbody>
         <tr>
-          <td>{{ 'appbundle.tiltag.varmebesparelseGUF' | trans }}</td>
-          <td class="text-right" class="text-right">{{ entity.varmebesparelseGUF | number_format }}</td>
-          <td>{{ 'appbundle.tiltag.varmebesparelseGUF.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.varmebesparelseGUF'|trans }}</td>
+          <td class="text-right" class="text-right">{{ entity.varmebesparelseGUF|number_format }}</td>
+          <td>{{ 'appbundle.tiltag.varmebesparelseGUF.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.varmebesparelseGAF' | trans }}</td>
-          <td class="text-right" class="text-right">{{ entity.varmebesparelseGAF | number_format }}</td>
-          <td>{{ 'appbundle.tiltag.varmebesparelseGAF.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.varmebesparelseGAF'|trans }}</td>
+          <td class="text-right" class="text-right">{{ entity.varmebesparelseGAF|number_format }}</td>
+          <td>{{ 'appbundle.tiltag.varmebesparelseGAF.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.elbesparelse' | trans }}</td>
-          <td class="text-right">{{ entity.elbesparelse | number_format }}</td>
-          <td>{{ 'appbundle.tiltag.elbesparelse.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.elbesparelse'|trans }}</td>
+          <td class="text-right">{{ entity.elbesparelse|number_format }}</td>
+          <td>{{ 'appbundle.tiltag.elbesparelse.unit'|trans }}</td>
         </tr>
         {% if entity.solcelleproduktion is defined %}
           <tr>
-            <td>{{ 'appbundle.tiltag.solcelleproduktion' | trans }}</td>
-            <td class="text-right">{{ entity.solcelleproduktion | number_format }}</td>
-            <td>{{ 'appbundle.tiltag.solcelleproduktion.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.solcelleproduktion'|trans }}</td>
+            <td class="text-right">{{ entity.solcelleproduktion|number_format }}</td>
+            <td>{{ 'appbundle.tiltag.solcelleproduktion.unit'|trans }}</td>
           </tr>
         {% endif %}
         {% if entity.salgTilNettetAar1 is defined %}
           <tr>
-            <td>{{ 'appbundle.tiltag.salgTilNettetAar1' | trans }}</td>
-            <td class="text-right">{{ entity.salgTilNettetAar1 | number_format }}</td>
-            <td>{{ 'appbundle.tiltag.salgTilNettetAar1.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.salgTilNettetAar1'|trans }}</td>
+            <td class="text-right">{{ entity.salgTilNettetAar1|number_format }}</td>
+            <td>{{ 'appbundle.tiltag.salgTilNettetAar1.unit'|trans }}</td>
           </tr>
         {% endif %}
         {% if entity.yderligereBesparelse is defined %}
           <tr>
-            <td>{{ 'appbundle.tiltag.yderligereBesparelse' | trans }}</td>
-            <td class="text-right">{{ entity.yderligereBesparelse | format_amount }}</td>
-            <td>{{ 'appbundle.tiltag.yderligereBesparelse.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.yderligereBesparelse'|trans }}</td>
+            <td class="text-right">{{ entity.yderligereBesparelse|format_amount }}</td>
+            <td>{{ 'appbundle.tiltag.yderligereBesparelse.unit'|trans }}</td>
           </tr>
         {% endif %}
         </tbody>
         <tfoot>
         <tr>
-          <th>{{ 'appbundle.tiltag.samletEnergibesparelse' | trans }}</th>
-          <th class="text-right">{{ entity.samletEnergibesparelse | format_amount }}</th>
-          <th>{{ 'appbundle.tiltag.samletEnergibesparelse.unit' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.samletEnergibesparelse'|trans }}</th>
+          <th class="text-right">{{ entity.samletEnergibesparelse|format_amount }}</th>
+          <th>{{ 'appbundle.tiltag.samletEnergibesparelse.unit'|trans }}</th>
         </tr>
         <tr>
-          <td>{{ 'common.risikovurdering' | trans }}: {{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor' | trans }}</td>
-          <td class="text-right">{{ entity.risikovurderingAendringIBesparelseFaktor | format_percent_nounit }}</td>
-          <td>{{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor.unit' | trans }}</td>
+          <td>{{ 'common.risikovurdering'|trans }}: {{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor'|trans }}</td>
+          <td class="text-right">{{ entity.risikovurderingAendringIBesparelseFaktor|format_percent_nounit }}</td>
+          <td>{{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'common.energiledelse' | trans }}: {{ 'appbundle.tiltag.energiledelseAendringIBesparelseFaktor' | trans }}</td>
-          <td class="text-right">{{ entity.energiledelseAendringIBesparelseFaktor | format_percent_nounit }}</td>
-          <td>{{ 'appbundle.tiltag.energiledelseAendringIBesparelseFaktor.unit' | trans }}</td>
+          <td>{{ 'common.energiledelse'|trans }}: {{ 'appbundle.tiltag.energiledelseAendringIBesparelseFaktor'|trans }}</td>
+          <td class="text-right">{{ entity.energiledelseAendringIBesparelseFaktor|format_percent_nounit }}</td>
+          <td>{{ 'appbundle.tiltag.energiledelseAendringIBesparelseFaktor.unit'|trans }}</td>
         </tr>
         <tr>
           <td>
-            <small>{{ 'appbundle.tiltag.besparelseDriftOgVedligeholdelse' | trans }}</small>
+            <small>{{ 'appbundle.tiltag.besparelseDriftOgVedligeholdelse'|trans }}</small>
           </td>
           <td class="text-right">
-            <small>{{ entity.besparelseDriftOgVedligeholdelse | format_amount }}</small>
+            <small>{{ entity.besparelseDriftOgVedligeholdelse|format_amount }}</small>
           </td>
           <td>
-            <small>{{ 'appbundle.tiltag.besparelseDriftOgVedligeholdelse.unit' | trans }}</small>
+            <small>{{ 'appbundle.tiltag.besparelseDriftOgVedligeholdelse.unit'|trans }}</small>
           </td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.samletCo2besparelse' | trans }}</th>
-          <th class="text-right">{{ entity.samletCo2besparelse | number_format }}</th>
-          <th>{{ 'appbundle.tiltag.samletCo2besparelse.unit' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.samletCo2besparelse'|trans }}</th>
+          <th class="text-right">{{ entity.samletCo2besparelse|number_format }}</th>
+          <th>{{ 'appbundle.tiltag.samletCo2besparelse.unit'|trans }}</th>
         </tr>
         </tfoot>
       </table>
@@ -105,76 +105,76 @@
   <div class="col-xs-12 col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ 'appbundle.tiltag.oekonomioverblik' | trans }}</h3>
+        <h3 class="panel-title">{{ 'appbundle.tiltag.oekonomioverblik'|trans }}</h3>
       </div>
       <table class="table">
         <tbody>
         <tr>
-          <td>{{ 'appbundle.tiltag.anlaegsInvestering' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.anlaegsInvestering'|trans }}</td>
           <td class="text-right">
             {% if entity.anlaegsInvesteringBeregnet != null and entity.anlaegsInvesteringBeregnet != entity.anlaegsInvestering %}
-              <span class="aaplus-overwritten-value"><span class="aaplus-calculated-value">({{ 'common.calculated_value' | trans }}: {{ entity.anlaegsInvesteringBeregnet | format_amount }})</span> <span
+              <span class="aaplus-overwritten-value"><span class="aaplus-calculated-value">({{ 'common.calculated_value'|trans }}: {{ entity.anlaegsInvesteringBeregnet|format_amount }})</span> <span
                     class="aaplus-note-marker"></span>
-                {{ entity.anlaegsInvestering | format_amount }}
+                {{ entity.anlaegsInvestering|format_amount }}
               </span>
             {% else %}
-              {{ entity.anlaegsInvestering | format_amount }}
+              {{ entity.anlaegsInvestering|format_amount }}
             {% endif %}
           </td>
-          <td>{{ 'appbundle.tiltag.anlaegsInvestering.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.anlaegsInvestering.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.opstartsomkostninger' | trans }}</td>
-          <td class="text-right">{{ entity.opstartsomkostninger | format_amount }}</td>
-          <td>{{ 'appbundle.tiltag.opstartsomkostninger.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.opstartsomkostninger'|trans }}</td>
+          <td class="text-right">{{ entity.opstartsomkostninger|format_amount }}</td>
+          <td>{{ 'appbundle.tiltag.opstartsomkostninger.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.aaplusInvestering' | trans }}</td>
-          <td class="text-right">{{ entity.aaplusInvestering | format_amount }}</td>
-          <td>{{ 'appbundle.tiltag.aaplusInvestering.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.aaplusInvestering'|trans }}</td>
+          <td class="text-right">{{ entity.aaplusInvestering|format_amount }}</td>
+          <td>{{ 'appbundle.tiltag.aaplusInvestering.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'common.risikovurdering' | trans }}: {{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor' | trans }}</td>
-          <td class="text-right">{{ entity.risikovurderingOekonomiskKompenseringIftInvesteringFaktor | format_percent_nounit }}</td>
-          <td>{{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor.unit' | trans }}</td>
+          <td>{{ 'common.risikovurdering'|trans }}: {{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor'|trans }}</td>
+          <td class="text-right">{{ entity.risikovurderingOekonomiskKompenseringIftInvesteringFaktor|format_percent_nounit }}</td>
+          <td>{{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.genopretning' | trans }}</td>
-          <td class="text-right">{{ entity.genopretning | format_amount }}</td>
-          <td>{{ 'appbundle.tiltag.genopretning.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.genopretning'|trans }}</td>
+          <td class="text-right">{{ entity.genopretning|format_amount }}</td>
+          <td>{{ 'appbundle.tiltag.genopretning.unit'|trans }}</td>
         </tr>
         {% if extended is defined and extended %}
           <tr>
-            <td>{{ 'appbundle.tiltag.genopretningForImplementeringsomkostninger' | trans }}</td>
-            <td class="text-right">{{ entity.genopretningForImplementeringsomkostninger | format_amount }}</td>
-            <td>{{ 'appbundle.tiltag.genopretningForImplementeringsomkostninger.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.genopretningForImplementeringsomkostninger'|trans }}</td>
+            <td class="text-right">{{ entity.genopretningForImplementeringsomkostninger|format_amount }}</td>
+            <td>{{ 'appbundle.tiltag.genopretningForImplementeringsomkostninger.unit'|trans }}</td>
           </tr>
         {% endif %}
         <tr>
-          <td>{{ 'appbundle.tiltag.modernisering' | trans }}</td>
-          <td class="text-right">{{ entity.modernisering | format_amount }}</td>
-          <td>{{ 'appbundle.tiltag.modernisering.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.modernisering'|trans }}</td>
+          <td class="text-right">{{ entity.modernisering|format_amount }}</td>
+          <td>{{ 'appbundle.tiltag.modernisering.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.simpelTilbagebetalingstidAar' | trans }}</td>
-          <td class="text-right">{{ entity.simpelTilbagebetalingstidAar | number_format }}</td>
-          <td>{{ 'appbundle.tiltag.simpelTilbagebetalingstidAar.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.simpelTilbagebetalingstidAar'|trans }}</td>
+          <td class="text-right">{{ entity.simpelTilbagebetalingstidAar|number_format }}</td>
+          <td>{{ 'appbundle.tiltag.simpelTilbagebetalingstidAar.unit'|trans }}</td>
         </tr>
         <tr>
-          <td>{{ 'appbundle.tiltag.nutidsvaerdiSetOver15AarKr' | trans }}</td>
-          <td class="text-right">{{ entity.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
-          <td>{{ 'appbundle.tiltag.nutidsvaerdiSetOver15AarKr.unit' | trans }}</td>
+          <td>{{ 'appbundle.tiltag.nutidsvaerdiSetOver15AarKr'|trans }}</td>
+          <td class="text-right">{{ entity.nutidsvaerdiSetOver15AarKr|format_amount }}</td>
+          <td>{{ 'appbundle.tiltag.nutidsvaerdiSetOver15AarKr.unit'|trans }}</td>
         </tr>
         {% if extended is defined and extended %}
           <tr>
-            <td>{{ 'appbundle.tiltag.scrapvaerdi' | trans }}</td>
-            <td class="text-right">{{ entity.scrapvaerdi | format_amount }}</td>
-            <td>{{ 'appbundle.tiltag.scrapvaerdi.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.scrapvaerdi'|trans }}</td>
+            <td class="text-right">{{ entity.scrapvaerdi|format_amount }}</td>
+            <td>{{ 'appbundle.tiltag.scrapvaerdi.unit'|trans }}</td>
           </tr>
           <tr>
-            <td>{{ 'appbundle.tiltag.reinvestering' | trans }}</td>
-            <td class="text-right">{{ entity.reinvestering | format_amount }}</td>
-            <td>{{ 'appbundle.tiltag.reinvestering.unit' | trans }}</td>
+            <td>{{ 'appbundle.tiltag.reinvestering'|trans }}</td>
+            <td class="text-right">{{ entity.reinvestering|format_amount }}</td>
+            <td>{{ 'appbundle.tiltag.reinvestering.unit'|trans }}</td>
           </tr>
         {% endif %}
         </tbody>
@@ -187,22 +187,22 @@
   <div class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ 'appbundle.tiltag.beskrivelse' | trans }}</h3>
+        <h3 class="panel-title">{{ 'appbundle.tiltag.beskrivelse'|trans }}</h3>
       </div>
       <table class="table">
         <tbody>
         <tr>
-          <th>{{ 'appbundle.tiltag.beskrivelseNuvaerende' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.beskrivelseNuvaerende'|trans }}</th>
           <td class="multiline">{{ entity.beskrivelseNuvaerende }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.beskrivelseForslag' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.beskrivelseForslag'|trans }}</th>
           <td class="multiline">{{ entity.beskrivelseForslag }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.beskrivelseOevrige' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.beskrivelseOevrige'|trans }}</th>
           <td class="multiline">{{ entity.beskrivelseOevrige }}</td>
           <td></td>
         </tr>
@@ -216,12 +216,12 @@
   <div class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ 'appbundle.tiltag.forsyningsoverblik' | trans }}</h3>
+        <h3 class="panel-title">{{ 'appbundle.tiltag.forsyningsoverblik'|trans }}</h3>
       </div>
       <div class="panel-body">
         <ul class="list-inline">
-          <li><strong>{{ 'appbundle.tiltag.forsyningVarme' | trans }}: </strong> {{ entity.forsyningVarme }} </li>
-          <li><strong>{{ 'appbundle.tiltag.forsyningEl' | trans }}:</strong> {{ entity.forsyningEl }}</li>
+          <li><strong>{{ 'appbundle.tiltag.forsyningVarme'|trans }}: </strong> {{ entity.forsyningVarme }} </li>
+          <li><strong>{{ 'appbundle.tiltag.forsyningEl'|trans }}:</strong> {{ entity.forsyningEl }}</li>
         </ul>
       </div>
     </div>
@@ -232,77 +232,77 @@
   <div class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ 'appbundle.tiltag.information' | trans }}</h3>
+        <h3 class="panel-title">{{ 'appbundle.tiltag.information'|trans }}</h3>
       </div>
       <table class="table">
         <tbody>
         <tr>
-          <th>{{ 'appbundle.tiltag.levetid' | trans }}</th>
-          <td class="text-right">{{ entity.levetid | format_integer }}</td>
-          <td>{{ 'appbundle.tiltag.levetid.unit' | trans }}</td>
+          <th>{{ 'appbundle.tiltag.levetid'|trans }}</th>
+          <td class="text-right">{{ entity.levetid|format_integer }}</td>
+          <td>{{ 'appbundle.tiltag.levetid.unit'|trans }}</td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.primaerEnterprise' | trans }}</th>
-          <td class="text-right">{{ entity.primaerEnterprise | readable('PrimaerEnterpriseType') }}</td>
+          <th>{{ 'appbundle.tiltag.primaerEnterprise'|trans }}</th>
+          <td class="text-right">{{ entity.primaerEnterprise|readable_enum('PrimaerEnterpriseType') }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.tiltagskategori' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.tiltagskategori'|trans }}</th>
           <td class="text-right">{{ entity.tiltagskategori }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.placering' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.placering'|trans }}</th>
           <td class="text-right">{{ entity.placering }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.datoForDrift' | trans }}</th>
-          <td class="text-right">{{ entity.datoForDrift is empty ? "" : entity.datoForDrift | date('Y-m-d') }}</td>
+          <th>{{ 'appbundle.tiltag.datoForDrift'|trans }}</th>
+          <td class="text-right">{{ entity.datoForDrift is empty ? "" : entity.datoForDrift|date('Y-m-d') }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingTeknisk' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingTeknisk ? entity.risikovurderingTeknisk | readable : "" }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingTeknisk'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingTeknisk ? entity.risikovurderingTeknisk|readable_enum : "" }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingBrugsmoenster' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingBrugsmoenster ? entity.risikovurderingBrugsmoenster | readable : "" }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingBrugsmoenster'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingBrugsmoenster ? entity.risikovurderingBrugsmoenster|readable_enum : "" }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingDatagrundlag' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingDatagrundlag ? entity.risikovurderingDatagrundlag | readable : "" }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingDatagrundlag'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingDatagrundlag ? entity.risikovurderingDatagrundlag|readable_enum : "" }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingDiverse' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingDiverse ? entity.risikovurderingDiverse | readable : "" }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingDiverse'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingDiverse ? entity.risikovurderingDiverse|readable_enum : "" }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingAendringIBesparelseFaktor | format_percent }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingAendringIBesparelseFaktor'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingAendringIBesparelseFaktor|format_percent }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'common.risikovurdering' | trans }} {{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor' | trans }}</th>
-          <td class="text-right">{{ entity.risikovurderingOekonomiskKompenseringIftInvesteringFaktor | format_percent }}</td>
+          <th>{{ 'common.risikovurdering'|trans }} {{ 'appbundle.tiltag.risikovurderingOekonomiskKompenseringIftInvesteringFaktor'|trans }}</th>
+          <td class="text-right">{{ entity.risikovurderingOekonomiskKompenseringIftInvesteringFaktor|format_percent }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.risikovurdering' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.risikovurdering'|trans }}</th>
           <td class="text-right">{{ entity.risikovurdering }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.beskrivelseDriftOgVedligeholdelse' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.beskrivelseDriftOgVedligeholdelse'|trans }}</th>
           <td>{{ entity.beskrivelseDriftOgVedligeholdelse }}</td>
           <td></td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.tiltag.indeklima' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.indeklima'|trans }}</th>
           <td>{{ entity.indeklima }}</td>
           <td></td>
         </tr>

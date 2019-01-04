@@ -4,11 +4,11 @@
 {% block body -%}
   <div class="row heading">
     <div class="col-md-9">
-      <h1>{{ 'baseline.labels.singular' | trans }}</h1>
+      <h1>{{ 'baseline.labels.singular'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
       {% if is_granted('BASELINE_EDIT', entity) %}
-        <a class="btn btn-default btn-default" href="{{ path('baseline_edit', { 'id': entity.id }) }}">{{ icon('edit') }} {{ 'baseline.actions.edit' | trans }}</a>
+        <a class="btn btn-default btn-default" href="{{ path('baseline_edit', { 'id': entity.id }) }}">{{ icon('edit') }} {{ 'baseline.actions.edit'|trans }}</a>
       {% endif %}
     </div>
   </div>
@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('cube') }} {{ 'appbundle.baseline.opsummering' | trans }}</div>
+        <div class="panel-heading">{{ icon('cube') }} {{ 'appbundle.baseline.opsummering'|trans }}</div>
         <table class="table table-condensed">
           <thead>
           <tr class="text-right">
@@ -29,32 +29,32 @@
           </thead>
           <tbody>
           <tr>
-            <th>{{ 'appbundle.baseline.el' | trans }}</th>
-            <td class="number">{{ entity.elBaselineFastsatForEjendom | format_decimal }}</td>
-            <td class="number">{{ entity.elBaselineFastsatForEjendomKorrektion | format_decimal }}</td>
-            <td class="number">{{ entity.elBaselineFastsatForEjendomKorrigeret | format_decimal }}</td>
-            <td>{{ 'appbundle.baseline.elBaselineFastsatForEjendom.unit' | trans }}</td>
+            <th>{{ 'appbundle.baseline.el'|trans }}</th>
+            <td class="number">{{ entity.elBaselineFastsatForEjendom|format_decimal }}</td>
+            <td class="number">{{ entity.elBaselineFastsatForEjendomKorrektion|format_decimal }}</td>
+            <td class="number">{{ entity.elBaselineFastsatForEjendomKorrigeret|format_decimal }}</td>
+            <td>{{ 'appbundle.baseline.elBaselineFastsatForEjendom.unit'|trans }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.baseline.varmeGAFForbrug' | trans }}</th>
-            <td class="number">{{ entity.varmeGAFForbrug | format_decimal }}</td>
-            <td class="number">{{ entity.varmeGAFForbrugKorrektion | format_decimal }}</td>
-            <td class="number">{{ entity.varmeGAFForbrugKorrigeret | format_decimal }}</td>
-            <td>{{ 'appbundle.baseline.varmeGAFForbrug.unit' | trans }}</td>
+            <th>{{ 'appbundle.baseline.varmeGAFForbrug'|trans }}</th>
+            <td class="number">{{ entity.varmeGAFForbrug|format_decimal }}</td>
+            <td class="number">{{ entity.varmeGAFForbrugKorrektion|format_decimal }}</td>
+            <td class="number">{{ entity.varmeGAFForbrugKorrigeret|format_decimal }}</td>
+            <td>{{ 'appbundle.baseline.varmeGAFForbrug.unit'|trans }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.baseline.varmeGUFForbrug' | trans }}</th>
-            <td class="number">{{ entity.varmeGUFForbrug | format_decimal }}</td>
-            <td class="number">{{ entity.varmeGUFForbrugKorrektion | format_decimal }}</td>
-            <td class="number">{{ entity.varmeGUFForbrugKorrigeret | format_decimal }}</td>
-            <td>{{ 'appbundle.baseline.varmeGUFForbrug.unit' | trans }}</td>
+            <th>{{ 'appbundle.baseline.varmeGUFForbrug'|trans }}</th>
+            <td class="number">{{ entity.varmeGUFForbrug|format_decimal }}</td>
+            <td class="number">{{ entity.varmeGUFForbrugKorrektion|format_decimal }}</td>
+            <td class="number">{{ entity.varmeGUFForbrugKorrigeret|format_decimal }}</td>
+            <td>{{ 'appbundle.baseline.varmeGUFForbrug.unit'|trans }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift' | trans }}</th>
-            <td class="number">{{ entity.varmeStrafafkoelingsafgift | format_amount }}</td>
-            <td class="number">{{ entity.varmeStrafafkoelingsafgiftKorrektion | format_amount }}</td>
-            <td class="number">{{ entity.varmeStrafafkoelingsafgiftKorrigeret | format_amount }}</td>
-            <td>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift.unit' | trans }}</td>
+            <th>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift'|trans }}</th>
+            <td class="number">{{ entity.varmeStrafafkoelingsafgift|format_amount }}</td>
+            <td class="number">{{ entity.varmeStrafafkoelingsafgiftKorrektion|format_amount }}</td>
+            <td class="number">{{ entity.varmeStrafafkoelingsafgiftKorrigeret|format_amount }}</td>
+            <td>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift.unit'|trans }}</td>
           </tr>
           </tbody>
         </table>
@@ -70,7 +70,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
-          <div class="panel-heading">{{ icon('sliders') }} {{ 'appbundle.baseline.varmeStrafafkoelingsafgiftKorrektion' | trans }}</div>
+          <div class="panel-heading">{{ icon('sliders') }} {{ 'appbundle.baseline.varmeStrafafkoelingsafgiftKorrektion'|trans }}</div>
           <div class="panel-body">
             {{ form_row(edit_form.varmeStrafafkoelingsafgiftKorrektion) }}
           </div>
@@ -82,7 +82,7 @@
   {% if is_granted('BASELINE_EDIT', entity) %}
     <div class="row heading">
       <div class="col-md-12 text-right">
-        <button onclick="document.getElementById('baselinekorrektioner-form').submit()" type="button" class="btn btn-default">{{ icon('plus') }} {{ ('baselinekorrektioner.actions.add') | trans }}</button>
+        <button onclick="document.getElementById('baselinekorrektioner-form').submit()" type="button" class="btn btn-default">{{ icon('plus') }} {{ ('baselinekorrektioner.actions.add')|trans }}</button>
       </div>
     </div>
   {% endif %}
@@ -92,14 +92,14 @@
       {% if entity.korrektioner is not empty %}
 
         <div class="panel panel-default">
-          <div class="panel-heading">{{ icon('sliders') }} {{ 'appbundle.baseline.korrektioner' | trans }}</div>
+          <div class="panel-heading">{{ icon('sliders') }} {{ 'appbundle.baseline.korrektioner'|trans }}</div>
           <table class="table table-condensed">
             <thead>
             <tr class="text-center">
               <th></th>
               <th></th>
               <th></th>
-              <th colspan="3" class="text-center">{{ 'appbundle.baselinekorrektion.aarligkorrektion' | trans }}</th>
+              <th colspan="3" class="text-center">{{ 'appbundle.baselinekorrektion.aarligkorrektion'|trans }}</th>
               <th></th>
               <th></th>
             </tr>
@@ -132,12 +132,12 @@
                   {% if is_granted('BASELINE_EDIT', entity) %}
                     {{ form_row(form_korrektion.indvirkning) }}
                   {% else %}
-                    {{ k.indvirkning | b2icon }}
+                    {{ k.indvirkning|b2icon }}
                   {% endif %}
                 </td>
                 <td class="text-center">
                   {% if k.datoForImplementering is not empty %}
-                    {{ k.datoForImplementering | date('Y-m-d') }}
+                    {{ k.datoForImplementering|date('Y-m-d') }}
                   {% endif %}
                 </td>
                 <td>{{ k.beskrivelse }}</td>
@@ -147,7 +147,7 @@
                 <td>{{ k.kilde }}</td>
                 <td class="text-right">
                   {% if is_granted('BASELINE_EDIT', entity) %}
-                  <a class="btn btn-default btn-xs" href="{{ path('baselinekorrektion_edit', { 'id': k.id }) }}">{{ 'common.edit' | trans }}</a>
+                  <a class="btn btn-default btn-xs" href="{{ path('baselinekorrektion_edit', { 'id': k.id }) }}">{{ 'common.edit'|trans }}</a>
                   {% endif %}
                 </td>
               </tr>
@@ -157,7 +157,7 @@
         </div>
 
       {% else %}
-        <div class="alert alert-info" role="alert">{{ 'baselinekorrektioner.strings.ingen' | trans }}</div>
+        <div class="alert alert-info" role="alert">{{ 'baselinekorrektioner.strings.ingen'|trans }}</div>
       {% endif %}
     </div>
   </div>

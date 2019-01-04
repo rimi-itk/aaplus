@@ -4,11 +4,11 @@
 {% block body -%}
   <div class="row heading">
     <div class="col-md-9">
-      <h1>{{ 'rapporter.actions.edit' | trans }}</h1>
+      <h1>{{ 'rapporter.actions.edit'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
       {% if entity.bygning.baseline %}
-        <a href="{{ path('baseline_show', { 'id': entity.bygning.baseline.id }) }}" class="btn btn-default">{{ icon('sliders') }} {{ 'baseline.actions.korriger' | trans }}</a>
+        <a href="{{ path('baseline_show', { 'id': entity.bygning.baseline.id }) }}" class="btn btn-default">{{ icon('sliders') }} {{ 'baseline.actions.korriger'|trans }}</a>
       {% endif %}
     </div>
 
@@ -18,7 +18,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{ 'common.generelt' | trans }}</h3>
+      <h3 class="panel-title">{{ 'common.generelt'|trans }}</h3>
     </div>
     <div class="panel-body">
       <div class="col-xs-12 col-md-6">
@@ -45,7 +45,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{ 'common.baseline' | trans }}</h3>
+      <h3 class="panel-title">{{ 'common.baseline'|trans }}</h3>
     </div>
     <div class="panel-body">
       <div class="col-xs-12 col-md-6">

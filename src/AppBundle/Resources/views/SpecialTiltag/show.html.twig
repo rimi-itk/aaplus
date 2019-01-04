@@ -14,9 +14,9 @@
         <thead>
         <tr>
           <th></th>
-          <th>{{ 'appbundle.tiltag.tilvalgt' | trans }}</th>
-          <th>{{ 'appbundle.specialtiltag.kommentar' | trans }}</th>
-          <th>{{ 'appbundle.specialtiltag.filepath' | trans }}</th>
+          <th>{{ 'appbundle.tiltag.tilvalgt'|trans }}</th>
+          <th>{{ 'appbundle.specialtiltag.kommentar'|trans }}</th>
+          <th>{{ 'appbundle.specialtiltag.filepath'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 {{ block('special_tiltag_detail_edit') }}
               {% endif %}
             </td>
-            <td>{{ detail.tilvalgt | b2icon }}</td>
+            <td>{{ detail.tilvalgt|b2icon }}</td>
             <td>{{ detail.kommentar }}</td>
             <td>{% if not detail.filepath is empty %}<a target="_blank" href="{{ path('tiltag_detail_download', { 'id': detail.id }) }}">{{ detail.filename }}</a>{% endif %}</td>
           </tr>

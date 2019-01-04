@@ -4,11 +4,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-      <h1>{{ 'nytArmatur.labels.plural' | trans }}</h1>
+      <h1>{{ 'nytArmatur.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
       <a class="btn btn-default" href="{{ path('belysningtiltagdetail_nytarmatur_new') }}">
-        {{ icon('plus') }} {{ 'nytArmatur.actions.add' | trans }}
+        {{ icon('plus') }} {{ 'nytArmatur.actions.add'|trans }}
       </a>
     </div>
   </div>
@@ -41,10 +41,10 @@
           <td class="number">{{ entity.nyLyskildeAntal }}</td>
           <td class="number">{{ entity.wattage }}</td>
           <td class="number">{{ entity.nyeForkoblingerAntal }}</td>
-          <td class="number">{{ entity.pris | format_amount(2) }}</td>
+          <td class="number">{{ entity.pris|format_amount(2) }}</td>
           <td>{{ entity.noter }}</td>
           <td class="text-right">
-            <a class="btn btn-default btn-xs" href="{{ path('belysningtiltagdetail_nytarmatur_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+            <a class="btn btn-default btn-xs" href="{{ path('belysningtiltagdetail_nytarmatur_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
           </td>
         </tr>
       {% endfor %}

@@ -5,11 +5,11 @@
 
     <div class="row heading">
       <div class="col-md-9">
-        <h1>{{ 'elokategori.labels.plural' | trans }}</h1>
+        <h1>{{ 'elokategori.labels.plural'|trans }}</h1>
       </div>
       <div class="col-md-3 text-right">
         <a class="btn btn-default" href="{{ path('elokategori_new') }}">
-          {{ icon('plus') }} {{ 'elokategori.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'elokategori.actions.add'|trans }}
         </a>
       </div>
 
@@ -43,11 +43,11 @@
           <td>{{ entity.navn }}</td>
           <td>{{ entity.totalVarmeforbrug }}</td>
           <td>{{ entity.totalElforbrug }}</td>
-          <td>{{ entity.andelVarmeGUFFaktor | format_percent }}</td>
+          <td>{{ entity.andelVarmeGUFFaktor|format_percent }}</td>
           <td>{{ entity.updatedBy }}</td>
-          <td>{{ entity.updatedAt | date('Y-m-d') }}</td>
+          <td>{{ entity.updatedAt|date('Y-m-d') }}</td>
           <td class="text-right"><a class="btn btn-default btn-xs"
-                                    href="{{ path('elokategori_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+                                    href="{{ path('elokategori_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
           </td>
 

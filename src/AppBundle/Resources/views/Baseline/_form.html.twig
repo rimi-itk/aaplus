@@ -4,7 +4,7 @@
 
 <div class="row heading">
   <div class="col-md-9">
-    <h1>{{ 'baseline.actions.edit' | trans }}</h1>
+    <h1>{{ 'baseline.actions.edit'|trans }}</h1>
   </div>
   <div class="col-md-3 text-right">
     {{ form_row(edit_form.save_changed) }}
@@ -16,7 +16,7 @@
   <div class="col-xs-12 col-md-6">
     <div class="panel panel-default">
       <div
-          class="panel-heading">{{ icon('home') }} {{ 'appbundle.baseline.generelt' | trans }}</div>
+          class="panel-heading">{{ icon('home') }} {{ 'appbundle.baseline.generelt'|trans }}</div>
       <div class="panel-body">
         {{ form_row(edit_form.bygning) }}
         {{ form_row(edit_form.eloKategori) }}
@@ -26,34 +26,34 @@
   <div class="col-xs-12 col-md-6">
     <div class="panel panel-default">
       <div
-          class="panel-heading">{{ icon('cube') }} {{ 'appbundle.baseline.opsummering' | trans }}</div>
+          class="panel-heading">{{ icon('cube') }} {{ 'appbundle.baseline.opsummering'|trans }}</div>
       <table class="table">
         <tbody>
         <tr>
-          <th>{{ 'appbundle.baseline.elBaselineFastsatForEjendom' | trans }}</th>
-          <td class="text-right">{{ entity.elBaselineFastsatForEjendom | format_decimal }}</td>
-          <td>{{ 'appbundle.baseline.elBaselineFastsatForEjendom.unit' | trans }}</td>
+          <th>{{ 'appbundle.baseline.elBaselineFastsatForEjendom'|trans }}</th>
+          <td class="text-right">{{ entity.elBaselineFastsatForEjendom|format_decimal }}</td>
+          <td>{{ 'appbundle.baseline.elBaselineFastsatForEjendom.unit'|trans }}</td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.baseline.varmeGAFForbrug' | trans }}</th>
-          <td class="text-right">{{ entity.varmeGAFForbrug | format_decimal }}</td>
-          <td>{{ 'appbundle.baseline.varmeGAFForbrug.unit' | trans }}</td>
+          <th>{{ 'appbundle.baseline.varmeGAFForbrug'|trans }}</th>
+          <td class="text-right">{{ entity.varmeGAFForbrug|format_decimal }}</td>
+          <td>{{ 'appbundle.baseline.varmeGAFForbrug.unit'|trans }}</td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.baseline.varmeGUFForbrug' | trans }}</th>
-          <td class="text-right">{{ entity.varmeGUFForbrug | format_decimal }}</td>
-          <td>{{ 'appbundle.baseline.varmeGUFForbrug.unit' | trans }}</td>
+          <th>{{ 'appbundle.baseline.varmeGUFForbrug'|trans }}</th>
+          <td class="text-right">{{ entity.varmeGUFForbrug|format_decimal }}</td>
+          <td>{{ 'appbundle.baseline.varmeGUFForbrug.unit'|trans }}</td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.baseline.varmeBaselineFastsatForEjendom' | trans }}</th>
+          <th>{{ 'appbundle.baseline.varmeBaselineFastsatForEjendom'|trans }}</th>
           <td
-              class="text-right">{{ entity.varmeBaselineFastsatForEjendom | format_decimal }}</td>
-          <td>{{ 'appbundle.baseline.varmeBaselineFastsatForEjendom.unit' | trans }}</td>
+              class="text-right">{{ entity.varmeBaselineFastsatForEjendom|format_decimal }}</td>
+          <td>{{ 'appbundle.baseline.varmeBaselineFastsatForEjendom.unit'|trans }}</td>
         </tr>
         <tr>
-          <th>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift' | trans }}</th>
-          <td class="text-right">{{ entity.varmeStrafafkoelingsafgift | format_decimal }}</td>
-          <td>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift.unit' | trans }}</td>
+          <th>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift'|trans }}</th>
+          <td class="text-right">{{ entity.varmeStrafafkoelingsafgift|format_decimal }}</td>
+          <td>{{ 'appbundle.baseline.varmeStrafafkoelingsafgift.unit'|trans }}</td>
         </tr>
         </tbody>
       </table>
@@ -65,9 +65,9 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#areal" aria-controls="areal" role="tab" data-toggle="tab">{{ icon('map-o') }} {{ 'appbundle.baseline.areal' | trans }}</a></li>
-    <li role="presentation"><a href="#el" aria-controls="el" role="tab" data-toggle="tab">{{ icon('flash') }} {{ 'appbundle.baseline.el' | trans }}</a></li>
-    <li role="presentation"><a href="#varme" aria-controls="varme" role="tab" data-toggle="tab">{{ icon('fire') }} {{ 'appbundle.baseline.varme' | trans }}</a></li>
+    <li role="presentation" class="active"><a href="#areal" aria-controls="areal" role="tab" data-toggle="tab">{{ icon('map-o') }} {{ 'appbundle.baseline.areal'|trans }}</a></li>
+    <li role="presentation"><a href="#el" aria-controls="el" role="tab" data-toggle="tab">{{ icon('flash') }} {{ 'appbundle.baseline.el'|trans }}</a></li>
+    <li role="presentation"><a href="#varme" aria-controls="varme" role="tab" data-toggle="tab">{{ icon('fire') }} {{ 'appbundle.baseline.varme'|trans }}</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -78,7 +78,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealPrimaer' | trans }}</div>
+                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealPrimaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.arealdataPrimaerKilde) }}
               {{ form_row(edit_form.arealdataPrimaerAreal) }}
@@ -89,7 +89,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealSekundaer' | trans }}</div>
+                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealSekundaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.arealdataSekundaerKilde) }}
               {{ form_row(edit_form.arealdataSekundaerAreal) }}
@@ -102,7 +102,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealGenerelt' | trans }}</div>
+                class="panel-heading">{{ icon('map-o') }} {{ 'appbundle.baseline.arealGenerelt'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.arealTilNoegletalsanalyse) }}
             </div>
@@ -116,7 +116,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
-            <div class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elPrimaer' | trans }}</div>
+            <div class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elPrimaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.elForbrugsdataPrimaerKilde) }}
               <table class="table">
@@ -124,11 +124,11 @@
                 <tr>
                   <th></th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year1' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year1'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year2' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year2'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year3' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year3'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -156,7 +156,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elSekundaer' | trans }}</div>
+                class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elSekundaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.elForbrugsdataSekundaerKilde) }}
               <table class="table">
@@ -164,11 +164,11 @@
                 <tr>
                   <th></th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year1' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year1'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year2' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year2'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year3' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year3'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -198,7 +198,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elGenerelt' | trans }}</div>
+                class="panel-heading">{{ icon('flash') }} {{ 'appbundle.baseline.elGenerelt'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.elBaselineFastsatForEjendom) }}
               {{ aaplus.form_row_decimal('appbundle.baseline.eloElTotalForbrug', entity.eloKategori ? entity.eloKategori.totalElforbrug : null, 'appbundle.baseline.eloElTotalForbrug.unit') }}
@@ -216,7 +216,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmePrimaer' | trans }}</div>
+                class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmePrimaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.varmeForbrugsdataPrimaerKilde) }}
               {{ form_row(edit_form.varmeForbrudsdataPrimaerGUFForbrugFastsaettesEfter) }}
@@ -225,11 +225,11 @@
                 <tr>
                   <th></th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year1' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year1'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year2' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year2'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year3' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year3'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -265,7 +265,7 @@
                 </tr>
                 <tr>
                   <td><label
-                        class="control-label">{{ 'appbundle.baseline.gdNormal' | trans }}</label>
+                        class="control-label">{{ 'appbundle.baseline.gdNormal'|trans }}</label>
                   </td>
                   <td><input type="text" disabled="disabled" class="form-control"
                              value="{{ graddage_normal }}"></td>
@@ -306,7 +306,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
             <div
-                class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmeSekundaer' | trans }}</div>
+                class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmeSekundaer'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.varmeForbrugsdataSekundaerKilde) }}
               {{ form_row(edit_form.varmeForbrudsdataSekundaerGUFForbrugFastsaettesEfter) }}
@@ -315,11 +315,11 @@
                 <tr>
                   <th></th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year1' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year1'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year2' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year2'|trans }}</th>
                   <th
-                      class="text-center">{{ 'appbundle.baseline.year3' | trans }}</th>
+                      class="text-center">{{ 'appbundle.baseline.year3'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -355,7 +355,7 @@
                 </tr>
                 <tr>
                   <td><label
-                        class="control-label">{{ 'appbundle.baseline.gdNormal' | trans }}</label>
+                        class="control-label">{{ 'appbundle.baseline.gdNormal'|trans }}</label>
                   </td>
                   <td><input type="text" disabled="disabled" class="form-control"
                              value="{{ graddage_normal }}"></td>
@@ -397,13 +397,13 @@
       <div class="row">
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
-            <div class="panel-heading">{{ icon('calendar') }} {{ 'appbundle.graddagefordeling.graddageVedForskelligeAar' | trans }}</div>
-            {% include 'AppBundle:GraddageFordeling:_index_table.html.twig' with { 'entities':graddage } %}
+            <div class="panel-heading">{{ icon('calendar') }} {{ 'appbundle.graddagefordeling.graddageVedForskelligeAar'|trans }}</div>
+            {% include 'AppBundle:GraddageFordeling:_index_table.html.twig' with { 'entities': graddage } %}
           </div>
         </div>
         <div class="col-xs-12 col-md-6">
           <div class="panel panel-default">
-            <div class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmeGenerelt' | trans }}</div>
+            <div class="panel-heading">{{ icon('fire') }} {{ 'appbundle.baseline.varmeGenerelt'|trans }}</div>
             <div class="panel-body">
               {{ form_row(edit_form.varmeGAFForbrug) }}
               {{ form_row(edit_form.varmeGUFForbrug) }}

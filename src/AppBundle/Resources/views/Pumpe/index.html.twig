@@ -5,11 +5,11 @@
 
   <div class="row heading">
     <div class="col-md-9">
-        <h1>{{ 'pumpe.labels.plural' | trans }}</h1>
+        <h1>{{ 'pumpe.labels.plural'|trans }}</h1>
     </div>
     <div class="col-md-3 text-right">
               <a class="btn btn-default" href="{{ path('pumpe_new') }}">
-          {{ icon('plus') }} {{ 'pumpe.actions.add' | trans }}
+          {{ icon('plus') }} {{ 'pumpe.actions.add'|trans }}
         </a>
           </div>
 
@@ -84,11 +84,11 @@
         <td class="number">{{ entity.elbesparelse }}</td>
         <td>{{ entity.udligningssaet }}</td>
         <td>{{ entity.kommentarer }}</td>
-        <td class="number">{{ entity.standInvestering | format_amount(2) }}</td>
+        <td class="number">{{ entity.standInvestering|format_amount(2) }}</td>
         <td>{{ entity.fabrikant }}</td>
         <td class="number">{{ entity.roerlaengde }}</td>
         <td>{{ entity.roerstoerrelse }}</td>
-      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('pumpe_edit', { 'id': entity.id }) }}">{{ 'common.edit' | trans }}</a>
+      <td class="text-right">    <a class="btn btn-default btn-xs" href="{{ path('pumpe_edit', { 'id': entity.id }) }}">{{ 'common.edit'|trans }}</a>
 
       </td>
 

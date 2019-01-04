@@ -18,28 +18,28 @@
         {% if is_granted('ROLE_BYGNING_EDIT') and entity.status > '1_IS' %}
         {% if entity.baseline is not null %}
         <a href="{{ path('baseline_show', { 'id': entity.baseline.id }) }}" class="btn btn-primary">
-          {{ icon('edit') }} {{ 'baseline.labels.singular' | trans }}
+          {{ icon('edit') }} {{ 'baseline.labels.singular'|trans }}
         </a>
         {% else %}
         <form method="POST" action="{{ path('baseline_create', { 'id': entity.id }) }}" class="inline-block">
-          <button type="submit" class="btn btn-primary">{{ icon('plus') }} {{ 'baseline.labels.singular' | trans }}</button>
+          <button type="submit" class="btn btn-primary">{{ icon('plus') }} {{ 'baseline.labels.singular'|trans }}</button>
         </form>
       {% endif %}
       {% endif %}
 
       {% if is_granted('ROLE_BYGNING_EDIT') %}
         <a href="{{ path('bygning_edit', { 'id': entity.id }) }}" class="btn btn-default">
-          {{ icon('edit') }} {{ 'common.edit' | trans }}
+          {{ icon('edit') }} {{ 'common.edit'|trans }}
         </a>
       {% endif %}
 
       {% if is_granted('ROLE_BYGNING_EDIT') and entity.status == '1_IS' %}
         <a href="{{ path('bygning_indfoer', { 'id': entity.id }) }}" class="btn btn-primary">
-          {{ icon('caret-square-o-right') }} {{ 'bygninger.actions.indfoer' | trans }}
+          {{ icon('caret-square-o-right') }} {{ 'bygninger.actions.indfoer'|trans }}
         </a>
       {% elseif is_granted('ROLE_BYGNING_EDIT') and entity.status == '2_DV' %}
         <a href="{{ path('bygning_tilknyt', { 'id': entity.id }) }}" class="btn btn-primary">
-          {{ icon('caret-square-o-right') }} {{ 'bygninger.actions.tilknyt_raadgiver' | trans }}
+          {{ icon('caret-square-o-right') }} {{ 'bygninger.actions.tilknyt_raadgiver'|trans }}
         </a>
       {% endif %}
       </p>
@@ -50,23 +50,23 @@
   <div class="row">
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('home') }} {{ 'appbundle.bygning.navn' | trans }} / {{ 'appbundle.bygning.adresse' | trans }}</div>
+        <div class="panel-heading">{{ icon('home') }} {{ 'appbundle.bygning.navn'|trans }} / {{ 'appbundle.bygning.adresse'|trans }}</div>
         <table class="table table-condensed th-vertical">
           <tbody>
           <tr>
-            <th>{{ 'appbundle.bygning.navn' | trans }}</th>
+            <th>{{ 'appbundle.bygning.navn'|trans }}</th>
             <td>{{ entity.navn }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.adresse' | trans }}</th>
+            <th>{{ 'appbundle.bygning.adresse'|trans }}</th>
             <td>{{ entity.adresse }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.postnummer' | trans }}</th>
+            <th>{{ 'appbundle.bygning.postnummer'|trans }}</th>
             <td>{{ entity.postnummer }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.postBy' | trans }}</th>
+            <th>{{ 'appbundle.bygning.postBy'|trans }}</th>
             <td>{{ entity.postBy }}</td>
           </tr>
           </tbody>
@@ -75,43 +75,43 @@
 
 
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('users') }} {{ 'common.personer' | trans }} / {{ 'common.tilknytning' | trans }}</div>
+        <div class="panel-heading">{{ icon('users') }} {{ 'common.personer'|trans }} / {{ 'common.tilknytning'|trans }}</div>
         <table class="table table-condensed th-vertical">
           <tbody>
           <tr>
-            <th>{{ 'appbundle.bygning.aaplusAnsvarlig' | trans }}</th>
+            <th>{{ 'appbundle.bygning.aaplusAnsvarlig'|trans }}</th>
             <td>{{ entity.aaplusAnsvarlig }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.projektleder' | trans }}</th>
+            <th>{{ 'appbundle.bygning.projektleder'|trans }}</th>
             <td>{{ entity.projektleder }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.energiRaadgiver' | trans }}</th>
+            <th>{{ 'appbundle.bygning.energiRaadgiver'|trans }}</th>
             <td>{{ entity.energiRaadgiver }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.projekterende' | trans }}</th>
+            <th>{{ 'appbundle.bygning.projekterende'|trans }}</th>
             <td>{{ entity.projekterende }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.afdelingsnavn' | trans }}</th>
+            <th>{{ 'appbundle.bygning.afdelingsnavn'|trans }}</th>
             <td>{{ entity.afdelingsnavn }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.ejerA' | trans }}</th>
+            <th>{{ 'appbundle.bygning.ejerA'|trans }}</th>
             <td>{{ entity.ejerA }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.divisionnavn' | trans }}</th>
+            <th>{{ 'appbundle.bygning.divisionnavn'|trans }}</th>
             <td>{{ entity.divisionnavn }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.omraadenavn' | trans }}</th>
+            <th>{{ 'appbundle.bygning.omraadenavn'|trans }}</th>
             <td>{{ entity.omraadenavn }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.ejerforhold' | trans }}</th>
+            <th>{{ 'appbundle.bygning.ejerforhold'|trans }}</th>
             <td>{{ entity.ejerforhold }}</td>
           </tr>
           </tbody>
@@ -121,52 +121,52 @@
 
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('info-circle') }} {{ 'common.data' | trans }}</div>
+        <div class="panel-heading">{{ icon('info-circle') }} {{ 'common.data'|trans }}</div>
         <table class="table table-condensed th-vertical">
           <tbody>
           <tr>
-            <th>{{ 'appbundle.bygning.bygId' | trans }}</th>
+            <th>{{ 'appbundle.bygning.bygId'|trans }}</th>
             <td>{{ entity.bygId }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.enhedsys' | trans }}</th>
+            <th>{{ 'appbundle.bygning.enhedsys'|trans }}</th>
             <td>{{ entity.enhedsys }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.type' | trans }}</th>
+            <th>{{ 'appbundle.bygning.type'|trans }}</th>
             <td>{{ entity.type }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.OpfoerselsAar' | trans }}</th>
+            <th>{{ 'appbundle.bygning.OpfoerselsAar'|trans }}</th>
             <td>{{ entity.OpfoerselsAar }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.anvendelse' | trans }}</th>
+            <th>{{ 'appbundle.bygning.anvendelse'|trans }}</th>
             <td>{{ entity.anvendelse }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.bruttoetageareal' | trans }}</th>
+            <th>{{ 'appbundle.bygning.bruttoetageareal'|trans }}</th>
             <td>{{ entity.bruttoetageareal }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.status' | trans }}</th>
-            <td>{{ entity.status | readable }}</td>
+            <th>{{ 'appbundle.bygning.status'|trans }}</th>
+            <td>{{ entity.status|readable_enum }}</td>
           </tr>
           <tr>
-            <th>{{ 'rapporter.labels.singular' | trans }}</th>
+            <th>{{ 'rapporter.labels.singular'|trans }}</th>
             <td>
               {% if entity.rapport %}
-                <a href="{{ path('rapport_show', { 'id': entity.rapport.id }) }}">{{ entity.rapport }} - {{ 'appbundle.rapport.version' | trans }} {{ entity.rapport.version }}</a>
+                <a href="{{ path('rapport_show', { 'id': entity.rapport.id }) }}">{{ entity.rapport }} - {{ 'appbundle.rapport.version'|trans }} {{ entity.rapport.version }}</a>
               {% endif %}
             </td>
           </tr>
           <tr>
-            <th>{{ 'baseline.labels.singular' | trans }}</th>
+            <th>{{ 'baseline.labels.singular'|trans }}</th>
             <td>
               {% if entity.baseline %}
-                <a href="{{ path('baseline_show', { 'id': entity.baseline.id }) }}">{{ 'common.linked' | trans }}</a>
+                <a href="{{ path('baseline_show', { 'id': entity.baseline.id }) }}">{{ 'common.linked'|trans }}</a>
               {% else %}
-                {{ 'common.notLinked' | trans }}
+                {{ 'common.notLinked'|trans }}
               {% endif %}
             </td>
           </tr>
@@ -177,15 +177,15 @@
 
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('industry') }} {{ 'forsyningsvaerk.labels.plural' | trans }}</div>
+        <div class="panel-heading">{{ icon('industry') }} {{ 'forsyningsvaerk.labels.plural'|trans }}</div>
         <table class="table table-condensed th-vertical">
           <tbody>
           <tr>
-            <th>{{ 'appbundle.bygning.forsyningsvaerkEl' | trans }}</th>
+            <th>{{ 'appbundle.bygning.forsyningsvaerkEl'|trans }}</th>
             <td>{{ entity.forsyningsvaerkEl }}</td>
           </tr>
           <tr>
-            <th>{{ 'appbundle.bygning.forsyningsvaerkVarme' | trans }}</th>
+            <th>{{ 'appbundle.bygning.forsyningsvaerkVarme'|trans }}</th>
             <td>{{ entity.forsyningsvaerkVarme }}</td>
           </tr>
           </tbody>

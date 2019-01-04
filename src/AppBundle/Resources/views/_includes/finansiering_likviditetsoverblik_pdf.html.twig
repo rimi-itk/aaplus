@@ -1,7 +1,7 @@
 {% set slices = [
-entity.cashFlow['cash flow'] | keys | slice(0, 10),
-entity.cashFlow['cash flow'] | keys | slice(10, 10),
-entity.cashFlow['cash flow'] | keys | slice(20, 10)
+entity.cashFlow['cash flow']|keys|slice(0, 10),
+entity.cashFlow['cash flow']|keys|slice(10, 10),
+entity.cashFlow['cash flow']|keys|slice(20, 10)
 ] %}
 
     {% for years in slices %}
@@ -9,7 +9,7 @@ entity.cashFlow['cash flow'] | keys | slice(20, 10)
         <thead>
         <tr>
           <th scope="row">
-            {{ 'År' | trans }}
+            {{ 'År'|trans }}
           </th>
           {% for year in years %}
             <th scope="col" class="text-right">
@@ -25,10 +25,10 @@ entity.cashFlow['cash flow'] | keys | slice(20, 10)
         'Overskud [kr]': 'cash flow',
         } %}
           <tr>
-            <th scope="row">{{ name | trans }}</th>
+            <th scope="row">{{ name|trans }}</th>
             {% for year in years %}
               <td class="text-right">
-                {{ entity.cashFlow[key][year] | format_amount }}
+                {{ entity.cashFlow[key][year]|format_amount }}
               </td>
             {% endfor %}
           </tr>

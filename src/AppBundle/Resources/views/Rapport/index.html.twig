@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-9">
       <h1>
-        {{ 'rapporter.labels.plural' | trans }}{% if form.vars.submitted %}: {{ 'common.a_search' | trans }}{% endif %}
+        {{ 'rapporter.labels.plural'|trans }}{% if form.vars.submitted %}: {{ 'common.a_search'|trans }}{% endif %}
       </h1>
     </div>
     <div class="col-md-3 text-right">
@@ -59,23 +59,23 @@
       <td>{{ rapport.bygning.adresse }}</td>
       <td>{{ rapport.bygning.postnummer }}</td>
       <td>{{ rapport.bygning.segment }}</td>
-      <td>{{ rapport.bygning.status | readable_enum }}</td>
+      <td>{{ rapport.bygning.status|readable_enum }}</td>
       <td class="text-center">{{ rapport.version }}</td>
       {% if form.elena is defined %}
-        <td class="text-center">{{ rapport.elena | b2icon }}</td>
+        <td class="text-center">{{ rapport.elena|b2icon }}</td>
       {% endif %}
       {% if form.ava is defined %}
-        <td class="text-center">{{ rapport.ava | b2icon }}</td>
+        <td class="text-center">{{ rapport.ava|b2icon }}</td>
       {% endif %}
-      <td class="text-center">{{ rapport.datering | date }}</td>
+      <td class="text-center">{{ rapport.datering|date }}</td>
       <td class="text-right">
-        <a href="{{ path('rapport_show', { 'id': rapport.id }) }}" class="btn btn-default btn-xs">{{ 'common.show' | trans }}</a>
+        <a href="{{ path('rapport_show', { 'id': rapport.id }) }}" class="btn btn-default btn-xs">{{ 'common.show'|trans }}</a>
       </td>
     </tr>
     {% else %}
       <tr>
         <td colspan="10">
-          <div class="alert alert-info" role="alert">{{ 'bygninger.strings.ingen' | trans }}</div>
+          <div class="alert alert-info" role="alert">{{ 'bygninger.strings.ingen'|trans }}</div>
         </td>
       </tr>
     {% endfor %}

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-9">
       <h1>
-        {{ 'bilag.labels.plural' | trans }}
+        {{ 'bilag.labels.plural'|trans }}
       </h1>
     </div>
     <div class="col-md-3 text-right">
@@ -16,16 +16,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ icon('file') }} {{ 'appbundle.bilag.filer' | trans }}</div>
+        <div class="panel-heading">{{ icon('file') }} {{ 'appbundle.bilag.filer'|trans }}</div>
 
         <table class="table table-condensed">
           <tbody>
           <tr>
-            <th>{{ 'appbundle.bilag.titel' | trans }}</th>
-            <th>{{ 'appbundle.bilag.kommentar' | trans }}</th>
-            <th>{{ 'appbundle.bilag.filepath' | trans }}</th>
-            <th>{{ 'appbundle.bilag.updated_by' | trans }}</th>
-            <th>{{ 'appbundle.bilag.updated_at' | trans }}</th>
+            <th>{{ 'appbundle.bilag.titel'|trans }}</th>
+            <th>{{ 'appbundle.bilag.kommentar'|trans }}</th>
+            <th>{{ 'appbundle.bilag.filepath'|trans }}</th>
+            <th>{{ 'appbundle.bilag.updated_by'|trans }}</th>
+            <th>{{ 'appbundle.bilag.updated_at'|trans }}</th>
           </tr>
           {% for bilag in entity.bilag %}
             <tr>
@@ -43,7 +43,7 @@
                 {% endif %}
               </td>
               <td>{{ bilag.updatedBy }}</td>
-              <td>{{ bilag.updatedAt | date('F j, Y H:i') }}</td>
+              <td>{{ bilag.updatedAt|date('F j, Y H:i') }}</td>
             </tr>
           {% endfor %}
           </tbody>
@@ -52,7 +52,7 @@
 
       {% if is_granted('RAPPORT_EDIT', entity) %}
         <a class="btn btn-primary" href="{{ path('bilag_rapport_new', { 'rapport_id': entity.id }) }}">
-          {{ icon('plus') }} {{ 'bilag.actions.create' | trans }}
+          {{ icon('plus') }} {{ 'bilag.actions.create'|trans }}
         </a>
       {% endif %}
     </div>

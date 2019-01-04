@@ -48,6 +48,7 @@
         "yavin/symfony-init-controller": "^0.4.0"
     },
     "require-dev": {
+        "allocine/twigcs": "^3.1",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "friendsofphp/php-cs-fixer": "^2.13",
         "sensio/generator-bundle": "^3.0",
@@ -70,6 +71,16 @@
         ],
         "check-coding-standards/php-cs-fixer": [
             "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix --dry-run"
+        ],
+        "check-coding-standards/lint:twig": [
+            "bin/console lint:twig src/AppBundle/Resources/views"
+        ],
+        "check-coding-standards/twigcs": [
+            "vendor/bin/twigcs lint src/AppBundle/Resources/views"
+        ],
+        "check-coding-standards/twig": [
+						"@check-coding-standards/lint:twig",
+						"@check-coding-standards/twigcs"
         ],
         "check-coding-standards": [
             "@check-coding-standards/php-cs-fixer"

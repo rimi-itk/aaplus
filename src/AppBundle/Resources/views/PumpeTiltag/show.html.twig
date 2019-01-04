@@ -123,27 +123,27 @@
                 <td class="forsyningsomraade">{{ detail.forsyningsomraade }}</td>
                 <td class="placering">{{ detail.placering }}</td>
                 <td class="applikation">{{ detail.applikation }}</td>
-                <td class="isoleringskappe">{{ detail.isoleringskappe | b2icon }}</td>
+                <td class="isoleringskappe">{{ detail.isoleringskappe|b2icon }}</td>
                 <td class="nyttiggjortVarme number">
-                  {{ (detail.nyttiggjortVarme is null ? detail.bFaktor : detail.nyttiggjortVarme.faktor) | format_decimal }}
+                  {{ (detail.nyttiggjortVarme is null ? detail.bFaktor : detail.nyttiggjortVarme.faktor)|format_decimal }}
                 </td>
 								<td class="eksisterendePumpe">{{ detail.pumpe }}</td>
-                <td class="eksisterendeDrifttid number">{{ detail.eksisterendeDrifttid | format_decimal }}</td>
+                <td class="eksisterendeDrifttid number">{{ detail.eksisterendeDrifttid|format_decimal }}</td>
                 <td class="nyPumpe">{{ detail.pumpe ? detail.pumpe.nyPumpe : '' }}</td>
                 <td class="nytByggemaal">{{ detail.pumpe ? detail.pumpe.nyByggemaal : '' }}</td>
                 <td class="nyTilslutning">{{ detail.pumpe ? detail.pumpe.nyTilslutning : '' }}</td>
                 <td class="nytVVSnr">{{ detail.pumpe ? detail.pumpe.VvsNr : '' }}</td>
-                <td class="nyDrifttid number">{{ detail.nyDrifttid | format_decimal }}</td>
-                <td class="prisfaktor number">{{ detail.prisfaktor | format_decimal }}</td>
-                <td class="pristillaeg number">{{ detail.pristillaeg | format_amount }}</td>
-                <td class="samletInvesteringInklPristillaeg number">{{ detail.samletInvesteringInklPristillaeg | format_amount }}</td>
-                <td class="elforbrugVedNyeDriftstidKWhAar number">{{ detail.elforbrugVedNyeDriftstidKWhAar | format_decimal }}</td>
-                <td class="elbespKWhAar number">{{ detail.elbespKWhAar | format_decimal }}</td>
-                <td class="varmebespIsokappeKWh number">{{ detail.varmebespIsokappeKWh | format_decimal }}</td>
-                <td class="simpelTilbagebetalingstidAar number">{{ detail.simpelTilbagebetalingstidAar | format_decimal }}</td>
-                <td class="nutidsvaerdiSetOver15AarKr number">{{ detail.nutidsvaerdiSetOver15AarKr | format_amount }}</td>
-                <td class="kwhBesparelseElFraVaerket number">{{ detail.kwhBesparelseElFraVaerket | format_decimal }}</td>
-                <td class="kwhBesparelseVarmeFraVaerket number">{{ detail.kwhBesparelseVarmeFraVaerket | format_decimal }}</td>
+                <td class="nyDrifttid number">{{ detail.nyDrifttid|format_decimal }}</td>
+                <td class="prisfaktor number">{{ detail.prisfaktor|format_decimal }}</td>
+                <td class="pristillaeg number">{{ detail.pristillaeg|format_amount }}</td>
+                <td class="samletInvesteringInklPristillaeg number">{{ detail.samletInvesteringInklPristillaeg|format_amount }}</td>
+                <td class="elforbrugVedNyeDriftstidKWhAar number">{{ detail.elforbrugVedNyeDriftstidKWhAar|format_decimal }}</td>
+                <td class="elbespKWhAar number">{{ detail.elbespKWhAar|format_decimal }}</td>
+                <td class="varmebespIsokappeKWh number">{{ detail.varmebespIsokappeKWh|format_decimal }}</td>
+                <td class="simpelTilbagebetalingstidAar number">{{ detail.simpelTilbagebetalingstidAar|format_decimal }}</td>
+                <td class="nutidsvaerdiSetOver15AarKr number">{{ detail.nutidsvaerdiSetOver15AarKr|format_amount }}</td>
+                <td class="kwhBesparelseElFraVaerket number">{{ detail.kwhBesparelseElFraVaerket|format_decimal }}</td>
+                <td class="kwhBesparelseVarmeFraVaerket number">{{ detail.kwhBesparelseVarmeFraVaerket|format_decimal }}</td>
                 <td class="last"></td>
               </tr>
             {% endfor %}

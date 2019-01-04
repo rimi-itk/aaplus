@@ -1,15 +1,15 @@
 {% if pagination is defined %}
-  {% set startNumber = (pagination.getCurrentPageNumber - 1) * pagination.getItemNumberPerPage + 1 %}
-  {% if startNumber > pagination.getTotalItemCount %}
-    {% set startNumber = pagination.getTotalItemCount %}
+  {% set start_number = (pagination.getCurrentPageNumber - 1) * pagination.getItemNumberPerPage + 1 %}
+  {% if start_number > pagination.getTotalItemCount %}
+    {% set start_number = pagination.getTotalItemCount %}
   {% endif %}
 
-  {% set endNumber =  pagination.getCurrentPageNumber * pagination.getItemNumberPerPage%}
-  {% if endNumber > pagination.getTotalItemCount %}
-    {% set endNumber =  pagination.getTotalItemCount %}
+  {% set end_number = pagination.getCurrentPageNumber * pagination.getItemNumberPerPage %}
+  {% if end_number > pagination.getTotalItemCount %}
+    {% set end_number = pagination.getTotalItemCount %}
   {% endif %}
 
-  {{ 'common.showing' | trans }}: {{ startNumber }} - {{ endNumber }} / {{ pagination.getTotalItemCount }}
+  {{ 'common.showing'|trans }}: {{ start_number }} - {{ end_number }} / {{ pagination.getTotalItemCount }}
 
 {% else %}
   Error: pagination not defined!

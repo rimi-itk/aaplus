@@ -21,7 +21,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{ 'common.deselect' | trans }} {{ form.vars.value.title | truncate(20) }}</h4>
+        <h4 class="modal-title" id="myModalLabel">{{ 'common.deselect'|trans }} {{ form.vars.value.title|truncate(20) }}</h4>
       </div>
       <div class="modal-body">
 {% endblock %}
@@ -36,7 +36,7 @@
 {% endblock button_row %}
 
 {% block submit_widget %}
-  <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.cancel' | trans }}</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.cancel'|trans }}</button>
   {% spaceless %}
     {% set type = type|default('submit') %}
     {{ block('button_widget') }}
