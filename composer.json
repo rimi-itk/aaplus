@@ -21,6 +21,7 @@
     },
     "require": {
         "php": "7.2.*",
+        "box/spout": "^2.7",
         "braincrafted/bootstrap-bundle": "^2.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-migrations-bundle": "^1.3",
