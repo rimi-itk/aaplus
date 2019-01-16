@@ -33,50 +33,50 @@ class BelysningTiltagDetailType extends TiltagDetailType
         parent::buildForm($builder, $options);
         $builder
       //->add('tilvalgt')
-      ->add('lokale_navn')
-      ->add('lokale_type')
-      ->add('armaturhoejdeM')
-      ->add('rumstoerrelseM2')
-      ->add('lokale_antal')
-      ->add('drifttidTAar')
-      ->add('lyskilde')
-      ->add('lyskildeStkArmatur')
-      ->add('lyskildeWLyskilde')
-      ->add('forkoblingStkArmatur')
-      ->add('armaturerStkLokale')
-      ->add('placering')
-      ->add('styring')
-      ->add('nyStyring', 'entity', [
-        'class' => 'AppBundle:BelysningTiltagDetail\NyStyring',
-        'choices' => $this->getAktuelNyStyring(),
-        'required' => false,
-        'placeholder' => 'common.none',
-      ])
-      ->add('erstatningsLyskilde')
-      ->add('nytArmatur')
-      ->add('noter')
-      ->add('noterForNyBelysning')
-      ->add('belysningstiltag')
-      ->add('nyeSensorerStkLokale')
-      ->add('standardinvestSensorKrStk')
-      ->add('reduktionAfDrifttid', 'percent', ['scale' => 2, 'required' => false])
-      ->add('standardinvestArmaturKrStk')
-      ->add('standardinvestLyskildeKrStk')
-      ->add('nyLyskilde')
-      ->add('nyLyskildeStkArmatur')
-      ->add('nyLyskildeWLyskilde')
-      ->add('nyForkoblingStkArmatur')
-      ->add('nyeArmaturerStkLokale')
-      ->add('nyttiggjortVarmeAfElBesparelse', 'percent', ['scale' => 2, 'required' => false])
-      ->add('prisfaktor')
+            ->add('lokale_navn')
+            ->add('lokale_type')
+            ->add('armaturhoejdeM')
+            ->add('rumstoerrelseM2')
+            ->add('lokale_antal')
+            ->add('drifttidTAar')
+            ->add('lyskilde')
+            ->add('lyskildeStkArmatur')
+            ->add('lyskildeWLyskilde')
+            ->add('forkoblingStkArmatur')
+            ->add('armaturerStkLokale')
+            ->add('placering')
+            ->add('styring')
+            ->add('nyStyring', 'entity', [
+                'class' => 'AppBundle:BelysningTiltagDetail\NyStyring',
+                'choices' => $this->getAktuelNyStyring(),
+                'required' => false,
+                'placeholder' => 'common.none',
+            ])
+            ->add('erstatningsLyskilde')
+            ->add('nytArmatur')
+            ->add('noter')
+            ->add('noterForNyBelysning')
+            ->add('belysningstiltag')
+            ->add('nyeSensorerStkLokale')
+            ->add('standardinvestSensorKrStk')
+            ->add('reduktionAfDrifttid', 'percent', ['scale' => 2, 'required' => false])
+            ->add('standardinvestArmaturKrStk')
+            ->add('standardinvestLyskildeKrStk')
+            ->add('nyLyskilde')
+            ->add('nyLyskildeStkArmatur')
+            ->add('nyLyskildeWLyskilde')
+            ->add('nyForkoblingStkArmatur')
+            ->add('nyeArmaturerStkLokale')
+            ->add('nyttiggjortVarmeAfElBesparelse', 'percent', ['scale' => 2, 'required' => false])
+            ->add('prisfaktor')
       ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\BelysningTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\BelysningTiltagDetail',
+        ]);
     }
 
     public function getName()

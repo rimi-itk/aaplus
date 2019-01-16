@@ -19,8 +19,8 @@ class RisikovurderingType extends AbstractEnumType
     const HOEJ = 'hoej';
 
     protected static $choices = [
-    self::LAV => 'Lav',
-    self::MELLEM => 'Mellem',
-    self::HOEJ => 'Høj',
-  ];
+        self::LAV => 'Lav',
+        self::MELLEM => 'Mellem',
+        self::HOEJ => 'Høj',
+    ];
 }

@@ -33,12 +33,12 @@ class TransKeyExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-      new Twig_SimpleFilter('get_trans', [$this, 'getTranslation'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('get_help', [$this, 'getHelpText'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('get_calculation', [$this, 'getCalculation'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('get_unit', [$this, 'getUnit'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('trans_field', [$this, 'getFieldTranslation'], ['is_safe' => ['all']]),
-    ];
+            new Twig_SimpleFilter('get_trans', [$this, 'getTranslation'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('get_help', [$this, 'getHelpText'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('get_calculation', [$this, 'getCalculation'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('get_unit', [$this, 'getUnit'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('trans_field', [$this, 'getFieldTranslation'], ['is_safe' => ['all']]),
+        ];
     }
 
     public function getFieldTranslation($field, $entity)

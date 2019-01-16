@@ -46,20 +46,20 @@ class RapportType extends AbstractType
         $disabled = $this->rapport->getBygning()->getBaseline() ? 'disabled' : '';
 
         $builder
-      ->add(
+            ->add(
           'datering',
           'date',
           [
-        // render as a single HTML5 text box
-        'widget' => 'single_text', ]
+              // render as a single HTML5 text box
+              'widget' => 'single_text', ]
       )
-      ->add('BaselineEl', null, ['disabled' => $disabled])
-      ->add('BaselineVarmeGUF', null, ['disabled' => $disabled])
-      ->add('BaselineVarmeGAF', null, ['disabled' => $disabled])
-      ->add('BaselineStrafAfkoeling', null, ['disabled' => $disabled])
-      ->add('bygning', new BygningBaselineEmbedType(), ['label' => false])
-      ->add('faktorPaaVarmebesparelse')
-      ->add('energiscreening');
+            ->add('BaselineEl', null, ['disabled' => $disabled])
+            ->add('BaselineVarmeGUF', null, ['disabled' => $disabled])
+            ->add('BaselineVarmeGAF', null, ['disabled' => $disabled])
+            ->add('BaselineStrafAfkoeling', null, ['disabled' => $disabled])
+            ->add('bygning', new BygningBaselineEmbedType(), ['label' => false])
+            ->add('faktorPaaVarmebesparelse')
+            ->add('energiscreening');
 
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
             $builder->add('elena');
@@ -79,8 +79,8 @@ class RapportType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     /**

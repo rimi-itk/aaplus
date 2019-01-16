@@ -26,7 +26,7 @@ abstract class TiltagDetailTestCase extends EntityTestCase
             foreach ($tiltag as $type => $fixture) {
                 $rapport = $this->loadEntity(new Rapport(), $fixture['rapport']);
                 $tiltag = $this->loadEntity(new $tiltagClassName(), $fixture['tiltag'])
-                ->setRapport($rapport);
+                    ->setRapport($rapport);
 
                 foreach ($fixture['details'] as $test) {
                     $properties = $this->loadProperties($test['_input']);
@@ -43,7 +43,7 @@ abstract class TiltagDetailTestCase extends EntityTestCase
                     }
 
                     $this->setProperties($detail, $properties)
-            ->calculate();
+                        ->calculate();
 
                     $this->assertProperties($expected, $detail);
                 }

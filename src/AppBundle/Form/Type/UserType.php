@@ -23,14 +23,14 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('enabled', null, ['label' => 'user.enabled'])
-      ->add('email')
-      ->add('plainpassword')
-      ->add('firstname')
-      ->add('lastname')
-      ->add('phone')
-      ->add('segmenter', null, ['by_reference' => false, 'expanded' => true, 'multiple' => true])
-      ->add('groups', null, ['by_reference' => false, 'expanded' => true, 'multiple' => true])
+            ->add('enabled', null, ['label' => 'user.enabled'])
+            ->add('email')
+            ->add('plainpassword')
+            ->add('firstname')
+            ->add('lastname')
+            ->add('phone')
+            ->add('segmenter', null, ['by_reference' => false, 'expanded' => true, 'multiple' => true])
+            ->add('groups', null, ['by_reference' => false, 'expanded' => true, 'multiple' => true])
     ;
     }
 
@@ -40,8 +40,8 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\User',
-    ]);
+            'data_class' => 'AppBundle\Entity\User',
+        ]);
     }
 
     /**

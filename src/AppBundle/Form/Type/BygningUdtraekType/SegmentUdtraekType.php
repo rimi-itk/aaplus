@@ -34,13 +34,13 @@ class SegmentUdtraekType extends AbstractType implements EmbeddedFilterTypeInter
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('forkortelse', ChoiceFilterType::class, ['label' => false, 'choices' => [
-        'MBU' => 'MBU - Børn og Unge',
-        'MKB' => 'MKB - Kultur og borgerservice',
-        'MSO' => 'MSO - Sundhed og omsorg',
-        'MSB' => 'MSB - Social og beskæftigelse',
-        'MTM' => 'MTM - Teknik og Miljø',
-      ]]);
+            ->add('forkortelse', ChoiceFilterType::class, ['label' => false, 'choices' => [
+                'MBU' => 'MBU - Børn og Unge',
+                'MKB' => 'MKB - Kultur og borgerservice',
+                'MSO' => 'MSO - Sundhed og omsorg',
+                'MSB' => 'MSB - Social og beskæftigelse',
+                'MTM' => 'MTM - Teknik og Miljø',
+            ]]);
     }
 
     /**
@@ -52,8 +52,8 @@ class SegmentUdtraekType extends AbstractType implements EmbeddedFilterTypeInter
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Segment',
-    ]);
+            'data_class' => 'AppBundle\Entity\Segment',
+        ]);
     }
 
     public function getParent()

@@ -31,25 +31,25 @@ class EnergiforsyningType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn', null, [
-        'required' => true,
-      ])
-      ->add('beskrivelse')
-      ->add('forsyningsvaerk', null, ['disabled' => true])
-      ->add('enhedspris', 'number', ['disabled' => true])
-      ->add('prisfaktor')
-      ->add('nyEnhedspris', 'number', ['disabled' => true])
-      ->add('internProduktioner', 'bootstrap_collection', [
-        'property_path' => 'internProduktions',
-        'type' => new InternProduktionType(),
-        'allow_add' => true,
-        'by_reference' => false,
-        'allow_delete' => true,
-        'add_button_text' => 'Add',
-        'delete_button_text' => 'Delete',
-        'sub_widget_col' => 10,
-        'button_col' => 2,
-      ]);
+            ->add('navn', null, [
+                'required' => true,
+            ])
+            ->add('beskrivelse')
+            ->add('forsyningsvaerk', null, ['disabled' => true])
+            ->add('enhedspris', 'number', ['disabled' => true])
+            ->add('prisfaktor')
+            ->add('nyEnhedspris', 'number', ['disabled' => true])
+            ->add('internProduktioner', 'bootstrap_collection', [
+                'property_path' => 'internProduktions',
+                'type' => new InternProduktionType(),
+                'allow_add' => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+                'add_button_text' => 'Add',
+                'delete_button_text' => 'Delete',
+                'sub_widget_col' => 10,
+                'button_col' => 2,
+            ]);
     }
 
     /**
@@ -61,8 +61,8 @@ class EnergiforsyningType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Energiforsyning',
-    ]);
+            'data_class' => 'AppBundle\Entity\Energiforsyning',
+        ]);
     }
 
     /**

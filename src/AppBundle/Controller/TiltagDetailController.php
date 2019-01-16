@@ -52,9 +52,9 @@ class TiltagDetailController extends BaseController
         $template = $this->getTemplate($tiltagdetail, 'show');
 
         return $this->render($template, [
-      'entity' => $tiltagdetail,
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'entity' => $tiltagdetail,
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -77,12 +77,12 @@ class TiltagDetailController extends BaseController
         $template = $this->getTemplate($tiltagdetail, 'edit');
 
         return $this->render($template, [
-      'calculation_changes' => $this->container->get('aaplus.tiltagdetail_calculation')->getChanges($tiltagdetail),
-      'calculation_warnings' => $tiltagdetail->getCalculationWarnings(),
-      'entity' => $tiltagdetail,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'calculation_changes' => $this->container->get('aaplus.tiltagdetail_calculation')->getChanges($tiltagdetail),
+            'calculation_warnings' => $tiltagdetail->getCalculationWarnings(),
+            'entity' => $tiltagdetail,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -110,12 +110,12 @@ class TiltagDetailController extends BaseController
         $template = $this->getTemplate($copy, 'copy');
 
         return $this->render($template, [
-      'calculation_changes' => $this->container->get('aaplus.tiltagdetail_calculation')->getChanges($copy),
-      'calculation_warnings' => $copy->getCalculationWarnings(),
-      'entity' => $copy,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'calculation_changes' => $this->container->get('aaplus.tiltagdetail_calculation')->getChanges($copy),
+            'calculation_warnings' => $copy->getCalculationWarnings(),
+            'entity' => $copy,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -149,10 +149,10 @@ class TiltagDetailController extends BaseController
         $template = $this->getTemplate($tiltagdetail, 'edit');
 
         return $this->render($template, [
-      'entity' => $tiltagdetail,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'entity' => $tiltagdetail,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -229,9 +229,9 @@ class TiltagDetailController extends BaseController
     {
         $className = $this->getFormTypeClassName($entity);
         $form = $this->createForm(new $className($this->container, $entity), $entity, [
-      'action' => $this->generateUrl('tiltag_detail_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('tiltag_detail_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         // @FIXME: Workaround for the field "B-Faktor" being deprecated.
         if ($entity instanceof \AppBundle\Entity\PumpeTiltagDetail && !$entity->getNyttiggjortVarme() && $form->has('nyttiggjortVarme')) {
@@ -253,10 +253,10 @@ class TiltagDetailController extends BaseController
     private function createDeleteForm(TiltagDetail $entity)
     {
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('tiltag_detail_delete', ['id' => $entity->getId()]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', ['label' => 'Delete'])
-      ->getForm();
+            ->setAction($this->generateUrl('tiltag_detail_delete', ['id' => $entity->getId()]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
     }
 
     /**

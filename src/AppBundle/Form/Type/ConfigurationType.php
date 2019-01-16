@@ -40,27 +40,24 @@ class ConfigurationType extends AbstractType
     {
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
             $builder
-        ->add('rapportKalkulationsrente', 'percent', ['scale' => 2]);
+                ->add('rapportKalkulationsrente', 'percent', ['scale' => 2]);
         }
 
         $builder
-      ->add('rapportDriftomkostningerfaktor')
-      ->add('rapportInflation')
-      ->add('rapportLobetid')
-      ->add('rapportProcentAfInvestering', 'percent', ['scale' => 2])
-      ->add('rapportNominelEnergiprisstigning')
-
-      ->add('tekniskisoleringVarmeledningsevneEksistLamelmaatter')
-      ->add('tekniskisoleringVarmeledningsevneNyIsolering')
-
-      ->add('solcelletiltagdetailEnergiprisstigningPctPrAar', 'percent', ['scale' => 2])
-      ->add('solcelletiltagdetailSalgsprisFoerste10AarKrKWh')
-      ->add('solcelletiltagdetailSalgsprisEfter10AarKrKWh')
-
-      ->add('mtmFaellesomkostningerGrundpris')
-      ->add('mtmFaellesomkostningerPrisPrM2')
-      ->add('mtmFaellesomkostningerNulHvisArealMindreEnd')
-      ->add('mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd');
+            ->add('rapportDriftomkostningerfaktor')
+            ->add('rapportInflation')
+            ->add('rapportLobetid')
+            ->add('rapportProcentAfInvestering', 'percent', ['scale' => 2])
+            ->add('rapportNominelEnergiprisstigning')
+            ->add('tekniskisoleringVarmeledningsevneEksistLamelmaatter')
+            ->add('tekniskisoleringVarmeledningsevneNyIsolering')
+            ->add('solcelletiltagdetailEnergiprisstigningPctPrAar', 'percent', ['scale' => 2])
+            ->add('solcelletiltagdetailSalgsprisFoerste10AarKrKWh')
+            ->add('solcelletiltagdetailSalgsprisEfter10AarKrKWh')
+            ->add('mtmFaellesomkostningerGrundpris')
+            ->add('mtmFaellesomkostningerPrisPrM2')
+            ->add('mtmFaellesomkostningerNulHvisArealMindreEnd')
+            ->add('mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd');
     }
 
     /**
@@ -72,8 +69,8 @@ class ConfigurationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Configuration',
-    ]);
+            'data_class' => 'AppBundle\Entity\Configuration',
+        ]);
     }
 
     /**

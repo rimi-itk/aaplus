@@ -32,15 +32,15 @@ class SegmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn')
-      ->add('forkortelse')
-      ->add('magistrat')
-      ->add('segmentAnsvarlig', EntityType::class, [
-        'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup('Aa+'),
-        'required' => false,
-        'placeholder' => 'common.none',
-      ])
+            ->add('navn')
+            ->add('forkortelse')
+            ->add('magistrat')
+            ->add('segmentAnsvarlig', EntityType::class, [
+                'class' => 'AppBundle:User',
+                'choices' => $this->getUsersFromGroup('Aa+'),
+                'required' => false,
+                'placeholder' => 'common.none',
+            ])
     ;
     }
 
@@ -50,8 +50,8 @@ class SegmentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Segment',
-    ]);
+            'data_class' => 'AppBundle\Entity\Segment',
+        ]);
     }
 
     /**

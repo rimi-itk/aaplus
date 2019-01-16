@@ -2064,13 +2064,13 @@ abstract class Tiltag
         $cutoff = 15;
         if ($this->levetid > $cutoff) {
             return (1 - ($cutoff / $this->levetid)) * pow(1 + $this->getRapport()
-                        ->getInflation(), $cutoff) * $this->aaplusInvestering;
+                ->getInflation(), $cutoff) * $this->aaplusInvestering;
         } elseif (0 === $cutoff - $this->antalReinvesteringer * $this->levetid) {
             return 0;
         }
 
         return (1 - (0 === $this->levetid ? 0 : ($cutoff - $this->antalReinvesteringer * $this->levetid) / $this->levetid)) * $this->reinvestering * pow(1 + $this->getRapport()
-                    ->getInflation(), $cutoff);
+            ->getInflation(), $cutoff);
     }
 
     protected function calculateCashFlow($numberOfYears, $yderligereBesparelseKrAar = 0)

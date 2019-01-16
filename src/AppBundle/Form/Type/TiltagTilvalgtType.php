@@ -40,23 +40,23 @@ class TiltagTilvalgtType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('tilvalgtAfAaPlus', 'choice', [
-      'choices' => [
-        'Fravalgt' => '0',
-        'Tilvalgt' => '1',
-      ],
-      'placeholder' => '--',
-      'required' => false,
-    ]);
+            'choices' => [
+                'Fravalgt' => '0',
+                'Tilvalgt' => '1',
+            ],
+            'placeholder' => '--',
+            'required' => false,
+        ]);
         $builder->add('tilvalgtbegrundelse', null, ['required' => false]);
 
         $builder->add('tilvalgtAfMagistrat', 'choice', [
-      'choices' => [
-        'Fravalgt' => '0',
-        'Tilvalgt' => '1',
-      ],
-      'placeholder' => '--',
-      'required' => false,
-    ]);
+            'choices' => [
+                'Fravalgt' => '0',
+                'Tilvalgt' => '1',
+            ],
+            'placeholder' => '--',
+            'required' => false,
+        ]);
         $builder->add('tilvalgtBegrundelseMagistrat', null, ['required' => false]);
     }
 
@@ -69,8 +69,8 @@ class TiltagTilvalgtType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Tiltag',
-    ]);
+            'data_class' => 'AppBundle\Entity\Tiltag',
+        ]);
     }
 
     /**

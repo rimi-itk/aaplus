@@ -39,30 +39,30 @@ class BygningUdtraekType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
-      ->add('adresse', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
-      ->add('postnummer', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
-      ->add('status', null, ['required' => false, 'label' => false]);
+            ->add('navn', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('adresse', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('postnummer', TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
+            ->add('status', null, ['required' => false, 'label' => false]);
 
         $builder->add('segment', SegmentUdtraekType::class, ['label' => false,
-      'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
-          $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
-              $filterBuilder->leftJoin($alias.'.segment', $joinAlias);
-          };
+            'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
+                $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
+                    $filterBuilder->leftJoin($alias.'.segment', $joinAlias);
+                };
 
-          $qbe->addOnce($qbe->getAlias().'.segment', 's', $closure);
-      },
-    ]);
+                $qbe->addOnce($qbe->getAlias().'.segment', 's', $closure);
+            },
+        ]);
 
         $builder->add('rapport', RapportUdtraekType::class, ['label' => false,
-      'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
-          $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
-              $filterBuilder->leftJoin($alias.'.rapport', $joinAlias);
-          };
+            'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
+                $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
+                    $filterBuilder->leftJoin($alias.'.rapport', $joinAlias);
+                };
 
-          $qbe->addOnce($qbe->getAlias().'.rapport', 'r', $closure);
-      },
-    ]);
+                $qbe->addOnce($qbe->getAlias().'.rapport', 'r', $closure);
+            },
+        ]);
 
         $builder->add('Søg', SubmitType::class);
     }
@@ -76,10 +76,10 @@ class BygningUdtraekType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bygning',
-      'csrf_protection' => false,
-      'validation_groups' => ['filtering'], // avoid NotBlank() constraint-related message
-    ]);
+            'data_class' => 'AppBundle\Entity\Bygning',
+            'csrf_protection' => false,
+            'validation_groups' => ['filtering'], // avoid NotBlank() constraint-related message
+        ]);
     }
 
     /**

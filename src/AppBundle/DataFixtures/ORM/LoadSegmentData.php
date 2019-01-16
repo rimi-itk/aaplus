@@ -28,8 +28,8 @@ class LoadSegmentData extends LoadData
             $segment = new Segment();
 
             $segment->setNavn($item['navn'])
-        ->setMagistrat($item['magistrat'])
-        ->setForkortelse($item['forkortelse']);
+                ->setMagistrat($item['magistrat'])
+                ->setForkortelse($item['forkortelse']);
             $manager->persist($segment);
         });
     }

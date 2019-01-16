@@ -75,11 +75,11 @@ class TiltagCalculation extends Calculation
                 $detailChanges = $detailCalculation->getChanges($detail);
                 if ($detailChanges) {
                     $changes['tiltag_detail:'.$detail->getId()] = [
-            'property' => $detail->getIndexNumber().'. '.($detail->getTitle() ?: 'Detail'),
-            'type' => 'tiltag_detail',
-            'entity' => $detail,
-            'changes' => $detailChanges,
-          ];
+                        'property' => $detail->getIndexNumber().'. '.($detail->getTitle() ?: 'Detail'),
+                        'type' => 'tiltag_detail',
+                        'entity' => $detail,
+                        'changes' => $detailChanges,
+                    ];
                 }
             }
         }

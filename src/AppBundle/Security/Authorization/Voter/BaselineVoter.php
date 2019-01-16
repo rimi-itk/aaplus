@@ -37,10 +37,10 @@ class BaselineVoter implements VoterInterface
     public function supportsAttribute($attribute)
     {
         return \in_array($attribute, [
-      self::VIEW,
-      self::EDIT,
-      self::CREATE,
-    ], true);
+            self::VIEW,
+            self::EDIT,
+            self::CREATE,
+        ], true);
     }
 
     public function supportsClass($class)

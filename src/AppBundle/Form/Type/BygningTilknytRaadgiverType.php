@@ -45,28 +45,28 @@ class BygningTilknytRaadgiverType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('aaplusAnsvarlig', 'entity', [
-        'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup('Aa+'),
-        'required' => false,
-        'placeholder' => 'common.none',
-      ])
-      ->add('energiRaadgiver', 'entity', [
-        'class' => 'AppBundle:User',
-        'choices' => $this->getUsersFromGroup('Rådgiver'),
-        'required' => false,
-        'placeholder' => 'common.none',
-      ])
-      ->add('status', 'hidden', [
-        'read_only' => true,
-      ])
-      ->add(
+            ->add('aaplusAnsvarlig', 'entity', [
+                'class' => 'AppBundle:User',
+                'choices' => $this->getUsersFromGroup('Aa+'),
+                'required' => false,
+                'placeholder' => 'common.none',
+            ])
+            ->add('energiRaadgiver', 'entity', [
+                'class' => 'AppBundle:User',
+                'choices' => $this->getUsersFromGroup('Rådgiver'),
+                'required' => false,
+                'placeholder' => 'common.none',
+            ])
+            ->add('status', 'hidden', [
+                'read_only' => true,
+            ])
+            ->add(
           'rapport',
           new RapportEmbedType($this->authorizationChecker),
           [
-          'by_reference' => true,
-          'data_class' => 'AppBundle\Entity\Rapport',
-        ]
+              'by_reference' => true,
+              'data_class' => 'AppBundle\Entity\Rapport',
+          ]
       );
     }
 
@@ -79,21 +79,21 @@ class BygningTilknytRaadgiverType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bygning',
-      'validation_groups' => function (FormInterface $form) {
-          $data = $form->getData();
+            'data_class' => 'AppBundle\Entity\Bygning',
+            'validation_groups' => function (FormInterface $form) {
+                $data = $form->getData();
 
-          if (BygningStatusType::DATA_VERIFICERET === $data->getStatus()) {
-              return ['Default', 'DATA_VERIFICERET'];
-          }
+                if (BygningStatusType::DATA_VERIFICERET === $data->getStatus()) {
+                    return ['Default', 'DATA_VERIFICERET'];
+                }
 
-          if (BygningStatusType::TILKNYTTET_RAADGIVER === $data->getStatus()) {
-              return ['Default', 'TILKNYTTET_RAADGIVER'];
-          }
+                if (BygningStatusType::TILKNYTTET_RAADGIVER === $data->getStatus()) {
+                    return ['Default', 'TILKNYTTET_RAADGIVER'];
+                }
 
-          return ['Default'];
-      },
-    ]);
+                return ['Default'];
+            },
+        ]);
     }
 
     /**

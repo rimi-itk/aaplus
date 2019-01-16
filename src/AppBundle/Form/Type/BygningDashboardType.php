@@ -50,44 +50,44 @@ class BygningDashboardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('adresse', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-      ->add('postnummer', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
-      ->add('status', null, ['required' => false, 'label' => false]);
+            ->add('navn', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
+            ->add('adresse', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
+            ->add('postnummer', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
+            ->add('status', null, ['required' => false, 'label' => false]);
 
         // @TODO
         $builder->add('segment', SegmentUdtraekType::class, ['label' => false,
-      'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
-          $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
-              $filterBuilder->leftJoin($alias.'.segment', $joinAlias);
-          };
+            'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
+                $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
+                    $filterBuilder->leftJoin($alias.'.segment', $joinAlias);
+                };
 
-          $qbe->addOnce($qbe->getAlias().'.segment', 'seg', $closure);
-      },
-    ]);
+                $qbe->addOnce($qbe->getAlias().'.segment', 'seg', $closure);
+            },
+        ]);
 
         if ('aaplusAnsvarlig' === $this->type) {
             // @TODO      $builder->add('energiRaadgiver', new BygningDashboardUserType($this->doctrine, "Rådgiver"), array('label' => false,
             $builder->add('energiRaadgiver', BygningDashboardUserType::class, ['label' => false,
-        'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
-            $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
-                $filterBuilder->leftJoin($alias.'.energiRaadgiver', $joinAlias);
-            };
+                'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
+                    $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
+                        $filterBuilder->leftJoin($alias.'.energiRaadgiver', $joinAlias);
+                    };
 
-            $qbe->addOnce($qbe->getAlias().'.energiRaadgiver', 'u', $closure);
-        },
-      ]);
+                    $qbe->addOnce($qbe->getAlias().'.energiRaadgiver', 'u', $closure);
+                },
+            ]);
         } else {
             // @TODO      $builder->add('aaplusAnsvarlig', new BygningDashboardUserType($this->doctrine, "Aa+"), array('label' => false,
             $builder->add('aaplusAnsvarlig', BygningDashboardUserType::class, ['label' => false,
-        'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
-            $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
-                $filterBuilder->leftJoin($alias.'.aaplusAnsvarlig', $joinAlias);
-            };
+                'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
+                    $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
+                        $filterBuilder->leftJoin($alias.'.aaplusAnsvarlig', $joinAlias);
+                    };
 
-            $qbe->addOnce($qbe->getAlias().'.aaplusAnsvarlig', 'u', $closure);
-        },
-      ]);
+                    $qbe->addOnce($qbe->getAlias().'.aaplusAnsvarlig', 'u', $closure);
+                },
+            ]);
         }
 
         $builder->add('Søg', SubmitType::class);
@@ -102,10 +102,10 @@ class BygningDashboardType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bygning',
-      'csrf_protection' => false,
-      'validation_groups' => ['filtering'], // avoid NotBlank() constraint-related message
-    ]);
+            'data_class' => 'AppBundle\Entity\Bygning',
+            'csrf_protection' => false,
+            'validation_groups' => ['filtering'], // avoid NotBlank() constraint-related message
+        ]);
     }
 
     /**

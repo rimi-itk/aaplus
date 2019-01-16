@@ -23,42 +23,42 @@ class KlimaskaermTiltagDetailType extends TiltagDetailType
     {
         parent::buildForm($builder, $options);
         $builder
-      ->add('laastAfEnergiraadgiver', null, [
-        'required' => false,
-      ])
-      ->add('klimaskaerm', 'entity', [
-        'class' => 'AppBundle:Klimaskaerm',
-        'choices' => $this->getKlimaskaerme(),
-        'required' => false,
-        'empty_data' => null,
-      ])
-      ->add('klimaskaermOverskrevetPris')
-      ->add('type')
-      ->add('placering')
-      ->add('hoejdeElLaengdeM')
-      ->add('breddeM')
-      ->add('antalStk')
-      ->add('andelAfArealDerEfterisoleres', 'percent', ['scale' => 2, 'required' => false])
-      ->add('uEksWM2K')
-      ->add('uNyWM2K')
-      ->add('tIndeC')
-      ->add('tUdeC')
-      ->add('tOpvarmningTimerAar')
-      ->add('yderligereBesparelserPct', 'percent', ['scale' => 2, 'required' => false])
-      ->add('prisfaktor')
-      ->add('noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet', 'textarea', [
-        'attr' => ['maxlength' => 360], 'required' => false,
-      ])
-      ->add('levetidAar')
-      ->add('noteGenerelt', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
+            ->add('laastAfEnergiraadgiver', null, [
+                'required' => false,
+            ])
+            ->add('klimaskaerm', 'entity', [
+                'class' => 'AppBundle:Klimaskaerm',
+                'choices' => $this->getKlimaskaerme(),
+                'required' => false,
+                'empty_data' => null,
+            ])
+            ->add('klimaskaermOverskrevetPris')
+            ->add('type')
+            ->add('placering')
+            ->add('hoejdeElLaengdeM')
+            ->add('breddeM')
+            ->add('antalStk')
+            ->add('andelAfArealDerEfterisoleres', 'percent', ['scale' => 2, 'required' => false])
+            ->add('uEksWM2K')
+            ->add('uNyWM2K')
+            ->add('tIndeC')
+            ->add('tUdeC')
+            ->add('tOpvarmningTimerAar')
+            ->add('yderligereBesparelserPct', 'percent', ['scale' => 2, 'required' => false])
+            ->add('prisfaktor')
+            ->add('noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet', 'textarea', [
+                'attr' => ['maxlength' => 360], 'required' => false,
+            ])
+            ->add('levetidAar')
+            ->add('noteGenerelt', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
       ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\KlimaskaermTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\KlimaskaermTiltagDetail',
+        ]);
     }
 
     public function getName()

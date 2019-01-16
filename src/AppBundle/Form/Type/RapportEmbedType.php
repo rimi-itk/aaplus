@@ -39,16 +39,16 @@ class RapportEmbedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add(
+            ->add(
           'datering',
           'date',
           [
-          // render as a single HTML5 text box
-          'widget' => 'single_text', ]
+              // render as a single HTML5 text box
+              'widget' => 'single_text', ]
       )
-      ->add('faktorPaaVarmebesparelse')
-      ->add('energiscreening')
-      ->add('elena');
+            ->add('faktorPaaVarmebesparelse')
+            ->add('energiscreening')
+            ->add('elena');
 
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
             $builder->add('ava');
@@ -64,8 +64,8 @@ class RapportEmbedType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     /**

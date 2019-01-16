@@ -44,13 +44,13 @@ class RapportStatusType extends AbstractType
     {
         if (BygningStatusType::UNDER_UDFOERSEL === $this->status && $this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
             $builder->add('ava', 'choice', [
-        'choices' => [
-          'Ikke ansøgt AVA-støtte' => '0',
-          'Ansøgt om AVA-støtte ' => '1',
-        ],
-        'placeholder' => '--',
-        'required' => true,
-      ]);
+                'choices' => [
+                    'Ikke ansøgt AVA-støtte' => '0',
+                    'Ansøgt om AVA-støtte ' => '1',
+                ],
+                'placeholder' => '--',
+                'required' => true,
+            ]);
         }
     }
 
@@ -63,8 +63,8 @@ class RapportStatusType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     /**

@@ -43,21 +43,21 @@ class RapportShowType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add(
+            ->add(
           'datering',
           'date',
           [
-        'disabled' => 'disabled',
-        // render as a single HTML5 text box
-        'widget' => 'single_text', ]
+              'disabled' => 'disabled',
+              // render as a single HTML5 text box
+              'widget' => 'single_text', ]
       )
-      ->add('BaselineEl', null, ['disabled' => 'disabled'])
-      ->add('BaselineVarmeGUF', null, ['disabled' => 'disabled'])
-      ->add('BaselineVarmeGAF', null, ['disabled' => 'disabled'])
-      ->add('bygning', new BygningBaselineEmbedType(), ['label' => false])
-      ->add('BaselineStrafAfkoeling', null, ['disabled' => 'disabled'])
-      ->add('faktorPaaVarmebesparelse', null, ['disabled' => 'disabled'])
-      ->add('energiscreening', null, ['disabled' => 'disabled']);
+            ->add('BaselineEl', null, ['disabled' => 'disabled'])
+            ->add('BaselineVarmeGUF', null, ['disabled' => 'disabled'])
+            ->add('BaselineVarmeGAF', null, ['disabled' => 'disabled'])
+            ->add('bygning', new BygningBaselineEmbedType(), ['label' => false])
+            ->add('BaselineStrafAfkoeling', null, ['disabled' => 'disabled'])
+            ->add('faktorPaaVarmebesparelse', null, ['disabled' => 'disabled'])
+            ->add('energiscreening', null, ['disabled' => 'disabled']);
 
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
             $builder->add('elena', null, ['disabled' => 'disabled']);
@@ -77,8 +77,8 @@ class RapportShowType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     /**

@@ -71,22 +71,22 @@ SQL;
         // The order here is important.
         // A table must come after tables it depends on.
         $auditTableNames = [
-      'Configuration_audit',
-      'Forsyningsvaerk_audit',
-      'NyttiggjortVarme_audit',
-      'Pumpe_audit',
-      'Segment_audit',
-      'Solcelle_audit',
-      'Bygning_audit',
-      'Rapport_audit',
-      'Energiforsyning_audit',
-      'InternProduktion_audit',
-      'Bilag_audit',
-      'Baseline_audit',
-      'BaselineKorrektion_audit',
-      'Tiltag_audit',
-      'TiltagDetail_audit',
-    ];
+            'Configuration_audit',
+            'Forsyningsvaerk_audit',
+            'NyttiggjortVarme_audit',
+            'Pumpe_audit',
+            'Segment_audit',
+            'Solcelle_audit',
+            'Bygning_audit',
+            'Rapport_audit',
+            'Energiforsyning_audit',
+            'InternProduktion_audit',
+            'Bilag_audit',
+            'Baseline_audit',
+            'BaselineKorrektion_audit',
+            'Tiltag_audit',
+            'TiltagDetail_audit',
+        ];
 
         $revisionOffset = 20000;
 

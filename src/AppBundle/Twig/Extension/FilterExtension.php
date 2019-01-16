@@ -25,10 +25,10 @@ class FilterExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-      new Twig_SimpleFilter('b2icon', [$this, 'booleanToIconFilter'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('b2number', [$this, 'booleanToNumberFilter'], ['is_safe' => ['all']]),
-      new Twig_SimpleFilter('b2class', [$this, 'booleanToClassFilter'], ['is_safe' => ['all']]),
-    ];
+            new Twig_SimpleFilter('b2icon', [$this, 'booleanToIconFilter'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('b2number', [$this, 'booleanToNumberFilter'], ['is_safe' => ['all']]),
+            new Twig_SimpleFilter('b2class', [$this, 'booleanToClassFilter'], ['is_safe' => ['all']]),
+        ];
     }
 
     public function booleanToIconFilter($boolean)

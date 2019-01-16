@@ -23,9 +23,9 @@ class SolcelleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('KWp')
-      ->add('inverterpris')
-      ->add('drift');
+            ->add('KWp')
+            ->add('inverterpris')
+            ->add('drift');
     }
 
     /**
@@ -34,8 +34,8 @@ class SolcelleType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Solcelle',
-    ]);
+            'data_class' => 'AppBundle\Entity\Solcelle',
+        ]);
     }
 
     /**

@@ -40,8 +40,8 @@ class ConfigurationController extends BaseController
         $entity = $this->getConfiguration();
 
         return [
-      'entity' => $entity,
-    ];
+            'entity' => $entity,
+        ];
     }
 
     /**
@@ -65,9 +65,9 @@ class ConfigurationController extends BaseController
         $editForm = $this->createEditForm($entity);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -99,9 +99,9 @@ class ConfigurationController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     private function getConfiguration()

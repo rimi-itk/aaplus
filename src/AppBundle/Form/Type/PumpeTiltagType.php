@@ -27,8 +27,8 @@ class PumpeTiltagType extends TiltagType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\PumpeTiltag',
-    ]);
+            'data_class' => 'AppBundle\Entity\PumpeTiltag',
+        ]);
     }
 
     /**

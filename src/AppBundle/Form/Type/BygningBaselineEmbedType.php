@@ -42,8 +42,8 @@ class BygningBaselineEmbedType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bygning',
-    ]);
+            'data_class' => 'AppBundle\Entity\Bygning',
+        ]);
     }
 
     /**

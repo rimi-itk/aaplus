@@ -23,26 +23,26 @@ class PumpeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('nuvaerendeType')
-      ->add('byggemaal')
-      ->add('tilslutning')
-      ->add('indst')
-      ->add('forbrug')
-      ->add('q')
-      ->add('h')
-      ->add('aarsforbrug')
-      ->add('nyPumpe')
-      ->add('nyByggemaal')
-      ->add('nyTilslutning')
-      ->add('vvsnr')
-      ->add('nytAarsforbrug')
-      ->add('elbesparelse')
-      ->add('udligningssaet')
-      ->add('kommentarer')
-      ->add('standInvestering')
-      ->add('fabrikant')
-      ->add('roerlaengde')
-      ->add('roerstoerrelse');
+            ->add('nuvaerendeType')
+            ->add('byggemaal')
+            ->add('tilslutning')
+            ->add('indst')
+            ->add('forbrug')
+            ->add('q')
+            ->add('h')
+            ->add('aarsforbrug')
+            ->add('nyPumpe')
+            ->add('nyByggemaal')
+            ->add('nyTilslutning')
+            ->add('vvsnr')
+            ->add('nytAarsforbrug')
+            ->add('elbesparelse')
+            ->add('udligningssaet')
+            ->add('kommentarer')
+            ->add('standInvestering')
+            ->add('fabrikant')
+            ->add('roerlaengde')
+            ->add('roerstoerrelse');
     }
 
     /**
@@ -51,8 +51,8 @@ class PumpeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Pumpe',
-    ]);
+            'data_class' => 'AppBundle\Entity\Pumpe',
+        ]);
     }
 
     /**

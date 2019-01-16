@@ -33,12 +33,12 @@ class RapportBilagType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('titel')
-      ->add('kommentar')
-      ->add('filepath', 'file', [
-        'data_class' => null,
-        'attachment_path' => 'filepath',
-      ]);
+            ->add('titel')
+            ->add('kommentar')
+            ->add('filepath', 'file', [
+                'data_class' => null,
+                'attachment_path' => 'filepath',
+            ]);
 
         $builder->addEventListener(
       FormEvents::PRE_SUBMIT,
@@ -57,8 +57,8 @@ class RapportBilagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bilag',
-    ]);
+            'data_class' => 'AppBundle\Entity\Bilag',
+        ]);
     }
 
     public function getName()

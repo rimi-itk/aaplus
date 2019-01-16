@@ -22,56 +22,56 @@ class TekniskIsoleringTiltagDetailType extends TiltagDetailType
     {
         parent::buildForm($builder, $options);
         $builder
-      ->add('laastAfEnergiraadgiver', null, [
-        'required' => false,
-      ])
-      ->add('beskrivelseType')
-      ->add('komponent', null, [
-        'required' => false,
-      ])
-      ->add('driftstidTAar')
-      ->add('udvDiameterMm')
-      ->add('eksistIsolMm')
-      ->add('tempOmgivelC')
-      ->add('tempMedieC')
-      ->add('roerlaengdeEllerHoejdeAfVvbM')
-      ->add('nyIsolMm')
-      ->add('standardinvestKrM2EllerKrM')
-      ->add('overskrevetPris')
-      ->add('prisfaktor');
+            ->add('laastAfEnergiraadgiver', null, [
+                'required' => false,
+            ])
+            ->add('beskrivelseType')
+            ->add('komponent', null, [
+                'required' => false,
+            ])
+            ->add('driftstidTAar')
+            ->add('udvDiameterMm')
+            ->add('eksistIsolMm')
+            ->add('tempOmgivelC')
+            ->add('tempMedieC')
+            ->add('roerlaengdeEllerHoejdeAfVvbM')
+            ->add('nyIsolMm')
+            ->add('standardinvestKrM2EllerKrM')
+            ->add('overskrevetPris')
+            ->add('prisfaktor');
 
         if ($this->isBatchEdit) {
             $builder->add('nyttiggjortVarme', null, [
-        'required' => false,
-        'placeholder' => '--',
-        'empty_data' => null,
-      ]);
+                'required' => false,
+                'placeholder' => '--',
+                'empty_data' => null,
+            ]);
             $builder->add('type', 'choice', [
-        'choices' => [
-          'Rør' => 'Rør',
-          'Komponenter' => 'Komponenter',
-        ],
-        'placeholder' => '--',
-        'empty_data' => null,
-      ]);
+                'choices' => [
+                    'Rør' => 'Rør',
+                    'Komponenter' => 'Komponenter',
+                ],
+                'placeholder' => '--',
+                'empty_data' => null,
+            ]);
         } else {
             $builder->add('nyttiggjortVarme', null, [
-        'required' => true,
-      ]);
+                'required' => true,
+            ]);
             $builder->add('type', 'choice', [
-        'choices' => [
-          'Rør' => 'Rør',
-          'Komponenter' => 'Komponenter',
-        ],
-      ]);
+                'choices' => [
+                    'Rør' => 'Rør',
+                    'Komponenter' => 'Komponenter',
+                ],
+            ]);
         }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\TekniskIsoleringTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\TekniskIsoleringTiltagDetail',
+        ]);
     }
 
     public function getName()

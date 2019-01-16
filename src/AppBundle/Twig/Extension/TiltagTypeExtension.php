@@ -26,10 +26,10 @@ class TiltagTypeExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-      new Twig_SimpleFunction('tiltag_type', [$this, 'getTiltagType'], ['is_safe' => ['html']]),
-      new Twig_SimpleFunction('tiltag_route', [$this, 'getTiltagRouteName'], ['is_safe' => ['html']]),
-      new Twig_SimpleFunction('is_missing_tiltag_type', [$this, 'isMissingTiltagType'], ['is_safe' => ['html']]),
-    ];
+            new Twig_SimpleFunction('tiltag_type', [$this, 'getTiltagType'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('tiltag_route', [$this, 'getTiltagRouteName'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('is_missing_tiltag_type', [$this, 'isMissingTiltagType'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**

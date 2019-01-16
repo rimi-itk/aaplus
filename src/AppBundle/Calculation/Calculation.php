@@ -92,11 +92,11 @@ abstract class Calculation
 
                         if ($isChanged) {
                             $changes[] = [
-                'property' => $name,
-                'type' => $type,
-                'oldValue' => $oldValue,
-                'newValue' => $newValue,
-              ];
+                                'property' => $name,
+                                'type' => $type,
+                                'oldValue' => $oldValue,
+                                'newValue' => $newValue,
+                            ];
                         }
                     }
                 } catch (\Exception $ex) {

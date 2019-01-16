@@ -56,10 +56,10 @@ class BaselineKorrektionController extends BaseController
         $deleteForm = $this->createDeleteForm($entity->getId());
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -91,10 +91,10 @@ class BaselineKorrektionController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -151,9 +151,9 @@ class BaselineKorrektionController extends BaseController
     private function createEditForm(BaselineKorrektion $entity)
     {
         $form = $this->createForm(new BaselineKorrektionType(), $entity, [
-      'action' => $this->generateUrl('baselinekorrektion_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('baselinekorrektion_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('baseline_show', ['id' => $entity->getBaseline()->getId()]));
 
@@ -170,9 +170,9 @@ class BaselineKorrektionController extends BaseController
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('baselinekorrektion_delete', ['id' => $id]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', ['label' => 'Delete'])
-      ->getForm();
+            ->setAction($this->generateUrl('baselinekorrektion_delete', ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
     }
 }

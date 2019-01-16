@@ -22,28 +22,28 @@ class VindueTiltagDetailType extends KlimaskaermTiltagDetailType
     {
         parent::buildForm($builder, $options);
         $builder
-      ->remove('andelAfArealDerEfterisoleres')
-      ->remove('tIndeC')
-      ->remove('tUdeC')
-      ->remove('tOpvarmningTimerAar')
-      ->remove('andelAfArealDerEfterisoleres')
-      ->add('orientering', null, [
-        'required' => true,
-      ])
-      ->add('glasandel', 'percent', ['scale' => 2])
+            ->remove('andelAfArealDerEfterisoleres')
+            ->remove('tIndeC')
+            ->remove('tUdeC')
+            ->remove('tOpvarmningTimerAar')
+            ->remove('andelAfArealDerEfterisoleres')
+            ->add('orientering', null, [
+                'required' => true,
+            ])
+            ->add('glasandel', 'percent', ['scale' => 2])
       ;
 
         $this->insertAfter($builder, $builder->get('uNyWM2K'), [
-      ['solenergitransmittansEks', 'percent', ['scale' => 2]],
-      ['solenergitransmittansNy', 'percent', ['scale' => 2, 'required' => false]],
-    ]);
+            ['solenergitransmittansEks', 'percent', ['scale' => 2]],
+            ['solenergitransmittansNy', 'percent', ['scale' => 2, 'required' => false]],
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\VindueTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\VindueTiltagDetail',
+        ]);
     }
 
     public function getName()

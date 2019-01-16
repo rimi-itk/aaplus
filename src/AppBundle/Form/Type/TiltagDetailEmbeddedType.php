@@ -22,18 +22,18 @@ class TiltagDetailEmbeddedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('tilvalgt', 'checkbox', ['label' => false, 'required' => false, 'attr' => [
-      'class' => 'tilvalgt',
-    ]]);
+            'class' => 'tilvalgt',
+        ]]);
         $builder->add('batchEdit', 'checkbox', ['label' => 'common.choose', 'required' => false, 'mapped' => true, 'attr' => [
-      'class' => 'js-batch-edit',
-    ]]);
+            'class' => 'js-batch-edit',
+        ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
       [
-        'data_class' => 'AppBundle\Entity\TiltagDetail',
+          'data_class' => 'AppBundle\Entity\TiltagDetail',
       ]
     );
     }

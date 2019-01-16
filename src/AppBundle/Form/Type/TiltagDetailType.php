@@ -69,14 +69,14 @@ class TiltagDetailType extends AbstractType
             array_replace(
               $options,
               [
-                // replacing specific ones
-                'required' => false,
-                'choices' => [
-                    'Nej' => '0',
-                    'Ja' => '1',
-                ],
-                'empty_data' => null,
-                'placeholder' => '--',
+                  // replacing specific ones
+                  'required' => false,
+                  'choices' => [
+                      'Nej' => '0',
+                      'Ja' => '1',
+                  ],
+                  'empty_data' => null,
+                  'placeholder' => '--',
               ]
             )
                     );
@@ -90,8 +90,8 @@ class TiltagDetailType extends AbstractType
             array_replace(
               $options,
               [
-                // replacing specific ones
-                'required' => false,
+                  // replacing specific ones
+                  'required' => false,
               ]
             )
           );
@@ -104,7 +104,7 @@ class TiltagDetailType extends AbstractType
     {
         $resolver->setDefaults(
       [
-        'data_class' => 'AppBundle\Entity\TiltagDetail',
+          'data_class' => 'AppBundle\Entity\TiltagDetail',
       ]
     );
     }

@@ -69,7 +69,7 @@ class LoadExcelRapport extends LoadData
         $this->manager = $manager;
 
         $basepath = $this->container->get('kernel')
-              ->locateResource('@AppBundle/DataFixtures/Data/');
+            ->locateResource('@AppBundle/DataFixtures/Data/');
         foreach (glob($basepath.'*.xlsm') as $filepath) {
             $this->name = basename($filepath, '.xlsm');
 
@@ -102,18 +102,18 @@ class LoadExcelRapport extends LoadData
         foreach ($data as $rowId => $row) {
             if ($row['A']) {
                 $energiforsyning = $this->loadEntity(new Energiforsyning(), [
-          'A' => ['navn', function ($value) {
-              switch ($value) {
-              case 'Hovedforsyning El':
-                return NavnType::HOVEDFORSYNING_EL;
-              case 'Fjernvarme':
-                return NavnType::FJERNVARME;
-              default:
-                return NavnType::NONE;
-            }
-          }],
-          'B' => 'beskrivelse',
-        ], $row);
+                    'A' => ['navn', function ($value) {
+                        switch ($value) {
+                        case 'Hovedforsyning El':
+                          return NavnType::HOVEDFORSYNING_EL;
+                        case 'Fjernvarme':
+                          return NavnType::FJERNVARME;
+                        default:
+                          return NavnType::NONE;
+                      }
+                    }],
+                    'B' => 'beskrivelse',
+                ], $row);
 
                 $rapport->addEnergiforsyning($energiforsyning);
 
@@ -148,9 +148,9 @@ class LoadExcelRapport extends LoadData
 
                 $this->setEntityReference('energiforsyning', $row['A'], $energiforsyning);
                 $this->setCalculatedValues($energiforsyning, [
-          'samletVarmeeffektivitet' => $this->getCellValue($sheet->getCell('AJ'.$rowId)),
-          'samletEleffektivitet' => $this->getCellValue($sheet->getCell('AK'.$rowId)),
-        ]);
+                    'samletVarmeeffektivitet' => $this->getCellValue($sheet->getCell('AJ'.$rowId)),
+                    'samletEleffektivitet' => $this->getCellValue($sheet->getCell('AK'.$rowId)),
+                ]);
                 $this->persist($energiforsyning);
 
                 $this->writeInfo(\get_class($energiforsyning).' '.$energiforsyning->getId().' loaded');
@@ -177,45 +177,45 @@ class LoadExcelRapport extends LoadData
             }
 
             $forsyningsvaerk = $this->loadEntity(new Forsyningsvaerk(), [
-        'A' => 'navn',
-        'B' => 'energiform',
-        'C' => 'noter',
-        'D' => 'noterTBeregningAfRabat', // @FIXME: How is this actually used?
-        'E' => 'vedForbrugOverKWh',
-        // 'F' => 'pris2009',
-        // 'G' => 'pris2014',
-        'H' => 'pris2015',
-        'I' => 'pris2016',
-        'J' => 'pris2017',
-        'K' => 'pris2018',
-        'L' => 'pris2019',
-        'M' => 'pris2020',
-        'N' => 'pris2021',
-        'O' => 'pris2022',
-        'P' => 'pris2023',
-        'Q' => 'pris2024',
-        'R' => 'pris2025',
-        'S' => 'pris2026',
-        'T' => 'pris2027',
-        'U' => 'pris2028',
-        'V' => 'pris2029',
-        'W' => 'pris2030',
-        'X' => 'pris2031',
-        'Y' => 'pris2032',
-        'Z' => 'pris2033',
-        'AA' => 'pris2034',
-        'AB' => 'pris2035',
-        'AC' => 'pris2036',
-        'AD' => 'pris2037',
-        'AE' => 'pris2038',
-        'AF' => 'pris2039',
-        'AG' => 'pris2040',
-        'AH' => 'pris2041',
-        'AI' => 'pris2042',
-        'AJ' => 'pris2043',
-        'AK' => 'pris2044',
-        'AL' => 'pris2045',
-      ], $values);
+                'A' => 'navn',
+                'B' => 'energiform',
+                'C' => 'noter',
+                'D' => 'noterTBeregningAfRabat', // @FIXME: How is this actually used?
+                'E' => 'vedForbrugOverKWh',
+                // 'F' => 'pris2009',
+                // 'G' => 'pris2014',
+                'H' => 'pris2015',
+                'I' => 'pris2016',
+                'J' => 'pris2017',
+                'K' => 'pris2018',
+                'L' => 'pris2019',
+                'M' => 'pris2020',
+                'N' => 'pris2021',
+                'O' => 'pris2022',
+                'P' => 'pris2023',
+                'Q' => 'pris2024',
+                'R' => 'pris2025',
+                'S' => 'pris2026',
+                'T' => 'pris2027',
+                'U' => 'pris2028',
+                'V' => 'pris2029',
+                'W' => 'pris2030',
+                'X' => 'pris2031',
+                'Y' => 'pris2032',
+                'Z' => 'pris2033',
+                'AA' => 'pris2034',
+                'AB' => 'pris2035',
+                'AC' => 'pris2036',
+                'AD' => 'pris2037',
+                'AE' => 'pris2038',
+                'AF' => 'pris2039',
+                'AG' => 'pris2040',
+                'AH' => 'pris2041',
+                'AI' => 'pris2042',
+                'AJ' => 'pris2043',
+                'AK' => 'pris2044',
+                'AL' => 'pris2045',
+            ], $values);
 
             $this->setEntityReference('forsyningsvaerk', $values['A'], $forsyningsvaerk);
 
@@ -235,37 +235,37 @@ class LoadExcelRapport extends LoadData
 
             $forsyningsvaerk = $this->getEntityReference('forsyningsvaerk', $values['A'], false) ?: new Forsyningsvaerk();
             $forsyningsvaerk = $this->loadEntity($forsyningsvaerk, [
-        'A' => 'navn',
-        // 'B' => 'energiform',
-        'C' => 'co2noter',
-        // 'F' => 'co2y2009',
-        // 'G' => 'co2y2014',
-        'H' => 'co2y2015',
-        'I' => 'co2y2016',
-        'J' => 'co2y2017',
-        'K' => 'co2y2018',
-        'L' => 'co2y2019',
-        'M' => 'co2y2020',
-        'N' => 'co2y2021',
-        'O' => 'co2y2022',
-        'P' => 'co2y2023',
-        'Q' => 'co2y2024',
-        'R' => 'co2y2025',
-        'S' => 'co2y2026',
-        'T' => 'co2y2027',
-        'U' => 'co2y2028',
-        'V' => 'co2y2029',
-        'W' => 'co2y2030',
-        'X' => 'co2y2031',
-        'Y' => 'co2y2032',
-        'Z' => 'co2y2033',
-        'AA' => 'co2y2034',
-        'AB' => 'co2y2035',
-        'AC' => 'co2y2036',
-        'AD' => 'co2y2037',
-        'AE' => 'co2y2038',
-        'AF' => 'co2y2039',
-      ], $values);
+                'A' => 'navn',
+                // 'B' => 'energiform',
+                'C' => 'co2noter',
+                // 'F' => 'co2y2009',
+                // 'G' => 'co2y2014',
+                'H' => 'co2y2015',
+                'I' => 'co2y2016',
+                'J' => 'co2y2017',
+                'K' => 'co2y2018',
+                'L' => 'co2y2019',
+                'M' => 'co2y2020',
+                'N' => 'co2y2021',
+                'O' => 'co2y2022',
+                'P' => 'co2y2023',
+                'Q' => 'co2y2024',
+                'R' => 'co2y2025',
+                'S' => 'co2y2026',
+                'T' => 'co2y2027',
+                'U' => 'co2y2028',
+                'V' => 'co2y2029',
+                'W' => 'co2y2030',
+                'X' => 'co2y2031',
+                'Y' => 'co2y2032',
+                'Z' => 'co2y2033',
+                'AA' => 'co2y2034',
+                'AB' => 'co2y2035',
+                'AC' => 'co2y2036',
+                'AD' => 'co2y2037',
+                'AE' => 'co2y2038',
+                'AF' => 'co2y2039',
+            ], $values);
 
             $this->setEntityReference('forsyningsvaerk', $values['A'], $forsyningsvaerk);
 
@@ -335,10 +335,10 @@ class LoadExcelRapport extends LoadData
             }
 
             $solcelle = $this->loadEntity(new Solcelle(), [
-        'AE' => 'KWp',
-        'AF' => 'inverterpris',
-        'AG' => 'drift',
-      ], $values);
+                'AE' => 'KWp',
+                'AF' => 'inverterpris',
+                'AG' => 'drift',
+            ], $values);
 
             $this->persist($solcelle);
         }
@@ -358,77 +358,77 @@ class LoadExcelRapport extends LoadData
             }
 
             $bygning = $this->loadEntity(new Bygning(), [
-        'A' => 'bygId',
-        'B' => 'Ident',
-        'C' => 'Enhedsys',
-        'D' => 'Enhedskode',
-        'E' => 'Type',
-        'F' => 'Kommentarer',
-        'G' => 'Adresse',
-        'H' => 'postnummer',
-        'I' => 'POSTBY',
-        'J' => 'Navn',
-        'K' => 'Ejer',
-        // 'L' => 'Bruger',
-        // 'M' => 'Afdelingnavn',
-        'N' => 'Ejer_A',
-        'O' => 'Anvendelse',
-        'P' => ['Bruttoetageareal', 'integer'],
-        'Q' => 'Maalertype',
-        'R' => ['forsyningsvaerkVand', function ($value) {
-            return $this->getEntityReference('forsyningsvaerk', $value);
-        }],
-        // 'S' => 'Vand_InstNr',
-        // 'T' => 'Vand_MaalerNr',
-        // 'U' => 'Vand_Qn',
-        'V' => 'kundenummer',
-        'W' => 'kode',
-        'X' => ['forsyningsvaerkVarme', function ($value) {
-            return $this->getEntityReference('forsyningsvaerk', $value);
-        }],
-        'Y' => 'kundenr_1',
-        'Z' => 'kode_1',
-        'AA' => 'MaalerskifteAFV',
-        'AB' => 'AFVInstnr_1',
-        // 'AC' => 'Varme_MaalerNr',
-        // 'AD' => 'Varme_Qn',
-        'AE' => ['forsyningsvaerkEl', function ($value) {
-            return $this->getEntityReference('forsyningsvaerk', $value);
-        }],
-        'AF' => 'Instnr',
-        // 'AG' => 'El_MaalerNr',
-        'AH' => 'kundenr_NRGI',
-        'AI' => 'internetkode',
-        'AJ' => 'Aftagenr',
-        'AK' => 'Divisionnavn',
-        'AL' => 'Omraadenavn',
-        'AM' => 'Kommune',
-        'AN' => 'Ejerforhold',
-        // 'AO' => 'AnsvarligAnsvarlig',
-        'AP' => 'Magistrat',
-        'AQ' => 'Lokation',
-        'AR' => 'Lokationsnavn',
-        'AS' => 'Lederbetegnelse',
-        'AT' => 'Kontakt_Notat',
-        'AU' => 'Stamdata_Notat',
-        'AV' => 'Vand_Notat',
-        'AW' => 'El_Notat',
-        'AX' => 'Varme_Notat',
-        // 'AY' => 'Energimaerke',
-        // 'AZ' => 'EnergimaerkeDato',
-        // 'BA' => 'Net_Lokation',
-        // 'BB' => 'Net_AarhusNet',
-        // 'BC' => 'Net_Leverandoer',
-        // 'BD' => 'Kontakt1_Kontakt',
-        // 'BE' => 'Kontakt1_Mail',
-        // 'BF' => 'Kontakt1_Telefon',
-        // 'BG' => 'Kontakt2_Kontakt',
-        // 'BH' => 'Kontakt2_Mail',
-        // 'BI' => 'Kontakt2_Telefon',
-        // 'BJ' => 'Kontakt3_Kontakt',
-        // 'BK' => 'Kontakt3_Mail',
-        // 'BL' => 'Kontakt3_Telefon',
-      ], $values);
+                'A' => 'bygId',
+                'B' => 'Ident',
+                'C' => 'Enhedsys',
+                'D' => 'Enhedskode',
+                'E' => 'Type',
+                'F' => 'Kommentarer',
+                'G' => 'Adresse',
+                'H' => 'postnummer',
+                'I' => 'POSTBY',
+                'J' => 'Navn',
+                'K' => 'Ejer',
+                // 'L' => 'Bruger',
+                // 'M' => 'Afdelingnavn',
+                'N' => 'Ejer_A',
+                'O' => 'Anvendelse',
+                'P' => ['Bruttoetageareal', 'integer'],
+                'Q' => 'Maalertype',
+                'R' => ['forsyningsvaerkVand', function ($value) {
+                    return $this->getEntityReference('forsyningsvaerk', $value);
+                }],
+                // 'S' => 'Vand_InstNr',
+                // 'T' => 'Vand_MaalerNr',
+                // 'U' => 'Vand_Qn',
+                'V' => 'kundenummer',
+                'W' => 'kode',
+                'X' => ['forsyningsvaerkVarme', function ($value) {
+                    return $this->getEntityReference('forsyningsvaerk', $value);
+                }],
+                'Y' => 'kundenr_1',
+                'Z' => 'kode_1',
+                'AA' => 'MaalerskifteAFV',
+                'AB' => 'AFVInstnr_1',
+                // 'AC' => 'Varme_MaalerNr',
+                // 'AD' => 'Varme_Qn',
+                'AE' => ['forsyningsvaerkEl', function ($value) {
+                    return $this->getEntityReference('forsyningsvaerk', $value);
+                }],
+                'AF' => 'Instnr',
+                // 'AG' => 'El_MaalerNr',
+                'AH' => 'kundenr_NRGI',
+                'AI' => 'internetkode',
+                'AJ' => 'Aftagenr',
+                'AK' => 'Divisionnavn',
+                'AL' => 'Omraadenavn',
+                'AM' => 'Kommune',
+                'AN' => 'Ejerforhold',
+                // 'AO' => 'AnsvarligAnsvarlig',
+                'AP' => 'Magistrat',
+                'AQ' => 'Lokation',
+                'AR' => 'Lokationsnavn',
+                'AS' => 'Lederbetegnelse',
+                'AT' => 'Kontakt_Notat',
+                'AU' => 'Stamdata_Notat',
+                'AV' => 'Vand_Notat',
+                'AW' => 'El_Notat',
+                'AX' => 'Varme_Notat',
+                // 'AY' => 'Energimaerke',
+                // 'AZ' => 'EnergimaerkeDato',
+                // 'BA' => 'Net_Lokation',
+                // 'BB' => 'Net_AarhusNet',
+                // 'BC' => 'Net_Leverandoer',
+                // 'BD' => 'Kontakt1_Kontakt',
+                // 'BE' => 'Kontakt1_Mail',
+                // 'BF' => 'Kontakt1_Telefon',
+                // 'BG' => 'Kontakt2_Kontakt',
+                // 'BH' => 'Kontakt2_Mail',
+                // 'BI' => 'Kontakt2_Telefon',
+                // 'BJ' => 'Kontakt3_Kontakt',
+                // 'BK' => 'Kontakt3_Mail',
+                // 'BL' => 'Kontakt3_Telefon',
+            ], $values);
 
             $this->setEntityReference('bygning', $bygning->getEnhedsys(), $bygning);
             $bygning->setStatus(BygningStatusType::IKKE_STARTET);
@@ -462,13 +462,13 @@ class LoadExcelRapport extends LoadData
             }
 
             $klimaskaerm = $this->loadEntity(new Klimaskaerm(), [
-        'A' => 'post',
-        'B' => 'klimaskaerm',
-        'C' => 'arbejdeOmfang',
-        'D' => 'enhedsprisEksklMoms',
-        'E' => 'enhed',
-        'F' => 'noter',
-      ], $values);
+                'A' => 'post',
+                'B' => 'klimaskaerm',
+                'C' => 'arbejdeOmfang',
+                'D' => 'enhedsprisEksklMoms',
+                'E' => 'enhed',
+                'F' => 'noter',
+            ], $values);
 
             $this->setEntityReference('klimaskaerm', $values['A'], $klimaskaerm);
 
@@ -492,19 +492,19 @@ class LoadExcelRapport extends LoadData
         $bygning = $this->getEntityReference('bygning', $enhedsys);
         $rapport = new Rapport();
         $rapport
-      ->setBygning($bygning)
-      ->setVersion($sheet->getCell('C24')->getOldCalculatedValue())
-      ->setDatering($this->getDateTime($sheet->getCell('F23')))
-      ->setFaktorPaaVarmebesparelse($this->getCellValue($sheet->getCell('F21')))
-      ->setLaanLoebetid($this->getCellValue($this->getCell('TiltagslisteBruger', 'Q108')))
-      ->setConfiguration($this->configuration);
+            ->setBygning($bygning)
+            ->setVersion($sheet->getCell('C24')->getOldCalculatedValue())
+            ->setDatering($this->getDateTime($sheet->getCell('F23')))
+            ->setFaktorPaaVarmebesparelse($this->getCellValue($sheet->getCell('F21')))
+            ->setLaanLoebetid($this->getCellValue($this->getCell('TiltagslisteBruger', 'Q108')))
+            ->setConfiguration($this->configuration);
 
         $this->setCalculatedValues($rapport, [
-      'standardforsyning' => 1 === $this->getCellValue($this->getCell('2.Forsyning', 'H3')),
-      'mtmFaellesomkostninger' => $this->getCellValue($sheet->getCell('P5')),
-      'implementering' => $this->getCellValue($sheet->getCell('P6')),
-      'faellesomkostninger' => $this->getCellValue($sheet->getCell('P8')),
-    ]);
+            'standardforsyning' => 1 === $this->getCellValue($this->getCell('2.Forsyning', 'H3')),
+            'mtmFaellesomkostninger' => $this->getCellValue($sheet->getCell('P5')),
+            'implementering' => $this->getCellValue($sheet->getCell('P6')),
+            'faellesomkostninger' => $this->getCellValue($sheet->getCell('P8')),
+        ]);
 
         $this->loadEnergiforsyning($rapport);
         $this->loadTekniskIsoleringTiltag($rapport);
@@ -527,9 +527,9 @@ class LoadExcelRapport extends LoadData
         $repository = $this->manager->getRepository('AppBundle:Configuration');
         $this->configuration = $repository->getConfiguration();
         $this->configuration
-      ->setKalkulationsrente($this->getCellValue($sheet->getCell('AI23')))
-      ->setInflation($this->getCellValue($sheet->getCell('AK23')))
-      ->setLobetid($this->getCellValue($sheet->getCell('AN23')));
+            ->setKalkulationsrente($this->getCellValue($sheet->getCell('AI23')))
+            ->setInflation($this->getCellValue($sheet->getCell('AK23')))
+            ->setLobetid($this->getCellValue($sheet->getCell('AN23')));
     }
 
     private function getCell($sheet, $coordinate)
@@ -570,16 +570,16 @@ class LoadExcelRapport extends LoadData
     private function loadTiltag(Tiltag $tiltag, Rapport $rapport, \PHPExcel_Worksheet $sheet)
     {
         $tiltag
-      ->setRapport($rapport)
-      ->setForsyningVarme($this->getEntityReference('energiforsyning', $sheet->getCell('C13')->getValue()))
-      ->setForsyningEl($this->getEntityReference('energiforsyning', $sheet->getCell('F13')->getValue()))
-      ->setFaktorForReinvesteringer($this->getCellValue($sheet->getCell('C11')))
-      ->setTiltagskategori($this->getEntityReference('tiltagskategori', $sheet->getCell('D12')->getValue()))
-      ->setPrimaerEnterprise($this->getCellValue($sheet->getCell('B12')))
-      ->setRisikovurdering($this->getCellValue($sheet->getCell('C17')))
-      ->setPlacering($this->getCellValue($sheet->getCell('C19')))
-      ->setBeskrivelseDriftOgVedligeholdelse($this->getCellValue($sheet->getCell('A21')))
-      ->setIndeklima($this->getCellValue($sheet->getCell('A23')));
+            ->setRapport($rapport)
+            ->setForsyningVarme($this->getEntityReference('energiforsyning', $sheet->getCell('C13')->getValue()))
+            ->setForsyningEl($this->getEntityReference('energiforsyning', $sheet->getCell('F13')->getValue()))
+            ->setFaktorForReinvesteringer($this->getCellValue($sheet->getCell('C11')))
+            ->setTiltagskategori($this->getEntityReference('tiltagskategori', $sheet->getCell('D12')->getValue()))
+            ->setPrimaerEnterprise($this->getCellValue($sheet->getCell('B12')))
+            ->setRisikovurdering($this->getCellValue($sheet->getCell('C17')))
+            ->setPlacering($this->getCellValue($sheet->getCell('C19')))
+            ->setBeskrivelseDriftOgVedligeholdelse($this->getCellValue($sheet->getCell('A21')))
+            ->setIndeklima($this->getCellValue($sheet->getCell('A23')));
 
         $rapportSheet = $this->workbook->getSheetByName('1.TiltagslisteRådgiver');
         $tilvalgtData = $this->getRange($rapportSheet, 'B31:D64');
@@ -616,22 +616,22 @@ class LoadExcelRapport extends LoadData
 
         // Calculated values.
         $calculatedValues = [
-      'varmebesparelseGUF' => 'C4',
-      'varmebesparelseGAF' => 'C5',
-      'elbesparelse' => 'C6',
-      'vandbesparelse' => 'C7',
-      'samletEnergibesparelse' => 'C8',
-      'samletCo2besparelse' => 'C9',
-      'besparelseDriftOgVedligeholdelse' => 'G5',
-      'levetid' => 'G7',
-      'antalReinvesteringer' => 'C10',
-      'anlaegsinvestering' => 'G4',
-      'reinvestering' => 'G11',
-      'besparelseStrafafkoelingsafgift' => 'G6',
-      'scrapvaerdi' => 'G10',
-      'simpelTilbagebetalingstidAar' => 'G8',
-      'nutidsvaerdiSetOver15AarKr' => 'G9',
-    ];
+            'varmebesparelseGUF' => 'C4',
+            'varmebesparelseGAF' => 'C5',
+            'elbesparelse' => 'C6',
+            'vandbesparelse' => 'C7',
+            'samletEnergibesparelse' => 'C8',
+            'samletCo2besparelse' => 'C9',
+            'besparelseDriftOgVedligeholdelse' => 'G5',
+            'levetid' => 'G7',
+            'antalReinvesteringer' => 'C10',
+            'anlaegsinvestering' => 'G4',
+            'reinvestering' => 'G11',
+            'besparelseStrafafkoelingsafgift' => 'G6',
+            'scrapvaerdi' => 'G10',
+            'simpelTilbagebetalingstidAar' => 'G8',
+            'nutidsvaerdiSetOver15AarKr' => 'G9',
+        ];
 
         $convertToInput = function (array $properties) use ($sheet, $tiltag, $calculatedValues) {
             foreach ($properties as $property) {
@@ -642,29 +642,29 @@ class LoadExcelRapport extends LoadData
 
         if ($tiltag instanceof TekniskIsoleringTiltag || $tiltag instanceof PumpeTiltag) {
             $convertToInput([
-        'besparelseDriftOgVedligeholdelse',
-        'besparelseStrafafkoelingsafgift',
-        'levetid',
-      ]);
+                'besparelseDriftOgVedligeholdelse',
+                'besparelseStrafafkoelingsafgift',
+                'levetid',
+            ]);
         } elseif ($tiltag instanceof SolcelleTiltag) {
             $convertToInput([
-        'levetid',
-      ]);
+                'levetid',
+            ]);
         } elseif ($tiltag instanceof KlimaskaermTiltag) {
             $convertToInput([
-        'besparelseDriftOgVedligeholdelse',
-      ]);
+                'besparelseDriftOgVedligeholdelse',
+            ]);
         } elseif ($tiltag instanceof SpecialTiltag) {
             $convertToInput([
-        'besparelseDriftOgVedligeholdelse',
-        'besparelseStrafafkoelingsafgift',
-        'levetid',
-        'anlaegsinvestering',
-      ]);
+                'besparelseDriftOgVedligeholdelse',
+                'besparelseStrafafkoelingsafgift',
+                'levetid',
+                'anlaegsinvestering',
+            ]);
             $tiltag
-        ->setBesparelseGUF($this->getCellValue($sheet->getCell('J29')))
-        ->setBesparelseGAF($this->getCellValue($sheet->getCell('J30')))
-        ->setBesparelseEl($this->getCellValue($sheet->getCell('J31')));
+                ->setBesparelseGUF($this->getCellValue($sheet->getCell('J29')))
+                ->setBesparelseGAF($this->getCellValue($sheet->getCell('J30')))
+                ->setBesparelseEl($this->getCellValue($sheet->getCell('J31')));
         }
 
         $values = [];
@@ -690,8 +690,8 @@ class LoadExcelRapport extends LoadData
         $sheet = $this->workbook->getSheetByName('Detailark (3)');
 
         $this->configuration
-      ->setVarmeledningsevneEksistLamelmaatter($this->getCellValue($sheet->getCell('N38')))
-      ->setVarmeledningsevneNyIsolering($this->getCellValue($sheet->getCell('N39')));
+            ->setVarmeledningsevneEksistLamelmaatter($this->getCellValue($sheet->getCell('N38')))
+            ->setVarmeledningsevneNyIsolering($this->getCellValue($sheet->getCell('N39')));
 
         $tiltag = $this->loadTiltag(new TekniskIsoleringTiltag(), $rapport, $sheet);
         $this->loadTekniskIsoleringTiltagDetail($tiltag, $sheet);
@@ -709,37 +709,37 @@ class LoadExcelRapport extends LoadData
     {
         // Column name => class property (, type)
         $columnMapping = [
-      'I' => ['laastAfEnergiraadgiver', $this->isSelected],
-      'J' => ['tilvalgt', $this->isSelected],
-      'K' => 'beskrivelseType',
-      'L' => 'type',
-      'M' => 'driftstidTAar',
-      'N' => 'udvDiameterMm',
-      'O' => 'eksistIsolMm',
-      'Q' => 'tankVolL',
-      'R' => 'tempOmgivelC',
-      'S' => 'tempMedieC',
-      'T' => 'roerlaengdeEllerHoejdeAfVvbM',
-      'U' => 'nyttiggjortVarme',
-      'V' => 'nyIsolMm',
-      'Z' => 'standardinvestKrM2EllerKrM',
-      'AA' => 'prisfaktor',
+            'I' => ['laastAfEnergiraadgiver', $this->isSelected],
+            'J' => ['tilvalgt', $this->isSelected],
+            'K' => 'beskrivelseType',
+            'L' => 'type',
+            'M' => 'driftstidTAar',
+            'N' => 'udvDiameterMm',
+            'O' => 'eksistIsolMm',
+            'Q' => 'tankVolL',
+            'R' => 'tempOmgivelC',
+            'S' => 'tempMedieC',
+            'T' => 'roerlaengdeEllerHoejdeAfVvbM',
+            'U' => 'nyttiggjortVarme',
+            'V' => 'nyIsolMm',
+            'Z' => 'standardinvestKrM2EllerKrM',
+            'AA' => 'prisfaktor',
 
-      // Calculated
-      'P' => 'roerstoerrelseMmAekvivalent',
-      'W' => 'varmeledningsevnePaaEksistIsoleringWMK',
-      'X' => 'varmeledningsevnePaaNyIsoleringWMK',
-      'Y' => 'arealAfBeholderM2',
-      'AB' => 'investeringKr',
-      'AC' => 'eksistVarmetabKwh',
-      'AD' => 'nytVarmetabKwh',
-      'AE' => 'varmebespKwhAar',
-      'AH' => 'kwhBesparelseElFraVaerket',
-      'AI' => 'kwhBesparelseVarmeFraVaerket',
-      // 'AJ' => 'driftparameterCsAar',
-      'AF' => 'simpelTilbagebetalingstidAar',
-      'AG' => 'nutidsvaerdiSetOver15AarKr',
-    ];
+            // Calculated
+            'P' => 'roerstoerrelseMmAekvivalent',
+            'W' => 'varmeledningsevnePaaEksistIsoleringWMK',
+            'X' => 'varmeledningsevnePaaNyIsoleringWMK',
+            'Y' => 'arealAfBeholderM2',
+            'AB' => 'investeringKr',
+            'AC' => 'eksistVarmetabKwh',
+            'AD' => 'nytVarmetabKwh',
+            'AE' => 'varmebespKwhAar',
+            'AH' => 'kwhBesparelseElFraVaerket',
+            'AI' => 'kwhBesparelseVarmeFraVaerket',
+            // 'AJ' => 'driftparameterCsAar',
+            'AF' => 'simpelTilbagebetalingstidAar',
+            'AG' => 'nutidsvaerdiSetOver15AarKr',
+        ];
 
         $this->loadTiltagDetail($tiltag, new TekniskIsoleringTiltagDetail(), $sheet, 'I48:AL99', $columnMapping, function ($row) {
             return $row['K'];
@@ -774,128 +774,128 @@ class LoadExcelRapport extends LoadData
     private function loadBelysningTiltagDetail(BelysningTiltag $tiltag, \PHPExcel_Worksheet $sheet)
     {
         $columnMapping = [
-      // Column name => class property (, type)
-      'I' => ['laastAfEnergiraadgiver', $this->isSelected],
-      'J' => ['tilvalgt', $this->isSelected],
-      'K' => 'lokale_navn',
-      // 'L' => '',
-      'M' => 'lokale_type',
-      'N' => 'armaturhoejdeM',
-      'O' => 'rumstoerrelseM2',
-      // 'P' => '',
-      'Q' => 'lokale_antal',
-      'R' => 'drifttidTAar',
-      // 'S' => '',
-      'T' => ['lyskilde', function ($value) {
-          return $this->getEntityReference('lyskilde', $value);
-      }],
-      // 'U' => '',
-      // 'V' => '',
-      'W' => 'lyskildeStkArmatur',
-      'X' => 'lyskildeWLyskilde',
-      'Y' => 'forkoblingStkArmatur',
-      'AA' => 'armaturerStkLokale',
-      // 'AB' => ''
-      // 'AC' => ''
-      'AD' => ['placering', function ($value) {
-          switch ($value) {
-          case 1:
-            return PlaceringType::NEDHAENGT;
-          case 2:
-            return PlaceringType::INDBYGGET;
-          case 3:
-            return PlaceringType::PAABYGGET;
-          case 4:
-            return PlaceringType::STAAENDE;
-          case 5:
-            return PlaceringType::ANDET_SE_NOTER;
-          default:
-            return PlaceringType::NONE;
-        }
-      }],
-      // 'AE' => '',
-      'AF' => ['styring', function ($value) {
-          switch ($value) {
-          case 2:
-            return StyringType::PIR_ON_OFF;
-          case 3:
-            return StyringType::PIR_DGS;
-          case 4:
-            return StyringType::SKUMRINGSRELAE;
-          case 5:
-            return StyringType::PIR_I_AFBRYDER;
-          case 8:
-            return StyringType::ANDET_SE_NOTER;
-          default:
-            return StyringType::NONE;
-        }
-      }],
-      // 'AG' => '',
-      'AH' => 'noter',
-      'AI' => ['belysningstiltag', function ($value) {
-          switch ($value) {
-          case 4:
-            return TiltagType::ARMATUR;
-          case 5:
-            return TiltagType::LED_I_EKSIST_ARM;
-          case 6:
-            return TiltagType::NY_INDSATS_I_ARM;
-          case 7:
-            return TiltagType::ANDET_SE_NOTER;
-          default:
-            return TiltagType::NONE;
-        }
-      }],
-      // 'AJ' => '',
-      'AK' => 'nyeSensorerStkLokale',
-      'AL' => 'standardinvestSensorKrStk',
-      'AM' => 'reduktionAfDrifttid',
-      'AO' => 'standardinvestArmaturKrStk',
-      'AP' => 'standardinvestLyskildeKrStk',
-      'AQ' => ['nyLyskilde', function ($value) {
-          return $this->getEntityReference('lyskilde', $value);
-      }],
-      // 'AR' => ''
-      // 'AS' => ''
-      'AT' => 'nyLyskildeStkArmatur',
-      'AU' => 'nyLyskildeWLyskilde',
-      'AV' => 'nyForkoblingStkArmatur',
-      // 'AW' => '',
-      'AX' => 'nyeArmaturerStkLokale',
-      'AY' => 'nyttiggjortVarmeAfElBesparelse',
-      'AZ' => 'prisfaktor',
+            // Column name => class property (, type)
+            'I' => ['laastAfEnergiraadgiver', $this->isSelected],
+            'J' => ['tilvalgt', $this->isSelected],
+            'K' => 'lokale_navn',
+            // 'L' => '',
+            'M' => 'lokale_type',
+            'N' => 'armaturhoejdeM',
+            'O' => 'rumstoerrelseM2',
+            // 'P' => '',
+            'Q' => 'lokale_antal',
+            'R' => 'drifttidTAar',
+            // 'S' => '',
+            'T' => ['lyskilde', function ($value) {
+                return $this->getEntityReference('lyskilde', $value);
+            }],
+            // 'U' => '',
+            // 'V' => '',
+            'W' => 'lyskildeStkArmatur',
+            'X' => 'lyskildeWLyskilde',
+            'Y' => 'forkoblingStkArmatur',
+            'AA' => 'armaturerStkLokale',
+            // 'AB' => ''
+            // 'AC' => ''
+            'AD' => ['placering', function ($value) {
+                switch ($value) {
+                case 1:
+                  return PlaceringType::NEDHAENGT;
+                case 2:
+                  return PlaceringType::INDBYGGET;
+                case 3:
+                  return PlaceringType::PAABYGGET;
+                case 4:
+                  return PlaceringType::STAAENDE;
+                case 5:
+                  return PlaceringType::ANDET_SE_NOTER;
+                default:
+                  return PlaceringType::NONE;
+              }
+            }],
+            // 'AE' => '',
+            'AF' => ['styring', function ($value) {
+                switch ($value) {
+                case 2:
+                  return StyringType::PIR_ON_OFF;
+                case 3:
+                  return StyringType::PIR_DGS;
+                case 4:
+                  return StyringType::SKUMRINGSRELAE;
+                case 5:
+                  return StyringType::PIR_I_AFBRYDER;
+                case 8:
+                  return StyringType::ANDET_SE_NOTER;
+                default:
+                  return StyringType::NONE;
+              }
+            }],
+            // 'AG' => '',
+            'AH' => 'noter',
+            'AI' => ['belysningstiltag', function ($value) {
+                switch ($value) {
+                case 4:
+                  return TiltagType::ARMATUR;
+                case 5:
+                  return TiltagType::LED_I_EKSIST_ARM;
+                case 6:
+                  return TiltagType::NY_INDSATS_I_ARM;
+                case 7:
+                  return TiltagType::ANDET_SE_NOTER;
+                default:
+                  return TiltagType::NONE;
+              }
+            }],
+            // 'AJ' => '',
+            'AK' => 'nyeSensorerStkLokale',
+            'AL' => 'standardinvestSensorKrStk',
+            'AM' => 'reduktionAfDrifttid',
+            'AO' => 'standardinvestArmaturKrStk',
+            'AP' => 'standardinvestLyskildeKrStk',
+            'AQ' => ['nyLyskilde', function ($value) {
+                return $this->getEntityReference('lyskilde', $value);
+            }],
+            // 'AR' => ''
+            // 'AS' => ''
+            'AT' => 'nyLyskildeStkArmatur',
+            'AU' => 'nyLyskildeWLyskilde',
+            'AV' => 'nyForkoblingStkArmatur',
+            // 'AW' => '',
+            'AX' => 'nyeArmaturerStkLokale',
+            'AY' => 'nyttiggjortVarmeAfElBesparelse',
+            'AZ' => 'prisfaktor',
 
-      // Calculated
-      // 'Z' => 'armatureffekt',
-      // 'AB' => 'elforbrugKwhPrLokaleAar',
-      'AC' => 'elforbrugWM2',
-      'AN' => 'nyDriftstid',
-      'AW' => 'nyArmatureffektWStk',
-      'BA' => 'prisfaktorTillaegKrLokale',
-      'BB' => 'investeringAlleLokalerKr',
-      // 'BC' => 'nytElforbrugKwhPrLokaleAar',
-      'BD' => 'nytElforbrugWM2',
-      // 'BE' => 'elbesparelseAlleLokalerKwhAar',
-      // 'BF' => 'varmebesparelseAlleLokalerKwhAar',
-      // 'BG' => 'eksistLyskildesLevetidT',
-      // 'BH' => 'nyLyskildesLevetidT',
-      // 'BI' => 'udgiftTilLyskilderKrStk',
-      // 'BJ' => 'nyUdgiftTilLyskilderKrStk',
-      'BK' => 'driftsbesparelseTilLyskilderKrAar',
-      'BL' => 'simpelTilbagebetalingstidAar',
-      'BM' => 'vaegtetLevetidAar',
-      // 'BN' => 'udgiftSensor',
-      // 'BO' => 'udgiftArmaturer',
-      // 'BP' => 'udgiftLyskilde',
-      // 'BQ' => 'levetidArmaturer',
-      // 'BR' => 'levetidLyskilde',
-      // 'BS' => 'armaturVaegtning',
-      // 'BT' => 'lyskildeVaegtning',
-      // 'BU' => 'faktorForReinvestering',
-      'BV' => 'nutidsvaerdiSetOver15AarKr',
-      'BW' => 'kwhBesparelseEl',
-      'BX' => 'kwhBesparelseVarmeFraVarmevaerket',
-    ];
+            // Calculated
+            // 'Z' => 'armatureffekt',
+            // 'AB' => 'elforbrugKwhPrLokaleAar',
+            'AC' => 'elforbrugWM2',
+            'AN' => 'nyDriftstid',
+            'AW' => 'nyArmatureffektWStk',
+            'BA' => 'prisfaktorTillaegKrLokale',
+            'BB' => 'investeringAlleLokalerKr',
+            // 'BC' => 'nytElforbrugKwhPrLokaleAar',
+            'BD' => 'nytElforbrugWM2',
+            // 'BE' => 'elbesparelseAlleLokalerKwhAar',
+            // 'BF' => 'varmebesparelseAlleLokalerKwhAar',
+            // 'BG' => 'eksistLyskildesLevetidT',
+            // 'BH' => 'nyLyskildesLevetidT',
+            // 'BI' => 'udgiftTilLyskilderKrStk',
+            // 'BJ' => 'nyUdgiftTilLyskilderKrStk',
+            'BK' => 'driftsbesparelseTilLyskilderKrAar',
+            'BL' => 'simpelTilbagebetalingstidAar',
+            'BM' => 'vaegtetLevetidAar',
+            // 'BN' => 'udgiftSensor',
+            // 'BO' => 'udgiftArmaturer',
+            // 'BP' => 'udgiftLyskilde',
+            // 'BQ' => 'levetidArmaturer',
+            // 'BR' => 'levetidLyskilde',
+            // 'BS' => 'armaturVaegtning',
+            // 'BT' => 'lyskildeVaegtning',
+            // 'BU' => 'faktorForReinvestering',
+            'BV' => 'nutidsvaerdiSetOver15AarKr',
+            'BW' => 'kwhBesparelseEl',
+            'BX' => 'kwhBesparelseVarmeFraVarmevaerket',
+        ];
 
         $this->loadTiltagDetail($tiltag, new BelysningTiltagDetail(), $sheet, 'I41:BW99', $columnMapping, function ($row) {
             return $row['K'];
@@ -943,11 +943,11 @@ class LoadExcelRapport extends LoadData
 
             $lyskilde = new BelysningTiltagDetailLyskilde();
             $lyskilde
-        ->setNavn($values[1])
-        ->setType($values[5])
-        ->setForkobling($getForkobling($values[0]))
-        ->setUdgift($values[7])
-        ->setLevetid($values[11]);
+                ->setNavn($values[1])
+                ->setType($values[5])
+                ->setForkobling($getForkobling($values[0]))
+                ->setUdgift($values[7])
+                ->setLevetid($values[11]);
 
             $this->setEntityReference('lyskilde', $values[0], $lyskilde);
 
@@ -968,28 +968,28 @@ class LoadExcelRapport extends LoadData
             }
 
             $pumpe = $this->loadEntity(new Pumpe(), [
-        'B' => 'NuvaerendeType',
-        'C' => 'Byggemaal',
-        'D' => 'Tilslutning',
-        'E' => ['Indst', 'integer'],
-        'F' => 'Forbrug',
-        'G' => ['Q', 'integer'],
-        'H' => ['H', 'integer'],
-        'I' => 'Aarsforbrug',
-        'J' => 'NyPumpe',
-        'K' => 'NyByggemaal',
-        'L' => 'NyTilslutning',
-        'M' => 'VvsNr',
-        'N' => 'NytAarsforbrug',
-        'O' => 'Elbesparelse',
-        'P' => ['Udligningssaet', 'string'],
-        'Q' => ['Kommentarer', 'string'],
-        'R' => ['StandInvestering', 'float'],
-        // 'S' => 'Besparelse ved isoleringskappe',
-        'T' => 'Roerlaengde',
-        'U' => 'Roerstoerrelse',
-        'V' => 'Fabrikant',
-      ], $values);
+                'B' => 'NuvaerendeType',
+                'C' => 'Byggemaal',
+                'D' => 'Tilslutning',
+                'E' => ['Indst', 'integer'],
+                'F' => 'Forbrug',
+                'G' => ['Q', 'integer'],
+                'H' => ['H', 'integer'],
+                'I' => 'Aarsforbrug',
+                'J' => 'NyPumpe',
+                'K' => 'NyByggemaal',
+                'L' => 'NyTilslutning',
+                'M' => 'VvsNr',
+                'N' => 'NytAarsforbrug',
+                'O' => 'Elbesparelse',
+                'P' => ['Udligningssaet', 'string'],
+                'Q' => ['Kommentarer', 'string'],
+                'R' => ['StandInvestering', 'float'],
+                // 'S' => 'Besparelse ved isoleringskappe',
+                'T' => 'Roerlaengde',
+                'U' => 'Roerstoerrelse',
+                'V' => 'Fabrikant',
+            ], $values);
 
             $this->setEntityReference('pumpe', $values['A'], $pumpe);
 
@@ -1041,54 +1041,54 @@ class LoadExcelRapport extends LoadData
     {
         // Column name => class property (, type)
         $columnMapping = [
-      'I' => ['laastAfEnergiraadgiver', $this->isSelected],
-      'J' => ['tilvalgt', $this->isSelected],
-      'K' => 'pumpeID',
-      'L' => 'forsyningsomraade',
-      'M' => 'placering',
-      'N' => 'applikation',
-      'N' => ['applikation', function ($value, $row) {
-          return $this->getEntityReference('PumpeTiltagDetailApplikation', $value);
-      }],
-      'O' => 'isoleringskappe',
-      'P' => 'bFaktor',
-      'Q' => 'noter',
-      'R' => 'eksisterendeDrifttid',
-      'S' => 'nyDrifttid',
-      'T' => 'prisfaktor',
-      'U' => ['pumpe', function ($value, $row) {
-          return $this->getEntityReference('pumpe', $value);
-      }],
-      // 'V' => '',
-      // 'W' => '',
-      // 'X' => '',
-      // 'Y' => '',
-      // 'Z' => '',
-      // 'AA' => '',
-      // 'AB' => '',
-      // 'AC' => '',
-      // 'AD' => '',
-      // 'AE' => '',
-      // 'AF' => '',
-      // 'AG' => '',
-      // 'AH' => '',
-      // 'AI' => '',
-      // 'AJ' => '',
-      // 'AK' => '',
-      // 'AL' => '',
-      // 'AM' => '',
+            'I' => ['laastAfEnergiraadgiver', $this->isSelected],
+            'J' => ['tilvalgt', $this->isSelected],
+            'K' => 'pumpeID',
+            'L' => 'forsyningsomraade',
+            'M' => 'placering',
+            'N' => 'applikation',
+            'N' => ['applikation', function ($value, $row) {
+                return $this->getEntityReference('PumpeTiltagDetailApplikation', $value);
+            }],
+            'O' => 'isoleringskappe',
+            'P' => 'bFaktor',
+            'Q' => 'noter',
+            'R' => 'eksisterendeDrifttid',
+            'S' => 'nyDrifttid',
+            'T' => 'prisfaktor',
+            'U' => ['pumpe', function ($value, $row) {
+                return $this->getEntityReference('pumpe', $value);
+            }],
+            // 'V' => '',
+            // 'W' => '',
+            // 'X' => '',
+            // 'Y' => '',
+            // 'Z' => '',
+            // 'AA' => '',
+            // 'AB' => '',
+            // 'AC' => '',
+            // 'AD' => '',
+            // 'AE' => '',
+            // 'AF' => '',
+            // 'AG' => '',
+            // 'AH' => '',
+            // 'AI' => '',
+            // 'AJ' => '',
+            // 'AK' => '',
+            // 'AL' => '',
+            // 'AM' => '',
 
-      // Calculated
-      'AN' => 'pristillaeg',
-      'AO' => 'samletInvesteringInklPristillaeg',
-      'AP' => 'elforbrugVedNyeDriftstidKWhAar',
-      'AQ' => 'elbespKWhAar',
-      'AU' => 'kwhBesparelseElFraVaerket',
-      'AV' => 'kwhBesparelseVarmeFraVaerket',
-      'AR' => 'varmebespIsokappeKWh',
-      'AS' => 'simpelTilbagebetalingstidAar',
-      'AT' => 'nutidsvaerdiSetOver15AarKr',
-    ];
+            // Calculated
+            'AN' => 'pristillaeg',
+            'AO' => 'samletInvesteringInklPristillaeg',
+            'AP' => 'elforbrugVedNyeDriftstidKWhAar',
+            'AQ' => 'elbespKWhAar',
+            'AU' => 'kwhBesparelseElFraVaerket',
+            'AV' => 'kwhBesparelseVarmeFraVaerket',
+            'AR' => 'varmebespIsokappeKWh',
+            'AS' => 'simpelTilbagebetalingstidAar',
+            'AT' => 'nutidsvaerdiSetOver15AarKr',
+        ];
 
         $this->loadTiltagDetail($tiltag, new PumpeTiltagDetail(), $sheet, 'I36:AV99', $columnMapping, function ($row) {
             return $row['K'];
@@ -1115,36 +1115,36 @@ class LoadExcelRapport extends LoadData
     {
         // Column name => class property (, type)
         $columnMapping = [
-      'I' => ['laastAfEnergiraadgiver', $this->isSelected],
-      'J' => ['tilvalgt', $this->isSelected],
-      'M' => 'typePlaceringJfPlantegning',
-      'N' => 'hoejdeElLaengdeM',
-      'O' => 'breddeM',
-      'P' => 'antalStk',
-      'R' => 'andelAfArealDerEfterisoleres',
-      'S' => 'uEksWM2K',
-      'T' => 'uNyWM2K',
-      'U' => 'tIndeC',
-      'V' => 'tUdeC',
-      'W' => 'tOpvarmningTimerAar',
-      'X' => 'yderligereBesparelserPct',
-      'AA' => ['klimaskaerm', function ($value) {
-          return $this->getEntityReference('klimaskaerm', $value);
-      }],
-      'AC' => 'prisfaktor',
-      'AG' => 'noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet',
-      'AJ' => 'levetidAar',
+            'I' => ['laastAfEnergiraadgiver', $this->isSelected],
+            'J' => ['tilvalgt', $this->isSelected],
+            'M' => 'typePlaceringJfPlantegning',
+            'N' => 'hoejdeElLaengdeM',
+            'O' => 'breddeM',
+            'P' => 'antalStk',
+            'R' => 'andelAfArealDerEfterisoleres',
+            'S' => 'uEksWM2K',
+            'T' => 'uNyWM2K',
+            'U' => 'tIndeC',
+            'V' => 'tUdeC',
+            'W' => 'tOpvarmningTimerAar',
+            'X' => 'yderligereBesparelserPct',
+            'AA' => ['klimaskaerm', function ($value) {
+                return $this->getEntityReference('klimaskaerm', $value);
+            }],
+            'AC' => 'prisfaktor',
+            'AG' => 'noterTilPrisfaktorValgteLoesningTiltagSpecielleForholdPaaStedet',
+            'AJ' => 'levetidAar',
 
-      // Calculated
-      'Q' => 'arealM2',
-      'Y' => 'besparelseKWhAar',
-      'AE' => 'samletInvesteringKr',
-      'AF' => 'simpelTilbagebetalingstidAar',
-      'AM' => 'faktorForReinvestering',
-      'AN' => 'nutidsvaerdiSetOver15AarKr',
-      'AO' => 'KWhBesparElvaerkEksternEnergikilde',
-      'AP' => 'KWhBesparVarmevaerkEksternEnergikilde',
-    ];
+            // Calculated
+            'Q' => 'arealM2',
+            'Y' => 'besparelseKWhAar',
+            'AE' => 'samletInvesteringKr',
+            'AF' => 'simpelTilbagebetalingstidAar',
+            'AM' => 'faktorForReinvestering',
+            'AN' => 'nutidsvaerdiSetOver15AarKr',
+            'AO' => 'KWhBesparElvaerkEksternEnergikilde',
+            'AP' => 'KWhBesparVarmevaerkEksternEnergikilde',
+        ];
 
         $this->loadTiltagDetail($tiltag, new KlimaskaermTiltagDetail(), $sheet, 'I38:AU99', $columnMapping, function ($row) {
             return $row['K'] || $row['L'];
@@ -1174,39 +1174,39 @@ class LoadExcelRapport extends LoadData
         }
 
         $columnMapping = [
-      'H' => ['laastAfEnergiraadgiver', $this->isSelected],
-      // Only one SolcelleTiltagDetail exists and it is selected
-      'I' => ['tilvalgt', function () {
-          return true;
-      }],
-      'J' => 'anlaegsstoerrelseKWp',
-      'K' => 'produktionKWh',
-      'L' => 'tilNettetPct',
-      'P' => 'inverterskift1Aar',
-      'Q' => 'inverterskift2Aar',
-      'S' => 'investeringKr',
-      'T' => 'screeningOgProjekteringKr',
-      'W' => 'omkostningTilMaalerKr',
-      'AB' => 'forringetYdeevnePrAar',
-      'AC' => 'energiprisstigningPctPrAar',
-      'AD' => 'salgsprisFoerste10AarKrKWh',
-      'AE' => 'salgsprisEfter10AarKrKWh',
-      'AF' => ['solcelle', function ($value, $row) {
-          return $this->manager->getRepository('AppBundle:Solcelle')->findByKWp($row['J']);
-      }],
+            'H' => ['laastAfEnergiraadgiver', $this->isSelected],
+            // Only one SolcelleTiltagDetail exists and it is selected
+            'I' => ['tilvalgt', function () {
+                return true;
+            }],
+            'J' => 'anlaegsstoerrelseKWp',
+            'K' => 'produktionKWh',
+            'L' => 'tilNettetPct',
+            'P' => 'inverterskift1Aar',
+            'Q' => 'inverterskift2Aar',
+            'S' => 'investeringKr',
+            'T' => 'screeningOgProjekteringKr',
+            'W' => 'omkostningTilMaalerKr',
+            'AB' => 'forringetYdeevnePrAar',
+            'AC' => 'energiprisstigningPctPrAar',
+            'AD' => 'salgsprisFoerste10AarKrKWh',
+            'AE' => 'salgsprisEfter10AarKrKWh',
+            'AF' => ['solcelle', function ($value, $row) {
+                return $this->manager->getRepository('AppBundle:Solcelle')->findByKWp($row['J']);
+            }],
 
-      // Calculated
-      'M' => 'tilEgetForbrugPct',
-      'N' => 'egetForbrugAfProduktionenKWh',
-      'O' => 'produktionTilNettetKWh',
-      'R' => 'prisForNyInverterKr',
-      // 'U' => 'scrapvaerdi',
-      'V' => 'driftPrAarKr',
-      'X' => 'raadighedstarifKr',
-      'Y' => 'totalDriftomkostningerPrAar',
-      'Z' => 'simpelTilbagebetalingstidAar',
-      'AA' => 'nutidsvaerdiSetOver15AarKr',
-    ];
+            // Calculated
+            'M' => 'tilEgetForbrugPct',
+            'N' => 'egetForbrugAfProduktionenKWh',
+            'O' => 'produktionTilNettetKWh',
+            'R' => 'prisForNyInverterKr',
+            // 'U' => 'scrapvaerdi',
+            'V' => 'driftPrAarKr',
+            'X' => 'raadighedstarifKr',
+            'Y' => 'totalDriftomkostningerPrAar',
+            'Z' => 'simpelTilbagebetalingstidAar',
+            'AA' => 'nutidsvaerdiSetOver15AarKr',
+        ];
 
         $this->loadTiltagDetail($tiltag, new SolcelleTiltagDetail(), $sheet, 'H38:AF42', $columnMapping, function ($row) {
             return $row['J'];
@@ -1364,11 +1364,11 @@ class LoadExcelRapport extends LoadData
         if (\in_array('json', $formats, true)) {
             echo PHP_EOL, '=== JSON '.$type.' start =============================================================================', PHP_EOL;
             echo json_encode([
-        'type' => $type,
-        'columns' => $columns,
-        'cells' => $cells,
-        'calculated' => $calculatedCells,
-      ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+                'type' => $type,
+                'columns' => $columns,
+                'cells' => $cells,
+                'calculated' => $calculatedCells,
+            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
             echo PHP_EOL, '=== JSON '.$type.' end ===============================================================================', PHP_EOL;
         }
 
@@ -1384,16 +1384,16 @@ class LoadExcelRapport extends LoadData
                     }
                     $expected = $this->mapRow($calculatedData[$rowId], $columns);
                     $details[] = [
-            '_input' => $properties,
-            '_calculated' => $expected,
-          ];
+                        '_input' => $properties,
+                        '_calculated' => $expected,
+                    ];
                 }
 
                 $testFixturesPath = null;
 
                 try {
                     $testFixturesPath = $this->container->get('kernel')
-                            ->locateResource('@AppBundle/DataFixtures/Data/').'fixtures/';
+                        ->locateResource('@AppBundle/DataFixtures/Data/').'fixtures/';
 
                     if (!is_dir($testFixturesPath) && !@mkdir($testFixturesPath, 0777, true)) {
                         $testFixturesPath = null;
@@ -1413,37 +1413,37 @@ class LoadExcelRapport extends LoadData
                     $filepath = $dir.'/'.$type;
 
                     $data = [
-            'details' => $details,
+                        'details' => $details,
 
-            'tiltag' => $this->serialize($tiltag, [
-              'forsyningVarme' => [
-                'internProduktioner' => null,
-              ],
-              'forsyningEl' => [
-                'internProduktioner' => null,
-              ],
-            ]),
+                        'tiltag' => $this->serialize($tiltag, [
+                            'forsyningVarme' => [
+                                'internProduktioner' => null,
+                            ],
+                            'forsyningEl' => [
+                                'internProduktioner' => null,
+                            ],
+                        ]),
 
-            'rapport' => $this->serialize($tiltag->getRapport(), [
-              'configuration' => null,
-              'bygning' => [
-                'forsyningsvaerkVarme' => null,
-                'forsyningsvaerkEl' => null,
-                'forsyningsvaerkVand' => null,
-              ],
-              'energiforsyninger' => [
-                'internProduktioner' => null,
-              ],
-            ]),
+                        'rapport' => $this->serialize($tiltag->getRapport(), [
+                            'configuration' => null,
+                            'bygning' => [
+                                'forsyningsvaerkVarme' => null,
+                                'forsyningsvaerkEl' => null,
+                                'forsyningsvaerkVand' => null,
+                            ],
+                            'energiforsyninger' => [
+                                'internProduktioner' => null,
+                            ],
+                        ]),
 
-            'bygning' => [
-              '_input' => $this->getProperties($tiltag->getRapport()->getBygning()),
-            ],
-            'bygning.forsyningsvaerkVarme' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkVarme()),
-            'bygning.forsyningsvaerkEl' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkEl()),
-            'bygning.forsyningsvaerkVand' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkVand()),
-            'configuration' => $this->getProperties($tiltag->getRapport()->getConfiguration()),
-          ];
+                        'bygning' => [
+                            '_input' => $this->getProperties($tiltag->getRapport()->getBygning()),
+                        ],
+                        'bygning.forsyningsvaerkVarme' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkVarme()),
+                        'bygning.forsyningsvaerkEl' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkEl()),
+                        'bygning.forsyningsvaerkVand' => $this->getProperties($tiltag->getRapport()->getBygning()->getForsyningsvaerkVand()),
+                        'configuration' => $this->getProperties($tiltag->getRapport()->getConfiguration()),
+                    ];
                     $content = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
                     if (false !== @file_put_contents($filepath, $content)) {
                         $this->writeInfo('Unittest data fixtures written to file '.$filepath);
@@ -1475,8 +1475,8 @@ class LoadExcelRapport extends LoadData
         }
         $properties = $this->getProperties($object);
         $result = [
-      '_input' => $properties,
-    ];
+            '_input' => $properties,
+        ];
         if ($calculatedValues = $this->getCalculatedValues($object)) {
             $result['_calculated'] = $calculatedValues;
         }
@@ -1557,9 +1557,9 @@ class LoadExcelRapport extends LoadData
             if ($first) {
                 $columns = array_map(function ($value) {
                     return [
-            'calculated' => null,
-            'name' => $value,
-          ];
+                        'calculated' => null,
+                        'name' => $value,
+                    ];
                 }, $row);
                 $first = false;
             } else {

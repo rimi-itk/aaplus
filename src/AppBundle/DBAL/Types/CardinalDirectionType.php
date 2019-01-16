@@ -21,10 +21,10 @@ class CardinalDirectionType extends AbstractEnumType
     const WEST = 'west';
 
     protected static $choices = [
-    self::NONE => '',
-    self::NORTH => 'North',
-    self::EAST => 'East',
-    self::SOUTH => 'South',
-    self::WEST => 'West',
-  ];
+        self::NONE => '',
+        self::NORTH => 'North',
+        self::EAST => 'East',
+        self::SOUTH => 'South',
+        self::WEST => 'West',
+    ];
 }

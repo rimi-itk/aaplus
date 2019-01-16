@@ -22,16 +22,16 @@ abstract class EntityTestCase extends KernelTestCase
     protected $allowedDeviance = 0.00001;
 
     protected static $classNames = [
-    'configuration' => '\AppBundle\Entity\Configuration',
-    'bygning' => '\AppBundle\Entity\Bygning',
-    'forsyningsvaerkVarme' => '\AppBundle\Entity\Forsyningsvaerk',
-    'forsyningsvaerkEl' => '\AppBundle\Entity\Forsyningsvaerk',
-    'forsyningsvaerkVand' => '\AppBundle\Entity\Forsyningsvaerk',
-    'energiforsyninger' => '\AppBundle\Entity\Energiforsyning',
-    'internProduktioner' => '\AppBundle\Entity\Energiforsyning\InternProduktion',
-    'forsyningVarme' => '\AppBundle\Entity\Energiforsyning',
-    'forsyningEl' => '\AppBundle\Entity\Energiforsyning',
-  ];
+        'configuration' => '\AppBundle\Entity\Configuration',
+        'bygning' => '\AppBundle\Entity\Bygning',
+        'forsyningsvaerkVarme' => '\AppBundle\Entity\Forsyningsvaerk',
+        'forsyningsvaerkEl' => '\AppBundle\Entity\Forsyningsvaerk',
+        'forsyningsvaerkVand' => '\AppBundle\Entity\Forsyningsvaerk',
+        'energiforsyninger' => '\AppBundle\Entity\Energiforsyning',
+        'internProduktioner' => '\AppBundle\Entity\Energiforsyning\InternProduktion',
+        'forsyningVarme' => '\AppBundle\Entity\Energiforsyning',
+        'forsyningEl' => '\AppBundle\Entity\Energiforsyning',
+    ];
 
     public function loadProperties(array $properties)
     {

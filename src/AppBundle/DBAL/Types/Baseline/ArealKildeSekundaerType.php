@@ -22,11 +22,11 @@ class ArealKildeSekundaerType extends AbstractEnumType
     const MARK_KONTROL = 'mark_kontrol';
 
     protected static $choices = [
-    self::INGEN_SEKUNDAER_KILDE_VURDERES_NOEDVENDIG => 'Ingen sekundær kilde vurderes nødvendig',
-    self::CARETAKER => 'Caretaker',
-    self::TEGNINGSFILER_I_KONTAINER => 'Tegningsfiler i KONTAINER',
-    self::BBR_MEDDELELSE => 'BBR-meddelelse',
-    self::BYGNINGSKONSULENT_VED_AAK => 'Bygningskonsulent ved AaK',
-    self::MARK_KONTROL => 'Mark-kontrol',
-  ];
+        self::INGEN_SEKUNDAER_KILDE_VURDERES_NOEDVENDIG => 'Ingen sekundær kilde vurderes nødvendig',
+        self::CARETAKER => 'Caretaker',
+        self::TEGNINGSFILER_I_KONTAINER => 'Tegningsfiler i KONTAINER',
+        self::BBR_MEDDELELSE => 'BBR-meddelelse',
+        self::BYGNINGSKONSULENT_VED_AAK => 'Bygningskonsulent ved AaK',
+        self::MARK_KONTROL => 'Mark-kontrol',
+    ];
 }

@@ -21,10 +21,10 @@ class ArealKildePrimaerType extends AbstractEnumType
     const MARK_KONTROL = 'mark_kontrol';
 
     protected static $choices = [
-    self::CARETAKER => 'Caretaker',
-    self::TEGNINGSFILER_I_KONTAINER => 'Tegningsfiler i KONTAINER',
-    self::BBR_MEDDELELSE => 'BBR-meddelelse',
-    self::BYGNINGSKONSULENT_VED_AAK => 'Bygningskonsulent ved AaK',
-    self::MARK_KONTROL => 'Mark-kontrol',
-  ];
+        self::CARETAKER => 'Caretaker',
+        self::TEGNINGSFILER_I_KONTAINER => 'Tegningsfiler i KONTAINER',
+        self::BBR_MEDDELELSE => 'BBR-meddelelse',
+        self::BYGNINGSKONSULENT_VED_AAK => 'Bygningskonsulent ved AaK',
+        self::MARK_KONTROL => 'Mark-kontrol',
+    ];
 }

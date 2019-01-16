@@ -27,8 +27,8 @@ class SpecialTiltagType extends TiltagType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\SpecialTiltag',
-    ]);
+            'data_class' => 'AppBundle\Entity\SpecialTiltag',
+        ]);
     }
 
     /**

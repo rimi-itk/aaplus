@@ -31,11 +31,11 @@ class RapportSearchBygningEmbedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn', null, ['label' => false])
-      ->add('adresse', null, ['label' => false])
-      ->add('postnummer', null, ['label' => false])
-      ->add('segment', null, ['label' => false, 'required' => false])
-      ->add('status', null, ['label' => false, 'required' => false, 'data' => null]);
+            ->add('navn', null, ['label' => false])
+            ->add('adresse', null, ['label' => false])
+            ->add('postnummer', null, ['label' => false])
+            ->add('segment', null, ['label' => false, 'required' => false])
+            ->add('status', null, ['label' => false, 'required' => false, 'data' => null]);
     }
 
     /**
@@ -47,9 +47,9 @@ class RapportSearchBygningEmbedType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Bygning',
-      'validation_groups' => false,
-    ]);
+            'data_class' => 'AppBundle\Entity\Bygning',
+            'validation_groups' => false,
+        ]);
     }
 
     /**

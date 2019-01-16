@@ -20,9 +20,9 @@ class PrisgrundlagType extends AbstractEnumType
     const VARME = 'varme';
 
     protected static $choices = [
-    self::NONE => '',
-    self::EL => 'El',
-    self::VAND => 'Vand',
-    self::VARME => 'Varme',
-  ];
+        self::NONE => '',
+        self::EL => 'El',
+        self::VAND => 'Vand',
+        self::VARME => 'Varme',
+    ];
 }

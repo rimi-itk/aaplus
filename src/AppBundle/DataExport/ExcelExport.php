@@ -69,9 +69,9 @@ class ExcelExport
       ob_get_clean(),  // read from output buffer
       200,
       [
-        'Content-Type' => 'application/vnd.ms-excel',
-        'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-        'Cache-Control' => 'max-age=0',
+          'Content-Type' => 'application/vnd.ms-excel',
+          'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+          'Cache-Control' => 'max-age=0',
       ]
     );
     }
@@ -142,9 +142,9 @@ class ExcelExport
       ob_get_clean(),  // read from output buffer
       200,
       [
-        'Content-Type' => 'application/vnd.ms-excel',
-        'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-        'Cache-Control' => 'max-age=0',
+          'Content-Type' => 'application/vnd.ms-excel',
+          'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+          'Cache-Control' => 'max-age=0',
       ]
     );
     }

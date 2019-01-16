@@ -23,48 +23,48 @@ class PumpeTiltagDetailType extends TiltagDetailType
     {
         parent::buildForm($builder, $options);
         $builder
-      ->add('pumpe')
-      ->add('pumpeID')
-      ->add('forsyningsomraade')
-      ->add('placering')
-      ->add('applikation')
-      ->add('isoleringskappe', null, ['required' => false])
-      ->add('nyttiggjortVarme', null, [
-        'required' => true,
-      ])
-      ->add('noter', null, ['required' => false])
-      ->add('eksisterendeDrifttid')
-      ->add('nyDrifttid')
-      ->add('prisfaktor')
-      ->add('overskrevetPris', null, ['required' => false])
-      ->add('varmetabIftAekvivalentRoerstoerrelse', 'choice', [
-        'choices' => $this->getRoerstoerrelser(),
-        'required' => false,
-      ]);
+            ->add('pumpe')
+            ->add('pumpeID')
+            ->add('forsyningsomraade')
+            ->add('placering')
+            ->add('applikation')
+            ->add('isoleringskappe', null, ['required' => false])
+            ->add('nyttiggjortVarme', null, [
+                'required' => true,
+            ])
+            ->add('noter', null, ['required' => false])
+            ->add('eksisterendeDrifttid')
+            ->add('nyDrifttid')
+            ->add('prisfaktor')
+            ->add('overskrevetPris', null, ['required' => false])
+            ->add('varmetabIftAekvivalentRoerstoerrelse', 'choice', [
+                'choices' => $this->getRoerstoerrelser(),
+                'required' => false,
+            ]);
 
         // @FIXME: Workaround for the field "B-Faktor" being deprecated.
         $empty_value = $this->isBatchEdit ? '--' : '*** Gammel B-Faktor: '.number_format($this->detail->getBFaktor(), 2, ',', '.').' ***';
         $attr = $this->isBatchEdit ? [] : [
-      'help_text' => 'Bemærk: Feltet "B-Faktor" er blevet erstattet af "Nyttiggjort varme". Vælg venligst "Nyttiggjort varme" ovenfor.',
-      'class' => 'aaplus-deprecated',
-    ];
+            'help_text' => 'Bemærk: Feltet "B-Faktor" er blevet erstattet af "Nyttiggjort varme". Vælg venligst "Nyttiggjort varme" ovenfor.',
+            'class' => 'aaplus-deprecated',
+        ];
 
         if (!$this->detail->getNyttiggjortVarme()) {
             $builder
-        ->remove('nyttiggjortVarme')
-        ->add('nyttiggjortVarme', null, [
-          'required' => true,
-          'placeholder' => $empty_value,
-          'attr' => $attr,
-        ]);
+                ->remove('nyttiggjortVarme')
+                ->add('nyttiggjortVarme', null, [
+                    'required' => true,
+                    'placeholder' => $empty_value,
+                    'attr' => $attr,
+                ]);
         }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\PumpeTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\PumpeTiltagDetail',
+        ]);
     }
 
     public function getName()

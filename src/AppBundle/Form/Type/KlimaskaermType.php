@@ -23,13 +23,13 @@ class KlimaskaermType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('type')
-      ->add('post')
-      ->add('klimaskaerm')
-      ->add('arbejdeOmfang')
-      ->add('enhedsprisEksklMoms')
-      ->add('enhed')
-      ->add('noter');
+            ->add('type')
+            ->add('post')
+            ->add('klimaskaerm')
+            ->add('arbejdeOmfang')
+            ->add('enhedsprisEksklMoms')
+            ->add('enhed')
+            ->add('noter');
     }
 
     /**
@@ -38,8 +38,8 @@ class KlimaskaermType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Klimaskaerm',
-    ]);
+            'data_class' => 'AppBundle\Entity\Klimaskaerm',
+        ]);
     }
 
     /**

@@ -25,14 +25,14 @@ class PrimaerEnterpriseType extends AbstractEnumType
     const TOEMRER = 't';
 
     protected static $choices = [
-    self::NONE => '',
-    self::EL => 'El',
-    self::TOEMRER_ISOLATOER => 'Tømrer/Isolatør',
-    self::VE => 'VE',
-    self::VVS => 'VVS',
-    self::HAARDE_HVIDEVARER => 'Hårde hvidevarer',
-    self::AUTOMATIK => 'Automatik',
-    self::INTERNE_I_AAK => 'Interne i AAK',
-    self::TOEMRER => 'Tømrer',
-  ];
+        self::NONE => '',
+        self::EL => 'El',
+        self::TOEMRER_ISOLATOER => 'Tømrer/Isolatør',
+        self::VE => 'VE',
+        self::VVS => 'VVS',
+        self::HAARDE_HVIDEVARER => 'Hårde hvidevarer',
+        self::AUTOMATIK => 'Automatik',
+        self::INTERNE_I_AAK => 'Interne i AAK',
+        self::TOEMRER => 'Tømrer',
+    ];
 }

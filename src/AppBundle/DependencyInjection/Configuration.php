@@ -26,14 +26,14 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('app');
 
         $rootNode
-      ->children()
-        ->arrayNode('pdf_export')
-          ->children()
+            ->children()
+            ->arrayNode('pdf_export')
+            ->children()
             ->scalarNode('base_url')->end()
             ->scalarNode('default_file_path')->end()
-          ->end()
-        ->end()
-      ->end();
+            ->end()
+            ->end()
+            ->end();
 
         return $treeBuilder;
     }

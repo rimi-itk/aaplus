@@ -57,9 +57,9 @@ class BygningTilknytRaagiverController extends BaseController implements InitCon
         $editForm = $this->createEditForm($bygning);
 
         return [
-      'entity' => $bygning,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $bygning,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -93,9 +93,9 @@ class BygningTilknytRaagiverController extends BaseController implements InitCon
         $this->addFlash('error', 'common.form_error');
 
         return [
-      'entity' => $bygning,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $bygning,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -108,9 +108,9 @@ class BygningTilknytRaagiverController extends BaseController implements InitCon
     private function createEditForm(Bygning $entity)
     {
         $form = $this->createForm(new BygningTilknytRaadgiverType($this->getDoctrine(), $this->get('security.context')), $entity, [
-      'action' => $this->generateUrl('bygning_tilknyt_update', ['id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('bygning_tilknyt_update', ['id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('bygning_show', ['id' => $entity->getId()]));
 

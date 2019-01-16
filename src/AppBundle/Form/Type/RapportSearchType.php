@@ -79,8 +79,8 @@ class RapportSearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Rapport',
-    ]);
+            'data_class' => 'AppBundle\Entity\Rapport',
+        ]);
     }
 
     /**

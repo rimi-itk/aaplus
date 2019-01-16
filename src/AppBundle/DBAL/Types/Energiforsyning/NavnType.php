@@ -22,11 +22,11 @@ class NavnType extends AbstractEnumType
     const VARMEPUMPE = 'varmepumpe';
 
     protected static $choices = [
-    self::NONE => '',
-    self::FJERNVARME => 'Fjernvarme',
-    self::HOVEDFORSYNING_EL => 'Hovedforsyning El',
-    self::OLIEFYR => 'Oliefyr',
-    self::TRAEPILLEFYR => 'Træpillefyr',
-    self::VARMEPUMPE => 'Varmepumpe',
-  ];
+        self::NONE => '',
+        self::FJERNVARME => 'Fjernvarme',
+        self::HOVEDFORSYNING_EL => 'Hovedforsyning El',
+        self::OLIEFYR => 'Oliefyr',
+        self::TRAEPILLEFYR => 'Træpillefyr',
+        self::VARMEPUMPE => 'Varmepumpe',
+    ];
 }

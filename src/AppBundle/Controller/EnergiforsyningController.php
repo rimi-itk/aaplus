@@ -52,9 +52,9 @@ class EnergiforsyningController extends BaseController
         $entities = $rapport->getEnergiforsyninger();
 
         return [
-      'entities' => $entities,
-      'rapport' => $rapport,
-    ];
+            'entities' => $entities,
+            'rapport' => $rapport,
+        ];
     }
 
     /**
@@ -71,9 +71,9 @@ class EnergiforsyningController extends BaseController
         $form = $this->createCreateForm($entity);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $form->createView(),
+        ];
     }
 
     /**
@@ -88,8 +88,8 @@ class EnergiforsyningController extends BaseController
         $this->breadcrumbs->addItem($entity->__toString());
 
         return [
-      'entity' => $entity,
-    ];
+            'entity' => $entity,
+        ];
     }
 
     /**
@@ -107,10 +107,10 @@ class EnergiforsyningController extends BaseController
         $deleteForm = $this->createDeleteForm($entity);
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -146,10 +146,10 @@ class EnergiforsyningController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -200,9 +200,9 @@ class EnergiforsyningController extends BaseController
         }
 
         return [
-      'entity' => $entity,
-      'form' => $form->createView(),
-    ];
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -215,9 +215,9 @@ class EnergiforsyningController extends BaseController
     private function createEditForm(Energiforsyning $entity)
     {
         $form = $this->createForm(new EnergiforsyningType(), $entity, [
-      'action' => $this->generateUrl('energiforsyning_update', ['rapport_id' => $entity->getRapport()->getId(), 'id' => $entity->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('energiforsyning_update', ['rapport_id' => $entity->getRapport()->getId(), 'id' => $entity->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('energiforsyning_show', ['rapport_id' => $entity->getRapport()->getId(), 'id' => $entity->getId()]));
 
@@ -237,16 +237,16 @@ class EnergiforsyningController extends BaseController
         $message = $repository->getRemoveErrorMessage($entity);
 
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('energiforsyning_delete', ['rapport_id' => $entity->getRapport()->getId(), 'id' => $entity->getId()]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', [
-        'label' => 'Delete',
-        'disabled' => $message,
-        'attr' => [
-          'disabled_message' => $message,
-        ],
-      ])
-      ->getForm();
+            ->setAction($this->generateUrl('energiforsyning_delete', ['rapport_id' => $entity->getRapport()->getId(), 'id' => $entity->getId()]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', [
+                'label' => 'Delete',
+                'disabled' => $message,
+                'attr' => [
+                    'disabled_message' => $message,
+                ],
+            ])
+            ->getForm();
     }
 
     /**
@@ -259,9 +259,9 @@ class EnergiforsyningController extends BaseController
     private function createCreateForm(Energiforsyning $entity)
     {
         $form = $this->createForm(new EnergiforsyningType(), $entity, [
-      'action' => $this->generateUrl('energiforsyning_create', ['rapport_id' => $this->getRapport()->getId()]),
-      'method' => 'POST',
-    ]);
+            'action' => $this->generateUrl('energiforsyning_create', ['rapport_id' => $this->getRapport()->getId()]),
+            'method' => 'POST',
+        ]);
 
         $this->addCreate($form, $this->generateUrl('energiforsyning', ['rapport_id' => $this->getRapport()->getId()]));
 

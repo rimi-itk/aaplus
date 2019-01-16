@@ -24,12 +24,12 @@ class SpecialTiltagDetailType extends TiltagDetailType
     {
         parent::buildForm($builder, $options);
         $builder
-      ->add('title')
-      ->add('kommentar')
-      ->add('filepath', 'file', [
-        'data_class' => null,
-        'attachment_path' => 'filepath',
-      ]);
+            ->add('title')
+            ->add('kommentar')
+            ->add('filepath', 'file', [
+                'data_class' => null,
+                'attachment_path' => 'filepath',
+            ]);
 
         $builder->addEventListener(
       FormEvents::PRE_SUBMIT,
@@ -48,8 +48,8 @@ class SpecialTiltagDetailType extends TiltagDetailType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\SpecialTiltagDetail',
-    ]);
+            'data_class' => 'AppBundle\Entity\SpecialTiltagDetail',
+        ]);
     }
 
     public function getName()

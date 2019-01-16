@@ -22,11 +22,11 @@ class PlaceringType extends AbstractEnumType
     const ANDET_SE_NOTER = 'andet_se_noter';
 
     protected static $choices = [
-    self::NONE => '',
-    self::NEDHAENGT => 'Nedhængt',
-    self::INDBYGGET => 'Indbygget',
-    self::PAABYGGET => 'Påbygget',
-    self::STAAENDE => 'Stående',
-    self::ANDET_SE_NOTER => 'Andet, se Noter',
-  ];
+        self::NONE => '',
+        self::NEDHAENGT => 'Nedhængt',
+        self::INDBYGGET => 'Indbygget',
+        self::PAABYGGET => 'Påbygget',
+        self::STAAENDE => 'Stående',
+        self::ANDET_SE_NOTER => 'Andet, se Noter',
+    ];
 }

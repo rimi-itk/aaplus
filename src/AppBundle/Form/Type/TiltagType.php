@@ -127,37 +127,37 @@ class TiltagType extends AbstractType
 
         if ($this->tiltag instanceof TekniskIsoleringTiltag) {
             $builder
-        ->add('besparelseDriftOgVedligeholdelse')
-        ->add('besparelseStrafafkoelingsafgift')
-        ->add('levetid');
+                ->add('besparelseDriftOgVedligeholdelse')
+                ->add('besparelseStrafafkoelingsafgift')
+                ->add('levetid');
         }
         if ($this->tiltag instanceof PumpeTiltag) {
             $builder
-        ->add('besparelseDriftOgVedligeholdelse')
-        ->add('levetid');
+                ->add('besparelseDriftOgVedligeholdelse')
+                ->add('levetid');
         }
         if ($this->tiltag instanceof VindueTiltag) {
             $builder
-        ->add('besparelseDriftOgVedligeholdelse');
+                ->add('besparelseDriftOgVedligeholdelse');
         } elseif ($this->tiltag instanceof SolcelleTiltag) {
             $builder
-        ->add('levetid');
+                ->add('levetid');
         } elseif ($this->tiltag instanceof KlimaskaermTiltag) {
             $builder
-        ->add('besparelseDriftOgVedligeholdelse');
+                ->add('besparelseDriftOgVedligeholdelse');
         } elseif ($this->tiltag instanceof SpecialTiltag) {
             $builder
-        ->add('besparelseDriftOgVedligeholdelse')
-        ->add('besparelseStrafafkoelingsafgift')
-        ->add('anlaegsinvesteringExRisiko')
-        ->add('besparelseGUF')
-        ->add('besparelseGAF')
-        ->add('besparelseEl')
-        ->add('yderligereBesparelse')
-        ->add('levetid');
+                ->add('besparelseDriftOgVedligeholdelse')
+                ->add('besparelseStrafafkoelingsafgift')
+                ->add('anlaegsinvesteringExRisiko')
+                ->add('besparelseGUF')
+                ->add('besparelseGAF')
+                ->add('besparelseEl')
+                ->add('yderligereBesparelse')
+                ->add('levetid');
 
             $builder->add('primaerEnterprise')
-        ->add('tiltagskategori');
+                ->add('tiltagskategori');
         }
     }
 
@@ -170,8 +170,8 @@ class TiltagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Tiltag',
-    ]);
+            'data_class' => 'AppBundle\Entity\Tiltag',
+        ]);
     }
 
     /**

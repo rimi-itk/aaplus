@@ -23,11 +23,11 @@ class LyskildeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          ->add('navn')
-          ->add('type')
-          ->add('forkobling')
-          ->add('udgift')
-          ->add('levetid');
+            ->add('navn')
+            ->add('type')
+            ->add('forkobling')
+            ->add('udgift')
+            ->add('levetid');
     }
 
     /**

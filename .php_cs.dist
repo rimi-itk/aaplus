@@ -20,7 +20,7 @@ return PhpCsFixer\Config::create()
         'align_multiline_comment' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_before_statement' => true,
-				'braces' => true,
+        'braces' => true,
         'combine_consecutive_unsets' => true,
         // one should use PHPUnit methods to set up expected exception instead of annotations
         'general_phpdoc_annotation_remove' => ['annotations' => ['expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp']],
@@ -45,6 +45,9 @@ return PhpCsFixer\Config::create()
         'single_line_comment_style' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'indentation_type' => true,
+        'method_chaining_indentation' => true,
+        'array_indentation' => true,
     ])
     ->setFinder($finder)
 ;

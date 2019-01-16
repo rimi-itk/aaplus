@@ -31,10 +31,10 @@ class InternProduktionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-      ->add('navn')
-      ->add('fordeling', 'percent', ['scale' => 2])
-      ->add('effektivitet', 'percent', ['scale' => 2])
-      ->add('prisgrundlag');
+            ->add('navn')
+            ->add('fordeling', 'percent', ['scale' => 2])
+            ->add('effektivitet', 'percent', ['scale' => 2])
+            ->add('prisgrundlag');
     }
 
     /**
@@ -46,8 +46,8 @@ class InternProduktionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Energiforsyning\InternProduktion',
-    ]);
+            'data_class' => 'AppBundle\Entity\Energiforsyning\InternProduktion',
+        ]);
     }
 
     /**

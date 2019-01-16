@@ -37,7 +37,7 @@ class RapportTest extends EntityTestCase
                 $detailClassName = 'AppBundle\\Entity\\'.$type.'Detail';
 
                 $tiltag = $this->loadEntity(new $tiltagClassName(), $fixture['tiltag'])
-                ->setRapport($rapport);
+                    ->setRapport($rapport);
 
                 foreach ($fixture['details'] as $test) {
                     $detail = new $detailClassName();
@@ -47,7 +47,7 @@ class RapportTest extends EntityTestCase
                     $properties = (new $detailTestClassName())->loadProperties($test['_input']);
 
                     $this->setProperties($detail, $properties)
-            ->calculate();
+                        ->calculate();
                 }
 
                 $tiltag->calculate();
@@ -62,17 +62,17 @@ class RapportTest extends EntityTestCase
     public function testInflationsfaktor()
     {
         $rapport = $this->setProperties(new Rapport(), [
-    ])->setConfiguration($this->setProperties(new Configuration(), [
-      'kalkulationsrente' => 0.0292,
-      'inflation' => 0.0190,
-    ]));
+        ])->setConfiguration($this->setProperties(new Configuration(), [
+            'kalkulationsrente' => 0.0292,
+            'inflation' => 0.0190,
+        ]));
 
         $this->assertNotNull($rapport->getConfiguration(), 'Configuration is not null');
 
         $this->assertProperties([
-      'kalkulationsrente' => 0.0292,
-      'inflation' => 0.0190,
-      'inflationsfaktor' => 13.863999842761,
-    ], $rapport);
+            'kalkulationsrente' => 0.0292,
+            'inflation' => 0.0190,
+            'inflationsfaktor' => 13.863999842761,
+        ], $rapport);
     }
 }

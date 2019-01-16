@@ -19,11 +19,11 @@ class RisikovurderingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'choices' => RisikovurderingEnumType::getChoices(),
-      'expanded' => true,
-      'required' => false,
-      'placeholder' => null,
-    ]);
+            'choices' => RisikovurderingEnumType::getChoices(),
+            'expanded' => true,
+            'required' => false,
+            'placeholder' => null,
+        ]);
     }
 
     public function getParent()

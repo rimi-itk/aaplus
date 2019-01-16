@@ -40,10 +40,10 @@ class TiltagDatoForDriftType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('datoForDrift', 'date', [
-      // render as a single text box
-      'widget' => 'single_text',
-      'required' => false,
-    ]);
+            // render as a single text box
+            'widget' => 'single_text',
+            'required' => false,
+        ]);
     }
 
     /**
@@ -55,8 +55,8 @@ class TiltagDatoForDriftType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-      'data_class' => 'AppBundle\Entity\Tiltag',
-    ]);
+            'data_class' => 'AppBundle\Entity\Tiltag',
+        ]);
     }
 
     /**

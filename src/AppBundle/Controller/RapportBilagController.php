@@ -54,8 +54,8 @@ class RapportBilagController extends BaseController
         $this->setBreadcrumb($rapport);
 
         return [
-      'entity' => $rapport,
-    ];
+            'entity' => $rapport,
+        ];
     }
 
     /**
@@ -76,11 +76,11 @@ class RapportBilagController extends BaseController
         $template = $this->getTemplate('edit');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'rapport' => $rapport,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'rapport' => $rapport,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -102,9 +102,9 @@ class RapportBilagController extends BaseController
         $template = $this->getTemplate('new');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+        ]);
     }
 
     /**
@@ -131,10 +131,10 @@ class RapportBilagController extends BaseController
         }
 
         return [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-      'delete_form' => $deleteForm->createView(),
-    ];
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ];
     }
 
     /**
@@ -163,9 +163,9 @@ class RapportBilagController extends BaseController
         }
 
         return [
-      'entity' => $bilag,
-      'edit_form' => $editForm->createView(),
-    ];
+            'entity' => $bilag,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
@@ -214,10 +214,10 @@ class RapportBilagController extends BaseController
         $template = $this->getTemplate('show');
 
         return $this->render($template, [
-      'entity' => $bilag,
-      'delete_form' => $deleteForm->createView(),
-      'edit_form' => $editForm->createView(),
-    ]);
+            'entity' => $bilag,
+            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView(),
+        ]);
     }
 
     /**
@@ -260,9 +260,9 @@ class RapportBilagController extends BaseController
     private function createEditForm(Rapport $rapport, Bilag $bilag)
     {
         $form = $this->createForm(new RapportBilagType($bilag), $bilag, [
-      'action' => $this->generateUrl('rapport_bilag_update', ['rapport_id' => $rapport->getId(), 'bilag_id' => $bilag->getId()]),
-      'method' => 'PUT',
-    ]);
+            'action' => $this->generateUrl('rapport_bilag_update', ['rapport_id' => $rapport->getId(), 'bilag_id' => $bilag->getId()]),
+            'method' => 'PUT',
+        ]);
 
         $this->addUpdate($form, $this->generateUrl('rapport_bilag_edit', ['rapport_id' => $rapport->getId(), 'bilag_id' => $bilag->getId()]));
 
@@ -279,9 +279,9 @@ class RapportBilagController extends BaseController
     private function createNewForm(Rapport $rapport, Bilag $bilag)
     {
         $form = $this->createForm(new RapportBilagType($bilag), $bilag, [
-      'action' => $this->generateUrl('rapport_bilag_create', ['rapport_id' => $rapport->getId()]),
-      'method' => 'POST',
-    ]);
+            'action' => $this->generateUrl('rapport_bilag_create', ['rapport_id' => $rapport->getId()]),
+            'method' => 'POST',
+        ]);
 
         $this->addCreate($form, $this->generateUrl('rapport_bilag_create', ['rapport_id' => $rapport->getId()]));
 
@@ -298,10 +298,10 @@ class RapportBilagController extends BaseController
     private function createDeleteForm(Rapport $rapport, Bilag $bilag)
     {
         return $this->createFormBuilder()
-      ->setAction($this->generateUrl('rapport_bilag_delete', ['rapport_id' => $rapport->getId(), 'bilag_id' => $bilag->getId()]))
-      ->setMethod('DELETE')
-      ->add('submit', 'submit', ['label' => 'Delete'])
-      ->getForm();
+            ->setAction($this->generateUrl('rapport_bilag_delete', ['rapport_id' => $rapport->getId(), 'bilag_id' => $bilag->getId()]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->getForm();
     }
 
     /**

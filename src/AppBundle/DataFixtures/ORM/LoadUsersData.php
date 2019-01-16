@@ -38,14 +38,14 @@ class LoadUsersData extends LoadData
 
             $encoder = $this->container->get('security.password_encoder');
             $user->setUsername($item['username'])
-          ->setPassword($encoder->encodePassword($user, $item['password']))
-          ->setEmail($item['email'])
-          ->setFirstname($item['firstname'])
-          ->setLastname($item['lastname'])
-          ->setPhone($item['phone'])
-          ->setRoles($item['roles'] ? explode(',', $item['roles']) : [])
-          ->setGroups($groups)
-          ->setEnabled(true);
+                ->setPassword($encoder->encodePassword($user, $item['password']))
+                ->setEmail($item['email'])
+                ->setFirstname($item['firstname'])
+                ->setLastname($item['lastname'])
+                ->setPhone($item['phone'])
+                ->setRoles($item['roles'] ? explode(',', $item['roles']) : [])
+                ->setGroups($groups)
+                ->setEnabled(true);
             $manager->persist($user);
         });
     }
