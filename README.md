@@ -26,3 +26,11 @@ scripts/update
 ```sh
 bin/console fos:user:create --super-admin
 ```
+
+## Scripts
+
+A number of helper scripts make it easier to talk to services running
+inside the docker containers:
+
+* `./scripts/composer`
+* `./scripts/console`
