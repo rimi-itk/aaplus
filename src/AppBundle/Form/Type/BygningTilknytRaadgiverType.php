@@ -49,13 +49,13 @@ class BygningTilknytRaadgiverType extends AbstractType
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Aa+'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('energiRaadgiver', 'entity', [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Rådgiver'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('status', 'hidden', [
         'read_only' => true,

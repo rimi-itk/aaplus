@@ -59,12 +59,12 @@ class BygningType extends AbstractType
       ->add('forsyningsvaerkVarme', 'entity', [
         'class' => 'AppBundle:Forsyningsvaerk',
         'required' => false,
-        'empty_value' => '--',
+        'placeholder' => '--',
       ])
       ->add('forsyningsvaerkEl', 'entity', [
         'class' => 'AppBundle:Forsyningsvaerk',
         'required' => false,
-        'empty_value' => '--',
+        'placeholder' => '--',
       ])
       ->add('divisionnavn')
       ->add('omraadenavn')
@@ -72,31 +72,31 @@ class BygningType extends AbstractType
       ->add('segment', 'entity', [
         'class' => 'AppBundle:Segment',
         'required' => false,
-        'empty_value' => '--',
+        'placeholder' => '--',
       ])
       ->add('aaplusAnsvarlig', 'entity', [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Aa+'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('projektleder', 'entity', [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Projektleder'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('energiRaadgiver', 'entity', [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Rådgiver'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('projekterende', 'entity', [
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Projekterende'),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('users', null, [
         'expanded' => true,

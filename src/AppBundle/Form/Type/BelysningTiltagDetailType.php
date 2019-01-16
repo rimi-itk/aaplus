@@ -50,7 +50,7 @@ class BelysningTiltagDetailType extends TiltagDetailType
         'class' => 'AppBundle:BelysningTiltagDetail\NyStyring',
         'choices' => $this->getAktuelNyStyring(),
         'required' => false,
-        'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
       ->add('erstatningsLyskilde')
       ->add('nytArmatur')

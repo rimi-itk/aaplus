@@ -54,21 +54,21 @@ class TiltagType extends AbstractType
             $builder->add('tilvalgtAfRaadgiver');
         } else {
             $builder->add('tilvalgtAfAaPlus', 'choice', [
-        'choices' => [
-          '0' => 'Fravalgt',
-          '1' => 'Tilvalgt',
-        ],
-        'empty_value' => '--',
-        'required' => false,
-      ]);
+                'choices' => [
+                    'Fravalgt' => '0',
+                    'Tilvalgt' => '1',
+                ],
+                'placeholder' => '--',
+                'required' => false,
+            ]);
             $builder->add('tilvalgtAfMagistrat', 'choice', [
-        'choices' => [
-          '0' => 'Fravalgt',
-          '1' => 'Tilvalgt',
-        ],
-        'empty_value' => '--',
-        'required' => false,
-      ]);
+                'choices' => [
+                    'Fravalgt' => '0',
+                    'Tilvalgt' => '1',
+                ],
+                'placeholder' => '--',
+                'required' => false,
+            ]);
             $builder->add('tilvalgtbegrundelse', null, ['required' => false]);
             $builder->add('tilvalgtBegrundelseMagistrat', null, ['required' => false]);
 
@@ -77,10 +77,10 @@ class TiltagType extends AbstractType
             // Dato for drift
             if (BygningStatusType::UNDER_UDFOERSEL === $status || BygningStatusType::DRIFT === $status) {
                 $builder->add('datoForDrift', 'date', [
-          // render as a single text box
-          'widget' => 'single_text',
-          'required' => false,
-        ]);
+                    // render as a single text box
+                    'widget' => 'single_text',
+                    'required' => false,
+                ]);
             }
 
             // Energiledelse faktor/noter
@@ -90,33 +90,33 @@ class TiltagType extends AbstractType
             }
         }
         $builder->add('title')
-      ->add('faktorForReinvesteringer')
-      ->add('opstartsomkostninger');
+            ->add('faktorForReinvesteringer')
+            ->add('opstartsomkostninger');
 
         $builder
-      ->add('genopretning')
-      ->add('genopretningForImplementeringsomkostninger')
-      ->add('modernisering')
-      ->add('reelAnlaegsinvestering');
+            ->add('genopretning')
+            ->add('genopretningForImplementeringsomkostninger')
+            ->add('modernisering')
+            ->add('reelAnlaegsinvestering');
 
         $builder->add('reelAnlaegsinvestering')
-      ->add('forsyningVarme', 'entity', [
-        'class' => 'AppBundle:Energiforsyning',
-        'choices' => $this->tiltag->getRapport()->getEnergiforsyninger(),
-        'required' => false,
-      ])
-      ->add('forsyningEl', 'entity', [
-        'class' => 'AppBundle:Energiforsyning',
-        'choices' => $this->tiltag->getRapport()->getEnergiforsyninger(),
-        'required' => false,
-      ])
-      ->add('beskrivelseNuvaerende', 'textarea', ['attr' => ['maxlength' => 850], 'required' => false])
-      ->add('beskrivelseForslag', 'textarea', ['attr' => ['maxlength' => 1000], 'required' => false])
-      ->add('beskrivelseOevrige', 'textarea', ['attr' => ['maxlength' => 1100], 'required' => false])
-      ->add('risikovurdering', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
-      ->add('placering', 'textarea', ['attr' => ['maxlength' => 120], 'required' => false])
-      ->add('beskrivelseDriftOgVedligeholdelse', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
-      ->add('indeklima', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false]);
+            ->add('forsyningVarme', 'entity', [
+                'class' => 'AppBundle:Energiforsyning',
+                'choices' => $this->tiltag->getRapport()->getEnergiforsyninger(),
+                'required' => false,
+            ])
+            ->add('forsyningEl', 'entity', [
+                'class' => 'AppBundle:Energiforsyning',
+                'choices' => $this->tiltag->getRapport()->getEnergiforsyninger(),
+                'required' => false,
+            ])
+            ->add('beskrivelseNuvaerende', 'textarea', ['attr' => ['maxlength' => 850], 'required' => false])
+            ->add('beskrivelseForslag', 'textarea', ['attr' => ['maxlength' => 1000], 'required' => false])
+            ->add('beskrivelseOevrige', 'textarea', ['attr' => ['maxlength' => 1100], 'required' => false])
+            ->add('risikovurdering', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
+            ->add('placering', 'textarea', ['attr' => ['maxlength' => 120], 'required' => false])
+            ->add('beskrivelseDriftOgVedligeholdelse', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false])
+            ->add('indeklima', 'textarea', ['attr' => ['maxlength' => 360], 'required' => false]);
 
         $builder->add('risikovurderingTeknisk', new RisikovurderingType(), []);
         $builder->add('risikovurderingBrugsmoenster', new RisikovurderingType(), []);

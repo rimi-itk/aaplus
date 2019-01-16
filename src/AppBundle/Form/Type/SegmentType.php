@@ -39,7 +39,7 @@ class SegmentType extends AbstractType
         'class' => 'AppBundle:User',
         'choices' => $this->getUsersFromGroup('Aa+'),
         'required' => false,
-        // @TODO 'empty_value' => 'common.none',
+        'placeholder' => 'common.none',
       ])
     ;
     }

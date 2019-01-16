@@ -54,7 +54,7 @@ class PumpeTiltagDetailType extends TiltagDetailType
         ->remove('nyttiggjortVarme')
         ->add('nyttiggjortVarme', null, [
           'required' => true,
-          'empty_value' => $empty_value,
+          'placeholder' => $empty_value,
           'attr' => $attr,
         ]);
         }

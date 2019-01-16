@@ -41,20 +41,20 @@ class TiltagTilvalgtType extends AbstractType
     {
         $builder->add('tilvalgtAfAaPlus', 'choice', [
       'choices' => [
-        '0' => 'Fravalgt',
-        '1' => 'Tilvalgt',
+        'Fravalgt' => '0',
+        'Tilvalgt' => '1',
       ],
-      'empty_value' => '--',
+      'placeholder' => '--',
       'required' => false,
     ]);
         $builder->add('tilvalgtbegrundelse', null, ['required' => false]);
 
         $builder->add('tilvalgtAfMagistrat', 'choice', [
       'choices' => [
-        '0' => 'Fravalgt',
-        '1' => 'Tilvalgt',
+        'Fravalgt' => '0',
+        'Tilvalgt' => '1',
       ],
-      'empty_value' => '--',
+      'placeholder' => '--',
       'required' => false,
     ]);
         $builder->add('tilvalgtBegrundelseMagistrat', null, ['required' => false]);

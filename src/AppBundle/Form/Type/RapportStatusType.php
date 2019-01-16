@@ -45,10 +45,10 @@ class RapportStatusType extends AbstractType
         if (BygningStatusType::UNDER_UDFOERSEL === $this->status && $this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
             $builder->add('ava', 'choice', [
         'choices' => [
-          '0' => 'Ikke ansøgt AVA-støtte',
-          '1' => 'Ansøgt om AVA-støtte ',
+          'Ikke ansøgt AVA-støtte' => '0',
+          'Ansøgt om AVA-støtte ' => '1',
         ],
-        'empty_value' => '--',
+        'placeholder' => '--',
         'required' => true,
       ]);
         }

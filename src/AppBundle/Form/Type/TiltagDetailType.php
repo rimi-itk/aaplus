@@ -72,18 +72,18 @@ class TiltagDetailType extends AbstractType
                 // replacing specific ones
                 'required' => false,
                 'choices' => [
-                  '0' => 'Nej',
-                  '1' => 'Ja',
+                    'Nej' => '0',
+                    'Ja' => '1',
                 ],
                 'empty_data' => null,
-                'empty_value' => '--',
+                'placeholder' => '--',
               ]
             )
-          );
+                    );
                 } else {
                     // Set all as "Not required"
                     $form->add(
-          // Replace original field...
+                        // Replace original field...
             $name,
             $type,
             // while keeping the original options...

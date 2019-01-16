@@ -49,19 +49,19 @@ class RapportSearchType extends AbstractType
         if ($this->authorizationChecker && $this->authorizationChecker->isGranted('ROLE_ADMIN')) {
             $builder->add('elena', ChoiceType::class, [
                 'choices' => [
-                    '0' => 'Nej',
-                    '1' => 'Ja',
+                    'Nej' => '0',
+                    'Ja' => '1',
                 ],
-                // @TODO 'empty_value' => '--',
+                'placeholder' => '--',
                 'required' => false,
                 'label' => false,
             ]);
             $builder->add('ava', ChoiceType::class, [
                 'choices' => [
-                    '0' => 'Nej',
-                    '1' => 'Ja',
+                    'Nej' => '0',
+                    'Ja' => '1',
                 ],
-                // @TODO 'empty_value' => '--',
+                'placeholder' => '--',
                 'required' => false,
                 'label' => false,
             ]);
