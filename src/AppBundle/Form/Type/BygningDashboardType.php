@@ -27,14 +27,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class BygningDashboardType extends AbstractType
 {
-    private $type;
-
     private $doctrine;
 
-    // @TODO  public function __construct(RegistryInterface $doctrine, $filterCondition='aaplusAnsvarlig') {
     public function __construct(RegistryInterface $doctrine)
     {
-//    $this->type = $filterCondition;
         $this->doctrine = $doctrine;
     }
 
@@ -50,9 +46,9 @@ class BygningDashboardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('navn', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-            ->add('adresse', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_BOTH, 'label' => false])
-            ->add('postnummer', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_STARTS, 'label' => false])
+            ->add('navn', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('adresse', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
+            ->add('postnummer', Filters\TextFilterType::class, ['condition_pattern' => FilterOperands::STRING_CONTAINS, 'label' => false])
             ->add('status', null, ['required' => false, 'label' => false]);
 
         // @TODO
@@ -66,8 +62,7 @@ class BygningDashboardType extends AbstractType
             },
         ]);
 
-        if ('aaplusAnsvarlig' === $this->type) {
-            // @TODO      $builder->add('energiRaadgiver', new BygningDashboardUserType($this->doctrine, "Rådgiver"), array('label' => false,
+        if ('aaplusAnsvarlig' === $options['filterCondition']) {
             $builder->add('energiRaadgiver', BygningDashboardUserType::class, ['label' => false,
                 'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
                     $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
@@ -76,10 +71,11 @@ class BygningDashboardType extends AbstractType
 
                     $qbe->addOnce($qbe->getAlias().'.energiRaadgiver', 'u', $closure);
                 },
+                'userGroup' => 'Rådgiver',
             ]);
         } else {
-            // @TODO      $builder->add('aaplusAnsvarlig', new BygningDashboardUserType($this->doctrine, "Aa+"), array('label' => false,
-            $builder->add('aaplusAnsvarlig', BygningDashboardUserType::class, ['label' => false,
+            $builder->add('aaplusAnsvarlig', BygningDashboardUserType::class, [
+                'label' => false,
                 'add_shared' => function (FilterBuilderExecuterInterface $qbe) {
                     $closure = function (QueryBuilder $filterBuilder, $alias, $joinAlias, Expr $expr) {
                         $filterBuilder->leftJoin($alias.'.aaplusAnsvarlig', $joinAlias);
@@ -87,6 +83,7 @@ class BygningDashboardType extends AbstractType
 
                     $qbe->addOnce($qbe->getAlias().'.aaplusAnsvarlig', 'u', $closure);
                 },
+                'userGroup' => 'Aa+',
             ]);
         }
 
@@ -105,6 +102,7 @@ class BygningDashboardType extends AbstractType
             'data_class' => 'AppBundle\Entity\Bygning',
             'csrf_protection' => false,
             'validation_groups' => ['filtering'], // avoid NotBlank() constraint-related message
+            'filterCondition' => null,
         ]);
     }
 

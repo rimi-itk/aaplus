@@ -34,13 +34,18 @@ class SegmentUdtraekType extends AbstractType implements EmbeddedFilterTypeInter
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('forkortelse', ChoiceFilterType::class, ['label' => false, 'choices' => [
-                'MBU' => 'MBU - Børn og Unge',
-                'MKB' => 'MKB - Kultur og borgerservice',
-                'MSO' => 'MSO - Sundhed og omsorg',
-                'MSB' => 'MSB - Social og beskæftigelse',
-                'MTM' => 'MTM - Teknik og Miljø',
-            ]]);
+            ->add('forkortelse', ChoiceFilterType::class, [
+                'label' => false,
+                // Prevent translation of choice values (cf. https://symfony.com/doc/4.1/reference/forms/types/choice.html#choice-translation-domain)
+                'choice_translation_domain' => false,
+                'choices' => [
+                    'MBU - Børn og Unge' => 'MBU',
+                    'MKB - Kultur og borgerservice' => 'MKB',
+                    'MSO - Sundhed og omsorg' => 'MSO',
+                    'MSB - Social og beskæftigelse' => 'MSB',
+                    'MTM - Teknik og Miljø' => 'MTM',
+                ],
+            ]);
     }
 
     /**

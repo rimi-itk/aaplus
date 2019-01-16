@@ -22,14 +22,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class BygningDashboardUserType extends AbstractType
 {
     private $doctrine;
-    private $userGroup;
-    private $userGroupList;
 
-    public function __construct(RegistryInterface $doctrine, $userGroup = null, array $userGroupList = null)
+    public function __construct(RegistryInterface $doctrine)
     {
         $this->doctrine = $doctrine;
-        $this->userGroup = $userGroup;
-        $this->userGroupList = $userGroupList;
     }
 
     /**
@@ -43,7 +39,7 @@ class BygningDashboardUserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $choices = $this->userGroup ? $this->getUsersFromGroup($this->userGroup) : $this->getUsersFromGroupList($this->userGroupList);
+        $choices = $options['userGroup'] ? $this->getUsersFromGroup($options['userGroup']) : $this->getUsersFromGroupList($options['userGroupList']);
         $builder->add('username', Filters\ChoiceFilterType::class, ['label' => false, 'choices' => $choices]);
     }
 
@@ -57,6 +53,8 @@ class BygningDashboardUserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\User',
+            'userGroup' => null,
+            'userGroupList' => null,
         ]);
     }
 

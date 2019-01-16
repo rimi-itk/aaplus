@@ -178,6 +178,7 @@ class DashboardController extends BaseController
         $form = $this->get('form.factory')->create(BygningDashboardType::class, null, [
             'action' => $this->generateUrl('dashboard_'.$filterCondition),
             'method' => 'GET',
+            'filterCondition' => $filterCondition,
         ]);
 
         if ($request->query->has($form->getName())) {
