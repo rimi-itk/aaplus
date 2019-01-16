@@ -1,6 +1,5 @@
 fos:
   user:
-
     profile:
       form:
         username: Email
@@ -33,7 +32,6 @@ Edit: Rediger
 Show: Vis
 Create: Opret
 Cancel: Annuller
-Update: Opdater
 Delete: Slet
 Add: Tilføj
 Close: Luk
@@ -776,7 +774,7 @@ appbundle:
     nytElforbrugWM2: Nyt elforbrug
     nytElforbrugWM2.unit: W/m²
     nyttiggjortVarmeAfElBesparelse: Nyttiggjort varme
-    nyttiggjortVarmeAfElBesparelse.unit: % af el-besparelse
+    nyttiggjortVarmeAfElBesparelse.unit: '% af el-besparelse'
     nyttiggjortVarmeAfElBesparelse.help: 'Nyttigjort varme: procentdel af varmeudledning fra tidligere beslygning der har været nyttigjort, dvs. en varmeudledning der efterfølgende skal udføres af varmeanlægge.'
     placering: Placering
     styring.id: Styring
@@ -784,7 +782,7 @@ appbundle:
     prisfaktorTillaegKrLokale: Prisfaktor-tillæg
     prisfaktorTillaegKrLokale.unit: kr/lok.
     reduktionAfDrifttid: Reduktion af drifttid
-    reduktionAfDrifttid.unit: %
+    reduktionAfDrifttid.unit: '%'
     reduktionAfDrifttid.help: Den procentvise reduktion af drifttid
     rumstoerrelseM2: Rumstørrelse
     rumstoerrelseM2.unit: m²
@@ -830,7 +828,6 @@ appbundle:
     energiRaadgiver: Energirådgiver
     enhedsys: Enhedsys
     forsyningsvaerkEl: El
-    forsyningsvaerkVand: Vand
     forsyningsvaerkVand: Vand
     forsyningsvaerkVarme: Varme
     navn: Navn
@@ -888,7 +885,7 @@ appbundle:
       interneDriftomkostninger: Interne Driftomkostninger
       interneDriftomkostninger.unit: kr
       internRenteInklFaellesomkostninger: Intern rente inkl. Øvrige omkostninger
-      internRenteInklFaellesomkostninger.unit: %
+      internRenteInklFaellesomkostninger.unit: '%'
       investeringEksFaellesomkostninger: Investering eks. Øvrige omkostninger
       investeringEksFaellesomkostninger.unit: kr
       investeringInklFaellesomkostninger: Investering inkl. Øvrige omkostninger
@@ -898,7 +895,7 @@ appbundle:
       laanRente: Rente på lån
       likviditetsoversigt: Likviditetsoversigt
       modernisering: Modernisering
-      modernisering.unit: kr
+      modernisering.unit: 'kr'
       mtmFaellesomkostninger: MTM Øvrige omkostninger
       mtmFaellesomkostninger.unit: kr
       nutidsvaerdiInklFaellesomkostninger: Nutidsværdi inkl. Øvrige omkostninger
@@ -926,15 +923,15 @@ appbundle:
     mtmFaellesomkostningerNulHvisArealMindreEnd.unit: m2
     mtmFaellesomkostningerNulHvisTotalEntreprisesumMindreEnd.unit: kr.
     rapportInflation: Inflation
-    rapportInflation.unit: %
+    rapportInflation.unit: '%'
     inflationsfaktor: Inflationsfaktor
     rapportKalkulationsrente: Kalkulationsrente
-    rapportKalkulationsrente.unit: %
+    rapportKalkulationsrente.unit: '%'
     rapportLobetid: Løbetid
     rapportLobetid.unit: år
     rapportNominelEnergiprisstigning: Nominel energiprisstigning for varmevaerker hvor energiprisudviklingen er ukendt
     rapportProcentAfInvestering: Procent af investering
-    rapportProcentAfInvestering.unit: %
+    rapportProcentAfInvestering.unit: '%'
     vandfaktor: Vandfaktor
     varmefaktor: Varmefaktor
     varmeKrKWh: Varme (kr/kWh)
@@ -943,7 +940,7 @@ appbundle:
     tekniskisoleringVarmeledningsevneNyIsolering: Varmeledningsevne, ny isolering
     tekniskisoleringVarmeledningsevneNyIsolering.unit: W/m·K
     solcelletiltagdetailEnergiprisstigningPctPrAar: Energiprisstigning
-    solcelletiltagdetailEnergiprisstigningPctPrAar.unit: %/år
+    solcelletiltagdetailEnergiprisstigningPctPrAar.unit: '%/år'
     solcelletiltagdetailSalgsprisFoerste10AarKrKWh: Salgspris (Første 10 år)
     solcelletiltagdetailSalgsprisFoerste10AarKrKWh.unit: Kr/KWh
     solcelletiltagdetailSalgsprisEfter10AarKrKWh: Salgspris (Efter 10 år)
@@ -983,21 +980,20 @@ appbundle:
     prisfaktor: Prisfaktor
     nyEnhedspris: Ny enhedsp.
     nyEnhedspris.unit: Kr/kWh
-    forsyningsvaerk: Forsyningsværk
     beskrivelse: Beskrivelse
     internproduktion:
       effektivitet: Effektivitet
-      effektivitet.unit: %
+      effektivitet.unit: '%'
       fordeling: Fordeling
-      fordeling.unit: %
+      fordeling.unit: '%'
       navn: Navn
       prisgrundlag: Prisgrundlag
     internProduktioner: Interne produktioner
     internProduktioner.0:
       effektivitet: Effektivitet
-      effektivitet.unit: %
+      effektivitet.unit: '%'
       fordeling: Fordeling
-      fordeling.unit: %
+      fordeling.unit: '%'
       navn: Navn
       prisgrundlag: Prisgrundlag
     navn: Navn
@@ -1186,7 +1182,7 @@ appbundle:
   klimaskaermtiltagdetail:
     add: Tilføj
     andelAfArealDerEfterisoleres: Andel af areal der efterisoleres
-    andelAfArealDerEfterisoleres.unit: %
+    andelAfArealDerEfterisoleres.unit: '%'
     antalStk: Antal
     antalStk.unit: stk
     arealM2: Areal
@@ -1253,7 +1249,7 @@ appbundle:
     vaegtetGnm: VaegtetGnm
     vaegtetLevetidForTiltagetAfrundet: Vægtet levetid for tiltaget (afrundet)
     yderligereBesparelserPct: Yderligere besparelser
-    yderligereBesparelserPct.unit: %
+    yderligereBesparelserPct.unit: '%'
   komponent:
     titel: Titel
     roerlaengde: Rørlængde
@@ -1316,7 +1312,6 @@ appbundle:
     add: Tilføj pumpe
     applikation: Applikation
     bFaktor: B-Faktor
-    nyttiggjortVarme: Nyttiggjort varme
     eksisterendeDrifttid: Eksisterende drifttid
     eksisterendeDrifttid.unit: Timer/år
     eksisterendeDrifttid.help: ﻿Eksisterende driftstid indtastes i timer/år
@@ -1390,13 +1385,11 @@ appbundle:
     besparelseAarEt.unit: kr
     besparelseAarEtPdf: Økonomisk besparelse i år 1 (inkl. D&V-besparelse)
     besparelseAarEtPdf.unit: kr
-    besparelseAarEt: Samlet besparelse i kr i år 1
-    besparelseAarEt.unit: kr/år
     besparelseCO2: Samlet CO2
     besparelseCO2el: El
     besparelseCO2el.unit: t/år
     besparelseCO2relative: CO2 besparelse i % ift. baseline
-    besparelseCO2relative.unit: %
+    besparelseCO2relative.unit: '%'
     besparelseCO2.unit: t/år
     besparelseCO2varme: Varme
     besparelseCO2varme.unit: t/år
@@ -1424,11 +1417,11 @@ appbundle:
     co2BesparelseVarme: CO2 Besparelse Varme
     co2BesparelseFaktor: Samlede CO2 Besparelser (%)
     co2BesparelseElFaktor: El
-    co2BesparelseElFaktor.unit: %
+    co2BesparelseElFaktor.unit: '%'
     co2BesparelseSamletFaktor: Samlet CO2
-    co2BesparelseSamletFaktor.unit: %
+    co2BesparelseSamletFaktor.unit: '%'
     co2BesparelseVarmeFaktor: Varme
-    co2BesparelseVarmeFaktor.unit: %
+    co2BesparelseVarmeFaktor.unit: '%'
     datering: Screeningsdato
     elena: Elena
     energibesparelser: Energibesparelser
@@ -1458,7 +1451,7 @@ appbundle:
     interneDriftomkostninger: Interne Driftomkostninger
     interneDriftomkostninger.unit: kr
     internRenteInklFaellesomkostninger: Intern rente inkl. øvrige omkostninger
-    internRenteInklFaellesomkostninger.unit: %
+    internRenteInklFaellesomkostninger.unit: '%'
     investeringEksFaellesomkostninger: Aa+ Investering eksl. øvrige omkostninger
     investeringEksFaellesomkostninger.unit: kr
     investeringEkslFaelles: Investering eksl. øvrige omkostninger
@@ -1515,9 +1508,9 @@ appbundle:
     egetForbrugAfProduktionenKWh: Eget forbrug af produktionen
     egetForbrugAfProduktionenKWh.unit: KWh
     energiprisstigningPctPrAar: Energiprisstigning
-    energiprisstigningPctPrAar.unit: %
+    energiprisstigningPctPrAar.unit: '%'
     forringetYdeevnePrAar: Forringet ydeevne pr. år
-    forringetYdeevnePrAar.unit: %
+    forringetYdeevnePrAar.unit: '%'
     ikkeElenaBerettiget: Ikke Elena Berettiget
     inverterskift: Inverterskift
     inverterskift1Aar: Inverterskift 1
@@ -1547,9 +1540,9 @@ appbundle:
     simpelTilbagebetalingstidAar: Simpel tilbagebetalingstid
     simpelTilbagebetalingstidAar.unit: år
     tilEgetForbrugPct: Til eget forbrug
-    tilEgetForbrugPct.unit: %
+    tilEgetForbrugPct.unit: '%'
     tilNettetPct: Til nettet
-    tilNettetPct.unit: %
+    tilNettetPct.unit: '%'
     tilvalgt: Tilvalgt
     totalDriftomkostningerPrAar: Total driftomkostninger pr. år
     totalDriftomkostningerPrAar.unit: Kr/år
@@ -1663,7 +1656,7 @@ appbundle:
     elbesparelse: Elbesparelse
     elbesparelse.unit: kWh/år
     energiledelseAendringIBesparelseFaktor: Justering af besparelse ift. energiledelse
-    energiledelseAendringIBesparelseFaktor.unit: %
+    energiledelseAendringIBesparelseFaktor.unit: '%'
     energiledelseNoter: Noter til justering af besparelse ift. energiledelse
     enhed: Enhed
     faktorForReinvesteringer: Faktor for reinvesteringer
@@ -1701,9 +1694,9 @@ appbundle:
     risikovurderingDatagrundlag: Datagrundlag
     risikovurderingDiverse: Div. (Beskrives i noter.)
     risikovurderingAendringIBesparelseFaktor: Ændring i besparelse
-    risikovurderingAendringIBesparelseFaktor.unit: %
+    risikovurderingAendringIBesparelseFaktor.unit: '%'
     risikovurderingOekonomiskKompenseringIftInvesteringFaktor: Økonomisk kompensering ift. investering
-    risikovurderingOekonomiskKompenseringIftInvesteringFaktor.unit: %
+    risikovurderingOekonomiskKompenseringIftInvesteringFaktor.unit: '%'
     salgTilNettetAar1: Solcelleproduktion, salg til nettet år 1
     salgTilNettetAar1.unit: kWh
     samletCo2besparelse: Samlet co2-besparelse
@@ -1784,7 +1777,7 @@ appbundle:
     eWNyKWhM2Aar.unit: kWh/år
     faktorForReinvestering: Faktor for reinvestering
     glasandel: Glasandel
-    glasandel.unit: %
+    glasandel.unit: '%'
     hoejdeElLaengdeM: Højde el. Længde
     hoejdeElLaengdeM.unit: m
     ikkeElenaBerettiget: Ikke Elena Berettiget
@@ -1811,9 +1804,9 @@ appbundle:
     simpelTilbagebetalingstidAar: Simpel tilbagebetalingstid
     simpelTilbagebetalingstidAar.unit: År
     solenergitransmittansEks: Solenergitransmittans
-    solenergitransmittansEks.unit: %
+    solenergitransmittansEks.unit: '%'
     solenergitransmittansNy: Solenergitransmittans, ny
-    solenergitransmittansNy.unit: %
+    solenergitransmittansNy.unit: '%'
     tilSortering: Til sortering
     tilSummeringAfDelpriser: Til summering af delpriser
     tiltagsnr: Tiltagsnr.
@@ -1830,7 +1823,7 @@ appbundle:
     vaegtetLevetidForTiltagetAfrundet: Vægtet levetid for tiltaget (afrundet)
     vindue: Vindue
     yderligereBesparelserPct: Yderligere besparelser
-    yderligereBesparelserPct.unit: %
+    yderligereBesparelserPct.unit: '%'
   fil:
     createdAt: Oprettet
     createdBy: Oprettet af
@@ -1905,3 +1898,65 @@ Incomplete calculation: Beregningen er ikke komplet
 Fields required for calculation: Udfyld følgende felter
 Tiltag required for calculation: Opdater tiltag nr
 Details required for calculation: Opdater detail nr
+
+# "Missing" translations
+
+'': ''
+'1. Ikke startet': '1. Ikke startet'
+'2. Data verificeret': '2. Data verificeret'
+'3. Tilknyttet Rådgiver': '3. Tilknyttet Rådgiver'
+'4. Afleveret af Rådgiver': '4. Afleveret af Rådgiver'
+'5. AaPlus Verificeret': '5. AaPlus Verificeret'
+'6. Godkendt af magistrat': '6. Godkendt af magistrat'
+'7. Under udførsel': '7. Under udførsel'
+'8. Drift': '8. Drift'
+'Armaturer': 'Armaturer'
+'Bygninger': 'Bygninger'
+'D & V – Udgift til lyskilder': 'D & V – Udgift til lyskilder'
+'Erstatnings lyskilder': 'Erstatnings lyskilder'
+'Forsyningsværker': 'Forsyningsværker'
+'Graddage-fordelinger': 'Graddage-fordelinger'
+'Impersonate': 'Impersonate'
+'Indstillinger': 'Indstillinger'
+'Ja': 'Ja'
+'Klimaskærme': 'Klimaskærme'
+'Nej': 'Nej'
+'Nyttiggjort varme': 'Nyttiggjort varme'
+'Pumper': 'Pumper'
+'Rapporter': 'Rapporter'
+'Segmenter': 'Segmenter'
+'Solceller': 'Solceller'
+'Søg': 'Søg'
+'bygning.search.adresse.help': 'bygning.search.adresse.help'
+'bygning.search.adresse.unit': 'bygning.search.adresse.unit'
+'bygning.search.bygId.help': 'bygning.search.bygId.help'
+'bygning.search.bygId.unit': 'bygning.search.bygId.unit'
+'bygning.search.navn.help': 'bygning.search.navn.help'
+'bygning.search.navn.unit': 'bygning.search.navn.unit'
+'bygning.search.postBy.help': 'bygning.search.postBy.help'
+'bygning.search.postBy.unit': 'bygning.search.postBy.unit'
+'bygning.search.postnummer.help': 'bygning.search.postnummer.help'
+'bygning.search.postnummer.unit': 'bygning.search.postnummer.unit'
+'bygning.search.segment.help': 'bygning.search.segment.help'
+'bygning.search.segment.unit': 'bygning.search.segment.unit'
+'bygning.search.status.help': 'bygning.search.status.help'
+'bygning.search.status.unit': 'bygning.search.status.unit'
+'rapport.search.ava.help': 'rapport.search.ava.help'
+'rapport.search.ava.unit': 'rapport.search.ava.unit'
+'rapport.search.bygning.adresse.help': 'rapport.search.bygning.adresse.help'
+'rapport.search.bygning.adresse.unit': 'rapport.search.bygning.adresse.unit'
+'rapport.search.bygning.navn.help': 'rapport.search.bygning.navn.help'
+'rapport.search.bygning.navn.unit': 'rapport.search.bygning.navn.unit'
+'rapport.search.bygning.postnummer.help': 'rapport.search.bygning.postnummer.help'
+'rapport.search.bygning.postnummer.unit': 'rapport.search.bygning.postnummer.unit'
+'rapport.search.bygning.segment.help': 'rapport.search.bygning.segment.help'
+'rapport.search.bygning.segment.unit': 'rapport.search.bygning.segment.unit'
+'rapport.search.bygning.status.help': ''
+'rapport.search.bygning.status.unit': 'rapport.search.bygning.status.unit'
+'rapport.search.datering.help': 'rapport.search.datering.help'
+'rapport.search.datering.unit': 'rapport.search.datering.unit'
+'rapport.search.elena.help': 'rapport.search.elena.help'
+'rapport.search.elena.unit': 'rapport.search.elena.unit'
+'rapport.search.version.help': 'rapport.search.version.help'
+'rapport.search.version.unit': 'rapport.search.version.unit'
+'--': '--'

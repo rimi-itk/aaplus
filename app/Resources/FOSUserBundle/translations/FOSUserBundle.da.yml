@@ -27,7 +27,6 @@ profile:
         username: Email
         email: Email
         name: Navn
-        phone: Telefon
         firstname: Fornavn
         lastname: Efternavn
         phone: Telefon
