@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\DataExport\ExcelExport;
 use AppBundle\Form\Type\BygningUdtraekType;
+use AppBundle\Service\BygningStreamExporter;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -31,6 +32,14 @@ use Yavin\Symfony\Controller\InitControllerInterface;
 class UdtraekController extends BaseController implements InitControllerInterface
 {
     protected $breadcrumbs;
+
+    /** @var BygningStreamExporter */
+    private $streamer;
+
+    public function __construct(BygningStreamExporter $streamer)
+    {
+        $this->streamer = $streamer;
+    }
 
     public function init(Request $request)
     {
@@ -419,7 +428,7 @@ class UdtraekController extends BaseController implements InitControllerInterfac
     {
         $filename = 'bygninger--'.date('d-m-Y_Hi').'.'.$format;
 
-        $streamer = $this->container->get('aaplus.exporter.bygning_stream');
+        $streamer = $this->streamer;
         $streamer->setConfig([
             'columns' => $columns,
             'types' => $types,
