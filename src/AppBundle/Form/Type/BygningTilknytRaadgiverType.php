@@ -61,12 +61,12 @@ class BygningTilknytRaadgiverType extends AbstractType
                 'read_only' => true,
             ])
             ->add(
-          'rapport',
-          new RapportEmbedType($this->authorizationChecker),
-          [
-              'by_reference' => true,
-              'data_class' => 'AppBundle\Entity\Rapport',
-          ]
+                'rapport',
+                new RapportEmbedType($this->authorizationChecker),
+                [
+                    'by_reference' => true,
+                    'data_class' => 'AppBundle\Entity\Rapport',
+                ]
       );
     }
 

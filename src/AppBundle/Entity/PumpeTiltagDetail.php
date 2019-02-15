@@ -634,7 +634,7 @@ class PumpeTiltagDetail extends TiltagDetail
         return $this->fordelbesparelse(
             $this->varmebespIsokappeKWh,
             $this->tiltag->getForsyningVarme(),
-                'EL'
+            'EL'
         ) + $this->elbespKWhAar;
     }
 

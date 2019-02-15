@@ -404,13 +404,13 @@ abstract class TiltagDetail
                 if (1 === $AntalReinvest) {
                     $Reinvest = ($Invest * $FaktorReInvest * pow(
                         1 + $Inflation,
-                                $Levetid + 1
+                        $Levetid + 1
                     )) / pow(1 + $Kalkulationsrente, $Levetid + 1);
                 } elseif ($AntalReinvest > 1) { // 'kan evt. forbedres til mere statisk formel aht. beregningshastigheden
                     for ($x = 1; $x <= $AntalReinvest; ++$x) {
                         $Reinvest = $Reinvest + ($Invest * $FaktorReInvest * pow(
                             1 + $Inflation,
-                                    $Levetid * $x + 1
+                            $Levetid * $x + 1
                         )) / (pow(1 + $Kalkulationsrente, $Levetid * $x + 1));
                     }
                 }
@@ -423,7 +423,7 @@ abstract class TiltagDetail
             } else {
                 $Scrapvaerdi = (1 - ($Lobetid - $AntalReinvest * $Levetid) / $Levetid) * $Invest * $FaktorReInvest * pow(
                     1 + $Inflation,
-                        $Lobetid
+                    $Lobetid
                 );
             }
             // $Scrapvaerdi is defined as long in Excel.
@@ -432,7 +432,7 @@ abstract class TiltagDetail
 
         return ((-$Invest + $SalgAfEnergibesparelse) / (1 + $Kalkulationsrente)) + $BesparKwhVarme * $Varmefaktor + $BesparKwhEl * $Elfaktor + $Besparm3Vand * $Vandfaktor + ($Scrapvaerdi / pow(
             1 + $Kalkulationsrente,
-                    $Lobetid
+            $Lobetid
         )) + ($DogV + $Straf) * $Inflationsfaktor - $Reinvest;
     }
 

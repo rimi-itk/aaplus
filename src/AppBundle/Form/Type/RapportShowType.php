@@ -44,12 +44,12 @@ class RapportShowType extends AbstractType
     {
         $builder
             ->add(
-          'datering',
-          'date',
-          [
-              'disabled' => 'disabled',
-              // render as a single HTML5 text box
-              'widget' => 'single_text', ]
+                'datering',
+                'date',
+                [
+                    'disabled' => 'disabled',
+                    // render as a single HTML5 text box
+                    'widget' => 'single_text', ]
       )
             ->add('BaselineEl', null, ['disabled' => 'disabled'])
             ->add('BaselineVarmeGUF', null, ['disabled' => 'disabled'])

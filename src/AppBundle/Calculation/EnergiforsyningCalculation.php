@@ -73,8 +73,8 @@ class EnergiforsyningCalculation extends Calculation
         $uow = $em->getUnitOfWork();
 
         $entities = array_merge(
-      $uow->getScheduledEntityInsertions(),
-      $uow->getScheduledEntityUpdates()
+            $uow->getScheduledEntityInsertions(),
+            $uow->getScheduledEntityUpdates()
     );
 
         foreach ($entities as $entity) {

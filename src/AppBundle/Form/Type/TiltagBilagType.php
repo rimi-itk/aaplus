@@ -48,16 +48,16 @@ class TiltagBilagType extends AbstractType
             ]);
 
         $builder->addEventListener(
-      FormEvents::PRE_SUBMIT,
-      function (FormEvent $event) {
-          $data = $event->getData();
-          $form = $event->getForm();
+            FormEvents::PRE_SUBMIT,
+            function (FormEvent $event) {
+                $data = $event->getData();
+                $form = $event->getForm();
 
-          // Remove filepath field if not submitted
-          if (!isset($data['filepath']) || null === $data['filepath']) {
-              $form->remove('filepath');
-          }
-      }
+                // Remove filepath field if not submitted
+                if (!isset($data['filepath']) || null === $data['filepath']) {
+                    $form->remove('filepath');
+                }
+            }
     );
     }
 

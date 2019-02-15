@@ -71,7 +71,7 @@
             "@symfony-scripts"
         ],
         "check-coding-standards/php-cs-fixer": [
-            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix --dry-run"
+            "vendor/bin/php-cs-fixer --config=.php_cs.dist fix --dry-run"
         ],
         "check-coding-standards/lint:twig": [
             "bin/console lint:twig src/AppBundle/Resources/views"
@@ -80,14 +80,14 @@
             "vendor/bin/twigcs lint src/AppBundle/Resources/views"
         ],
         "check-coding-standards/twig": [
-						"@check-coding-standards/lint:twig",
-						"@check-coding-standards/twigcs"
+            "@check-coding-standards/lint:twig",
+            "@check-coding-standards/twigcs"
         ],
         "check-coding-standards": [
             "@check-coding-standards/php-cs-fixer"
         ],
         "apply-coding-standards/php-cs-fixer": [
-            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
+            "vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
         ],
         "apply-coding-standards": [
             "@apply-coding-standards/php-cs-fixer"

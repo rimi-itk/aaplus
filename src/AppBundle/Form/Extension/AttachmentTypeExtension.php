@@ -47,7 +47,7 @@ class AttachmentTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        if (array_key_exists('attachment_path', $options)) {
+        if (\array_key_exists('attachment_path', $options)) {
             $parentData = $form->getParent()->getData();
 
             if (null !== $parentData) {

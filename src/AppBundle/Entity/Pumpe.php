@@ -202,7 +202,7 @@ class Pumpe
     {
         return $this->id.'. '.$this->nuvaerendeType.' / '.$this->nyPumpe.' - Stand.inv: '.number_format(
             $this->standInvestering,
-                0,
+            0,
             ',',
             '.'
         ).' Kr, Indst: '.$this->indst.', Rørstr: '.$this->roerstoerrelse;

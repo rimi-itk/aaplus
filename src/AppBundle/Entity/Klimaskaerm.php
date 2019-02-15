@@ -84,7 +84,7 @@ class Klimaskaerm
     {
         return $this->post.': '.$this->klimaskaerm.($this->arbejdeOmfang ? ' – '.$this->arbejdeOmfang : '').($this->enhedsprisEksklMoms ? ' - '.round(
             $this->enhedsprisEksklMoms,
-                    2
+            2
         ).' '.$this->enhed : '');
     }
 

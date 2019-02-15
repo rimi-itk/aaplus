@@ -64,20 +64,20 @@ class TiltagDetailType extends AbstractType
                     $form->add(
           // Replace original field...
             $name,
-            'choice',
+                        'choice',
             // while keeping the original options...
             array_replace(
-              $options,
-              [
-                  // replacing specific ones
-                  'required' => false,
-                  'choices' => [
-                      'Nej' => '0',
-                      'Ja' => '1',
-                  ],
-                  'empty_data' => null,
-                  'placeholder' => '--',
-              ]
+                $options,
+                [
+                    // replacing specific ones
+                    'required' => false,
+                    'choices' => [
+                        'Nej' => '0',
+                        'Ja' => '1',
+                    ],
+                    'empty_data' => null,
+                    'placeholder' => '--',
+                ]
             )
                     );
                 } else {
@@ -85,14 +85,14 @@ class TiltagDetailType extends AbstractType
                     $form->add(
                         // Replace original field...
             $name,
-            $type,
+                        $type,
             // while keeping the original options...
             array_replace(
-              $options,
-              [
-                  // replacing specific ones
-                  'required' => false,
-              ]
+                $options,
+                [
+                    // replacing specific ones
+                    'required' => false,
+                ]
             )
           );
                 }
@@ -103,9 +103,9 @@ class TiltagDetailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-      [
-          'data_class' => 'AppBundle\Entity\TiltagDetail',
-      ]
+            [
+                'data_class' => 'AppBundle\Entity\TiltagDetail',
+            ]
     );
     }
 

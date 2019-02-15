@@ -40,11 +40,11 @@ class RapportEmbedType extends AbstractType
     {
         $builder
             ->add(
-          'datering',
-          'date',
-          [
-              // render as a single HTML5 text box
-              'widget' => 'single_text', ]
+                'datering',
+                'date',
+                [
+                    // render as a single HTML5 text box
+                    'widget' => 'single_text', ]
       )
             ->add('faktorPaaVarmebesparelse')
             ->add('energiscreening')

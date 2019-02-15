@@ -511,7 +511,7 @@ class SolcelleTiltagDetail extends TiltagDetail
                 // Add scrapvaerdi
                 $flow['Cash flow'][$year] += (1 - ($numberOfYears / $this->tiltag->getLevetid())) * pow(
                     1 + $inflation,
-                        $numberOfYears
+                    $numberOfYears
                 ) * ($this->investeringKr + $this->screeningOgProjekteringKr);
             }
             $flow['STATUS'][$year] = $flow['STATUS'][$year - 1] + $flow['Cash flow'][$year];

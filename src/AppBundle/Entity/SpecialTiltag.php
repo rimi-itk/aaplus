@@ -160,7 +160,7 @@ class SpecialTiltag extends Tiltag
     {
         $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGUF : $this->fordelbesparelse(
             $this->besparelseGUF,
-                $this->getForsyningVarme(),
+            $this->getForsyningVarme(),
             'VARME'
         )) * $this->rapport->getFaktorPaaVarmebesparelse();
 
@@ -171,7 +171,7 @@ class SpecialTiltag extends Tiltag
     {
         $value = ($this->rapport->getStandardForsyning() ? $this->besparelseGAF : $this->fordelbesparelse(
             $this->besparelseGAF,
-                $this->getForsyningVarme(),
+            $this->getForsyningVarme(),
             'VARME'
         )) * $this->rapport->getFaktorPaaVarmebesparelse();
 

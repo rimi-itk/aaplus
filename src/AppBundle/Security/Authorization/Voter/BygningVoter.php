@@ -62,7 +62,7 @@ class BygningVoter implements VoterInterface
         // design your voter
         if (1 !== \count($attributes)) {
             throw new \InvalidArgumentException(
-        'Only one attribute is allowed for CREATE, VIEW or EDIT'
+                'Only one attribute is allowed for CREATE, VIEW or EDIT'
       );
         }
 

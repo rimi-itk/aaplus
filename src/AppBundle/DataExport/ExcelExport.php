@@ -66,13 +66,13 @@ class ExcelExport
         $objWriter->save('php://output');
 
         return new Response(
-      ob_get_clean(),  // read from output buffer
+            ob_get_clean(),  // read from output buffer
       200,
-      [
-          'Content-Type' => 'application/vnd.ms-excel',
-          'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-          'Cache-Control' => 'max-age=0',
-      ]
+            [
+                'Content-Type' => 'application/vnd.ms-excel',
+                'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+                'Cache-Control' => 'max-age=0',
+            ]
     );
     }
 
@@ -139,13 +139,13 @@ class ExcelExport
         $objWriter->save('php://output');
 
         return new Response(
-      ob_get_clean(),  // read from output buffer
+            ob_get_clean(),  // read from output buffer
       200,
-      [
-          'Content-Type' => 'application/vnd.ms-excel',
-          'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-          'Cache-Control' => 'max-age=0',
-      ]
+            [
+                'Content-Type' => 'application/vnd.ms-excel',
+                'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+                'Cache-Control' => 'max-age=0',
+            ]
     );
     }
 }

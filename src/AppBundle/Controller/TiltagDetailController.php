@@ -201,8 +201,8 @@ class TiltagDetailController extends BaseController
         $file = new File($path);
         $response = new BinaryFileResponse($file->getRealPath());
         $response->setContentDisposition(
-      ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-      $file->getFilename()
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $file->getFilename()
     );
 
         return $response;

@@ -35,7 +35,7 @@ class Version20151214151708 extends AbstractMigration
         $this->addSql('ALTER TABLE TiltagDetail_audit ADD nyttiggjortvarme_id INT DEFAULT NULL, DROP nyttiggjortVarme');
 
         $this->addSql(
-      "LOCK TABLES `NyttiggjortVarme` WRITE;
+            "LOCK TABLES `NyttiggjortVarme` WRITE;
 
           INSERT INTO `NyttiggjortVarme` (`id`, `faktor`, `titel`)
           VALUES
